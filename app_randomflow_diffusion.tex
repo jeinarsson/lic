@@ -1,0 +1,83 @@
+\documentclass[thesis.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Diffusion equation for an axisymmetric\\particle in a random flow}
+
+Given a dynamical system with some stochastic functions it is a standard matter to derive the corresponding Fokker-Planck equation. See for example van Kampen \cite{kampen07}. 
+
+̧We will use the Jeffery equation ($\nabla \ve u = \ma A = \ma O + \ma S$)
+
+\begin{align*}
+	\dot{\ve n} &= \ma O \ve n + \Lambda\left(\ma S \ve n - \ve n \ve n\transpose\ma S \ve n\right)	\equiv \ve f(\ve n, t)
+\end{align*}
+
+
+\begin{align*}
+	\left \langle \ma O_{ij}(t_1)\ma O_{kl}(t_2)\right \rangle &= C^{OO}_{ijkl}\delta(t_1-t_2) \\
+	\left \langle \ma S_{ij}(t_1)\ma S_{kl}(t_2)\right \rangle &= C^{SS}_{ijkl}\delta(t_1-t_2) \\
+	\left \langle \ma S_{ij}(t_1)\ma O_{kl}(t_2)\right \rangle &= 0 \\
+	\left \langle \ma S_{ij}(t)\right \rangle &= 0 \\
+	\left \langle \ma O_{ij}(t)\right \rangle &= 0
+\end{align*}
+
+
+\begin{align*}
+	\delta \ve n = \ve n(\delta t) - \ve n_0 &= \int_0^{\delta t}\!\!\!\!\!\rd t_1 \ve f (\ve n(t_1 ), t_1)\\
+	&= \int_0^{\delta t}\!\!\!\!\!\rd t_1 \ve f\left(\ve n_0 + \int_0^{t_1}\rd t_2 \ve f(\ve n(t_2),t_2), t_1\right)\\
+	&= \int_0^{\delta t}\!\!\!\!\!\rd t_1 \ve f (\ve n_0, t_1)+\int_0^{\delta t}\!\!\!\!\!\rd t_1 \ma F (\ve n_0, t_1)\int_0^{t_1}\rd t_2 \ve f(\ve n_0, t_2) + ...
+\end{align*}
+\begin{align*}
+	\ma F(\ve n, t) &= \frac{\rd \ve f}{\rd \ve n} \\
+	&= \ma O + \Lambda(\ma S - \maid \ve n\transpose \ma S \ve n - 2\ve n\ve n\transpose \ma S) \\
+	& = \ma O + \Lambda( (\maid - 2\ve n \ve n\transpose)\ma S - \maid \ve n\transpose \ma S \ve n )
+\end{align*}
+
+If first moments of random flow vanish
+\begin{align*}
+	a_1 &= \lim_{\delta t\to0}\left\langle\frac{\delta \ve n}{\delta t}\right\rangle = \int_0^{\delta t}\!\!\!\!\!\rd t_1\int_0^{t_1}\rd t_2\langle \ma F(\ve n_0,t_1)\ve f(\ve n_0, t_2)\rangle\\
+	a_2 &= \lim_{\delta t\to0}\left\langle\frac{(\delta \ve n)(\delta \ve n)\transpose}{\delta t}\right\rangle = \int_0^{\delta t}\!\!\!\!\!\rd t_1 \int_0^{\delta t}\!\!\!\!\!\rd t_2 \left\langle\ve f(\ve n_0,t_1) \ve f\transpose(\ve n_0, t_2)\right\rangle
+\end{align*}
+
+From now on, call $\ve n = \ve n_0$. The time integrals can be performed independently, and we are left with the spatial correlations to contract. 
+\begin{align*}
+	a_1 &= \frac{1}{2}\left \langle \ma O \ma O \ve n + \Lambda^2\left(
+\ma S \ma S \ve n
+-2 \ve n \ve n\transpose \ma S\ma S\ve n
+-2 (\ve n\transpose \ma S\ve n)\ma S \ve n 
++3 (\ve n\transpose \ma S\ve n)^2 \ve n
+\right) \right\rangle
+\end{align*}
+
+\begin{align*}
+	a_2  &= \left\langle -\ma O \ve n \ve n\transpose \ma O + \Lambda^2\left( \ma S \ve n \ve n\transpose\ma S -(\ve n\transpose \ma S \ve n)(\ma S \ve n \ve n\transpose + \ve n \ve n\transpose \ma S - \ve n \ve n\transpose(\ve n\transpose \ma S \ve n))\right) \right\rangle
+\end{align*}
+
+Say: isotropic (deltas), incompressible (traceless), homogenous ($\tr \ma A^2=0\implies-\tr \ma O\ma O=\tr\ma S\ma S$, and $\tr \ma A \transpose \ma A = 2\tr \ma O\transpose \ma O = 2\tr \ma S\transpose\ma S$). Then
+
+\begin{align*}
+	C^{OO}_{ijkl} &= -\frac{\tr\langle\ma A\transpose\ma A\rangle}{12}\left(\delta_{ik}\delta_{jl}-\delta_{il}\delta_{jk}\right)\\
+	C^{SS}_{ijkl} &= \frac{\tr\langle\ma A\transpose\ma A\rangle}{60}\left(-2\delta_{ij}\delta_{kl}+3\delta_{ik}\delta_{jl}+3\delta_{il}\delta_{jk}\right)	
+\end{align*}
+
+\begin{align*}
+	a_1 &= -\frac{\tr\langle\ma A\transpose \ma A\rangle}{30} \left(5 + 3\Lambda^2 \right)\ve n\\
+	a_2  &= \frac{\tr\langle\ma A\transpose \ma A\rangle}{60} \left(5 + 3\Lambda^2 \right)\left(\maid - \ve n\ve n\transpose \right )
+\end{align*}
+
+Or if we like to interpret $\ma O$ as a Brownian angular velocity $\ve \Omega_\mathrm{Br}$ such that $\langle \ve \Omega_\mathrm{Br}^2\rangle=k_B T/Y^C$, where $Y^C$ is the hydrodynamic resistance function, $Y^C=8 \pi \mu a^3$ for a sphere. Then
+
+\begin{align*}
+	C^{OO}_{ijkl} &= -2\frac{k_B T}{Y^C} \left(\delta_{ik}\delta_{jl}-\delta_{il}\delta_{jk}\right)\\
+	C^{SS}_{ijkl} &= 0	
+\end{align*}
+
+\begin{align*}
+	a_1 &= -4 \frac{k_B T}{Y^C} \ve n\\
+	a_2 &= 2 \frac{k_B T}{Y^C} \left(\maid - \ve n\ve n\transpose \right)
+\end{align*}
+
+
+
+
+\end{document}

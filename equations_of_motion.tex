@@ -1,0 +1,33 @@
+\documentclass[thesis.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Equation of motion}
+
+\section{Stuff}
+
+Here the differential operator $\partial_{\ve n}$ is the gradient on the sphere, defined by taking the usual gradient in $R^3$ projected onto the unit sphere, $\partial_{\ve n} \equiv (\delta - \venn)\nabla$.
+We approximate a solution of \Eqnref{fpeapp} by an expansion in the spherical harmonics, the eigenfunctions of the quantum angular momentum operators, which form a complete basis on $S_2$. We use bra-ket notation,
+\begin{align}
+	P(\ve n, t) &= \langle \ve n| P(t)\rangle =  \sum_{l=0}^{\infty}\sum_{m=-l}^l c_l^m(t) \langle \ve n\Ylm{l}{m}.\eqnlab{basisexpansion}
+\intertext{where}
+	 \langle\ve n|l,m\rangle &= Y_l^m(\ve n) = (-1)^m\sqrt{\frac{2l+1}{4\pi}\frac{(l-m)!}{(l+m)!}}P_l^m(\cos\theta)e^{im\varphi}.
+\end{align}
+We use the standard spherical harmonics defined in for example Arfken (p. 571) \cite{Arf70}. The functions $P_l^m$ are the associated legendre polynomials. We call the time-dependent coefficients for each basis function $c_l^m(t)$, and the fact that $P$ is real-valued puts a constraint on the coefficients that 
+\begin{align}
+	c_l^m = \overline{ c_l^{-m}},\eqnlab{clmreal}
+\end{align}
+where the bar means complex conjugation. Then \Eqnref{fpeapp} for the time evolution of the state ket $|P(t)\rangle$ reads
+\begin{align*}
+	\partial_t |P(t)\rangle &= \hat J |P(t)\rangle
+\end{align*}
+And inserting the expansion yields
+\begin{align}
+	\sum_{l=0}^{\infty}\sum_{m=-l}^l \partial_tc_l^m(t) \Ylm{l}{m} &= \sum_{l=0}^{\infty}\sum_{m=-l}^l c_l^m(t) \hat J\Ylm{l}{m} 
+	\intertext{left-multiply with the bra $\langle p,q|$, and use the orthogonality condition to arrive at a system of coupled ordinary differential equations for $c_l^m(t)$}
+	\dot c_p^q(t)  &= \sum_{l=0}^{\infty}\sum_{m=-l}^l c_l^m(t) \langle p,q| \hat J\Ylm{l}{m} \eqnlab{clmeq1}\\
+	c_0^0 &= \frac{1}{\sqrt{4\pi}}\eqnlab{clmeq1norm}
+\end{align}
+
+
+\end{document}
