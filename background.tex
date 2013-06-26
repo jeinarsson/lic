@@ -2,21 +2,24 @@
 
 \begin{document}
 
-\chapter{The context}
+\chapter{Background}
+
+
+\section{Context}
 
 orientational dynamics of small, rigid particles suspended in fluid flows
 
 \begin{itemize}
 	\item fluid
 	\item flows
-	\item particles
+	\item rigid particles
 	\item small
 	\item orientational
 \end{itemize}
 
 This chapter tells you about all the fantastic things that this thesis is not about.
 
-\section{Fluid flow}
+\subsection{Fluids}
 
 Many physical systems around us are fluids. The air we breathe, the water we drink, the blood in our veins are all fluids. As a working definition we can think of a fluid as a system where the constituent molecules move around more or less freely. Sometimes they interact with each other and exchange some energy. The collisions give rise to what you perceive as friction. You know that syrup has more friction than water: if you pull a spoon through syrup, more of your energy is expended colliding molecules than if you were to pull the spoon through water. A measure of how often and how violently the molecules collide is the viscosity of a fluid, and we say that syrup has higher viscosity than water. Now, in many real situations there is something more than one fluid to consider. We may mix something into the fluid, for example a drop of oil into water. Then what happens depends on how the water molecules interact with the oil molecules. As you probably have experienced, the oil molecules like each other, and the water molecules, too. Therefore the oil concentrates into a drop where as many oil molecules as possible may be neighbours with other oil molecules.
 
@@ -30,12 +33,54 @@ However, modern computers are now allowing us to simulate surprisingly large num
 }.
 Just consider that in one litre of water there are about $10^{25}$ molecules. In fact, we are not even particularly interested in the specific details of every molecule - we are interested in the macroscopic, observable world that is built up from all these molecules. Now, this thesis is not at all concerned with the detailed motion of molecules, but I still wanted to start with this picture because sometimes it becomes important to remember the origin of the macroscopic motion.\todo{connect forward to chap's about noise, fokker-planckery}.
 
-The discipline studying the macroscopic properties and motion of fluids is called fluid dynamics. Some typical quantities studied there are the fluid velocity and pressure. We can think of the velocity at a certain position in the fluid as the average velocity of all the molecules at that point. It is more or less equal to the velocity a grain of pollen assumes if put at that point in the fluid. The pressure is the force per area an object in contact with the fluid experiences, due to the constant bombardment of molecules. Think for example of the forces in a bottle of soda. We now return to our example of the oil drop in water, and see that the switch from a molecular view to a fluid dynamical view opens a new problem: if we do not keep track of the molecules, we instead have to keep track of which points in space contain oil and which contain water. Separating the two materials, there is a boundary surface which can deform over time so that the oil drop changes shape. This sounds very complicated. Indeed, drop dynamics is a topic of its own, which this thesis does not intend to cover. Instead, this thesis concerns \emph{rigid particles}. A rigid body in physics is an object whose configuration can be described by one position (usually chosen to be the center-of-mass) and the rotation around said point. So let me exchange the oil drop in our experiment for a rigid particle. Make it a small metal particle instead, let's imagine a coin. 
+\subsection{Fluid dynamics}
 
- 	
+The discipline studying the macroscopic properties and motion of fluids is called fluid dynamics. Some typical quantities studied there are the fluid velocity and pressure. We can think of the velocity at a certain position in the fluid as the average velocity of all the molecules at that point. It is more or less equal to the velocity a grain of pollen assumes if put at that point in the fluid. The pressure is the force per area an object in contact with the fluid experiences, due to the constant bombardment of molecules. Think for example of the forces in a bottle of soda. We now return to our example of the oil drop in water, and see that the switch from a molecular view to a fluid dynamical view opens a new problem: if we do not keep track of the molecules, we instead have to keep track of which points in space contain oil and which contain water. Separating the two materials, there is a boundary surface which can deform over time so that the oil drop changes shape. This sounds very complicated. Indeed, drop dynamics is a topic of its own, which this thesis does not intend to cover. Instead, this thesis concerns \emph{rigid particles}. 
+
+\subsection{Rigid bodies}
+
+A rigid body in physics is an object whose configuration can be described by the position of one point (usually the center-of-mass) and the rotation around that point. The dynamics of a rigid body, like the coin, is described by Newton's laws. In particular the famous relation that the force $\ve F$ on a rigid body equals its mass $m$ times its acceleration $\ve a$,
+\begin{align*}
+	\ve F = m\ve a.
+\end{align*}
+Recall that the configuration of a rigid body is described by its position and rotation. While the above equation describes the movement of the position, there is a corresponding law for the rotation. The torque $\ve T$ on a rigid body equals its moment of inertia $\ma I$ times its angular acceleration $\ve \alpha$,
+\begin{align*}
+	\ve T = \ma I \ve \alpha.
+\end{align*}
+The two equations above are deceivingly simple-looking, but their solution contains all information on the motion of a rigid body. I state them here only to draw a conclusion: in order to extract all the information about the motion of a particle, we need to know both the force and the torque acting on the particle at all times.
+
+There are many kinds of forces which can potentially act on a particle. For example there is gravity if the particle is heavy, or magnetic forces if the particle is magnetic. But for now we consider the forces on a particle due to the surrounding fluid, so called hydrodynamic forces. In everyday terms the hydrodynamic force is the drag, as experienced by a car for example. Uneven drag over a body may also result in a hydrodynamic torque. For instance, turbulent air striking the wings of an aircraft will induce a torque which you feel as a rotational acceleration while the pilot compensates.
+
+\subsection{Hydrodynamic forces}
+
+In order to find out what the force on a particle is, we need to solve the governing equations of fluid dynamics around the particle. Once we know the fluid velocity and pressure we can follow a known recipe of how to extract the resulting forces and torques. This type of calculation is part of the theory of fluid dynamics, a theory which has been worked out over some centuries and which we now believe to describe most fluid flows around us. The problem is that we cannot solve the equations. Not only can we not find solutions as mathematical formulas - in many cases we can not even find numerical solutions using a supercomputer. For example, computing the motion of the air in a cloud is utterly out of reach with the computer resources of today.
+
+I think it is worthwhile to emphasise that some problems are inherently very hard, and cannot be solved by brute force. From time to time I get the question why we struggle with difficult mathematical work, why not just ``run it through the computer?'' It is because we aim to extract all possible physical understanding available from the equations, even if it not possible to solve the equations in general. And indeed, the meteorologists now have methods of simulating the flows of air in the atmosphere. The trick is to ignore parts of the equation dealing with very small motions, and spend the resources on describing the large eddies of the flow. Good approximations, like these ``Large Eddy Simulations'', depend on understanding which particular details may be neglected, and which details are crucial to keep track of. The game of simplifying without over-simplifying is at the heart of fundamental research.
+
+At any rate, we wish to figure out what the forces on a rigid body in a fluid flow is. By now it is clear that some type of simplification has to be made. The great simplification is embodied in the word \emph{small} in the title of this thesis. The particles we consider are small. But how small is a small particle? The answer I have to give right away is a rather unsatisfactory ``it depends''. The smallness of the particle has to be relative to something else. This simple principle has been formalised by scientists, who discuss smallness in terms of \emph{dimensionless numbers}. Because dimensionless numbers are very common in our work I will spend a few paragraphs to explain the basic idea.
+
+\subsection{Dimensionless numbers}
+
+In principle all physical quantities have some units. For example, the size of a particle has units of ``length'', and the speed of the particle has units of ``length per time'', which we write as length/time. Whenever we multiply or divide quantities with dimensions, we also multiply or divide their units. For example dividing the length \unit[20]{m} with the time \unit[5]{s} gives the speed \unit[4]{m/s}. Now suppose we divide the speed \unit[4]{m/s} with the speed \unit[2]{m/s}. The result is $2$, without any units - they cancelled in the division. To determine if one quantity, say the velocity $v_1$, is small we have to divide it with another velocity, say $v_2$, and check if the dimensionless number is smaller or larger than $1$. This concept seems simple enough, let's consider a slightly more complicated example.
+
+Imagine a small rubber boat on the sea. The boat speeds along, rising and falling as it crosses the waves. There are two distinct mechanisms at play for the rising and falling of the boat. First, if the boat stays in a fixed position the sea will rise and fall beneath it fairly periodically. Call this period time $\tau$. Second, the boat may cross different waves by travelling over them. Let's call the speed of the boat $v$, and the distance between different waves on the sea is a length $\eta$. How can we determine whether the boat is moving fast or slowly? That is, if $v$ is large or small. In the paragraph above we concluded that we have to divide $v$ with another speed, and check if the dimensionless number is smaller or larger than $1$. With the quantities I have given, that is the wave period time $\tau$, the wave distance $\eta$ and the boat velocity $v$, there is only one dimensionless combination. We can divide the speed $v$ with the speed $\eta/\tau$. The ratio is a number which I will call the \emph{Kubo number}, for reasons I will shortly explain. The Kubo number is
+\begin{align*}
+\ku = v\tau/\eta.
+\end{align*}
+I will now give a brief interpretation of what it means when $\ku$ is smaller or larger than $1$. If $\ku > 1$, it means that $v\tau > \eta$. The quantity $v\tau$ is a length, more precisely the length that the boat travels during the period time of a wave. Thus, $\ku > 1$ means that the boat travels more than one wave distance during the period time of a single wave. Imagine that the Kubo number is very large, then the boat travels over many different waves before the wave landscape changes. In this case we may rightly say that the boat is \emph{fast}. On the other hand, if $\ku<1$, the boat does not cover the distance between waves in a single wave period time. Before the boat reaches the next wave, the entire wave landscape has changed underneath it.
+
+I made a cartoon for the Kubo number because it is one of the fundamental quantities in Paper~\ref{paper3}. There a particle plays the role of the boat, and a turbulent flow plays the role of the waves. As I did here, we there describe the limits of very small $\ku$, and very large $\ku$. In a real turbulent flow $\ku$ is around $1$. That means neither of the caricatures are true, but we argue that together they bring some insight into the tumbling of the particles.
+
+The dimensionless numbers tell us which physical quantities are important in relation to each other. In the example above, the actual speed of the boat is not important - the speed only matters in relation to the waves. We know that all situations with the same Kubo number are, in some sense, equivalent. This very fact is also what enables engineers to use scale models in wind tunnels. They know that to test a model of a suspension bridge in a wind tunnel, they can not use full-scale wind speeds, but instead a scaled down version of the wind. The dimensionless numbers reveal what scaling is appropriate to match the model bridge to real conditions.
+
+\subsection{Small particles}
+
+We are now equipped to understand what it means for a particle to be \emph{small} in the context of fluid flows. In our setting a particle can be small in two different ways, consequently there are two different dimensionless numbers. One has to do with the inertia of the particle itself, the other with the inertia of the fluid surrounding the particle.
+
+The first dimensionless number is the Stokes number, or $\st$ for short.
 
 
- 
+
 
 
 

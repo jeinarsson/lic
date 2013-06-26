@@ -151,7 +151,8 @@
 \titleformat{\section}
 {\normalfont\Large}{\thesection}{1em}{}
 \titleformat{\subsection}
-{\normalfont\large}{\thesubsection}{1em}{}
+{\normalfont\large}{}{0em}{}
+%{\normalfont\large}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}
 {\normalfont\normalsize}{\thesubsubsection}{1em}{}
 \titleformat{\paragraph}[runin]
