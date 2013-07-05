@@ -2,9 +2,64 @@
 
 \begin{document}
 
-\chapter{Experiment}
+\chapter{Experimental observation of \\single particle orientational dynamics}
 
+In a collaborative project with the group of Dag Hanstorp\footnote{Dag Hanstorp is Professor of experimental physics in the Department of physics, Gothenburg university.} we develop an experimental setup for observing the orientational dynamics of single particles. The aim is to understand which mechanisms, which forces, that are crucial to include in a description of the particle dynamics. By quantitatively measuring the trajectories of individual particles, we aim to narrow down the possible choices of mechanisms driving the particle dynamics. The project has thus far resulted in Paper A of this thesis, which describes observations of both periodic and aperiodic tumbling of rod-shaped particles. At the time of this writing a round of refined experiments are ongoing, and a publication containing the results is planned.
 
+\section{Overview \& setup}
+
+A laboratory experiment is an idealisation of a natural system. We wish to capture and control the system, while retaining its core behaviour. So the first question is: which are the properties of the physical system we want to realise in the lab?
+
+Since we want to study the orientational dynamics of single particles, our ideal physical system is a fluid flow, with one small, suspended particle. In particular, we would like the following features:
+\begin{itemize}
+	\item A known fluid flow, which does not change in time as the particle moves.
+	\item A known particle geometry, so that the hydrodynamic force can be calculated.
+	\item Small particles, in the sense that $\st\ll1$ and $\rep\ll1$.
+	\item But not too small particles, in the sense that $\per\gg1$.
+\end{itemize}
+We realise this system in a tiny rectangular pipe, a microfluidic channel. Its smallest dimension is \unit[0.2]{mm}, and it is manufactured by molding plastic in a precision machined metal mold. The channel is made several centimeters long, and in each end a thin teflon tube is connected as inlet or outlet. A photograph of a channel is shown in Fig.~\ref{fig:exp_setup}. The fluid, we used glycerol and water in the experiments of paper A, is pumped through the channel with a syringe. The channel is mounted in a microscope equipped with a video camera, which in turn is connected to a computer that stores the image sequences.
+
+The particles are plastic rods produced by stretching epoxy glue as it hardens. The rods measure around $\unit[20\textrm{-}40]{\mu m}$ in length and $\unit[1\textrm{-}2]{\mu m}$ in thickness, comparable to a single yeast cell which is around $\unit[10]{\mu m}$ in size. When we calculate the Stokes and particle Reynolds numbers for a rod in our experiment, we find that $\st \approx 10^{-6}$ and $\rep \approx 10^{-5}$, which qualifies as a small particle. We also compute the rotational Pecl\'et number and find that $\per\approx10^{4}$. Thus we realise the condition of small, but not too small particles. 
+
+The more complicated features of our wish list are instead the fluid flow, and the particle geometry. By designing the channel to be wide and shallow we can consider the fluid flow as known. How is discussed in detail in the paper. But the exact shape of the particles remains unknown. As mentioned above, the particles are roughly rod-shaped, with a length ten times longer than its diameter. In a microscope we can easily see features of around $\unit[10]{\mu m}$, but it cannot resolve anything much smaller than $\unit[1]{\mu m}$. Resolving such small differences may seem unnecessary, but can in fact make all the difference. The observation of this effect is the main point of paper A, and in the next section I will elaborate on some points that were not included in the paper.
+
+\section{Results \& discussion}
+
+Two types of trajectories: periodic in $n_z$ and aperiodic in $n_z$.
+
+To understand effects of asymmetry, must also consider $\ve p$.
+
+The equations of motion are
+\begin{align*}
+	\diff{\ve{n}}{t} &= B \ve{n} - (\ve{n}\transpose B \ve{n})\ve{n} + \frac{ 2\lambda^2 (1 - \mu^2) }{(\lambda^2+\mu^2)(\lambda^2+1)}(\ve{n}\transpose S \ve{p})\ve{p} \\
+	\diff{\ve{p}}{t} &= C \ve{p} - (\ve{p}\transpose C \ve{p})\ve{p} + \frac{ 2\mu^2 (1 - \lambda^2) }{(\mu^2+\lambda^2)(\mu^2+1)}(\ve{n}\transpose S \ve{p})\ve{n} \\
+	\intertext{where}
+	B &= \frac{1}{1+\lambda^2}(\lambda^2 A - A\transpose) \\
+	C &= \frac{1}{1+\mu^2}(\mu^2 A - A\transpose) \\
+	S &= \frac{1}{2}(A + A\transpose)
+\end{align*}
+
+s-o-s at $n_x=0$ \cite{hinch1979, yarin1997}
+
+solution for symmetric particle?
+
+example of regular motion, symmetric particle
+
+example of quasiperiodic motion, asymmetric particle
+
+example of chaotic motion, asymmetric particle
+
+depends on initial condition, for same particle => new idea, ongoing experiment
+
+looks like standard map => open question
+
+\section{Outlook}
+
+alex: ongoing tweezer for initial condition with same particle. still no measurement of asymmetry, but using same particle over and over circumvents problem
+
+inertia: see paper B, and outlook there
+
+noise: calculated for symmetric case (hinhc, brenner etc), but what happens for triaxial case?
 
 
 \end{document}

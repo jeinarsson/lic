@@ -4,20 +4,15 @@
 
 \chapter{Background}
 
+The first section of this background contains an informal introduction to the area of research I am involved in. Every now and then I get the question ``what is it you do, anyway?'' Often enough the question is posed out of politeness, and I get no further than ``Physics''. But sometimes the question is sincere, and I find that it is quite a challenge to explain to a non-expert. I can simply say that we calculate how non-spherical particles rotate in flows. But that is comparable to if I was designing a gearbox, and said that I work with cars. This first section is an attempt at a description which is readable and not too complicated, but still complicated enough to convey what our gearbox is made of.
+
+The second section introduces a few selected equations and results that we build upon in our work.
 
 \section{Context}
 
-orientational dynamics of small, rigid particles suspended in fluid flows
+Where do particles go when I put them into a flow? Which way do they face, how fast do they spin? These are all valid questions, but they are too unspecific. Of course it depends on if the particle is an aircraft or a grain of particulate carbon soot, and if the liquid is air or water. 
 
-\begin{itemize}
-	\item fluid
-	\item flows
-	\item rigid particles
-	\item small
-	\item orientational
-\end{itemize}
-
-This chapter tells you about all the fantastic things that this thesis is not about.
+I will try to tell a story, with the intention that you form a mental image of the systems we study. I will start with an elaboration on fluid physics, move through why we consider rigid particles specifically, then say something about the forces acting on the particles. This will naturally lead us to why we consider ``small'' particles, which is not obvious from the outset.
 
 \subsection{Fluids}
 
@@ -25,7 +20,7 @@ Many physical systems around us are fluids. The air we breathe, the water we dri
 
 But this is all a very qualitative, and you may rightly say naive, description. One could say that a fundamental problem of fluid physics is to figure out where all the different molecules go. From that we should deduce where the oil drop goes, and how fast, or if it perhaps breaks up, or maybe merges with another drop. However, making something useful out of this molecular picture is very difficult\footnote{
 \begin{minipage}[l]{9cm}
-However, modern computers are now allowing us to simulate surprisingly large numbers of molecules. If Youtube still exists at the time of this reading, I recommend a look at a video produced at the Lawrence Livermore National Laboratory showing the interface between two molten metals using exactly this approach. \url{http://www.youtube.com/watch?v=Wr7WbKODM2Q}
+However, modern computers are now allowing scientists to simulate surprisingly large numbers of molecules. If Youtube still exists at the time of this reading, I recommend a look at a video produced at the Lawrence Livermore National Laboratory showing the interface between two molten metals using exactly this approach. \url{http://www.youtube.com/watch?v=Wr7WbKODM2Q}
 \end{minipage}\,\,
 \begin{minipage}[l]{1.5cm}
 \includegraphics[width=1.5cm]{figs/ninebillion_qr.png}
@@ -39,15 +34,15 @@ The discipline studying the macroscopic properties and motion of fluids is calle
 
 \subsection{Rigid bodies}
 
-A rigid body in physics is an object whose configuration can be described by the position of one point (usually the center-of-mass) and the rotation around that point. The dynamics of a rigid body, like the coin, is described by Newton's laws. In particular the famous relation that the force $\ve F$ on a rigid body equals its mass $m$ times its acceleration $\ve a$,
+A rigid body in physics is an object whose configuration can be described by the position of one point (usually the center-of-mass) and the rotation of the body around that point. The dynamics of a rigid body is described by Newton's laws. In particular, the center-of-mass motion is described by the famous relation that the force $\ve F$ on a body equals its mass $m$ times its acceleration $\ve a$,
 \begin{align*}
 	\ve F = m\ve a.
 \end{align*}
-Recall that the configuration of a rigid body is described by its position and rotation. While the above equation describes the movement of the position, there is a corresponding law for the rotation. The torque $\ve T$ on a rigid body equals its moment of inertia $\ma I$ times its angular acceleration $\ve \alpha$,
+While the above equation describes the movement of the position, there is a corresponding law for the rotation. Since this thesis concerns \emph{orientational dynamics} of particles, we need equations also for the rotation of a rigid body. Newton's law governing rotations says that the torque $\ve T$ on a rigid body equals its moment of inertia $\ma I$ times its angular acceleration $\ve \alpha$,
 \begin{align*}
 	\ve T = \ma I \ve \alpha.
 \end{align*}
-The two equations above are deceivingly simple-looking, but their solution contains all information on the motion of a rigid body. I state them here only to draw a conclusion: in order to extract all the information about the motion of a particle, we need to know both the force and the torque acting on the particle at all times.
+The two equations above are deceivingly simple-looking, but their solutions contain full knowledge of the motion of a rigid body. I state the equations here only to draw a conclusion: in order to extract all the information about the motion of a particle, we need to know both the force and the torque acting on the particle at all times.
 
 There are many kinds of forces which can potentially act on a particle. For example there is gravity if the particle is heavy, or magnetic forces if the particle is magnetic. But for now we consider the forces on a particle due to the surrounding fluid, so called hydrodynamic forces. In everyday terms the hydrodynamic force is the drag, as experienced by a car for example. Uneven drag over a body may also result in a hydrodynamic torque. For instance, turbulent air striking the wings of an aircraft will induce a torque which you feel as a rotational acceleration while the pilot compensates.
 
@@ -69,7 +64,7 @@ Imagine a small rubber boat on the sea. The boat speeds along, rising and fallin
 \end{align*}
 I will now give a brief interpretation of what it means when $\ku$ is smaller or larger than $1$. If $\ku > 1$, it means that $v\tau > \eta$. The quantity $v\tau$ is a length, more precisely the length that the boat travels during the period time of a wave. Thus, $\ku > 1$ means that the boat travels more than one wave distance during the period time of a single wave. Imagine that the Kubo number is very large, then the boat travels over many different waves before the wave landscape changes. In this case we may rightly say that the boat is \emph{fast}. On the other hand, if $\ku<1$, the boat does not cover the distance between waves in a single wave period time. Before the boat reaches the next wave, the entire wave landscape has changed underneath it. Instead of considering the effects of all three separate parameters in the problem, we can understand the physics by analysing the dimensionless numbers.
 
-I made this example of the Kubo number because it is one of the fundamental quantities in Paper~\ref{paper3}, which is about rotation rates of particles in turbulence. There a particle plays the role of the boat, and a turbulent flow plays the role of the waves. As I did here, we there describe the limits of very small $\ku$, and very large $\ku$. In a real turbulent flow $\ku$ is around $1$. That is to say neither of the extremes are true, but in the paper we argue that together they bring some insight into the tumbling of the particles.
+I made this example of the Kubo number because it is one of the fundamental quantities in Paper~C, which is about rotation rates of particles in turbulence. There a particle plays the role of the boat, and a turbulent flow plays the role of the waves. As I did here, we there describe the limits of very small $\ku$, and very large $\ku$. In a real turbulent flow $\ku$ is around $1$. That is to say neither of the extremes are true, but in the paper we argue that together they bring some insight into the tumbling of the particles.
 
 The dimensionless numbers tell us which physical quantities are important in relation to each other. In the example above, the actual speed of the boat is not important - the speed only matters in relation to the waves. We know that all situations with the same Kubo number are, in some sense, equivalent. This very fact is also what enables engineers to use scale models in wind tunnels. They know that to test a model of a suspension bridge in a wind tunnel, they can not use full-scale wind speeds, but instead a scaled down version of the wind. The dimensionless numbers reveal what scaling is appropriate to match the model bridge to real conditions.
 
@@ -77,17 +72,23 @@ The dimensionless numbers tell us which physical quantities are important in rel
 
 We are now equipped to understand what it means for a particle to be \emph{small} in the context of fluid flows. In our setting a particle can be small in two different ways, consequently there are two different dimensionless numbers. One has to do with how quickly the particle adjusts to the fluid, the other with how quickly the fluid adjusts to the particle.
 
-The first dimensionless number is the Stokes number, $\st$ for short. We can understand it as a comparison of two different time scales. The first is the time it takes for the particle to stop if thrown in an otherwise still fluid. If you throw a stone in air, it takes quite some time for the drag force to stop the stone. But if you try to throw a piece of paper, the drag force overcomes the inertia almost immediately. On the other hand, if you try to throw the stone under water, the time to stop is shorter than in air. We call this the relaxation time of the particle in the fluid. The other relevant time is how quickly the fluid velocity changes. In summary, 
+The first dimensionless number is the Stokes number, $\st$ for short. We can understand it as a comparison of two different time scales. The first is the time it takes for the particle to stop if thrown in an otherwise still fluid. If you throw a stone in air, it takes quite some time for the drag force to stop the stone. But if you try to throw a piece of paper, the drag force overcomes the inertia almost immediately. On the other hand, if you try to throw the stone under water, the time to stop is shorter than in air. We call this time the relaxation time of the particle in the fluid. The relaxation time of the particle is compared to how quickly the fluid velocity changes. In summary, 
 \begin{align*}
  	\st = \frac{\textrm{Particle relaxation time}}{\textrm{Time for fluid velocity change}}.
  \end{align*} 
-A small Stokes number means that the particle adjusts to the fluid faster than the fluid changes. Such particles stick closely to the flow velocity. Conversely, a large stokes number means that the fluid changes before the particle has time to adjust, and the particle is relatively unaffected by the fluid velocity. Thus the first meaning of a \emph{small} particle is in the sense that the Stokes number is small, and the particle relaxes to the surrounding drag forces before they change.
+A small Stokes number means that the particle adjusts to the fluid faster than the fluid changes. Such particles stick closely to the flow velocity. Conversely, a large Stokes number means that the fluid changes before the particle has time to adjust, and the particle is relatively unaffected by the fluid velocity. Thus the first meaning of a \emph{small} particle is in the sense that the Stokes number is small, and the particle relaxes to the surrounding drag forces before they change.
 
-The other dimensionless number is the particle Reynolds number, which we write $\re$ for short.
+The other dimensionless number measuring particle smallness is the particle Reynolds number. It is a measure of how quickly disturbances in the flow settle down. If you stir with a spoon in your cup of tea there is a wake behind the spoon, perhaps even a vortex is created. When you stop stirring, the tea will splash about for a moment and then settle down. The time it takes for a small vortex to settle down is called the viscous time, because it is related to the viscosity of the fluid. Imagine stirring with a spoon in syrup instead of tea, the wake behind the spoon relaxes more quickly in the viscous fluid. But of course it also matters how vigorously you stir, or equivalently, how fast the fluid moves relative to the spoon. To find the particle Reynolds number we compare the viscous time to how fast the spoon, or particle, moves the distance of one particle length:
+\begin{align*}
+ 	\rep = \frac{\textrm{Viscous time}}{\textrm{Time for fluid to flow one particle length}}.
+ \end{align*} 
+A small particle Reynolds number implies that the viscous time is short, and the fluid disturbances we create settle down before the fluid has time to move past the particle. A large particle Reynolds number means that the vortices and disturbances produced by the particle are transported away from the particle, like the wake and vortices you observe in your cup of tea. The second meaning of a \emph{small} particle is that the particle Reynolds number is small, so that there is no wake, and no vortices created by the particle.
 
+\subsection{Summary}
 
+Hopefully we have established enough common ground to put the appended research papers in context, as the presentation in Part~II aims to do.
 
-
+At least, we have a working interpretation of the technical sentence ``Orientational dynamics of small, rigid particles suspended in fluid flows.'' The interpretation is that we aim to understand the rotation of a rigid body immersed in a fluid bath of molecules. The forces and torques driving the rotation originate in the macroscopic description of fluid dynamics. But in order to have a fair chance at progress, we consider the case of very small particles, as characterised by the Stokes and particle Reynolds dimensionless numbers.
 
 
 

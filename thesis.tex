@@ -17,12 +17,12 @@
 \documentclass[licentiate,nocover,g5paper]{gu-thesis}
 % All options are; doctorate, licentiate, masters, bachelors, nocover, draft, g5paper,
 % and everything the standard report class support.
-\usepackage{ifluatex} % Automatic check for luatex.
-\ifluatex
- \usepackage{fontspec}
-\else
- \usepackage[utf8]{inputenc} % File encoding, you should try to stick to utf8.
-\fi
+%\usepackage{ifluatex} % Automatic check for luatex.
+%\ifluatex
+% \usepackage{fontspec}
+%\else
+\usepackage[utf8]{inputenc} % File encoding, you should try to stick to utf8.
+%\fi
 \usepackage{microtype} % Magically improves typesetting for pdflatex
 \usepackage{subfiles} % Convenient use of subfiles in documents. Using \subfile is optional. See README
 \usepackage{hyperref} % Required for in document links and document metadata.
@@ -35,6 +35,7 @@
 %\usepackage[firstinits=true, style=alphabetic, backend=biber]{biblatex} % Modern bibliography facilities (you may change style to numeric). change to old bibtex if you insist on using that.
 
 \usepackage[square, numbers, sort]{natbib}
+\usepackage{bibentry}
 \bibliographystyle{elsart-num}
 
 
@@ -65,10 +66,13 @@
 \newcommand{\st}{\ensuremath{\mbox{St}}}
 \newcommand{\steff}{\ensuremath{\widetilde \st}}
 \newcommand{\pe}{\ensuremath{\mbox{Pe}}}
+\newcommand{\per}{\ensuremath{\mbox{Pe}_{\mathrm r}}}
 \newcommand{\re}{\ensuremath{\mbox{Re}}}
+\newcommand{\rep}{\ensuremath{\mbox{Re}_{\mathrm p}}}
 \newcommand{\tr}{\ensuremath{\mbox{Tr}}}
 \newcommand{\sign}{\ensuremath{\mbox{sign}}}
 \newcommand\transpose{^{\mathrm T}}
+\newcommand{\diff}[2]{\frac{\rd #1}{\rd #2}}
 \newcommand{\ii}{{\rm i}}
 
 \newcommand{\spma}[1]{#1\ve n - \ve n(\ve n\transpose #1\ve n)}
@@ -120,6 +124,7 @@
 
 \usepackage{wrapfig}
 \usepackage{units}
+\usepackage{upgreek}
 % END JONAS
 
 
@@ -138,7 +143,7 @@
 
 
 % User commands
-\title{Orientational dynamics of small non-spherical particles in fluid flows}
+\title{Orientational dynamics of small non-spherical rigid particles in fluid flows}
 %\subtitle{And Perhaps a Subtitle}
 \author{Jonas Einarsson} % Not common with more than one author
 \thesisin{Physics}
@@ -149,10 +154,10 @@
 \copyrightyear{2013}
 
 \opponent{
-Dr.~Alban\\
-Department of Pop\\
-University of Somewhere\\
-Nigeria
+Title Name\\
+Department \\
+University \\
+Country
 }
 \oppositiondate{10.00 am, 30\textsuperscript{th} May, 2011 in HA2 Hörsalsvägen 4, Göteborg}
 
@@ -164,10 +169,12 @@ Nigeria
 %\secondabstract{swedish}{Text}
 \keywords{Some stuff, More stuff, Stuff}
 
-\preface{Text}
-\acknowledgements{Text}
-\dedication{\textit{to the people around me.}}
-\paperwork{Text}
+%\preface{Text}
+\acknowledgements{Acknowledgements}
+\dedication{\textit{!}}
+%\paperwork{Text}
+\thesiscontents{This thesis consists of an extended summary and three appended papers:}
+
 
 % You can add extra contents such as abbreviations and nomenclature using.
 % Use \presectiontitle to render add titles to new sections.
@@ -218,17 +225,27 @@ Nigeria
 \subfile{Inertia}
 \subfile{Turbulence}
 \subfile{Ornstein}
-\nocite{*} % Cites everything from the bibliography
+\nocite{paper3} % Cites everything from the bibliography
+\nobibliography*
 \bibliography{references} % Legacy command
+
 \part{Appendices} % Using the starred command avoids numbering.
+\subfile{app_randomflow_diffusion}
+
 \part{Research papers}
+
 % You can write this manually \paper{Paper Title}{Full reference} or have bib entries entered automatically
-\paper{A study of multiple crack interaction at rolling contact fatigue of rails}{Text}
-%\paper{Aperiodic tumbling of microrods advected in a microchannel flow}{Text}
-%\includepdf[pages=-,width=\paperwidth]{ExampleMasters.pdf} % You could use subfiles here instead.
-\paper{Tumbling of small axisymmetric particles in random and turbulent flows}{Text}
-% \includepdf[pages=-,width=\paperwidth]{paperb.pdf}
+\paper{Aperiodic tumbling of microrods advected in a microchannel flow}{Reference}
+%\includepdf[pages=-,width=\paperwidth]{papers/1.pdf}
+
+\paper{Orientational dynamics of weakly inertial axisymmetric particles in steady viscous flows}{Reference}
+%\includepdf[pages=-,width=\paperwidth]{papers/2.pdf}
+
+\paper{Tumbling of small axisymmetric particles in random and turbulent flows}{Reference}
+%\includepdf[pages=-,width=\paperwidth]{papers/3.pdf}
+
+
 %\part{Other Publications} % If applicable:
 \toptext{Other publications related to thesis}
-\publication{A study of multiple crack interaction at rolling contact fatigue of rails}{Text}
+%\publication{A study of multiple crack interaction at rolling contact fatigue of rails}{Text}
 \end{document}
