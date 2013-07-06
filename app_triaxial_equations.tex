@@ -1,0 +1,74 @@
+\documentclass[thesis.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Equations of motion for tri-axial particle in linear flow}
+
+Start from the overdamped Jeffery equations (torque balance). Starting from Eq.~(3.4) in JE's master's thesis we have the equation of motion for the rotation matrix $R$,
+\begin{align*}
+	\diff{R}{t} &= RQ.
+\end{align*}
+with the angular velocities given by the flow gradient $A=\nabla \ve{u}$.
+\begin{align*}
+Q_{ij} &= \frac{\ve{e}_i\transpose(a_j^2\ma{R}\transpose \ma{A}\ma{R}  - a_i^2 \ma{R}\transpose \ma{A}\transpose \ma{R})\ve{e}_j}{a_i^2 + a_j^2}
+\end{align*}
+The rotation matrix transforms the lab frame of coordinates $(\ve{e}_1, \ve{e}_2, \ve{e}_3)$ into the particle frame $(\ve{n}_1, \ve{n}_2, \ve{n}_3)$. The angular velocities can be expressed in the particle coordinate system as
+\begin{align*}
+	Q_{ij} &= \frac{1}{a_i^2 + a_j^2}\left[\ve{n}_i\transpose\left(a_j^2 A - a_i^2 A\transpose\right)\ve{n}_j\right].
+\end{align*}
+For future convenience one can define the matrices
+\begin{align*}
+	B^{(ij)} &= \frac{1}{a_i^2 + a_j^2}\left(a_j^2 A - a_i^2 A\transpose\right).
+\end{align*}
+The scalars $a_i$ are the particle axes lengths of axis $i$. We shall now choose the two axes $\ve{n}_1$ and $\ve{n}_2$ and derive the equation of motion for them.
+
+Let's first compute the time derivative of $\ve{n}_1$
+\begin{align*}
+	\dot{\ve{n}}_1 &= \dot{R}\ve{e}_1 \\
+	&= RQ \ve{e}_1 \\
+	&= -Q_{12}R \ve{e}_2 - Q_{13}R \ve{e}_3 \\
+	&= -(\ve{n}_1\transpose B^{(12)} \ve{n}_2)\ve{n}_2 -(\ve{n}_1\transpose B^{(13)} \ve{n}_3)\ve{n}_3.\\
+	\intertext{using $(B^{(ij)})\transpose = -B^{(ji)}$}
+	&= B^{(31)}\ve{n}_1 - \ve{n}_1 (\ve{n}_1\transpose B^{(31)}\ve{n}_1) + \ve{n}_2(\ve{n}_2\transpose (B^{(21)}-B^{(31)})\ve{n}_1).
+\end{align*}
+In a similar manner
+\begin{align*}
+	\dot{\ve{n}}_2 &= B^{(32)}\ve{n}_2 - \ve{n}_2 (\ve{n}_2\transpose B^{(32)}\ve{n}_2) + \ve{n}_1(\ve{n}_1\transpose (B^{(12)}-B^{(32)})\ve{n}_2).
+\end{align*}
+The coupling terms can be expressed using only the strain of the flow, defined as
+\begin{align*}
+	S &= \frac{1}{2}(A+A\transpose).
+\end{align*}
+In particular we find
+\begin{align*}
+	B^{(21)} - B^{(31)} &= \frac{ 2a_1^2 (a_3^2 - a_2^2) }{(a_1^2+a_2^2)(a_1^2+a_3^2)}S,\\
+	B^{(12)} - B^{(32)} &= \frac{ 2a_2^2 (a_3^2 - a_1^2) }{(a_2^2+a_1^2)(a_2^2+a_3^2)}S.
+\end{align*}
+For notational convenience we introduce the following symbols:
+\begin{align*}
+	\ve{n} &= \ve{n}_1\\
+	\ve{p} &= \ve{n}_2\\
+	B &= B^{(31)} \\
+	C &= B^{(32)} \\
+	\lambda &= \frac{a_1}{a_3} \\
+	\mu &= \frac{a_2}{a_3}
+\end{align*}
+The equations of motion are
+\begin{align*}
+	\diff{\ve{n}}{t} &= B \ve{n} - (\ve{n}\transpose B \ve{n})\ve{n} + \frac{ 2\lambda^2 (1 - \mu^2) }{(\lambda^2+\mu^2)(\lambda^2+1)}(\ve{n}\transpose S \ve{p})\ve{p} \\
+	\diff{\ve{p}}{t} &= C \ve{p} - (\ve{p}\transpose C \ve{p})\ve{p} + \frac{ 2\mu^2 (1 - \lambda^2) }{(\mu^2+\lambda^2)(\mu^2+1)}(\ve{n}\transpose S \ve{p})\ve{n} \\
+	\intertext{where}
+	B &= \frac{1}{1+\lambda^2}(\lambda^2 A - A\transpose) \\
+	C &= \frac{1}{1+\mu^2}(\mu^2 A - A\transpose) \\
+	S &= \frac{1}{2}(A + A\transpose)
+\end{align*}
+Or in terms of the symmetric and anti-symmetric parts of the fluid gradient
+\begin{align*}
+	\diff{\ve{n}}{t} &= \ma O \ve{n} + \frac{\lambda^2-1}{\lambda^2+1} \left(\ma S \ve n- \ve{n}\transpose \ma S \ve{n})\ve{n}\right) + \frac{ 2\lambda^2 (1 - \mu^2) }{(\lambda^2+\mu^2)(\lambda^2+1)}(\ve{n}\transpose \ma S \ve{p})\ve{p} \\
+	\diff{\ve{p}}{t} &= \ma O \ve{p} + \frac{\mu^2-1}{\mu^2+1}\left(\ma S \ve p - \ve{p}\transpose \ma S \ve{p})\ve{p}\right) + \frac{ 2\mu^2 (1 - \lambda^2) }{(\mu^2+\lambda^2)(\mu^2+1)}(\ve{n}\transpose \ma S \ve{p})\ve{n} \\
+	\intertext{where}
+	B &= \frac{1}{1+\lambda^2}(\lambda^2 A - A\transpose) \\
+	C &= \frac{1}{1+\mu^2}(\mu^2 A - A\transpose) \\
+	S &= \frac{1}{2}(A + A\transpose)
+\end{align*}
+\end{document}

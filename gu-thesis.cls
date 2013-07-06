@@ -202,11 +202,11 @@
 
  % Figure captions
  \@ifpackageloaded{subfig}{
-  \captionsetup[subfigure]{textfont=it}
+  %\captionsetup[subfigure]{textfont=it}
  }{\ClassWarning{gu-thesis}{Package 'subfig' strongly recommended}}
 
  \@ifpackageloaded{caption}{
-  \captionsetup[figure]{textfont=it}
+  \captionsetup{margin=10pt,font=small,labelfont=bf}
  }{\ClassWarning{gu-thesis}{Package 'caption' required}}
 
 

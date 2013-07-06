@@ -2,18 +2,26 @@
 
 \begin{document}
 
-\chapter{Inertia}
+\chapter{Particle and fluid inertia}
 
-Work with JRA, Cherbourg.
+This project is a collaboration with Jean-R\'egis Angilella at the University of Caen, in France. Our aim is to understand the effects of inertia on the particle dynamics.
 
 \section{Overview}
- What if $\st>0$, but still $\rep=0$?
 
-\section{Results}
+The simplest approach to modeling small particles, as measured by the Stokes and particle Reynolds numbers, is to simply let $\st=0$ and $\rep=0$ identically. Clearly there is no real physical system which fulfills this condition strictly. However, it may be very close, as for example in the experiment we present in Paper A. But it is natural to ask the question what happens when $\st$ and $\rep$ are small, but not strictly equal to zero.
+
+In Paper B we treat the case of $\st>0$, but $\rep=0$. The paper is self-contained and rather detailed, so I will not repeat any technical detail here. The main result is an equation of motion, like the Jeffery equation, corrected to take into account small values of the Stokes number.
+
+The effect of inertia, however small, is particularly interesting for particles in a simple shear flow. When $\st=0$, Jeffery's equation predicts that the orientational trajectory will be periodic and always return to the initial orientation. But when $\st>0$, there is instead a drift so that all trajectories, regardless of initial condition, will converge onto the same final orbit. This has previously been shown by Lundell through numerical simulation \cite{lundell2010}. For the case of almost spherical particles, the orbit drift was computed by Subramanian and Koch \cite{sub06}. Our equation of motion confirms and extends these results to arbitrary axisymmetric particle shapes.
+
+We then go on to show how the new equation of motion enables us to compute the orientational distribution of particles under the additional influence of noise. This calculation would be rather difficult without our simplified equation of motion.
+
+As a technical note, to compute the orientational distribution we numerically solve a Fokker-Planck equation on the sphere. This is accomplished by rewriting the equation with quantum mechanical angular momentum operators, and expansion in spherical harmonics. The procedure is detailed in an appendix to the Paper B, but as of this writing it is not decided if the appendix will be published in its entirety. Therefore I include the calculation as Appendix \ref{app:fpe_sphere} to this thesis.
 
 \section{Outlook}
 
+The case of $\st>0$ but $\rep=0$ is only valid for small particles, much heavier than the surrounding fluid, like aerosols. The next step is naturally to consider also $\rep > 0$, which would be the relevant case for example in our experiment. I think it is fair to say that treating a non-zero Stokes number is the simpler task, compared to non-zero particle Reynolds number. A finite $\st$ means that we do perturbation theory on Newton's equations of motion, but a finite $\rep$ entails perturbation theory of the Navier-Stokes equation.
 
-
+But there exists methods to perform this calculation. Subramanian and Koch \cite{sub05,sub06} calculated the orbit drift due to finite particle and fluid inertia for two special cases: nearly spherical particles and very elongated rods. The curious outcome is that the drift is opposite in the two cases, suggesting that there is a transition somewhere inbetween. An interesting proposition is to compute the existence and stability of periodic orbits, for a general axisymmetric particle. 
 
 \end{document}

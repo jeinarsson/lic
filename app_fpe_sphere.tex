@@ -1,0 +1,157 @@
+\documentclass[thesis.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Matrix elements of Fokker-Planck equation on sphere}\label{app:fpe_sphere}
+
+We start from the Fokker-Planck equation governing the evolution of the probability density $P(\ve n, t)$ of finding a particle with orientation vector $\ve n$ at time $t$:
+\begin{align}
+	\partial_t P(\ve n, t) &= -\partial_{\ve n}\left[\dot{\ve n}P\right] + \pe^{-1}\partial^2_{\ve n}P \equiv \hat J P \eqnlab{fpeapp} \\
+	\intertext{with the normalisation condition}
+	\int_{S_2} \!\!\!\!\!P(\ve n, t)\rd \ve n &= 1.
+\end{align}
+The differential operator $\partial_{\ve n}$ is the gradient on the sphere, defined by taking the usual gradient $\nabla$ in $R^3$ projected onto the unit sphere, $\partial_{\ve n} \equiv (\maid - \venn)\nabla$.
+We approximate the solution of \Eqnref{fpeapp} by an expansion in spherical harmonics \cite{Sch55}, the eigenfunctions of the quantum mechanical angular momentum operators, which form a complete basis on $S_2$. We use bra-ket notation,
+\begin{align}
+	P(\ve n, t) &= \langle \ve n| P(t)\rangle =  \sum_{l=0}^{\infty}\sum_{m=-l}^l c_l^m(t) \langle \ve n\Ylm{l}{m}\eqnlab{basisexpansion}
+\intertext{where}
+	 \langle\ve n|l,m\rangle &= Y_l^m(\ve n) = (-1)^m\sqrt{\frac{2l+1}{4\pi}\frac{(l-m)!}{(l+m)!}}P_l^m(\cos\theta)e^{im\varphi}.
+\end{align}
+We use the standard spherical harmonics defined in for example Arfken (p. 571) \cite{Arf70}. The functions $P_l^m$ are the associated Legendre polynomials. We call the time-dependent coefficients for each basis function $c_l^m(t)$, and the fact that $P$ is real-valued puts a constraint on the coefficients that 
+\begin{align}
+	c_l^{-m} = (-1)^m\overline{c_l^m},\eqnlab{clmreal}
+\end{align}
+where the bar denotes complex conjugation. Then \Eqnref{fpeapp} for the time evolution of the state ket $|P(t)\rangle$ reads
+\begin{align*}
+	\partial_t |P(t)\rangle &= \hat J |P(t)\rangle
+\end{align*}
+Inserting the expansion yields
+\begin{align}
+	\sum_{l=0}^{\infty}\sum_{m=-l}^l \partial_tc_l^m(t) \Ylm{l}{m} &= \sum_{l=0}^{\infty}\sum_{m=-l}^l c_l^m(t) \hat J\Ylm{l}{m}.
+	\intertext{Multiplying with the bra $\langle p,q|$, and using the orthogonality of the spherical harmonics we arrive at a system of coupled ordinary differential equations for the coefficients $c_l^m(t)$}
+	\dot c_p^q(t)  &= \sum_{l=0}^{\infty}\sum_{m=-l}^l c_l^m(t) \langle p,q| \hat J\Ylm{l}{m} \eqnlab{clmeq1},\\
+	c_0^0 &= \frac{1}{\sqrt{4\pi}}\eqnlab{clmeq1norm}.
+\end{align}
+In order to solve \Eqnref{clmeq1} it remains to compute the matrix elements of the operator $\hat J$. This is achieved by expressing $\hat J$ as a combination of the angular momentum operators. How the angular momentum operators act on the spherical harmonics is well known, see for example Arfken \cite{Arf70}.
+
+The angular momentum operator $\hat{\ve L}$ is given by
+\begin{align*}
+	\hat{\ve L} &= -i \hat{\ve n}\cross\nabla.
+\intertext{In terms of $\hat{\ve L}$ we have}
+	\partial_{\ve n}^2 &= (\maid-\hat{\ve n}\hat{\ve n}\transpose)\nabla \cdot (\maid-\hat{\ve n}\hat{\ve n}\transpose)\nabla = - \hat{\ve L}^2,
+\intertext{and}
+	\partial_{\ve n}&= (\maid-\hat{\ve n}\hat{\ve n}\transpose)\nabla =  -i\hat{\ve n} \cross \hat{\ve L}.
+\end{align*}
+The states $\Ylm{l}{m}$ are the eigenfunctions of $\hat{\ve L}^2$ and $\hat{L}_3$ with eigenvalues $l(l+1)$ and $m$. Now, to evaluate the drift term $\partial_{\ve n}\dot{\ve n}$ we need to know how $\hat{L}_1$, $\hat{L}_2$, and $\hat{\ve n}$ act on $\Ylm{l}{m}$. The first two are known through the use of ladder operators, defined by
+\begin{align*}
+	\hat{L}_{\pm} = \hat{L}_1 \pm i\hat{L}_2 \implies \hat{L}_1 = \frac{1}{2}(\hat{L}_+ + \hat{L}_-),\quad \hat{L}_2 = -\frac{i}{2}(\hat{L}_+ - \hat{L}_-)
+\end{align*}
+and their effect is
+\begin{align*}
+	\hat{L}_\pm \Ylm{l}{m} &= \sqrt{(l\mp m)(1+l\pm m)}\,\Ylm{l}{m\pm1}.
+\end{align*}
+Next, the drift term we consider is a polynomial in $\hat{n}_1, \hat{n}_2$ and $\hat{n}_3$ (the components of $\hat{\ve n}$), we therefore need to evaluate the action of a monomial $\hat{n}_1^\alpha \hat{n}_2^\beta \hat{n}_3^\gamma$ on $\Ylm{l}{m}$. Any such monomial of order $k=\alpha+\beta+\gamma$ may be written as a linear combination of spherical tensor operators of up to order $k$:
+\begin{align*}
+	\hat{n}_1^\alpha \hat{n}_2^\beta \hat{n}_3^\gamma &= \sum_{l=0}^{k}\sum_{m=-l}^l a_l^m(\alpha,\beta,\gamma)\hat{Y}_l^m.
+\end{align*}
+The action of $\hat{Y}_p^q$ is computed with the Clebsch-Gordan coefficients (see for example Sakurai p.216 \cite{Sak94})
+\begin{align*}
+	\hat{Y}_p^q \Ylm{l}{m} &= \sum_{\Delta l=-p}^{p}K(p,q,l,m,l+\Delta l, m+q)\Ylm{l+\Delta l}{m+q},\\
+\end{align*}
+where
+\begin{align*}
+	K(l_1, m_1, l_2, m_2, l, m) &= \sqrt{\frac{(2l_1+1)(2l_2+1)}{4\pi (2l+1)}} \\
+	&\quad \times \langle l_1 l_2; 0 0|l_1l_2;l0\rangle
+	\langle l_1 l_2; m_1 m_2|l_1l_2;lm\rangle
+\end{align*}
+The Clebsch-Gordan coefficients are in the notation of Sakurai denoted $\langle l_1 l_2; m_1 m_2|l_1l_2;lm\rangle$ (see e.g Eq. (3.7.44)), and they are available in Mathematica by the function {ClebschGordan[{l1,m1},{l2,m2},{l,m}]}. Finally, we order the operators, so that as many terms as possible cancel before we actually begin evaluating the operators.
+In particular we want to reorder $\hat{n}_i$ against $\hat{L}_i$, and we make use of the commutator
+\begin{align*}
+	[\hat{n}_p, \hat{L}_q] &= i\varepsilon_{pqj}\hat{n}_j,
+\end{align*}
+where $\varepsilon_{ijk}$ is the Levi-Civita tensor.
+
+Let us consider an example. In the special case of $\hat J_0 = \pe^{-1} \partial_{\ve n}^2$ (that is, $\dot{\ve n}=0)$ we immediately see that $\hat J_0=-\pe^{-1} \hat{\ve L}^2$. It follows:
+\begin{align*}
+	\hat J_0 \Ylm{l}{m}&=-\pe^{-1}\hat{\ve L}^2 \Ylm{l}{m} = -l(l+1)\pe^{-1}\Ylm{l}{m}.
+\end{align*}
+Knowing how $\hat J$ acts on $\Ylm{l}{m}$ fully specifies \Eqnref{clmeq1} which becomes
+\begin{align*}
+	\dot c_p^q(t)  &= -p(p+1)\pe^{-1}c_p^q(t).
+\end{align*}
+This means that the diffusion operator exponentially suppresses all modes with $p>0$, and the lowest mode $p=0$ is determined by the normalisation condition \Eqnref{clmeq1norm}. This is the solution of the diffusion equation on the sphere, with the uniform distribution as steady state.
+
+Now take the for the drift term the standard Jeffery equation $\dot {\ve n} = \ma O \ve n + \Lambda (\ma S \ve n - \venn \ma S \ve n)$, and call this operator $\hat J_1 = -\partial_{\ve n}\dot{\ve n} + \pe^{-1}\partial^2_{\ve n}$. We find
+\begin{align*}
+	\hat J_1 &= 
+	i \sqrt{\frac{\pi }{30}} \Lambda  \hat{L}_-\hat{Y}_{2}^{-1}+i \sqrt{\frac{\pi }{30}} \hat{L}_-\hat{Y}_{2}^{1}-i \sqrt{\frac{\pi }{30}} 
+   \Lambda  \hat{L}_+\hat{Y}_{2}^{1} \\ 
+   &\quad-  i \sqrt{\frac{\pi }{30}} \hat{L}_+\hat{Y}_{2}^{-1} 
+   -i \sqrt{\frac{2 \pi }{15}} \Lambda 
+   \hat{L}_3\hat{Y}_{2}^{-2}-i \sqrt{\frac{2 \pi }{15}} \Lambda  \hat{L}_3\hat{Y}_{2}^{2} \\ 
+   &\quad
+   +\frac{2}{3} i \sqrt{\pi } 
+   \hat{L}_3\hat{Y}_{0}^{0}-\frac{2}{3} i \sqrt{\frac{\pi }{5}} \hat{L}_3\hat{Y}_{2}^{0}-\pe^{-1} \hat{\ve L}^2.
+\end{align*}
+%The aim is of course to include also the correction due to weak particle inertia, and the full operator $\hat J$ is then
+% \begin{align*}
+% 	\hat J &=
+% -\frac{1}{3} \sqrt{\frac{\pi }{35}} \Lambda ^2 \steff \hat{L}_- \hat{Y}_{4}^{-3}+\frac{1}{21} \sqrt{\frac{\pi }{5}} \Lambda ^2
+%    \steff \hat{L}_- \hat{Y}_{4}^{1}+\left(i \sqrt{\frac{\pi }{30}} \Lambda -\frac{1}{14} \sqrt{\frac{5 \pi }{6}} \Lambda ^2
+%    \steff+\frac{3}{14} \sqrt{\frac{3 \pi }{10}} \Lambda  \steff\right) \hat{L}_- \hat{Y}_{2}^{-1}+\\
+%    &\quad \left(\frac{1}{14}
+%    \sqrt{\frac{3 \pi }{10}} \Lambda ^2 \steff-\frac{1}{2} \sqrt{\frac{\pi }{30}} \Lambda  \steff+i \sqrt{\frac{\pi
+%    }{30}}\right) \hat{L}_- \hat{Y}_{2}^{1}+\left(-\frac{1}{42} \sqrt{\frac{\pi }{5}} \Lambda ^2 \steff-\frac{1}{42}
+%    \sqrt{\frac{\pi }{5}} \Lambda  \steff\right) \hat{L}_- \hat{Y}_{4}^{-1}\\
+%    &\quad+\left(\frac{1}{6} \sqrt{\frac{\pi }{35}} \Lambda ^2
+%    \steff+\frac{1}{6} \sqrt{\frac{\pi }{35}} \Lambda  \steff\right) \hat{L}_- \hat{Y}_{4}^{3}+\frac{1}{21} \sqrt{\frac{\pi
+%    }{5}} \Lambda ^2 \steff \hat{L}_+ \hat{Y}_{4}^{-1}-\frac{1}{3} \sqrt{\frac{\pi }{35}} \Lambda ^2 \steff
+%    \hat{L}_+ \hat{Y}_{4}^{3}+\\
+%    &\quad \left(\frac{1}{14} \sqrt{\frac{3 \pi }{10}} \Lambda ^2 \steff-\frac{1}{2} \sqrt{\frac{\pi }{30}}
+%    \Lambda  \steff-i \sqrt{\frac{\pi }{30}}\right) \hat{L}_+ \hat{Y}_{2}^{-1}+\left(-i \sqrt{\frac{\pi }{30}} \Lambda
+%    -\frac{1}{14} \sqrt{\frac{5 \pi }{6}} \Lambda ^2 \steff+\frac{3}{14} \sqrt{\frac{3 \pi }{10}} \Lambda  \steff\right)
+%    \hat{L}_+ \hat{Y}_{2}^{1}\\
+%    &\quad +\left(\frac{1}{6} \sqrt{\frac{\pi }{35}} \Lambda ^2 \steff+\frac{1}{6} \sqrt{\frac{\pi }{35}}
+%    \Lambda  \steff\right) \hat{L}_+ \hat{Y}_{4}^{-3}+\left(-\frac{1}{42} \sqrt{\frac{\pi }{5}} \Lambda ^2 \steff-\frac{1}{42}
+%    \sqrt{\frac{\pi }{5}} \Lambda  \steff\right) \hat{L}_+ \hat{Y}_{4}^{1}+\frac{2}{3} \sqrt{\frac{2 \pi }{35}} \Lambda ^2
+%    \steff \hat{L}_3 \hat{Y}_{4}^{-4}\\
+%    &\quad -\frac{2}{3} \sqrt{\frac{2 \pi }{35}} \Lambda ^2 \steff \hat{L}_3 \hat{Y}_{4}^{4}+\left(-i
+%    \sqrt{\frac{2 \pi }{15}} \Lambda +\frac{1}{7} \sqrt{\frac{\pi }{30}} \Lambda ^2 \steff-\frac{13}{7} \sqrt{\frac{\pi
+%    }{30}} \Lambda  \steff\right) \hat{L}_3 \hat{Y}_{2}^{-2}\\
+%    &\quad+\left(-i \sqrt{\frac{2 \pi }{15}} \Lambda -\frac{1}{7}
+%    \sqrt{\frac{\pi }{30}} \Lambda ^2 \steff+\frac{13}{7} \sqrt{\frac{\pi }{30}} \Lambda  \steff\right)
+%    \hat{L}_3 \hat{Y}_{2}^{2}+\left(\frac{1}{21} \sqrt{\frac{2 \pi }{5}} \Lambda ^2 \steff+\frac{1}{21} \sqrt{\frac{2 \pi }{5}}
+%    \Lambda  \steff\right) \hat{L}_3 \hat{Y}_{4}^{-2}+\\
+%    &\quad \left(-\frac{1}{21} \sqrt{\frac{2 \pi }{5}} \Lambda ^2
+%    \steff-\frac{1}{21} \sqrt{\frac{2 \pi }{5}} \Lambda  \steff\right) \hat{L}_3 \hat{Y}_{4}^{2}+\frac{2}{3} i \sqrt{\pi }
+%    \hat{L}_3 \hat{Y}_{0}^{0}-\frac{2}{3} i \sqrt{\frac{\pi }{5}} \hat{L}_3 \hat{Y}_{2}^{0}-\pe^{-1} \hat{\ve L}^2
+% \end{align*}
+The fact that the operator $\hat J$ is real implies that the matrix elements must have the symmetry
+\begin{align*}
+	\langle p, q|\hat J |l,m\rangle = (-1)^q \overline{\langle p, -q|\hat J |l,m\rangle}.
+\end{align*}
+We can understand the reason for this because the system of differential equations in \Eqnref{clmeq1} needs to preserve the condition that $P$ is real, as stated in \Eqnref{clmreal}. It implies we have only to compute half of the matrix elements.
+
+Upon including the correction \Eqnref{nequation} due to weak particle inertia, the expression for the operator $\hat{J}$ becomes too lengthy to include here. However, we have implemented the identities and rules described in this appendix in a publicly available Mathematica notebook \cite{githubrepo}. Given an operator $\hat J$ expressed in terms of $\hat{\ve n}$ and $\hat{\ve L}$, it converts the expression into sums of angular momentum operators as exemplified above. We also provide an additional Mathematica notebook that, given the matrix elements, assembles a sparse matrix $\ma J$, up to a desired order $l_{\textrm{max}}$. This matrix can then be used to solve the truncated version of \Eqnref{clmeq1} numerically:
+\begin{align*}
+	\dot {\ve c} &= \ma J \ve c,
+\end{align*}
+where $\ve c$ is a vector containing all the $c_l^m$.
+Or alternatively, the matrix can be solved for the stationary values of $\ve c$. 
+% However, since all elements in the first row of $\ma J$ are zero, the matrix is not invertible. This is because the normalisation condition is not contained in the matrix equation, and there are infinitely many solutions. We solve this by choosing the $c_0^0$ coefficient and removing the first row and column of the matrix $\ma J$. Then we solve
+% \begin{align*}
+% 	\widetilde{\ma J} \widetilde{\ve c} = -\ve b
+% \end{align*}
+% where the augmented quantities are defined by
+% \begin{align*}
+% 	\ma J &= \left(\begin{array}{c|c}
+% 	0 & 0 \\\hline
+% 	\ve b & \widetilde{\ma J}
+% 	\end{array}\right), \quad \ve c = \left(\begin{array}{c}
+% 	0  \\\hline
+% 	\widetilde{\ve c}
+% 	\end{array}\right)
+% \end{align*}
+All results shown in this paper were computed using $l_{\mathrm{max}}=400$, which leads to very good convergence in all cases shown. Only when solutions approach delta peaks, as for example the limiting stable orbits in the large \pe\st~case, the expansion procedure does not converge. All orders $l\to\infty$ are required to represent such peaked functions.
+
+\end{document}
