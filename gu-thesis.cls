@@ -150,11 +150,11 @@
 % Sections
 \titleformat{\section}
 {\normalfont\Large}{\thesection}{1em}{}
-\titleformat{\subsection}
-{\normalfont\large}{}{0em}{}
-%{\normalfont\large}{\thesubsection}{1em}{}
+\titleformat{\subsection}%
+%{\normalfont\large}{}{0em}{}
+{\normalfont\large}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}
-{\normalfont\normalsize}{\thesubsubsection}{1em}{}
+{\bfseries\normalsize}{\thesubsubsection}{2em}{}
 \titleformat{\paragraph}[runin]
 {\normalfont\normalsize}{\theparagraph}{1em}{}
 \titleformat{\subparagraph}[runin]
