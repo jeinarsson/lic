@@ -17,9 +17,8 @@ from matplotlib.patches import Ellipse
 def main():
 
 	# poincare A
-	series_files = ["series10-1-1-{}.mat".format(k) for k in xrange(1,4)]
-	#filename = "poincaredata/1o10.mat"
-	output = "A"
+	# series_files = ["series10-1-1-{}.mat".format(k) for k in xrange(1,4)]
+	# output = "A"
 
 
 
@@ -29,9 +28,9 @@ def main():
 	# output = "B"
 
 	# # poincare C
-	# series_files = ["series10-1.3-1-{}.mat".format(k) for k in xrange(1,4)]
-	# filename = "poincaredata/1o30.mat"
-	# output = "C"
+	series_files = ["series10-1.3-1-{}.mat".format(k) for k in xrange(1,4)]
+	filename = "poincaredata/1o30.mat"
+	output = "C"
 
 
 

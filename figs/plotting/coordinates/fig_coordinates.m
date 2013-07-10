@@ -1,5 +1,5 @@
 function fig_coordinates
-do_text=1;
+do_text=0;
 fig = figure('position',[100,100,1000,1000]);
 ax = subaxis(1,1,1,'margin',0,'padding',0);
 

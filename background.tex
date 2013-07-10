@@ -94,7 +94,7 @@ At least, we have a working interpretation of the technical sentence ``Orientati
 
 In this section I will introduce the basic concepts needed to understand the appended research papers. 
 
-\subsection{Forces on particles in fluids}
+\subsection{Forces on particles in fluids}\label{sec:forces}
 
 We are studying the dynamics of small particles suspended in flows. Specifically, we consider particles small enough to not create disturbances in the fluid flow. In such cases, one can consider the fluid flow as a prescribed input, and calculate the response of the particles. Obviously, the particle will disturb the flow -- in fact, it is the reaction force of this disturbance which acts on the particle.
 What I mean is that the particle does not induce long-lived disturbances in the fluid now, which survive to affect the particle at a later time. In order to understand this requirement, and how the particle forces are calculated, we will start at the Navier-Stokes equation.
@@ -149,16 +149,16 @@ where $u_0$ is a typical flow rate relative to the particle surface, $a$ is the 
 \end{align*}
 This type of flow condition is called viscous flow, or creeping flow. Because the governing equation is linear, many more problems admit analytical solutions. In particular, the force and torque on a particle in viscous flow has been worked out in quite some detail. The formalism of resistance tensors was introduced by Brenner \cite{brenner1974, happel1965}, but here I follow the notation used in the book \emph{Microhydrodynamics} by Kim \& Karrila \cite{kim1991}. To anyone interested in particle dynamics at low Reynolds numbers I strongly recommend this book.
 
-The fundamental result is that the force and torque on a particle suspended in a flow is linearly related to the undisturbed flow. Given the particle velocity $\ve v$ and angular velocity $\ve \omega$, we write the force $\ve F$ and torque $\ve T$ as {\color{red} notation, $\ma A$, check book}
+The fundamental result is that the force and torque on a particle suspended in a flow is linearly related to the undisturbed flow. Given the particle velocity $\ve v$ and angular velocity $\ve \omega$, we write the force $\ve F$ and torque $\ve T$ as
 \begin{align}
-	\ve F &= \ma A (\ve u - \ve v) + \ma B (\ve \Omega - \ve \omega), \nn \\
-	\ve T &= \ma B\transpose (\ve u - \ve v) + \ma C (\ve \Omega - \ve \omega) + \ma H \dd \ma S. \eqnlab{resistanceformulation}
+	\ve F &= \te A (\ve u - \ve v) + \te B (\ve \Omega - \ve \omega), \nn \\
+	\ve T &= \te B\transpose (\ve u - \ve v) + \te C (\ve \Omega - \ve \omega) + \te H \dd \ma S. \eqnlab{resistanceformulation}
 \end{align}
-The resistance tensors $\ma A$, $\ma B$, $\ma C$ and $\ma H$ depend only upon particle shape, and can be computed once and for all. An example is the case of a sphere of radius $a$, then  $\ma A = 6\pi\mu a \ma I$, $\ma B = 0$ and $\ma C = 8\pi\mu a^3 \ma I$. In fact, for any particle which is mirror-symmetric in all three cartesian planes it holds that $\ma B = 0$. In such cases there is neither coupling between rotation and force, nor between translation and torque. 
+The resistance tensors $\te A$, $\te B$, $\te C$ and $\te H$ depend only upon particle shape, and can be computed once and for all. An example is the case of a sphere of radius $a$, then  $\te A = 6\pi\mu a \ma I$, $\te B = 0$ and $\te C = 8\pi\mu a^3 \ma I$. In fact, for any particle which is mirror-symmetric in all three cartesian planes it holds that $\te B = 0$. In such cases there is neither coupling between rotation and force, nor between translation and torque. 
 
 For non-spherical particles there is a hidden complication in \Eqnref{resistanceformulation}: the flow is usually known in a fixed frame of reference, but the resistance tensors are known in the frame of reference of the particle. Expressing the resistance tensors in the fixed frame of reference entails a rotation dependent on the particle orientation. Thus, the torque is in general a non-linear function of particle orientation.
 
-The hydrodynamic resistance of an ellipsoid was computed in a now famous paper by Jeffery in 1922 \cite{jeffery1922}. The result therein is of course not expressed in this more recent notation, but all the necessary calculations are there. The adaptation to current notation is found in \emph{Microhydrodynamics} (Ref.~\citenum{kim1991} {\color{red} p. check page}). All calculations in this thesis, and the appended papers, proceed from forces and torques obtained in this manner. Therefore the assumption of $\rep = 0$ is implicit everywhere, even if not explicitly stated.
+The hydrodynamic resistance of an ellipsoid was computed in a now famous paper by Jeffery in 1922 \cite{jeffery1922}. The result therein is of course not expressed in this more recent notation, but all the necessary calculations are there. The adaptation to current notation is found in \emph{Microhydrodynamics} (Ref.~\citenum{kim1991} p.~56). All calculations in this thesis, and the appended papers, proceed from forces and torques obtained in this manner. Therefore the assumption of $\rep = 0$ is implicit everywhere, even if not explicitly stated.
 
 When the force and torque on a particle is known, its trajectory is determined by Newton's equations of motion for a rigid body. Since the torque may depend non-linearly upon particle orientation, solving the rigid-body equations is in general not possible. The first approximation, introduced already by Jeffery in 1922, is the over-damped limit where particle inertia is neglected. The resulting equation of motion is discussed in Sec.~\ref{sec:jefferyequation}, but first we will discuss the anatomy of the simple shear flow in Sec.~\ref{sec:shearflow}.
 
@@ -176,7 +176,7 @@ Here $s$ is a scalar called the shear strength, and $y$ is the coordinate along 
 		0 & 0 & 0 
 	\end{bmatrix}.
 \end{align*}
-Despite its simplicity the shear flow is important, mainly for two reasons. First, it is one of the fundamental flows in rheology, the study of fluids. It is the flow inside a Couette device, used for example to measure viscosity. Second, as far as particle dynamics go, the simple shear flow is relevant for \emph{any} unidirectional flow. Consider for example the flow of a suspension through a pipe. The pipe is large compared to the suspended particles, and the flow profile is most likely a complicated function of position $y$ in the pipe cross section\footnote{In principle the function should also depend on the position in the $z$-direction. In that case the result is also a simple shear flow, although rotated.}:
+Despite its simplicity the shear flow is important, mainly for two reasons. First, it is one of the fundamental flows in rheology, the study of fluids. It is the flow inside a Couette device, used for example to measure viscosity. Second, as far as particle dynamics go, the simple shear flow is relevant for \emph{any} flow with parallel streamlines. Consider for example the flow of a suspension through a pipe. The pipe is large compared to the suspended particles, and the flow profile is most likely a complicated function of position $y$ in the pipe cross section\footnote{In principle the function should also depend on the position in the $z$-direction. In that case the result is also a simple shear flow, although rotated.}:
 \begin{align*}
 	\ve u(y) &= f(y)\hat{\ve x},
 \end{align*}
@@ -188,9 +188,9 @@ Despite its simplicity the shear flow is important, mainly for two reasons. Firs
 		0 & 0 & 0 
 	\end{bmatrix}.
 \end{align*}
-Thus, if the flow profile $f$ varies slowly over the particle size, the particle experiences a simple shear flow. This is exactly the case in the experiment presented in Paper A, and Sec.~\ref{sec:experiment} of this thesis.
+Thus, if the flow profile $f$ varies slowly over the particle size, the particle experiences a simple shear flow of strength $f'(y)$. This is exactly the case in the experiment presented in Paper A, and Sec.~\ref{sec:experiment} of this thesis.
 
-Curiously, non-spherical particles in simple shear flow offers very rich dynamics. There is no stationary state, but the particle tumbles end-to-end for all time. If the particle is axisymmetric, the tumbling is periodic. The technical details and explanations of this are discussed in Sec.~\ref{sec:jefferyequation}, but we can understand the underlying reason from the composition of the shear flow. In Fig.~\ref{fig:shear_decomposition} I show schematically how the shear is a superposition of two flows. One is a pure rotation, corresponding to the antisymmetric part $\ma O$ of the flow gradient. The other is a pure strain, the symmetric part $\ma S$ of the flow gradient. Now imagine a rod-shaped particle in these flows. The pure rotation, the vorticity, will rotate the rod with a constant angular velocity, regardless of its orientation. The strain, on the other hand, has a preferred direction to which it will attract the long axis of the rod. Sometimes the vorticity and strain will cooperate to turn the rod onto the strain eigendirection, and sometimes the vorticity will struggle to rotate the rod out of the attracting direction. The result is that the rod will always rotate, but sometimes faster and sometimes slower. When the difference between the fast and the slow rotations is large, we perceive this as tumbling.
+Curiously, non-spherical particles in simple shear flow offers very rich dynamics. There is no stationary state, but the particle tumbles end-to-end for all time. If the particle is axisymmetric, the tumbling is periodic. The technical details and explanations of this are discussed in Sec.~\ref{sec:jefferyequation}, but we can understand the underlying reason from the composition of the shear flow. Fig.~\ref{fig:shear_decomposition} illustrates schematically how the shear is a superposition of two flows. One is a pure rotation, corresponding to the antisymmetric part $\ma O$ of the flow gradient. The other is a pure strain, the symmetric part $\ma S$ of the flow gradient. Now imagine a rod-shaped particle in these flows. The pure rotation, the vorticity, will rotate the rod with a constant angular velocity, regardless of its orientation. The strain, on the other hand, has a preferred direction to which it will attract the long axis of the rod. Sometimes the vorticity and strain will cooperate to turn the rod onto the strain eigendirection, and sometimes the vorticity will struggle to rotate the rod out of the attracting direction. The result is that the rod will always rotate, but sometimes faster and sometimes slower. When the difference between the fast and the slow rotations is large, we perceive this as tumbling.
 
 \begin{figure}
 \begin{center}
@@ -202,9 +202,62 @@ Curiously, non-spherical particles in simple shear flow offers very rich dynamic
 
 \subsection{The Jeffery equation and its solutions}\label{sec:jefferyequation}
 
+In this section we consider axisymmetric particles: particles which are rotationally symmetric around an axis of symmetry. For such particles the orientational configuration may be represented by a unit vector $\ve n$, attached to the axis of symmetry. As alluded to in Sec.~\ref{sec:forces}, Jeffery presents two major results in his seminal paper from 1922 \cite{jeffery1922}. First, he calculates the hydrodynamic torque on a ellipsoid, not necessarily axisymmetric, in any linear flow. Second, he derives the equation of motion of an inertia-free, axisymmetric ellipsoid (a spheroid). This equation of motion is often referred to as the Jeffery equation. In our notation the Jeffery equation is
+\begin{align}
+	\dot{\ve n} &= \ma O \ve n + \Lambda \left(\ma S \ve n - \ve n \ve n \transpose \ma S \ve n\right).\eqnlab{jeffery}
+\end{align}
+Here $\ma O$ and $\ma S$ are the anti-symmetric and symmetric parts of the fluid gradient, as introduced in Sec.~\ref{sec:forces}. The parameter $\Lambda$ is a particle shape factor. It was shown by Bretherton \cite{bretherton1962} that, given the correct shape factor $\Lambda$, Jeffery's equation is valid not only for spheroids, but for any axisymmetric particle. However, spheroids serve as the typical non-spherical particle, and for a spheroid of aspect ratio $\lambda$ the shape factor is
 \begin{align*}
-	\dot{\ve n} &= \ma O \ve n + \Lambda \left(\ma S \ve n - \ve n \ve n \transpose \ma S \ve n\right)
+	\Lambda = \frac{\lambda^2-1}{\lambda^2+1}.
 \end{align*}
+Jeffery's equation is derived by combining the hydrodynamic torque on a spheroid with Newton's equation of motion for a rigid body. We demonstrate this as part of a longer calculation in {\color{red}Sec. 2 of Paper B (Check section naming)}. In the following, we will consider the solutions of \Eqnref{jeffery}.
+
+Jeffery's equation is a non-linear vector equation, and as such it is seemingly hard to solve. However, the non-linearity is only apparent, it is due to the geometric constraint that $\ve n$ is a unit vector. The underlying dynamics is in fact linear. I will now explain two ways to understand this fact.
+
+The vorticity $\ma O$ rotates $\ve n$, and the strain $\ma S$ aligns and stretches $\ve n$ towards its strongest eigendirection. The non-linear term $\ve n \ve n\transpose \ma S \ve n$ is simply the stretching component of the strain, which is subtracted in order to prevent elongation of $\ve n$. Bretherton (Sec.~6 in Ref.~\cite{bretherton1962}) realised that we may instead model the orientation of the particle with any vector $\ve q$ which obeys the same linear terms, but without compensating for any elongation:
+\begin{align}
+	\dot{\ve q} = \left(\ma O + \Lambda \ma S\right) \ve q.\eqnlab{jefferyq}
+\end{align}
+Owing to the common linear terms in \Eqnref{jeffery} and \Eqnref{jefferyq}, the vector $\ve q$ will have the same angular dynamics as $\ve n$. In addition, $\ve q$ may be stretched and compressed by the strain $\ma S$. But since we are only interested in the angular degrees of freedom, we can at any instant recover $\ve n$ by normalising $\ve q$ to unit length. Thus, the general solution of the Jeffery equation is given by solving \Eqnref{jefferyq} for $\ve q(t)$, then the solution to \Eqnref{jeffery} is given by normalising $\ve q(t)$ to unit length:
+\begin{align}
+	\ve n(t) &= \frac{\ve q(t)}{|\ve q(t)|}.\eqnlab{jefferysolution0}
+\end{align}
+
+Another, more mathematical, way of understanding how the linear companion equation \eqnref{jefferyq} arises is the following. Like above, we choose to represent the particle orientation by a vector $\ve q$ which is parallel to $\ve n$. Define $\ve q = \alpha(t)\ve n$, with $\alpha(t)$ an arbitrary function of time. We know from this definition that we may always recover $\ve n$ by normalising $\ve q$ to unit length. Now, we can calculate the equation of motion for $\ve q$:
+\begin{align}
+	\diff{\ve q}{t} &= \diff{}{t}\left(\alpha \ve n\right) \nn \\
+	&= \dot \alpha \ve n + \alpha \dot{\ve n} \nn\\
+	&= \dot \alpha \ve n + \alpha \left(\ma O \ve n + \Lambda \left(\ma S \ve n - \ve n \ve n \transpose \ma S \ve n\right)\right). \eqnlab{jefferyderivation1}
+\end{align}
+But $\alpha(t)$ is an arbitrary function which we may choose. In particular we can choose $\alpha(t)$ to be a function satisfying
+\begin{align*}
+	\dot \alpha &= \alpha \Lambda \ve n\transpose \ma S \ve n.
+\end{align*}
+By inserting this choice of $\alpha(t)$ into \Eqnref{jefferyderivation1}, we again arrive at \Eqnref{jefferyq}.
+
+We will now consider the solutions of Jeffery's equation in time-independent flows. This case includes for example the simple shear flow, and indeed any linear flow. It is also a useful model when the flow changes only slowly in time, compared to the time it takes for the gradients to affect the particle orientation. First, I will sketch the space of possible solutions of \Eqnref{Jeffery} in an incompressible flow. This picture is vital in understanding our argument in Paper C (see also Sec.~\ref{sec:tumbling} in this thesis). Second, I will discuss the solutions of Jeffery's equation in a simple shear flow. The solutions are called the Jeffery orbits, which play an important role in both Papers A and B.
+
+When $\ma O$ and $\ma S$ are time-independent the linear companion equation \eqnref{jefferyq} is solved by the matrix exponential:
+\begin{align*}
+		\ve q(t) = e^{(\ma O + \Lambda \ma S)t}\ve q(0).
+\end{align*}
+This solution implies that the long-time dynamics of $\ve q$, and therefore $\ve n$, is determined by the eigenvalues and eigenvectors of the matrix $\ma B = \ma O + \Lambda\ma S$. For an incompressible flow $\tr\ma B=0$, because $\tr\ma A=0$. In other words, the three eigenvalues of $\ma B$ must sum to zero. Thus, there are three distinct possibilities for the eigensystem of $\ma B$:
+\begin{enumerate}
+	\item Three real eigenvalues, then
+	\item[] $\ve q$ will align with the eigenvector corresponding to the largest eigenvalue.
+	\item One real eigenvalue $a\ge0$, and a complex pair $-a/2 \pm ib$, then
+	\item[] $\ve q$ will spiral into alignment with the eigenvector corresponding to the real eigenvalue.
+	\item One real eigenvalue $a<0$, and a complex pair $-a/2 \pm ib$, then
+	\item[] $\ve q$ will spiral out and rotate in the plane spanned by the real and imaginary parts of the complex eigenvector.
+\end{enumerate}
+
+\begin{figure}
+\begin{center}
+  \makebox[\textwidth]{\includegraphics{figs/bmap}}
+\end{center}
+\caption{\label{fig:bmap} }%
+\end{figure}
+
 
 \subsection{Orientational distributions}
 
