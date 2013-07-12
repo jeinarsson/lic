@@ -39,8 +39,8 @@ def main():
 	ax.set_yticks([-10,0,10])
 	
 	ax.text(0,7.5,'Aligning',ha='center',va='center')
-	ax.text(-7.5,-8,'Spiral in',ha='center',va='center')
-	ax.text(7.5,-8,'Spiral out',ha='center',va='center')
+	ax.text(-7.5,-8,'Spiral out',ha='center',va='center')
+	ax.text(7.5,-8,'Spiral in',ha='center',va='center')
 
 	ax.annotate("$(\mathrm{Tr} \mathbb{B}^2)^3 = 6(\mathrm{Tr} \mathbb{B}^3)^2$",
                   xy=(7, 7), xycoords='data',
@@ -53,7 +53,7 @@ def main():
                                   fc="w"), 
                   )
 
-	plt.subplots_adjust(top=0.8,left=0.25)
+	plt.subplots_adjust(top=0.8,left=0.2,right=0.8)
 
 	print "Starting export..."
 	if not exists("output/"):

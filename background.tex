@@ -111,7 +111,7 @@ We will often, especially when discussing the orientational dynamics of particle
 \begin{align*}
 	A_{ij} &= \frac{\partial u_i}{\partial x_j}.
 \end{align*}
-The gradient $\ma A$ is usually split into its symmetric and anti-symmetric parts such that
+The incompressibility condition $\nabla\cdot\ve u=0$ transfers directly to the condition $\tr \ma A=0$. The gradient $\ma A$ is usually split into its symmetric and anti-symmetric parts such that
 \begin{align*}
 	&\ma O = \frac{1}{2}(\ma A - \ma A\transpose),\quad
 	\ma S = \frac{1}{2}(\ma A + \ma A\transpose),\quad
@@ -190,8 +190,15 @@ Despite its simplicity the shear flow is important, mainly for two reasons. Firs
 \end{align*}
 Thus, if the flow profile $f$ varies slowly over the particle size, the particle experiences a simple shear flow of strength $f'(y)$. This is exactly the case in the experiment presented in Paper A, and Sec.~\ref{sec:experiment} of this thesis.
 
-Curiously, non-spherical particles in simple shear flow offers very rich dynamics. There is no stationary state, but the particle tumbles end-to-end for all time. If the particle is axisymmetric, the tumbling is periodic. The technical details and explanations of this are discussed in Sec.~\ref{sec:jefferyequation}, but we can understand the underlying reason from the composition of the shear flow. Fig.~\ref{fig:shear_decomposition} illustrates schematically how the shear is a superposition of two flows. One is a pure rotation, corresponding to the antisymmetric part $\ma O$ of the flow gradient. The other is a pure strain, the symmetric part $\ma S$ of the flow gradient. Now imagine a rod-shaped particle in these flows. The pure rotation, the vorticity, will rotate the rod with a constant angular velocity, regardless of its orientation. The strain, on the other hand, has a preferred direction to which it will attract the long axis of the rod. Sometimes the vorticity and strain will cooperate to turn the rod onto the strain eigendirection, and sometimes the vorticity will struggle to rotate the rod out of the attracting direction. The result is that the rod will always rotate, but sometimes faster and sometimes slower. When the difference between the fast and the slow rotations is large, we perceive this as tumbling.
+Fig.~\ref{fig:coordinates} shows the coordinate system we use for shear flows in this thesis and the appended papers. The three principal directions are the flow direction $\hat{\ve x}$, the shear direction $\hat{\ve y}$ and the vorticity direction $\hat{\ve z}$. The vorticity direction $\hat{\ve z}$ is also the direction of $\ve \Omega$ introduced in Sec.~\ref{sec:forces}.
 
+Curiously, non-spherical particles in simple shear flow offers very rich dynamics. There is no stationary state, but the particle tumbles end-to-end for all time. If the particle is axisymmetric, the tumbling is periodic. The technical details and explanations of this are discussed in Sec.~\ref{sec:jefferyequation}, but we can understand the underlying reason from the composition of the shear flow. Fig.~\ref{fig:shear_decomposition} illustrates schematically how the shear is a superposition of two flows. One is a pure rotation, corresponding to the antisymmetric part $\ma O$ of the flow gradient. The other is a pure strain, the symmetric part $\ma S$ of the flow gradient. Now imagine a rod-shaped particle in these flows. The pure rotation, the vorticity, will rotate the rod with a constant angular velocity, regardless of its orientation. The strain, on the other hand, has a preferred direction to which it will attract the long axis of the rod. Sometimes the vorticity and strain will cooperate to turn the rod onto the strain eigendirection, and sometimes the vorticity will struggle to rotate the rod out of the attracting direction. The result is that the rod will always rotate, but sometimes faster and sometimes slower. When the difference between the fast and the slow rotations is large, we perceive this as tumbling.
+\begin{figure}
+\begin{center}
+  \makebox[\textwidth]{\includegraphics[width=7cm]{figs/fig_coordinates.png}}
+\end{center}
+\caption{\label{fig:coordinates} }%
+\end{figure}
 \begin{figure}
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=1.2\textwidth]{figs/shear_decomposition}}
@@ -206,11 +213,13 @@ In this section we consider axisymmetric particles: particles which are rotation
 \begin{align}
 	\dot{\ve n} &= \ma O \ve n + \Lambda \left(\ma S \ve n - \ve n \ve n \transpose \ma S \ve n\right).\eqnlab{jeffery}
 \end{align}
-Here $\ma O$ and $\ma S$ are the anti-symmetric and symmetric parts of the fluid gradient, as introduced in Sec.~\ref{sec:forces}. The parameter $\Lambda$ is a particle shape factor. It was shown by Bretherton \cite{bretherton1962} that, given the correct shape factor $\Lambda$, Jeffery's equation is valid not only for spheroids, but for any axisymmetric particle. However, spheroids serve as the typical non-spherical particle, and for a spheroid of aspect ratio $\lambda$ the shape factor is
+Here $\ma O$ and $\ma S$ are the anti-symmetric and symmetric parts of the fluid gradient, as introduced in Sec.~\ref{sec:forces}. The parameter $\Lambda$ is a particle shape factor. For a spheroid of aspect ratio $\lambda$ the shape factor is
 \begin{align*}
 	\Lambda = \frac{\lambda^2-1}{\lambda^2+1}.
 \end{align*}
-Jeffery's equation is derived by combining the hydrodynamic torque on a spheroid with Newton's equation of motion for a rigid body. We demonstrate this as part of a longer calculation in {\color{red}Sec. 2 of Paper B (Check section naming)}. In the following, we will consider the solutions of \Eqnref{jeffery}.
+For most conceivable particle shapes, $-1 < \Lambda < 1$. Negative $\Lambda$ correspond to flat, disk-shaped particles, while positive $\Lambda$ correspond to elongated, rod-like particles. It was shown by Bretherton \cite{bretherton1962} that, given the correct shape factor $\Lambda$, Jeffery's equation is valid not only for spheroids, but for any axisymmetric particle. He also showed that there are extreme cases where $|\Lambda|>1$. In this thesis we consider particles with $|\Lambda|<1$, like the spheroid.
+
+ The equation of motion for an inertia-free particle is given by force and torque balance on the particle. Then the center-of-mass velocity equals the fluid velocity at the center-of-mass position, a condition called \emph{advection}. Jeffery's equation is the rotational analogue of center-of-mass advection. In Paper B ({\color{red}Sec.~2}), we demonstrate how to derive Jeffery's equation. We start from the hydrodynamic torque and Newton's equation of motion, and take the limit $\st\to 0$. In the following, we will instead consider the possible solutions of the Jeffery equation \eqnref{jeffery}.
 
 Jeffery's equation is a non-linear vector equation, and as such it is seemingly hard to solve. However, the non-linearity is only apparent, it is due to the geometric constraint that $\ve n$ is a unit vector. The underlying dynamics is in fact linear. I will now explain two ways to understand this fact.
 
@@ -235,7 +244,7 @@ But $\alpha(t)$ is an arbitrary function which we may choose. In particular we c
 \end{align*}
 By inserting this choice of $\alpha(t)$ into \Eqnref{jefferyderivation1}, we again arrive at \Eqnref{jefferyq}.
 
-We will now consider the solutions of Jeffery's equation in time-independent flows. This case includes for example the simple shear flow, and indeed any linear flow. It is also a useful model when the flow changes only slowly in time, compared to the time it takes for the gradients to affect the particle orientation. First, I will sketch the space of possible solutions of \Eqnref{Jeffery} in an incompressible flow. This picture is vital in understanding our argument in Paper C (see also Sec.~\ref{sec:tumbling} in this thesis). Second, I will discuss the solutions of Jeffery's equation in a simple shear flow. The solutions are called the Jeffery orbits, which play an important role in both Papers A and B.
+We will now consider the solutions of Jeffery's equation in time-independent flows. This case includes for example the simple shear flow, and indeed any linear flow. It is also a useful model when the flow changes only slowly in time, compared to the time it takes for the gradients to affect the particle orientation. First, I will describe the possible solutions of \Eqnref{Jeffery} in linear flows. This picture is vital in understanding our argument in Paper C (see also Sec.~\ref{sec:tumbling} in this thesis). Second, I will discuss the solutions of Jeffery's equation in a simple shear flow. The solutions are called the Jeffery orbits, and they play an important role in both Papers A and B.
 
 When $\ma O$ and $\ma S$ are time-independent the linear companion equation \eqnref{jefferyq} is solved by the matrix exponential:
 \begin{align*}
@@ -245,23 +254,92 @@ This solution implies that the long-time dynamics of $\ve q$, and therefore $\ve
 \begin{enumerate}
 	\item Three real eigenvalues, then
 	\item[] $\ve q$ will align with the eigenvector corresponding to the largest eigenvalue.
-	\item One real eigenvalue $a\ge0$, and a complex pair $-a/2 \pm ib$, then
+	\item One real eigenvalue $a>0$, and a complex pair $-a/2 \pm i\omega$, then
 	\item[] $\ve q$ will spiral into alignment with the eigenvector corresponding to the real eigenvalue.
-	\item One real eigenvalue $a<0$, and a complex pair $-a/2 \pm ib$, then
+	\item One real eigenvalue $a\leq0$, and a complex pair $-a/2 \pm i\omega$, then
 	\item[] $\ve q$ will spiral out and rotate in the plane spanned by the real and imaginary parts of the complex eigenvector.
 \end{enumerate}
-
 \begin{figure}
 \begin{center}
   \makebox[\textwidth]{\includegraphics{figs/bmap}}
 \end{center}
 \caption{\label{fig:bmap} }%
 \end{figure}
+The characteristic equation for the eigenvalues $b$ of a $3\times3$-matrix $\ma B$ is
+\begin{align*}
+	-b^3 + \tr b^2\ma B  + \frac{b}{2}\left(\tr \ma B^2-(\tr \ma B)^2\right)+\det\ma B = 0.
+\end{align*}
+But for a traceless matrix $\tr \ma B=0$ and $\det \ma B = \tr\ma B^3/3$, thus
+\begin{align}
+	-b^3 + \frac{b}{2}\tr \ma B^2 +\frac{1}{3}\tr\ma B^3 = 0. \eqnlab{bcharacteristic}
+\end{align}
+It is possible to solve exactly for the eigenvalues, but the important observation is that they are determined by only two parameters: $\tr \ma B^2$ and $\tr\ma B^3$. In Fig.~\ref{fig:bmap} I illustrate how the three cases outlined above correspond to different values of $\tr \ma B^2$ and $\tr\ma B^3$. The boundary curve of the region of three real eigenvalues is given by the discriminant of the characteristic equation:
+\begin{align*}
+ 	\Delta = \left(\tr \ma B^2\right)^3 - 6\left(\tr \ma B^3\right)^2 = 0.
+ \end{align*} 
+In the region where there is a pair of complex eigenvalues, the two cases of spiral in or out are separated by $\tr \ma B^3=0$. Now, what follows is one of the key observations in our argument in Paper C. For any given flow gradient, changing the particle from rod-like to disk-shaped (or vice versa) will transform $\tr \ma B^3\to-\tr\ma B^3$ and therefore change the qualitative dynamics from aligning to rotating (or vice versa). This transformation may be understood because
+\begin{align*}
+	\tr \ma B^3 = 3\Lambda \tr \ma O\ma O \ma S + \Lambda^3 \tr \ma S\ma S \ma S.
+\end{align*}
+The other combinations of $\ma S$ and $\ma O$ which could contribute, such as $\tr \ma O\ma O \ma O$, vanish identically because of symmetries of $\ma O$ and $\ma S$. As explained above, changing a particle from rod-like to disk-shaped implies a change of sign of the shape factor $\Lambda$. The implications of this observation for the tumbling of particles in turbulent and random flows are further discussed in Sec.~\ref{sec:tumbling} in Part~II, and in Paper C. 
+
+The remainder of this section concerns the case of simple shear flow. This case is characterised by $\tr \ma B^3=0$ and $\tr \ma B^2<0$. The simple shear has a special position among flows, and we understand the significance of the condition $\tr\ma B^3=0$ from the above discussion. First, a change of particle shape does not change the qualitative dynamics. Both disk-shaped particles and rod-like particles rotate in a shear flow. Second, $\ma B$ has a zero eigenvalue, as seen from the characteristic equation \eqnref{bcharacteristic}. The zero eigenvalue is important, because it implies that the particle dynamics never forgets its initial condition. The eigenvector of the zero eigenvalue is the vorticity direction\footnote{See Fig.~\ref{fig:coordinates} and Sec.~\ref{sec:shearflow} for the definition of the coordinate system and the terminology of its directions in a simple shear flow.}, thus the component of $\ve q$ in the vorticity direction is constant in a shear flow. The other two eigenvalues are an imaginary pair, resulting in a periodic rotation of $\ve q$. In summary, the dynamics of $\ve q$ in a simple shear flow is a periodic rotation in a plane. The plane is normal to the vorticity direction, and determined by the initial condition of $\ve q$.
+
+\begin{figure}
+	\begin{center}
+	  \makebox[\textwidth]{%
+        \begin{subfigure}[b]{0.62\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figs/projection_orbit1.png}
+                \caption{}
+                \label{fig:projection_orbit1}
+        \end{subfigure}%
+        \begin{subfigure}[b]{0.62\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figs/projection_orbit2.png}
+                \caption{}
+                \label{fig:projection_orbit2}
+        \end{subfigure}
+        }
+        \makebox[\textwidth]{%
+        \begin{subfigure}[b]{0.62\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figs/projection_orbit3.png}
+                \caption{}
+                \label{fig:projection_orbit3}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.62\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figs/projection_orbit4.png}
+                \caption{}
+                \label{fig:projection_orbit4}
+        \end{subfigure}        
+	  }%
+	\end{center}
+    \caption{{\bfseries(a-c)} Illustrations of how the trajectories $\ve q(t)$ (red) produces the Jeffery orbits $\ve n(t)$ (blue) upon projection onto the unit sphere. {\bfseries (d)} Sample of resulting Jeffery orbits with coordinate system. All trajectories correspond to a particle of aspect ratio $\lambda=5$ in a simple shear flow.}\label{fig:projection_orbits}
+\end{figure}
 
 
-\subsection{Orientational distributions}
+The trajectories $\ve q(t)$ are projected onto the unit sphere, and the resulting $\ve n(t)$ are the Jeffery orbits. In Fig.~\ref{fig:projection_orbits} the trajectories $\ve q(t)$ and $\ve n(t)$ are illustrated for particle aspect ratio $\lambda=5$, and three different initial conditions.
 
-\subsection{Random and turbulent flows}
+The solutions to Jeffery's equation in a simple shear flow are degenerate: the orientational trajectory depends on the initial condition for all time. In many realistic situations this long-time memory hardly seems plausible. The assumptions leading up to Jeffery's equation and its periodic solution each correspond to a physical mechanism that may or may not break the degeneracy. The three assumptions we believe most important to investigate are the following.
+
+First, the particle may not be axisymmetric. In this case the dynamics is more complicated, but still depends on initial condition. Tri-axial particles are discussed further in relation to Paper A, Sec.~\ref{sec:experiment}, Part II.
+
+Second, there may be inertial effects. Fluid inertia was neglected when we used the resistance tensor formulation \eqnref{resistanceformulation} for the torque on a particle. Particle inertia was neglected when Newton's equation reduced to Jeffery's equation in the advective limit $\st \to 0$. In Paper B we describe how the effects of a small amount of particle inertia break the degeneracy of the solutions $\ve n(t)$. See the discussion in \ref{sec:inertia} for an outlook on the case of fluid inertia.
+
+Finally, the third mechanism is Brownian noise. The idea is that thermal fluctuations kicks the particle out of one Jeffery orbit and into another. After some time, the initial condition is forgotten and the state of the particle is described by an orientational probability distribution. The problem of computing the orientational distribution has a long history, and in the next Section I briefly review some of the methods and results.
+
+\subsection{Orientational distributions}\label{sec:orientationaldistributions}
+
+In this Section we consider the orientational dynamics of an axisymmetric particle, represented by the vector $\ve n$. In this case the orientational distribution is a function $P(\ve n, t)$ which describes the probability of observing the particle with orientation\footnote{Strictly, $P(\ve n, t)\rd S$ is the probability to find $\ve n$ on the surface element $\rd S$ at time $t$.} $\ve n$ at time $t$. Instead of asking for the orientational trajectory $\ve n(t)$ of a particle given the initial condition $\ve n(0)$, we now ask what the orientational distribution $P(\ve n, t)$ is, given the initial condition $P(\ve n, 0)$.
+
+We will now use the diffusion approximation to calculate the probability distribution. For a complete and very readable account of the method I point to the book \emph{Stochastic Processes in Physics and Chemistry}, by van Kampen \cite{kampen2007}. My simple view of the diffusion approximation is the following. The orientation of the particle is driven by very many, very small and very fast kicks. In the case of particles in fluids, the small kicks originate in the bombardment of fluid molecules onto the particle surface. These \emph{microscopic} kicks are so small and fast that we never see them directly. But after a short time, enough kicks have accumulated into an observable change. If we reset the particle orientation, the microscopic kicks will again accumulate into an observable change. But because the molecular bombardment is not exactly the same every time, the accumulated change is different every time. The diffusion approximation is to not consider all the details, but to only consider the \emph{mean value} and \emph{variance} of the accumulated changes. The idea is to replace the complicated accumulation of microscopic kicks with randomly generated changes. The randomly generated changes will have the correct mean value and variance, but all other details are neglected. There is a well-developed mathematical machinery to deal with the randomly generated changes, which is described in detail by van Kampen \cite{kampen2007}.
+
+The governing equation for the orientational distribution of an axisymmetric particle in the diffusion approximation is the Fokker-Planck equation
+\begin{align*}
+	\frac{\partial}{\partial t}P(\ve n, t) &= \frac{\partial}{\partial \ve n}\left[\ve (\ve n, t)\right] + \mathcal D \frac{\partial^2}{\partial \ve n^2}P(\ve n, t)
+\end{align*}
 
 \subsection{Iterative perturbation expansion}
 
