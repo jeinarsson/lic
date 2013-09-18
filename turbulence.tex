@@ -2,19 +2,40 @@
 
 \begin{document}
 
-\chapter{Turbulence tumbling}
+\chapter{Tumbling in turbulent flows}
 
-Work with Kristian Gustavsson.
+Together with Kristian Gustavsson, former student and now post-doctoral fellow in the group, we investigate the orientational dynamics of small particles in random and turbulent flows. Kristian has extensive experience in studying the translational dynamics of spherical particles in random flows. In the previous Sections, describing Papers A \& B, we considered only steady and uniform fluid flows. In this project we combine our knowledge of random and turbulent flows with that of the dynamics of non-spherical particles. The collaboration has thus far resulted in Paper C (under review for publication in Physical Review Letters).
 
 \section{Overview}
 
-$\st=0$, $\rep=0$ Jeffery equation in a real turbulent flow. Symmetry breaking.
+The dynamics of turbulent flow is fundamentally complicated. It is non-linear and chaotic, and reliable numerical solutions are computationally very expensive. One of the motivations for studying random flows is that, with properly chosen statistics, they may be a model system for understanding the dynamics of particles in turbulence. 
+This idea works well for quantities which are not crucially dependent on the specifics of turbulence. For example, one of Kristian's results concerns the relative collision velocities of particles \cite{gustavsson2013relvel}. Through a random flow model he worked out properties universal to colliding particles in any flow. In other cases, however, it turns out that the particle dynamics depends on details in the turbulent flow which are not present in the random flow.
 
-\section{Method}
+When Parsa et. al. published numerical (DNS) and experimental results on the rotation rates of non-spherical particles in turbulence \cite{parsa2012}, they highlighted a case where the random flow predicts a qualitatively different result from the observation in turbulence. They showed that disk-shaped particles rotate, on average, about twice as fast as rod-shaped particles in turbulence. The naive prediction from a random-flow model is that disks and rods rotate alike. The questions we try to answer in Paper C are, which mechanisms are responsible for the differences in particle rotation rates? And what is the difference between random flows and turbulence?
 
-\section{Results}
+We argue in Paper C that there is a relation between the skewed distribution of velocity gradients in turbulence and the differing tumbling rates of disks and rods.
 
-\section{Outlook}
+%I explained in \Secref{jefferyequation} that for any given steady flow gradient, the orientational dynamics of a particle switches from rotation to alignment when one replaces a rod with a disk, or vice versa. Therefore, if rods and disks are to tumble alike on average, we must require that particles experience equal amounts of ``rotating'' gradients and ``aligning'' gradients - otherwise the result will be different if we switch the particle. In other words, the distribution of $\ma B$-matrices (see \Figref{bmap} in \Secref{jefferyequation}) must be symmetric over $\tr \ma B^3=0$. The Gaussian random fields we construct are indeed symmetric in this sense. In turbulence, on the other hand, this very asymmetry of the gradient distribution is a well-known fact. It seems likely that this difference is the source of the differences between disks and rods. However, this argument does not close the case, because it is only true for \emph{steady} flow, and turbulence is absolutely not steady. The more technical part of the paper is a calculation valid at the other extreme: very unsteady flows, more so than turbulence. 
+
+In the following Section I will elaborate on how to get from Eq.~(3) to Eq.~(4) in the manuscript, and how we collected and verified the Lagrangian turbulent statistics. These technical points are necessarily brief in the paper.
+
+\section{Statistics in turbulent and random flows}
+
+The detailed trajectory of a specific particle in a particular random or turbulent flow is also random, and does not give much insight to how other particles in other flows may move. Instead, we ask our questions in terms of statistical quantities: how fast will this type of particle rotate \emph{on average?} The answer will then depend on the statistics of the underlying fluid flow, random or turbulent. For example, we know how to construct a random fluid flow field where vortices are much more common than stretching regions, rather than the two being equally probable - this choice will change the average rotation speed of a particle in that flow. Similarly, turbulent flows are different depending on circumstances. The turbulent flow in a cloud will have differences to the pipe flow turbulence in a garden hose, if only because of the rigid boundaries.
+
+Here we study particles transported in a \emph{homogenous, isotropic and incompressible} fluid flow. Homogenous means that the statistics must be the same at all positions in space, isotropic that the statistics are the same in all directions, and incompressible means that the fluid is of constant density everywhere. Homogenous, isotropic and incompressible turbulence can be created in a laboratory, as well as in direct numerical solutions of the Navier-Stokes equations (DNS). 
+When constructing a random flow, the three conditions greatly reduce the possible choices.
+
+
+
+\section{a}
+
+
+
+-- 
+
+-- $\st=0$, $\rep=0$ Jeffery equation in a real turbulent flow. Symmetry breaking.
+
 
 
 

@@ -90,11 +90,11 @@ Hopefully we have established enough common ground to put the appended research 
 
 At least, we have a working interpretation of the technical sentence ``Orientational dynamics of small, rigid particles suspended in fluid flows.'' The interpretation is that we aim to understand the rotation of a rigid body immersed in a fluid bath of molecules. The forces and torques driving the rotation originate in the macroscopic description of fluid dynamics. But in order to have a fair chance at progress, we consider the case of very small particles, as characterised by the Stokes and particle Reynolds dimensionless numbers.
 
-\section{Prerequisite concepts}
+\chapter{Prerequisite concepts}
 
 In this section I will introduce the basic concepts needed to understand the appended research papers. 
 
-\subsection{Forces on particles in fluids}\label{sec:forces}
+\section{Forces on particles in fluids}\label{sec:forces}
 
 We are studying the dynamics of small particles suspended in flows. Specifically, we consider particles small enough to not create disturbances in the fluid flow. In such cases, one can consider the fluid flow as a prescribed input, and calculate the response of the particles. Obviously, the particle will disturb the flow -- in fact, it is the reaction force of this disturbance which acts on the particle.
 What I mean is that the particle does not induce long-lived disturbances in the fluid now, which survive to affect the particle at a later time. In order to understand this requirement, and how the particle forces are calculated, we will start at the Navier-Stokes equation.
@@ -162,7 +162,7 @@ The hydrodynamic resistance of an ellipsoid was computed in a now famous paper b
 
 When the force and torque on a particle is known, its trajectory is determined by Newton's equations of motion for a rigid body. Since the torque may depend non-linearly upon particle orientation, solving the rigid-body equations is in general not possible. The first approximation, introduced already by Jeffery in 1922, is the over-damped limit where particle inertia is neglected. The resulting equation of motion is discussed in Sec.~\ref{sec:jefferyequation}, but first we will discuss the anatomy of the simple shear flow in Sec.~\ref{sec:shearflow}.
 
-\subsection{Simple shear flow}\label{sec:shearflow}
+\section{Simple shear flow}\label{sec:shearflow}
 
 The simple shear flow is a linear flow which flows in one flow direction, and varies magnitude in only one direction, it is shown to the right in Fig.~\ref{fig:shear_decomposition}. The equation describing the shear flow is very simple,
 \begin{align*}
@@ -207,7 +207,7 @@ Curiously, non-spherical particles in simple shear flow offers very rich dynamic
 \end{figure}
 
 
-\subsection{The Jeffery equation and its solutions}\label{sec:jefferyequation}
+\section{The Jeffery equation and its solutions}\label{sec:jefferyequation}
 
 In this section we consider axisymmetric particles: particles which are rotationally symmetric around an axis of symmetry. For such particles the orientational configuration may be represented by a unit vector $\ve n$, attached to the axis of symmetry. As alluded to in Sec.~\ref{sec:forces}, Jeffery presents two major results in his seminal paper from 1922 \cite{jeffery1922}. First, he calculates the hydrodynamic torque on a ellipsoid, not necessarily axisymmetric, in any linear flow. Second, he derives the equation of motion of an inertia-free, axisymmetric ellipsoid (a spheroid). This equation of motion is often referred to as the Jeffery equation. In our notation the Jeffery equation is
 \begin{align}
@@ -330,7 +330,7 @@ Second, there may be inertial effects. Fluid inertia was neglected when we used 
 
 Finally, the third mechanism is Brownian noise. The idea is that thermal fluctuations kicks the particle out of one Jeffery orbit and into another. After some time, the initial condition is forgotten and the state of the particle is described by an orientational probability distribution. The problem of computing the orientational distribution has a long history, and in the next Section I briefly review some of the methods and results.
 
-\subsection{Orientational distributions}\label{sec:orientationaldistributions}
+\section{Orientational distributions}\label{sec:orientationaldistributions}
 
 In this Section we consider the orientational dynamics of an axisymmetric particle, represented by the vector $\ve n$. In this case the orientational distribution is a function $P(\ve n, t)$ which describes the probability of observing the particle with orientation\footnote{Strictly, $P(\ve n, t)\rd S$ is the probability to find $\ve n$ on the surface element $\rd S$ at time $t$.} $\ve n$ at time $t$. Instead of asking for the orientational trajectory $\ve n(t)$ of a particle given the initial condition $\ve n(0)$, we now ask what the orientational distribution $P(\ve n, t)$ is, given the initial condition $P(\ve n, 0)$.
 
@@ -341,8 +341,8 @@ The governing equation for the orientational distribution of an axisymmetric par
 	\frac{\partial}{\partial t}P(\ve n, t) &= \frac{\partial}{\partial \ve n}\left[\ve (\ve n, t)\right] + \mathcal D \frac{\partial^2}{\partial \ve n^2}P(\ve n, t)
 \end{align*}
 
-\subsection{Iterative perturbation expansion}
+\section{Iterative perturbation expansion}
 
-\subsection{Poincar\'e surface-of-section}
+\section{Poincar\'e surface-of-section}
 
 \end{document}
