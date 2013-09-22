@@ -4,16 +4,26 @@
 
 The motion of small particles suspended in fluid flows is a fundamental research topic attracting interest in many branches of science, as well as in technical applications. In some cases it is the actual motion of the particles which is of interest. For example, in the atmospheric sciences the collisions and aggregation of small drops are important to the formation of rain. Similarly, in astronomy it is believed that the collisions of small dust grains lead eventually to the formation of planets in the accretion disk around a star. Another example is in marine biology, where the dynamics of small planktonic organisms swirled around by the ocean is fundamental in understanding their feeding and mating patterns \cite{guasto2012}. 
 
-In other contexts the motion of the individual particle is of lesser interest, instead its effects on the suspending fluid is the topic of study. The properties of so-called complex fluids, meaning fluids with suspended particles, are studied in the field of rheology. For instance, the ketchup effect\footnote{The one where ketchup is stuck in the bottle, and nothing happens, and then suddenly all the ketchup pours out at once, only to become innocently solid again on the plate.} exists because of all the microscopic particles suspended in the liquid \cite{bayod2008}. On a more serious note, the similarly sudden onset of landslides in clay soils is related to the complex fluid of water and clay particles \cite{coussot2002}. A fundamental question in rheology is how to relate the microscopic motion of the suspended particles to the macroscopic behaviour of the complex fluid.
+In other contexts the motion of the individual particle is of lesser interest, instead its effects on the suspending fluid is the topic of study. The properties of so-called complex fluids, meaning fluids with suspended particles, are studied in the field of rheology. For instance, the ketchup effect (where ketchup is stuck in the bottle, and nothing happens, and then suddenly all the ketchup pours out at once, only to become innocently solid again on the plate) exists because of how all the microscopic particles suspended in the liquid orient themselves \cite{bayod2008}. On a more serious note, the similarly sudden onset of landslides in clay soils is related to the complex fluid of water and clay particles \cite{coussot2002}. A fundamental question in rheology is how to relate the microscopic motion of the suspended particles to the macroscopic behaviour of the complex fluid.
 
 In many circumstances it is important to consider the non-spherical shape of particles, and how they are oriented. For instance, the ash clouds from volcanic eruptions play an important role in the radiation budget, and therefore the climate, of our planet \cite{mather2003}. The ash particles are non-spherical \cite{gasteiger2011}, and their shapes and orientations influence how light and energy is reflected from the volcanic cloud \cite{dubovik2002}. Similarly, the orientation of non-spherical plankton influences the light propagation through seawater, determining to which depth life-supporting photosynthesis is possible \cite{marcos2011}. 
 
-Despite their diversity, all the examples above share a basis in the question of how particles respond to a given flow, and how the flow in return responds to the presence of particles. Our research aims to further the understanding of this fundamental question. But with such aims, as we shall see, there is plenty of room for humility.
+Despite their diversity, all the examples above share a basis in a fundamental question. How do particles respond to a given flow, and how does the flow in return respond to the presence of particles? The underlying goal of our research is to further the understanding of this fundamental question. But with such grand aims there must be plenty of room for humility regarding which particular questions we seek answers to. The mathematics of fluid dynamics have challenged physicists and mathematicians alike for several hundred years. Before moving on to the description of my work, I allow myself to digress into the story of a seemingly innocent question: what is the drag force on a perfect sphere moving with constant velocity through a still fluid?
 
-It turns out, that answers to seemingly simple questions can be unexpectedly elusive. The innocent question \emph{what is the drag force on a perfect sphere travelling with a constant velocity through a still fluid bath?} is arguably still open. Sir Stokes formulated the question in 1851 \cite{stokes1851}, and presented a solution in the special case of highly viscous flow. The resulting \emph{Stokes drag} is still today one of the main theoretical foundations in the modeling of particle dynamics. The small improvements over his solution have been hard-earned through a significant scientific effort, including the development of new mathematical tools \cite{goldenfeld2007}.
+Until the early 19th century the prevailing theory was the following: a moving sphere drags along some of the surrounding fluid in its motion, and the force upon the sphere is equal to the force required to drag along the extra weight. The force must then be dependent on the weight, or more precisely the density, of the fluid. But in 1829, Captain Sabine of the Royal Artillery performed detailed experiments with a pendulum in different gases \cite{sabine1829}. By observing the attenuation of the pendulum motion in both hydrogen gas and in air, he concluded beyond doubt that the damping force on the pendulum is not only proportional to the density of the surrounding gas.
+
+It was Sir George Gabriel Stokes who first computed the force on a \emph{slowly moving
+\footnote{Corresponding to Reynolds number $\re=0$, or viscous flow.}
+} sphere due to the internal friction of the fluid, and found that it depends on the ``index of friction'', which we today know as the kinematic viscosity of a fluid \cite{stokes1851}. From his calculation, Stokes immediately concluded that ``the apparent suspension of the clouds is mainly due to the internal friction of air.'' 
+%(Eq.~(127) in Ref.~\citenum{stokes1851}.) 
+The \emph{Stokes drag force} was a great success, and it predicts correctly the forces for slowly moving particles.
+
+But for swiftly moving particles ($\re>0$) the solution turned out to be very elusive. The question of how to correctly amend Stokes drag force to account for slightly faster motion took around a century of hard work, and the invention of a new branch of mathematics (singular perturbation theory, for a review see \cite{goldenfeld2007}). If we dare ask how to properly calculate the drag force on a particle moving quickly, in a curved path, and in a fluid which itself moves, the answer is still debated.
+
+Meanwhile, the Stokes solution for slow motion has been extended to encompass both forces and torques on particles of any conceivable shape \cite{jeffery1922,brenner1974,kim1991}. Much of modern research on particles in fluid flows still rely directly on these well-known results. Indeed, all results presented in this thesis are based on the Stokes drag on non-spherical particles.
+
 %\footnote{See \cite{goldenfeld2007} for a review of the Stokes drag and the perturbation theory around it. Other important contributions include, but are not limited to, works on non-spherical particles \cite{jeffery1922, brenner1974}, and the time-dependent problems \cite{basset1883, riley1983, gavze1990}, as well as finite $\re$ \cite{brady1993}.}\!.
-
-Nevertheless, 
+%Nevertheless, 
 
 
 
@@ -23,15 +33,26 @@ Nevertheless,
 \section*{This thesis}
 
 This thesis concerns the orientational dynamics of small, rigid particles suspended in fluid flows. 
-
-\section*{Disposition}
-
+The thesis contains three papers A--C, and this extended summary. The extended summary serves four distinct purposes:
+\begin{enumerate}
+	\item Introduce our research topic to a non-expert.
+	\item Give a brief technical introduction of the field, intended for a fellow student or researcher.
+	\item Introduce the papers, and elaborate on some results related to the papers.
+	\item Give some mathematical results for reference in appendices.
+\end{enumerate}
+I therefore organised the thesis into four parts,
 \begin{itemize}
-	\item Part I: Introduction, background, context
-	\item Part II: Our work up to now
+	\item Part I: Introduction
+	\item Part II: Present work
 	\item Part III: Appendices with calculations
 	\item Part IV: Research papers
 \end{itemize}
+The non-technical reader may read the first Sections of Part I, directly following this Section, for an introduction to our field of study. 
+
+The second half of the background introduces some key concepts, prerequisite to understanding the appended research papers. The introduction is aimed at a peer, who has some technical background, but perhaps is not familiar with this particular field of research. It is necessarily brief, and selective in subject, but my intention is that it should enable for instance a fellow student to read and understand the appended research papers.
+
+The reader familiar with the subject likely wants to jump directly to the papers in Part IV, and return to Part II at his or her own convenience for elaborations, particularly regarding papers A and C. I expect the calculations in Part III to serve as a future technical reference, and they should not be needed to read and understand the papers.
+
 
 
 \end{document}
