@@ -143,8 +143,32 @@
 \usepackage[T1]{fontenc}
 
 
+% fancyhdr
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+
+\pagestyle{fancy}
+\renewcommand{\partmark}[1]{ \markboth{#1}{} }
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+
+\fancyhf{}
+\fancyhead[LE,RO]{\textsc {\thepage}}
+\fancyhead[RE]{\textsc{ \nouppercase{\leftmark}} }
+\fancyhead[LO]{\textsc{ \nouppercase{\rightmark}} }
+
+%\fancypagestyle{plain}{ %
+%  \fancyhf{} % remove everything
+%  \renewcommand{\headrulewidth}{0pt} % remove lines as well
+%  \renewcommand{\footrulewidth}{0pt}
+%}
+
+%%%%
+
+
 % User commands
-\title{Orientational dynamics of small non-spherical rigid particles in fluid flows}
+\title{Orientational dynamics of small non-spherical\\rigid particles in fluid flows}
 %\subtitle{And Perhaps a Subtitle}
 \author{Jonas Einarsson} % Not common with more than one author
 \thesisin{Physics}
@@ -155,27 +179,31 @@
 \copyrightyear{2013}
 
 \opponent{
-Title Name\\
+Title Name \\
 Department \\
 University \\
 Country
 }
-\oppositiondate{10.00 am, 30\textsuperscript{th} May, 2011 in HA2 Hörsalsvägen 4, Göteborg}
+\oppositiondate{When, and where}
 
 % You should scale the figure according to textwidth and or paperheight.
 %\coverfigure{\includegraphics[width=\textwidth,height=0.4\paperheight,keepaspectratio]{figures/ExampleCover}}
 %\covercaption{Some explanation}
 
-\firstabstract{Text}
+\firstabstract{
+
+}
 %\secondabstract{swedish}{Text}
-\keywords{Some stuff, More stuff, Stuff}
+\keywords{}
 
 %\preface{Text}
-\acknowledgements{Acknowledgements}
-\dedication{\textit{!}}
+\acknowledgements{Most importantly, I want to thank my supervisor Bernhard Mehlig for taking me on as a student. I cannot imagine a better scientific climate to work in: everything is up for discussion, no stone unturned.
+
+I also want to thank the many collaborators we have: Dag Hanstorp, for the microfluidic experiments; Jean-R\'egis Angilella for the many discussions and calculations, some of which resulted in paper B; Kristian Gustavsson for teaching me all I know about random flows and Kubo-numbers.
+}
 %\paperwork{Text}
 \thesiscontents{This thesis consists of an extended summary and three appended papers:}
-
+\printers{Ale Tryckteam}
 
 % You can add extra contents such as abbreviations and nomenclature using.
 % Use \presectiontitle to render add titles to new sections.
@@ -204,40 +232,54 @@ Country
 
 \setlength{\topcolumn}{0.22\textwidth} % Column for "Thesis" page which might need adjustments if there is other publications.
 
+
 \begin{document}
-% \makethesisdefence % Should be printed at a5paper size
-\maketitle
-% If you need to do any modifications, you can redefine each page respectively, or just call them manually as;
-%\makecoverpage
-%\maketitlepage
-%\makeprintinfopage
-%\makesecondabstractpage
-%\makededicationpage
-%\makeprefacepage
-%\makeacknowledgementspage
-%\maketableofpaperspage
-%\cleardoublepage\tableofcontents
-%\cleardoublepage\pagenumbering{arabic}
+
+%% TITLE
+\setcounter{page}{-100} % for hyperref, odd right sides
+
+\pagestyle{empty}
+~\newpage
+\pagenumbering{roman}
+\maketitlepage
+\newpage\makeprintinfopage
+\newpage\makeabstractpage
+\cleardoublepage\maketableofpaperspage
+\newpage\makeacknowledgementspage
+\pagestyle{plain}
+\cleardoublepage\tableofcontents
+\cleardoublepage\pagenumbering{arabic}
+\pagestyle{fancy}
+
+
 \part{Introduction} % Using the starred command avoids numbering.
-\subfile{Introduction}
-\subfile{Background}
+ \thispagestyle{empty}
+ \subfile{Introduction}
+ \subfile{Background}
 \part{Present work} % Using the starred command avoids numbering.
+\thispagestyle{empty}
+\subfile{PartIIintroduction}
 \subfile{Experiment}
 \subfile{Inertia}
 \subfile{Turbulence}
 \subfile{Ornstein}
 \nocite{paper3} % Cites everything from the bibliography
+
+\clearpage
+
 \nobibliography*
 \bibliography{references} % Legacy command
 
+
 \part{Appendices} % Using the starred command avoids numbering.
+\thispagestyle{empty}
 \appendix
 \subfile{app_fpe_sphere}
 \subfile{app_randomflow_diffusion}
 \subfile{app_triaxial_equations}
 
 \part{Research papers}
-
+\thispagestyle{empty}
 % You can write this manually \paper{Paper Title}{Full reference} or have bib entries entered automatically
 \paper{Aperiodic tumbling of microrods advected in a microchannel flow}{Reference}
 %\includepdf[pages=-,width=\paperwidth]{papers/1.pdf}

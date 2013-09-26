@@ -162,9 +162,9 @@
 {\normalfont\normalsize}{\thesubparagraph}{1em}{}
 
 % Parts should start a new right side page;
-\titleclass{\part}{straight}
+\titleclass{\part}{top}
 \newcommand{\partbreak}{\cleardoublepage}
-\titleformat{\part}[display]{\huge\centering}{\LARGE\partname\ \thepart}{0em}{}
+\titleformat{\part}[display]{\huge\centering}{\LARGE\textsc{\partname\ \thepart}}{0em}{\textsc}
 \titlespacing*{\part}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 
 % Adjustments of floats and equations.
@@ -248,7 +248,7 @@
    \def\doctoratethesisname{Thesis for the degree of Doctor of Philosophy}%
    \def\techreportname{Technical report}%
    \def\inname{in}%
-   \def\listofpublicationsname{Thesis}%
+   \def\listofpublicationsname{List of papers}%
    \def\papername{Paper}%
    \def\publicationname{Publication}%
   }
@@ -331,8 +331,8 @@
 
 % Some default settings for Chalmers or at least the department of solid mechanics.
 \postcode{SE-412 96}
-\printers{Chalmers Reproservice}
-\telephone{+46 (0)31-772 1000}
+\printers{Ale Tryckteam}
+\telephone{+46 (0)31-786 00 00}
 
 % Thesis specific settings
 \if@bachelors
@@ -583,6 +583,7 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newcommand{\maketitlepage}{
  \@checkifdefined{thesisin}
  \@checkifdefined{reportno}
@@ -591,90 +592,74 @@
  \@checkifdefined{department}
  \@checkifdefined{copyrightyear}
 
- \newpage\thispagestyle{empty}
+
  \begin{center}
-  {\MakeUppercase{\thesisname\ \inname\ \@thesisin}\par}
-  \vspace*{\stretch{1}}
-  {\Large \@title\par}
-  \vskip 1em
-  \@ifundefined{@subtitle}{}{{\@subtitle\par}}
-  \vskip 1em
-  {\renewcommand{\and}{\NoCaseChange{\\}}\MakeTextUppercase{\@author}\par}
-  \vspace*{\stretch{3}}
-  {\@department\par}
-  \@ifundefined{@division}{}{{\textit{\@division}\par}}
-  {\MakeUppercase{\universityname}
-   \if@university
-    \\\MakeUppercase{\seconduniversityname}
-   \fi\par}
-  \vskip 0.5em
-  {\cityname, \countryname\ \@copyrightyear\par}
+  \textsc{\large Licentiate Thesis}
+  \\[35mm]
+  \Large {\@title}
+  \\[10mm]
+  \textsc{\Large\@author}
+  %\\[50mm]
+  \vfill
+  \noindent\rule{90mm}{0.4pt}
+  \\[3mm]
+  {\small
+\@department\\
+\universityname\\
+\cityname, \countryname\ \@copyrightyear\\
+  }
  \end{center}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\makeprintinfopage}{
- \@checkifdefined{thesisin}
- \@checkifdefined{reportno}
+ %\@checkifdefined{thesisin}
  \@checkifdefined{title}
  \@checkifdefined{author}
  \@checkifdefined{department}
  \@checkifdefined{copyrightyear}
- \@checkifdefined{ISSN}
+ 
+\vspace*{\fill}
 
- \newpage
- \vspace*{\stretch{1}}
- {\noindent \@title\\
-  \@ifundefined{@subtitle}{}{\@subtitle\\}
-  \renewcommand{\and}{\\}\MakeUppercase{\@author}
-  \@ifundefined{@ISBN}{}{\\ISBN \@ISBN}
-  \par}
- \vskip 2em
- {\noindent \copyright\ {\renewcommand{\and}{, }\MakeUppercase{\@author}}, \@copyrightyear\par}
- \vskip 2em
- {\noindent \@reportseries\ \@reportno\\
-  ISSN \@ISSN\\
+ {\small
+  \noindent \emph{\@title}\\
+  \@author\\
+  ISBN \@ISBN\\[5mm]
+   \copyright\ \@author, \@copyrightyear \\[5mm]
   \@department\\
-  \@ifundefined{@division}{}{\@division\\}
   \universityname\\
   \@postcode\ \cityname\\
   \countryname\\
-  \telephonename: \@telephone\par}
- \vspace*{\stretch{2}}
- \@ifundefined{@covercaption}{
-  \@ifundefined{@coverfigure}{}{\ClassWarning{gu-thesis}{Cover figure without caption!}}
-  }{{\noindent \covername:\\ \@covercaption\par}
-  \@ifundefined{@coverfigure}{\ClassWarning{gu-thesis}{Caption without cover figure!}}{}
- }
- \vskip 1em
- {\noindent \@printers
-  \\ \cityname, \countryname\ \@copyrightyear\par}
+  \telephonename: \@telephone\\[5mm]
+  Cover: ....\\[5mm]
+ Printed by \@printers \\
+ \cityname, \countryname\ \@copyrightyear
+  }
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\makeabstractpage}{
- \@checkifdefined{thesisin}
- \@checkifdefined{title}
- \@checkifdefined{author}
- \@checkifdefined{department}
- \@checkifdefined{firstabstract}
- \@checkifdefined{keywords}
+ %\@checkifdefined{thesisin}
+ %\@checkifdefined{title}
+ %\@checkifdefined{author}
+ %\@checkifdefined{department}
+ %\@checkifdefined{firstabstract}
+ %\@checkifdefined{keywords}
 
- \newpage
- \pagenumbering{roman}
- {\noindent \@title\\
-  \@ifundefined{@subtitle}{}{\@subtitle\\}
-  \thesisname\ \inname\ \@thesisin\\
-   {\renewcommand{\and}{\\}\MakeUppercase{\@author}}\\
-  \@department\\
-  \@ifundefined{@division}{}{\@division\\}
-  \universityname
-  \if@university\\\seconduniversityname\fi
- \par}
+ 
+ %{\noindent \@title\\
+ % \@ifundefined{@subtitle}{}{\@subtitle\\}
+ % \thesisname\ \inname\ \@thesisin\\
+ %  {\renewcommand{\and}{\\}\MakeUppercase{\@author}}\\
+ % \@department\\
+ % \@ifundefined{@division}{}{\@division\\}
+ % \universityname
+ % \if@university\\\seconduniversityname\fi
+ %\par}
  \presectiontitle{\abstractname}
  \@firstabstract
- \vskip 1em
- \noindent \keywordsname: \@keywords
+ %\vskip 1em
+ %\noindent \keywordsname: \@keywords
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -697,39 +682,24 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\makededicationpage}{%
- \if@draft
-  \newpage
- \else
-  \cleardoublepage
- \fi
  \vspace*{0.2\textheight}
  \begin{center}\@dedication\end{center}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\makeprefacepage}{%
- \if@draft
-  \newpage
- \else
-  \cleardoublepage
- \fi
  \presectiontitle{\prefacename}
  \@preface
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\makeacknowledgementspage}{% Note: Doesn't need a new page.
+\newcommand{\makeacknowledgementspage}{
  \presectiontitle{\acknowledgementsname}
  \@acknowledgements
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\maketableofpaperspage}{
- \if@draft
-  \newpage
- \else
-  \cleardoublepage
- \fi
  \phantomsection
  \presectiontitle{\listofpublicationsname}
  \noindent \@thesiscontents
@@ -742,29 +712,32 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\maketitle}{%
- \setcounter{page}{-100} % Necessary to give the first pages a unique identifier using hyperref.
+ \setcounter{page}{-99} % Necessary to give the first pages a unique identifier using hyperref.
  \if@draft\else
   \if@cover
+   \setcounter{page}{-100} % Necessary to give the first pages a unique identifier using hyperref.
    \makecoverpage
   \fi
  \fi
-
+\pagenumbering{roman}
  \if@draft\else
   \maketitlepage
 
   \makeprintinfopage
  \fi
 
- \makeabstractpage\pagestyle{plain}
+ \makeabstractpage
 
  % Empty or second abstract
  \@ifundefined{@secondabstract}{}{
   \makesecondabstractpage
  }
 
- \@ifundefined{@dedication}{}{
-  \makededicationpage
- }
+% If its a doctorate or licentiate thesis, include the table of papers.
+ \if@bachelorsormasters\else\if@techreport\else
+  \maketableofpaperspage
+ \fi\fi
+
 
  % Preface and acknowledgements
  \@ifundefined{@preface}{}{
@@ -773,22 +746,22 @@
  \@ifundefined{@acknowledgements}{}{
   \makeacknowledgementspage
  }
+ \@ifundefined{@dedication}{}{
+  \makededicationpage
+ }
 
  \@ifundefined{@extrafrontmatter}{}{
   \cleardoublepage
   \@extrafrontmatter
  }
 
- % If its a doctorate or licentiate thesis, include the table of papers.
- \if@bachelorsormasters\else\if@techreport\else
-  \maketableofpaperspage
- \fi\fi
-
+ 
  \if@draft
   \newpage
  \else
   \cleardoublepage
  \fi
+ \pagestyle{plain}
  \tableofcontents
 
  % Sets up page numbering for the rest of the document.
