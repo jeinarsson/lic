@@ -343,6 +343,23 @@ In this Section we consider the orientational dynamics of an axisymmetric partic
 
 We will now use the diffusion approximation to calculate the probability distribution. For a complete and very readable account of the method I point to the book \emph{Stochastic Processes in Physics and Chemistry}, by van Kampen \cite{kampen2007}. My simple view of the diffusion approximation is the following. The orientation of the particle is driven by very many, very small and very fast kicks. In the case of particles in fluids, the small kicks originate in the bombardment of fluid molecules onto the particle surface. These \emph{microscopic} kicks are so small and fast that we never see them directly. But after a short time, enough kicks have accumulated into an observable change. If we reset the particle orientation, the microscopic kicks will again accumulate into an observable change. But because the molecular bombardment is not exactly the same every time, the accumulated change is different every time. The diffusion approximation is to not consider all the details, but to only consider the \emph{mean value} and \emph{variance} of the accumulated changes. The idea is to replace the complicated accumulation of microscopic kicks with randomly generated changes. The randomly generated changes will have the correct mean value and variance, but all other details are neglected. There is a well-developed mathematical machinery to deal with the randomly generated changes, which is described in detail by van Kampen \cite{kampen2007}.
 
+The basic proceduce is the following. Given a dynamical system with a Gaussian random signal $\eta(t)$,
+\begin{align*}
+\dot x &= f(x) + \eta(t), \qquad \langle\eta(0)\eta(\tau)\rangle=\delta(\tau)
+\end{align*}
+We first compute the average jump size $\langle \delta x \rangle$, and the second moment $\langle (\delta x) ^2\rangle$ over a short time interval $\delta t$. Then with
+\begin{align*}
+	a^{(1)} &= \frac{\langle \delta x\rangle}{\delta t}, \textrm{ and}\\
+	a^{(2)} &= \frac{\langle (\delta x)^2\rangle}{\delta t},
+\end{align*}
+the corresponding Fokker-Planck equation for the probability distribution $P(x,t)$ is 
+\begin{align*}
+	\frac{\partial P}{\partial t} &= \frac{\partial}{\partial x}\left[a^{(1)} P\right] + \frac{1}{2}\frac{\partial^2}{\partial x^2}\left[a^{(2)} P\right].
+\end{align*}
+The coefficient $a^{(1)}$ is commonly referred to as \emph{drift}, and $a^{(2)}$ \emph{diffusion}.
+
+
+
 The governing equation for the orientational distribution of an axisymmetric particle in the diffusion approximation is the Fokker-Planck equation
 \begin{align*}
 	\frac{\partial}{\partial t}P(\ve n, t) &= \frac{\partial}{\partial \ve n}\left[\ve (\ve n, t)\right] + \mathcal D \frac{\partial^2}{\partial \ve n^2}P(\ve n, t)

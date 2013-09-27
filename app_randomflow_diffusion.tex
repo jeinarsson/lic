@@ -2,9 +2,175 @@
 
 \begin{document}
 
-\chapter{Diffusion on the sphere}
+\chapter{Fokker-Planck equation on the sphere}
 
-Given a dynamical system with some stochastic functions it is a standard matter to derive the corresponding Fokker-Planck equation. See for example van Kampen \cite{kampen07}. 
+The Fokker-Planck equation takes the familiar form in cartesian coordinates:
+\begin{align}
+	\partial_t P &= -\nabla \cdot [\ve v P] + \mathcal D \nabla^2 P.\eqnlab{diffusion}
+\end{align}
+This equation is usually called the diffusion equation, because for a particle advected by the \emph{drift} $\ve v$ and randomly kicked around with the \emph{diffusion constant} $\mathcal D$, \Eqnref{diffusion} governs the evolution of the probability $P(\ve x,t)$ of finding the particle at $\ve x$ at time $t$. As it is written, \Eqnref{diffusion} is valid for isotropic and homogenous diffusion, in other words, the random kicks do not depend on the position of the particle, and they are equally probable in all directions. 
+
+When the particle does not move in cartesian space, but confined to the unit sphere there are two plausible ways of defining a Fokker-Planck equation. The first, and perhaps most straightforward, is to find out how to represent the operator $\nabla$ on the surface of the sphere, and use \Eqnref{diffusion}. The second way is to derive the Fokker-Planck equation from the microscopic equations of motion, as described for instance in the book by van Kampen \cite{kampen07}. This approach has certain advantages. First, it allows for the case that the random kicks have non-standard statistics, for instance they may be stronger in one direction than another. The random kicks may also depend on the current state of the system $\ve x$. Deriving the Fokker-Planck equation will automatically give the correct amendments to \Eqnref{diffusion}. Second, the calculation gives an explicit expression for the diffusion constant $\mathcal D$. In the case of thermal diffusion, there exists a fluctuation-dissipation theorem that relates $\mathcal D$ to the temperature and fluid drag. But what if the source of noise is different? For example, if the random kicks originate in random fluctuations of the flow gradients, what is $\mathcal D$?
+
+In the case of isotropic and homogenous noise, the two approaches must clearly be equivalent. In this appendix I will derive the Fokker-Planck equation for a unit vector $\ve n$ subject to random rotations $\ve \omega$, expressed in cartesian coordinates. We will see that there are some subtle points because the three coordinates of $\ve n$ are redundant to represent the two degrees of freedom on the unit sphere.
+
+In the following $\nabla$ represents the usual gradient in cartesian space, and $\partial_{\ve n}$ denotes the surface gradient confined to the sphere. Then in the end, $\partial_{\ve n}$ and $\partial^2_{\ve n}$ will be replace $\nabla$ and $\nabla^2$ in \Eqnref{diffusion} to give the correct Fokker-Planck equation on the unit sphere.
+
+\section{The standard way}
+
+ The surface gradient on a sphere is the projection of $\nabla$ onto the surface $|\ve n|=1$:
+\begin{align}
+	\partial_{\ve n} &= (\ma I - \ve n \ve n \transpose) \nabla.\eqnlab{spherenabla1}
+\end{align}
+The interpretation is straightforward. Take the gradient $\nabla f$, which is a vector, and subtract the component in the outwards direction from the sphere, $-\ve n(\ve n \cdot \nabla f)$. In the following derivations I will often use index notation, in which \Eqnref{spherenabla1} reads
+\begin{align*}
+	(\partial_{\ve n})_i &= (\delta_{ij} - n_in_j)\partial_j,
+\end{align*}
+where $\partial_j \equiv \partial/\partial n_j$. We proceed and also compute $\partial^2_{\ve n}$ on component form:
+\begin{align}
+	\partial^2_{\ve n} &= (\partial_{\ve n})_i(\partial_{\ve n})_i \nn \\
+	&= (\delta_{ij} - n_in_j)\partial_j(\delta_{ik} - n_in_k)\partial_k \nn \\
+	&= \underbrace{\delta_{ij}\partial_j \delta_{ik} \partial_k}_{\partial_i\partial_i} - \underbrace{\delta_{ij}\partial_jn_in_k\partial_k}_{A} - \underbrace{n_in_j\partial_j\delta_{ik}\partial_k}_{-n_in_j\partial_i\partial_j} + \underbrace{n_in_j\partial_jn_in_k\partial_k}_{B}\eqnlab{partialn2start}
+\end{align}
+In order to compute $A$ and $B$ we evaluate product derivatives according to
+\begin{align*}
+	\partial_i f g &= \partial_i [f] g + f \partial_i[g] + fg \partial_i, \\
+\end{align*}
+where the last term is kept because we are manipulating an operator. Further, we use that
+\begin{align*}
+		\partial_i n_j &= \delta_{ij},\\
+		n_in_i &= 1,\\
+		\delta_{ii} &= 3,
+\end{align*}
+where the number $3$ is the number of spatial dimensions. Continuing, 
+\begin{align*}
+A &= -\delta_{ij}\partial_jn_in_k\partial_k \\
+&= -\partial_in_in_k\partial_k \\
+&= -(\delta_{ii}n_k\partial_k + n_i \delta_{ik} \partial_k + n_in_k\partial_i\partial_k)\\
+&= -(3n_k\partial_k + n_i \partial_i + n_in_k\partial_i\partial_k)\\
+%
+B&=n_in_j\partial_jn_in_k\partial_k \\
+	&= n_in_j\delta_{ij}n_k\partial_k + n_in_jn_i\delta_{jk}\partial_k + n_in_jn_in_k\partial_j\partial_k\\
+	&=n_k\partial_k + n_k\partial_k + n_jn_k\partial_j\partial_k \\
+	&= 2n_k\partial_k + n_jn_k\partial_j\partial_k
+\end{align*}
+Upon inserting $A$ and $B$ into \Eqnref{partialn2start} we obtain
+\begin{align}
+	\partial^2_{\ve n} &= \partial_i\partial_i - n_in_j\partial_i\partial_j - 2n_i\partial_i. \eqnlab{partialn2}
+\end{align}
+This is the result to which we will compare the result of our subsequent derivations.
+
+Another common way of writing down differential operators on the surface of a sphere is to use the orbital angular momentum operator $\ve L$ \cite{jackson1999}:
+\begin{align}
+	\ve L &= -i \ve n \cross \nabla, \nn
+	\intertext{from which it follows}
+	-i \ve n \cross \ve L &=  (\ma I - \ve n \ve n \transpose) \nabla = \partial_{\ve n},\eqnlab{ncrossl}\\
+	-L^2 &= (\ma I - \ve n \ve n \transpose) \nabla \cdot (\ma I - \ve n \ve n \transpose) \nabla = \partial^2_{\ve n}.\eqnlab{lsquare}
+\end{align}
+There are several variants in literature, for example Doi \& Edwards \cite{doi1986} defines the rotation operator  $\mathcal R = i \ve L$. Although the prefactors change, the idea is always the same. The relations \Eqnref{ncrossl} and \Eqnref{lsquare} are straightforward to prove by calculation. 
+
+\proofheader{Proof of \Eqnref{ncrossl}}
+\begin{align*}
+	-i(\ve n \cross \ve L)_i &= i^2 \lc_{ijk}n_j\lc_{kpq}n_p\partial_q \\
+	&= -(\delta_{ip}\delta_{jq}-\delta_{iq}\delta_{jp})n_jn_p\partial_q \\
+	&= -(n_qn_i\partial_q - n_pn_p\partial_i) \\%&& \textrm{(since $n_pn_p=1$)}\\
+	&= (\delta_{iq} - n_in_q)\partial_q && \blacksquare
+\end{align*}
+
+\proofheader{Proof of \Eqnref{lsquare}}
+\begin{align*}
+	-L_iL_i &= \lc_{ijk}n_j\partial_k\lc_{ipq}n_p\partial_q \\
+	&= (\delta_{jp}\delta_{kq}-\delta_{jq}\delta_{kp})n_j\partial_kn_p\partial_q \\
+	&= n_j\partial_kn_j\partial_k - n_j\partial_kn_k\partial_j \\
+	&= \partial_k\partial_k + n_j \partial_j - n_j n_k \partial_j \partial_k - 3 n_j \partial_j\\
+	&= \partial_k \partial_k - n_i n_j\partial_i\partial_j-2n_i\partial_i && \blacksquare
+\end{align*}
+
+\section{Derivation from equations of motion}
+We now turn to the derivation of the Fokker-Planck equation from the equation of motion of a single particle. The general procedure is described in detail in the book by van Kampen \cite{kampen2007}, here I simply state the recipe: for a dynamical system of several variables we compute the drift for each variable $x_i$ as
+\begin{align}
+	a^{(1)}_i &= \lim_{\delta t\to0}\frac{\langle \delta x_i\rangle}{\delta t},\eqnlab{a1def}
+\end{align}
+and the diffusion covariance matrix between all combinations of variables:
+\begin{align}
+	a^{(2)}_{ij} &= \lim_{\delta t\to0}\frac{\langle (\delta x_i)(\delta x_j)\rangle}{\delta t}.\eqnlab{a2def}
+\end{align}
+The resulting Fokker-Planck equation for $P(\ve x, t)$ is
+\begin{align*}
+	\frac{\partial P}{\partial t} &= -\frac{\partial}{\partial x_i}\left[a^{(1)}_i P\right] + \frac{1}{2}\frac{\partial^2}{\partial x_i \partial x_j}\left[a^{(2)}_{ij} P\right].
+\end{align*}
+We start with the equation of motion for the unit vector $\ve n(t)$. Its time evolution is governed by 
+\begin{align*}
+	\dot {\ve n} &= \ve f(\ve n(t), t).
+\end{align*}
+In general, the displacement $\delta \ve n$ after a small time $\delta t$ is
+\begin{align}
+	\delta \ve n &= \ve n(\delta t) - \ve n_0 \nn\\
+	&= \int_0^{\delta t}\!\!\!\!\!\rd t_1 \ve f (\ve n(t_1 ), t_1)\nn\\
+	&= \int_0^{\delta t}\!\!\!\!\!\rd t_1 \ve f\left(\ve n_0 + \int_0^{t_1}\rd t_2 \ve f(\ve n(t_2),t_2), t_1\right)\nn\\
+	&= \int_0^{\delta t}\!\!\!\!\!\rd t_1 \ve f (\ve n_0, t_1)+\int_0^{\delta t}\!\!\!\!\!\rd t_1 \ma F (\ve n_0, t_1)\int_0^{t_1}\rd t_2 \ve f(\ve n_0, t_2) + ...\eqnlab{deltan}
+\end{align}
+where $\ma F$ denotes the matrix of derivates
+\begin{align*}
+	\ma F(\ve n, t) &= \frac{\rd \ve f}{\rd \ve n}.
+\end{align*}
+The function $\ve f(\ve n, t)$ may in general include both deterministic terms and terms including Gaussian white noise. For instance, for a particle driven by only random angular velocities
+\begin{align*}
+	\ve f(\ve n, t) &= \ve \omega(t) \cross \ve n, \qquad \begin{array}{ll}
+  	 \langle\omega_i(t)\rangle &= 0, \\
+  	 \langle\omega_i(0)\omega_j(t)\rangle &= 2\mathcal D \delta_{ij}\delta(t),
+  \end{array}
+\end{align*}
+where I anticipate the diffusion constant $\mathcal D$. I rewrite the cross product in terms of an antisymmetric matrix $\ma O$, such that $\ma O\ve n=\ve\omega \cross \ve n$, meaning
+\begin{align*}
+	\ve f(\ve n, t) &= \ma O(t) \ve n, \\
+	\ma F &= \ma O,\\
+	\intertext{where $\ma O$ is defined by}
+	O_{ij} &= -\lc_{ijp}\omega_p, \intertext{and has statistics}
+	\langle O_{ij}(t) \rangle &= 0,\\
+	\langle O_{ij}(0)O_{kl}(t)\rangle &= \langle\lc_{ijp}\omega_p(0)\lc_{klq}\omega_q(t)\rangle \\
+	&= \lc_{ijp}\lc_{klq}\langle \omega_p(0)\omega_q(t)\rangle \\
+	&= 2\mathcal D\lc_{ijp}\lc_{klq} \delta_{pq}\delta(t)\\
+	&= 2 \mathcal D(\delta_{ik}\delta_{jl}-\delta_{il}\delta_{jk})\delta(t).
+\end{align*}
+By insertion of the specific $\ve f$ and $\ma F$ into \Eqnref{deltan} we may now compute the average displacement. In order to ease the notation I call the initial condition $\ve n_0$ simply $\ve n$.
+\begin{align*}
+	\langle \delta \ve n\rangle &= \int_0^{\delta t}\!\!\!\!\!\rd t_1 \langle\ma O(t_1)\rangle\ve n+\int_0^{\delta t}\!\!\!\!\!\rd t_1 \int_0^{t_1}\rd t_2 \langle \ma O (t_1)\ma O(t_2)\rangle\ve n + \mathcal O(\delta t^2)\\
+	&= \mathcal D\int_0^{\delta t}\!\!\!\!\!\rd t_1 (\ma I-3\ma I)\ve n  + \mathcal O(\delta t^2) \\
+	&= -2\mathcal D \delta t \ve n  + \mathcal O(\delta t^2).
+\end{align*}
+Similarly we obtain the second moments of the displacements $\delta \ve n$ up to $\mathcal O(\delta t)$:
+\begin{align*}
+	\langle \delta \ve n\delta \ve n\transpose\rangle &= \int_0^{\delta t}\!\!\!\!\!\rd t_1 \int_0^{\delta t}\!\!\!\!\!\rd t_2 \left\langle\ve f(\ve n,t_1) \ve f\transpose(\ve n, t_2)\right\rangle + \mathcal O(\delta t^2)\\
+	&= \int_0^{\delta t}\!\!\!\!\!\rd t_1 \int_0^{\delta t}\!\!\!\!\!\rd t_2 \left\langle \ma O(t_1)\ve n\ve n\transpose \ma O(t_2)\transpose \right\rangle + \mathcal O(\delta t^2).\\
+	\intertext{Insert the statistics for $\ma O$ and use $|\ve n|=1$ to obtain}
+	&= 2\mathcal D \int_0^{\delta t}\!\!\!\!\!\rd t_1 \int_0^{\delta t}\!\!\!\!\!\rd t_2 \delta(t_1-t_2)(\ma I-\ve n\ve n\transpose) + \mathcal O(\delta t^2)\\
+	&= 2\mathcal D \delta t (\ma I-\ve n\ve n\transpose) + \mathcal O(\delta t^2).\\
+\end{align*}
+By the definition in Eqns. \eqnref{a1def} and \eqnref{a2def}, the coefficients $a^{(1)}$ and $a^{(2)}$ are
+\begin{align*}
+	a_i^{(1)} &= \lim_{\delta t\to0}\left\langle\frac{\delta n_i}{\delta t}\right\rangle = -2\mathcal D n_i,\\
+	a_{ij}^{(2)} &= \lim_{\delta t\to0}\left\langle\frac{\delta n_i\delta  n_j}{\delta t}\right\rangle = 2\mathcal D(\delta_{ij} - n_i n_j).
+\end{align*}
+The Fokker-Planck equation for the orientational distribution is then
+\begin{align}
+	\frac{\partial P}{\partial t} &= -\partial_i\left[a^{(1)}_i P\right] + \frac{1}{2}\partial_i\partial_j\left[a^{(2)}_{ij} P\right]\\
+&= 2\mathcal D\partial_i \left[n_i P\right] + \mathcal D\partial_i \partial_j\left[(\delta_{ij}-n_in_j) P\right].\eqnlab{fpe1}	
+\end{align}
+This equation should correspond to the diffusion equation \Eqnref{diffusion}, with the drift $\ve v=0$ and the spherical surface Laplacian \Eqnref{partialn2} substituted for $\nabla^2$. In order to make the comparison to $\partial^2_{\ve n}$, we remove $\mathcal D$ and expand the product derivatives of the operator in the right hand side of \Eqnref{fpe1}:
+\begin{align*}
+	& 2\partial_i n_i + \partial_i \partial_j\left(\delta_{ij}-n_in_j\right)\\
+	&= 2\delta_{ii} + 2n_i\partial_i + \partial_i\partial_i - \partial_i\left[\delta_{ij}n_j + n_i\delta_{jj}+ n_in_j\partial_j\right]\\
+	&=6 + 2n_i\partial_i + \partial_i\partial_i-\delta_{jj}-n_j\partial_j-3\delta_{ii}-3n_i\partial_i\\
+	&\qquad-\delta_{ii}n_j\partial_j-n_i\delta_{ij}\partial_j-n_in_j\partial_i\partial_j \\
+	&= \partial_i\partial_i -6n_i\partial_i - n_in_j\partial_i\partial_j-6
+\end{align*}
+
+\section{Remarks}
+\begin{itemize}
+	\item $|\ve n|=R$ in \Eqnref{spherenabla1} leads to same $\partial^2_{\ve n}$ regardless if $R=1$ before or after differentiation
+\end{itemize}
+\section{Random flow}
 
 We will use the Jeffery equation ($\nabla \ve u = \ma A = \ma O + \ma S$)
 
