@@ -1,0 +1,255 @@
+\documentclass[thesis.tex]{subfiles}
+
+\begin{document}
+
+\chapter[Lagrangian statistics]{Lagrangian statistics in \\ isotropic \& incompressible flow}
+
+In this appendix I derive the general form of the Lagrangian statistics of velocity gradients in an isotropic and incompressible flow. Let me introduce some notation for Lagrangian correlation functions. We denote the matrix of flow gradients by 
+\begin{align*}
+\ma A(\ve r(t), t) &= \nabla \ve u(\ve r(t), t),
+\intertext{or in component notation}	
+A_{ij}(\ve r(t), t) &= \frac{\partial}{\partial r_j}u_i(\ve r(t), t).
+\end{align*}
+The correlation functions between matrix elements are denoted
+\begin{align*}
+	C^{AA}_{ijkl}(t) &\equiv \left\langle A_{ij}(\ve r(0),0)A_{kl}(\ve r(t), t)\right\rangle,\\
+	C^{AAA}_{ijklmn}(t_1,t_2) &\equiv \left\langle A_{ij}(0)A_{kl}(t_1)A_{mn}(t_2)\right\rangle,
+\end{align*}
+and so on. Later we will instead use the shorthand $\ma A_t \equiv \ma A(\ve r(t), t)$ for gradients evaluated along particle trajectories.
+
+\section{Two-point correlation functions}
+
+Since we are considering isotropic flows, the correlation function must also be isotropic. The most general isotropic tensor of rank four is
+\begin{align*}
+	C^{AA}_{ijkl}(t) &= \alpha_1(t)\delta_{ij}\delta_{kl}+\alpha_2(t)\delta_{ik}\delta_{jl}+\alpha_3(t)\delta_{il}\delta_{kj},
+\end{align*}
+where $\alpha_k(t)$ are arbitrary functions of time. The incompressibility condition, $\partial_iu_i=0$, translates into:
+\begin{align*}
+	C^{AA}_{iikk} = d^2 \alpha_1(t) + d(\alpha_2(t)+\alpha_3(t)) = 0,
+\end{align*}
+where $d$ is the number of spatial dimensions. We may choose $\alpha_1 = -(\alpha_2+\alpha_3)/d$:
+\begin{align*}
+	C^{AA}_{ijkl}(t) &=-\frac{1}{d}(\alpha_2(t)+\alpha_3(t))\delta_{ij}\delta_{kl}+\alpha_2(t)\delta_{ik}\delta_{jl}+\alpha_3(t)\delta_{il}\delta_{kj},
+\end{align*}
+We are out of symmetries to apply, and two arbitrary functions of $t$ remain in the correlation function. The non-trivial mix of time and space dependence is not convenient to deal with in calculations. But it turns out we can separate the two arbitrary functions by separating $\ma A $ in its symmetric and antisymmetric parts:
+\begin{align*}
+	&\ma O = \frac{1}{2}(\ma A - \ma A\transpose),\quad
+	\ma S = \frac{1}{2}(\ma A + \ma A\transpose),\quad
+	\ma A = \ma O + \ma S.
+\end{align*}
+It follows that
+\begin{align*}
+	C^{OO}_{ijkl}(t) &= \frac{1}{4}\left(C^{AA}_{ijkl}(t) - C^{AA}_{ijlk}(t) - C^{AA}_{jikl}(t) + C^{AA}_{jilk}(t)\right) \\
+	&= \frac{\alpha_3(t)-\alpha_2(t)}{2}(\delta_{il}\delta_{jk} - \delta_{ik}\delta_{jl}), \\
+	C^{SS}_{ijkl}(t) &= \frac{1}{4}\left(C^{AA}_{ijkl}(t) + C^{AA}_{ijlk}(t) + C^{AA}_{jikl}(t) + C^{AA}_{jilk}(t)\right) \\
+	&= \frac{\alpha_2(t)+\alpha_3(t)}{2d}(d\delta_{il}\delta_{jk} + d\delta_{ik}\delta_{jl} - 2\delta_{ij}\delta_{kl}), \\
+	C^{SO}_{ijkl}(t) &= \frac{1}{4}\left(C^{AA}_{ijkl}(t) - C^{AA}_{ijlk}(t) + C^{AA}_{jikl}(t) - C^{AA}_{jilk}(t)\right) = 0.
+\end{align*}
+We relate the time correlation functions $\alpha_k(t)$ to the respective matrices by computing
+\begin{align}
+	\left\langle \tr \ma O_0\ma O_t\right\rangle &= C^{OO}_{ijji}(t) = \frac{\alpha_3(t)-\alpha_2(t)}{2}d(d-1), \nn\\
+	\left\langle \tr \ma S_0\ma S_t\right\rangle &= C^{SS}_{ijji}(t) = \frac{\alpha_2(t)+\alpha_3(t)}{2}(d^2+d-2).\eqnlab{turbtraces2}
+\end{align}
+Finally, for an isotropic, incompressible flow the two-point gradient statistics are on the form
+\begin{align}
+	C^{OO}_{ijkl}(t) &= \frac{\left\langle \tr \ma O_0\ma O_t\right\rangle}{d(d-1)}( \delta_{il}\delta_{jk}-\delta_{ik}\delta_{jl}), \nn\\
+	C^{SS}_{ijkl}(t) &= \frac{\left\langle \tr \ma S_0\ma S_t\right\rangle}{d(d-1)(d+2)}(d\delta_{il}\delta_{jk} + d\delta_{ik}\delta_{jl} - 2\delta_{ij}\delta_{kl}), \nn\\
+	C^{SO}_{ijkl}(t) &= 0. \eqnlab{turbjpoint}
+\end{align}
+On this form the time- and space dependence of the correlation functions factorise, which enables us to find a simple expression like Eq.~(4) in Paper C. The time correlation functions $\left\langle \tr \ma O_0\ma O_t\right\rangle$ and $\left\langle \tr \ma S_0\ma S_t\right\rangle$ are specific to the flow, and must be measured or computed from a flow model.
+
+\section{Three-point correlation functions}
+
+The same type of factorisation can be found for the three-point correlations, for example $C^{SSS}_{ijklmn}(t)$. The procedure is the same, but the algebra expands a fair bit.
+The general isotropic tensor of rank six has 15 free parameters \cite{andrews1977}:
+\begin{align*}
+	C^{AAA}_{ijklmn}(t_1,t_2) &=
+		\beta_{1} \delta_{ij}\delta_{kl}\delta_{mn} +  
+		\beta_{2} \delta_{ij}\delta_{km}\delta_{ln} +  
+		\beta_{3} \delta_{ij}\delta_{kn}\delta_{lm} \\&\quad+ 
+		\beta_{4} \delta_{ik}\delta_{jl}\delta_{mn} +  
+		\beta_{5} \delta_{ik}\delta_{jm}\delta_{ln} +  
+		\beta_{6} \delta_{ik}\delta_{jn}\delta_{lm} \\&\quad+  
+		\beta_{7} \delta_{il}\delta_{jk}\delta_{mn} +  
+		\beta_{8} \delta_{il}\delta_{jm}\delta_{kn} +  
+		\beta_{9} \delta_{il}\delta_{jn}\delta_{km} \\&\quad+  
+		\beta_{10}\delta_{im}\delta_{jk}\delta_{ln} +  
+		\beta_{11}\delta_{im}\delta_{jl}\delta_{kn} +  
+		\beta_{12}\delta_{im}\delta_{jn}\delta_{kl} \\&\quad+  
+		\beta_{13}\delta_{in}\delta_{jk}\delta_{lm} +  
+		\beta_{14}\delta_{in}\delta_{jl}\delta_{km} +  
+		\beta_{15}\delta_{in}\delta_{jm}\delta_{kl}.
+\end{align*}
+The $\beta_k=\beta_k(t_1,t_2)$ are also here arbitrary functions of time, but the explicit time dependence is left out for brevity. The incompressibility condition $A_{ii}=0$ gives the equations
+\begin{align*}
+	C^{AAA}_{iiklmn} =C^{AAA}_{ijkkmn} =C^{AAA}_{ijklmm} =0,
+\end{align*}
+which when solved reduce the number of free parameters to eight:
+\begin{align*}
+\beta_{3}&=-\frac{1}{2} \beta_{1} d-\beta_{2},\\
+\beta_{7}&=-\frac{1}{2} \beta_{1} d-\beta_{4},\\
+\beta_{11}&=\beta_{2} d-\beta_{4} d-\beta_{6}+\beta_{9}+\beta_{10},\\
+\beta_{12}&=-\frac{2 \beta_{9}}{d}-\frac{2
+\beta_{10}}{d}-\beta_{2}+\beta_{4},\\
+\beta_{13}&=\frac{1}{2} \beta_{1} d^2+\beta_{4} d-\beta_{8}-\beta_{9}-\beta_{10},\\
+\beta_{14}&=\beta_{2} (-d)-\beta_{5}-\beta_{9}-\beta_{10},\\
+\beta_{15}&=-\frac{1}{2} \beta_{1} d+\frac{2 \beta_{9}}{d}+\frac{2
+\beta_{10}}{d}+\beta_{2}-\beta_{4}.
+\end{align*}
+Again, it turns out that the splitting of $\ma A$ into $\ma O$ and $\ma S$ separates the eight parameters, one for each of the eight combinations of $\ma O$ and $\ma S$. Take for example $\ma S\ma S\ma S$,
+\begin{align*}
+C^{SSS}_{ijklmn}(t_1,t_2) &= \frac{1}{8}\left(
+C^{AAA}_{ijklmn}(t_1,t_2) +
+C^{AAA}_{ijklnm}(t_1,t_2) +
+C^{AAA}_{ijlkmn}(t_1,t_2) \right.\\&\qquad+\left.
+C^{AAA}_{ijlknm}(t_1,t_2) +
+C^{AAA}_{jiklmn}(t_1,t_2) +
+C^{AAA}_{jiklnm}(t_1,t_2) \right.\\&\qquad+\left.
+C^{AAA}_{jilkmn}(t_1,t_2) +
+C^{AAA}_{jilknm}(t_1,t_2) \right)
+\\
+&= \frac{\beta_{1}}{16} \left(
+d^2 \delta_{in} \delta_{jl} \delta_{km}+ 
+d^2 \delta_{il} \delta_{jn} \delta_{km}+
+d^2 \delta_{im} \delta_{jl} \delta_{kn}\right.\\ &\qquad\left.+
+d^2 \delta_{il} \delta_{jm} \delta_{kn}+
+d^2 \delta_{in} \delta_{jk} \delta_{lm}+
+d^2 \delta_{ik} \delta_{jn} \delta_{lm}\right.\\ &\qquad\left.+
+d^2 \delta_{im} \delta_{jk} \delta_{ln}+
+d^2 \delta_{ik} \delta_{jm} \delta_{ln}-
+4 d \delta_{in} \delta_{jm} \delta_{kl}\right.\\ &\qquad\left.-
+4 d \delta_{im} \delta_{jn} \delta_{kl}-
+4 d \delta_{ij} \delta_{kn} \delta_{lm}-
+4 d \delta_{ij} \delta_{km} \delta_{ln}\right.\\ &\qquad\left.-
+4 d \delta_{il} \delta_{jk} \delta_{mn}-
+4 d \delta_{ik} \delta_{jl} \delta_{mn}+
+16 \delta_{ij} \delta_{kl} \delta_{mn} \right)
+\end{align*}
+We relate $\beta_1$ to the trace of $\ma S \ma S \ma S$ by
+\begin{align*}
+	C^{SSS}_{ijjkki}(t_1, t_2)&=\left\langle\tr \ma S_0\ma S_{t_1}\ma S_{t_2}\right\rangle = 
+	\frac{\beta_1}{16}  d \left(d^4+3 d^3-8 d^2-12 d+16\right)
+\end{align*}
+The same procedure is repeated for all eight combinations of $\ma S$ and $\ma O$. The result is
+\begin{align*}
+C^{SSS}_{ijklmn}(t_1,t_2) &= 
+\frac{\left\langle\tr \ma S_0\ma S_{t_1}\ma S_{t_2}\right\rangle}{d \left(d^4+3 d^3-8 d^2-12 d+16\right)}\left(
+d^2 \delta_{in} \delta_{jl} \delta_{km}\right.\\ &\qquad\left.+
+d^2 \delta_{il} \delta_{jn} \delta_{km}+
+d^2 \delta_{im} \delta_{jl} \delta_{kn}+
+d^2 \delta_{il} \delta_{jm} \delta_{kn}\right.\\ &\qquad\left.+
+d^2 \delta_{in} \delta_{jk} \delta_{lm}+
+d^2 \delta_{
+} \delta_{jn} \delta_{lm}+
+d^2 \delta_{im} \delta_{jk} \delta_{ln}\right.\\ &\qquad\left.+
+d^2 \delta_{
+} \delta_{jm} \delta_{ln}-
+4 d \delta_{in} \delta_{jm} \delta_{kl}-
+4 d \delta_{im} \delta_{jn} \delta_{kl}\right.\\ &\qquad\left.-
+4 d \delta_{ij} \delta_{kn} \delta_{lm}-
+4 d \delta_{ij} \delta_{km} \delta_{ln}-
+4 d \delta_{il} \delta_{jk} \delta_{mn}\right.\\ &\qquad\left.-
+4 d \delta_{ik} \delta_{jl} \delta_{mn}+
+16 \delta_{ij} \delta_{kl} \delta_{mn}\right) ,\displaybreak[2]\\
+%
+C^{SSO}_{ijklmn}(t_1,t_2) &= 
+\frac{\left\langle\tr \ma S_0\ma S_{t_1}\ma O_{t_2}\right\rangle}{(d-1) d (d+2)}\left(
+\delta_{in} \delta_{jl} \delta_{km}+
+\delta_{il} \delta_{jn} \delta_{km}\right.\\ &\qquad\left.-
+\delta_{im} \delta_{jl} \delta_{kn}-
+\delta_{il} \delta_{jm} \delta_{kn}+
+\delta_{in} \delta_{jk} \delta_{lm}\right.\\ &\qquad\left.+
+\delta_{ik} \delta_{jn} \delta_{lm}-
+\delta_{im} \delta_{jk} \delta_{ln}-
+\delta_{ik} \delta_{jm} \delta_{ln}\right) ,\displaybreak[2]\\
+%
+C^{SOS}_{ijklmn}(t_1,t_2) &= 
+-\frac{\left\langle\tr \ma S_0\ma O_{t_1}\ma S_{t_2}\right\rangle}{(d-1) d (d+2)}\left(
+\delta_{in} \delta_{jl} \delta_{km}+
+\delta_{il} \delta_{jn} \delta_{km}\right.\\ &\qquad\left.+
+\delta_{im} \delta_{jl} \delta_{kn}+
+\delta_{il} \delta_{jm} \delta_{kn}-
+\delta_{in} \delta_{jk} \delta_{lm}\right.\\ &\qquad\left.-
+\delta_{ik} \delta_{jn} \delta_{lm}-
+\delta_{im} \delta_{jk} \delta_{ln}-
+\delta_{ik} \delta_{jm} \delta_{ln}
+\right),\displaybreak[2]\\
+%
+C^{SOO}_{ijklmn}(t_1,t_2) &= 
+-\frac{\left\langle\tr \ma S_0\ma O_{t_1}\ma O_{t_2}\right\rangle}{(d-2) (d-1) d (d+2)}\left(
+d \delta_{in} \delta_{jl} \delta_{km}+
+d \delta_{il} \delta_{jn} \delta_{km}\right.\\ &\qquad\left.-
+d \delta_{im} \delta_{jl} \delta_{kn}-
+d \delta_{il} \delta_{jm} \delta_{kn}-
+d \delta_{in} \delta_{jk} \delta_{lm}\right.\\ &\qquad\left.-
+d \delta_{ik} \delta_{jn} \delta_{lm}+
+d \delta_{im} \delta_{jk} \delta_{ln}+
+d \delta_{ik} \delta_{jm} \delta_{ln}\right.\\ &\qquad\left.-
+4 \delta_{ij} \delta_{km} \delta_{ln}+
+4 \delta_{ij} \delta_{kn} \delta_{lm} 
+\right),\displaybreak[2]\\
+%
+C^{OSS}_{ijklmn}(t_1,t_2) &= 
+\frac{\left\langle\tr \ma O_0\ma S_{t_1}\ma S_{t_2}\right\rangle}{(d-1) d (d+2)} \left(
+\delta_{in} \delta_{jl} \delta_{km}-
+\delta_{il} \delta_{jn} \delta_{km}\right.\\ &\qquad\left.+
+\delta_{im} \delta_{jl} \delta_{kn}-
+\delta_{il} \delta_{jm} \delta_{kn}+
+\delta_{in} \delta_{jk} \delta_{lm}\right.\\ &\qquad\left.-
+\delta_{ik} \delta_{jn} \delta_{lm}+
+\delta_{im} \delta_{jk} \delta_{ln}-
+\delta_{ik} \delta_{jm} \delta_{ln}
+\right),\displaybreak[2]\\
+%
+C^{OSO}_{ijklmn}(t_1,t_2) &= 
+\frac{\left\langle\tr \ma O_0\ma S_{t_1}\ma O_{t_2}\right\rangle}{(d-2) (d-1) d (d+2)}  \left(
+d \delta_{in} \delta_{jl} \delta_{km}-
+d \delta_{il} \delta_{jn} \delta_{km}\right.\\ &\qquad\left.-
+d \delta_{im} \delta_{jl} \delta_{kn}+
+d \delta_{il} \delta_{jm} \delta_{kn}+
+d \delta_{in} \delta_{jk} \delta_{lm}\right.\\ &\qquad\left.-
+d \delta_{ik} \delta_{jn} \delta_{lm}-
+d \delta_{im} \delta_{jk} \delta_{ln}+
+d \delta_{ik} \delta_{jm} \delta_{ln}\right.\\ &\qquad\left.-
+4 \delta_{in} \delta_{jm} \delta_{kl}+
+4 \delta_{im} \delta_{jn} \delta_{kl}
+\right),\displaybreak[2]\\
+%
+C^{OOS}_{ijklmn}(t_1,t_2) &= 
+-\frac{\left\langle\tr \ma O_0\ma O_{t_1}\ma S_{t_2}\right\rangle}{(d-2) (d-1) d (d+2)}  \left(
+d \delta_{in} \delta_{jl} \delta_{km}-
+d \delta_{il} \delta_{jn} \delta_{km}\right.\\ &\qquad\left.+
+d \delta_{im} \delta_{jl} \delta_{kn}-
+d \delta_{il} \delta_{jm} \delta_{kn}-
+d \delta_{in} \delta_{jk} \delta_{lm}\right.\\ &\qquad\left.+
+d \delta_{ik} \delta_{jn} \delta_{lm}-
+d \delta_{im} \delta_{jk} \delta_{ln}+
+d \delta_{ik} \delta_{jm} \delta_{ln}\right.\\ &\qquad\left.+
+4 \delta_{il} \delta_{jk} \delta_{mn}-
+4 \delta_{ik} \delta_{jl} \delta_{mn} \right),\displaybreak[2]\\
+%
+C^{OOO}_{ijklmn}(t_1,t_2) &= 
+-\frac{\left\langle\tr \ma O_0\ma O_{t_1}\ma O_{t_2}\right\rangle}{(d-2) (d-1) d}\left(
+\delta_{in} \delta_{jl} \delta_{km}-
+\delta_{il} \delta_{jn} \delta_{km}\right.\\ &\qquad\left.-
+\delta_{im} \delta_{jl} \delta_{kn}+
+\delta_{il} \delta_{jm} \delta_{kn}-
+\delta_{in} \delta_{jk} \delta_{lm}\right.\\ &\qquad\left.+
+\delta_{ik} \delta_{jn} \delta_{lm}+
+\delta_{im} \delta_{jk} \delta_{ln}-
+\delta_{ik} \delta_{jm} \delta_{ln}
+\right).\displaybreak[2]\\
+%
+\end{align*}
+\section{Homogeneity}
+When the correlation is evaluated at the particle, that is $t=0$, we may also exploit the homogeneity of the flow. In a homogenous and incompressible flow $\left\langle \tr \ma A^2\right\rangle = \left\langle \tr \ma A^3\right\rangle=0 $, which implies
+\begin{align*}
+0=C^{AA}_{ijji}(t) &= (d-1)(\alpha_2(0) + (1+d)\alpha_3(0)),\\
+\Rightarrow \alpha_2(0) &= -\alpha_3(0)(1+d).
+\end{align*}
+By insertion into \Eqnref{turbtraces2} we find that
+\begin{align*}
+	\left\langle \tr \ma S_0\transpose\ma S_0\right\rangle = -\left\langle \tr \ma O_0\transpose\ma O_0\right\rangle = \frac{1}{2}\left\langle \tr \ma A_0\transpose\ma A_0\right\rangle.
+\end{align*}
+
+\end{document}
