@@ -34,98 +34,131 @@ A_{ij}(\ve r(t), t) &= \frac{\partial}{\partial r_j}u_i(\ve r(t), t).
 \end{align*}
 The correlation functions between elements of a matrix $\ma A$ are denoted
 \begin{align*}
-	C^{AA}_{ijkl}(t) &\equiv \left\langle A_{ij}(\ve r(0),0)A_{kl}(\ve r(t), t)\right\rangle,\\
+	C^{AA}_{ijkl}(t) &\equiv \left\langle A_{ij}(\ve r(t_0),t_0)A_{kl}(\ve r(t_0+t), t_0+t)\right\rangle,\\
 	C^{AAA}_{ijklmn}(t_1,t_2) &\equiv \left\langle A_{ij}(0)A_{kl}(t_1)A_{mn}(t_2)\right\rangle,
 \end{align*}
-and so on.
+and so on. Note that we assume that the flow is statistically stationary, in the sense that the correlation between two matrix elements only depends on the time difference $t$, not on the particular value of $t_0$.
 We separate the gradient into its symmetric and antisymmetric parts,
 \begin{align*}
 	&\ma O = \frac{1}{2}(\ma A - \ma A\transpose),\quad
 	\ma S = \frac{1}{2}(\ma A + \ma A\transpose),\quad
 	\ma A = \ma O + \ma S.
 \end{align*}
-It turns out that the all the second and third order correlation functions between $\ma S$ and $\ma O$ factorise in a very convenient manner. All of them become products of one time-dependent function, and one part which depends only on the spatial indices, but not time. For example, in three spatial dimensions
+We will from now on use the shorthand $\ma A_t \equiv \ma A(\ve r(t), t)$ for brevity. It turns out that the all the second and third order correlation functions between $\ma S$ and $\ma O$ factorise in a very convenient manner. All of them become products of one time-dependent function, and one part which depends only on the spatial indices, but not time. For example, in three spatial dimensions
 \begin{align}
 	C^{OO}_{ijkl}(t) &= \frac{\left\langle \tr \ma O_0\ma O_t\right\rangle}{6}( \delta_{il}\delta_{jk}-\delta_{ik}\delta_{jl}), \nn\\
 	C^{SS}_{ijkl}(t) &= \frac{\left\langle \tr \ma S_0\ma S_t\right\rangle}{30}(3\delta_{il}\delta_{jk} + 3\delta_{ik}\delta_{jl} - 2\delta_{ij}\delta_{kl}), \nn\\
-	C^{SO}_{ijkl}(t) &= 0. \eqnlab{turbjpoint}
+	C^{SO}_{ijkl}(t) &= 0. \eqnlab{turb2point}
 \end{align}
 Here the functions $\left\langle \tr \ma O_0\ma O_t\right\rangle$ and $\left\langle \tr \ma S_0\ma S_t\right\rangle$ are functions of time which are flow-specific. They can be determined through a flow model, measurement, or, as in our case, numerical DNS data. See the next Section for details.
 
 Similar, but lengthier, results exist for the eight three-point correlations $C^{SSS}_{ijklmn}(t)$, $C^{SSO}_{ijklmn}(t)$, ..., $C^{OOO}_{ijklmn}(t)$. The detailed derivation and final expressions are given in Appendix~\secref{applagrangian}.
 
 Now we are equipped for the derivation. The dimensionless equation of motion for the particle position $\ve r$ and orientation $\ve n$ reads
-\begin{align*}
-\dot{\ve r}&=\ku\,\ve u\,,\quad
-\dot{\ve n}=\ku\left[\ma O\ve n+\Lambda\left(\ma S\ve n-(\ve n\transpose\ma S\ve n)\ve n\right)\right]\,.
-\end{align*}
-Here, $\Lambda$ is the particle shape function, $\Lambda=-1$ for disks, and $\Lambda=1$ for rods. The equation for $\ve r$ comes only implicitly into the equation for $\ve n$, through the dependence of $\ma O$ and $\ma S$ upon particle position.
-The squared rotation rate $\langle \dot n^2\rangle$ is
 \begin{align}
-	\langle \dot n^2\rangle &= \ku^2\left\langle\left(\ma O\ve n+\Lambda\left(\ma S\ve n-(\ve n\transpose\ma S\ve n)\ve n\right)\right)^2\right\rangle\nn \\
-	&= \ku^2\left\langle-\ve n\transpose \ma O \ma O \ve n + \Lambda^2\left(\ve n\transpose\ma S\ma S\ve n - (\ve n\transpose\ma S\ve n)^2\right)\right\rangle.\eqnlab{ndotsquared}
+\dot{\ve r}&=\ku\,\ve u\,,\quad
+\dot{\ve n}=\ku\left[\ma O\ve n+\Lambda\left(\ma S\ve n-(\ve n\transpose\ma S\ve n)\ve n\right)\right]\,.\eqnlab{turbeqnofmotion}
 \end{align}
-We cannot perform the average at this point, because in general the orientation $\ve n$ and the gradient matrices $\ma O$ and $\ma S$ have complicated joint statistics, which we do not know. 
-The first approximation is to just insert an initial condition $\ve n(t) \approx \ve n(0) \equiv \ve n_0$.
+Here, $\Lambda$ is the particle shape function, $\Lambda=-1$ for disks, and $\Lambda=1$ for rods. The equation for $\ve r$ comes only implicitly into the equation for $\ve n$, through the dependence of $\ma O$ and $\ma S$ upon particle position.
 
-% Since the flow is isotropic, so is $\ve n_0$. 
-%The second and fourth moments of an isotropic unit vector $\ve n$ are found by making an ansatz for a general isotropic tensor (see App.~\secref{applagrangian}) and requiring $n_i n_i=1$, the result is:
+We consider an ensemble of particles, found in the flow at a distant past time $t=0$ with initial condition $\ve n_0$. Then we compute the ensemble average of the squared rotation rate $\langle \dot n^2\rangle$ at a much later time $t$.
+%The time $t$ is sufficiently large that the initial conditions of the particles are forgotten, in the sense that no quantity at time $t$ has any correlation with the conditions at $t=0$.
+In the calculation we will eventually take $t\to\infty$. The average rotation rate squared is
+\begin{align}
+	\langle \dot n^2\rangle &= \ku^2\left\langle\left(\ma O_{t}\ve n_{t}+\Lambda\left(\ma S_{t}\ve n_{t}-(\ve n_{t}\transpose\ma S_{t}\ve n_{t})\ve n_{t}\right)\right)^2\right\rangle\nn \nn\\
+	&= \ku^2\big[-\left\langle\ve n_{t}\transpose \ma O_{t} \ma O_{t} \ve n_{t}\right\rangle \nn\\
+	&\qquad\qquad+ \Lambda\left\langle\ve n_{t}\transpose(\ma S_{t}\ma O_{t} - \ma O_{t}\ma S_{t})\ve n_t\right\rangle \nn\\
+	&\qquad\qquad+ \Lambda^2\left\langle\ve n_{t}\transpose\ma S_{t}\ma S_{t}\ve n_{t}\right\rangle \nn\\
+	&\qquad\qquad-  \Lambda^2\left\langle(\ve n_{t}\transpose\ma S_{t}\ve n_{t})^2)\right\rangle\big].\eqnlab{ndotsquared}
+\end{align}
+We cannot perform the average at this point, because in general the orientation $\ve n_t$ and the gradient matrices $\ma O_t$ and $\ma S_t$ have complicated joint statistics - the particles align preferentially to the gradients. 
+The first approximation to the equation of motion \eqnref{turbeqnofmotion} is $\ve n(t) \approx \ve n_0 + \mathcal O(\ku)$.
+%As explained above, $\ve n_0$ is uncorrelated with the flow at the later time $t$, 
+As explained above, $\ve n_0$ is not a random variable, and we may average using the lagrangian correlation functions \eqnref{turb2point}. For example,
 \begin{align*}
-	\langle n_i n_j \rangle &= \frac{1}{3}\delta_{ij}, \\
-	\langle n_i n_j n_k n_l \rangle &= \frac{1}{15}(\delta_{ij}\delta_{kl} + \delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk}).
-\end{align*}
-This approximation leads to the white-noise result
+ 	\left\langle\ve n_{0}\transpose \ma O_{t} \ma O_{t} \ve n_{0}\right\rangle&=\ve n_{0}\transpose\left\langle \ma O_{t} \ma O_{t} \right\rangle\ve n_{0} \\
+ 	&= C^{OO}_{ijjk}(0)n_in_k\\
+ 	&= \frac{\left\langle \tr \ma O_t\ma O_t\right\rangle}{6}( \delta_{ik}\delta_{jj}-\delta_{ij}\delta_{jk})n_in_k\\
+ 	&=\frac{\left\langle \tr \ma O_t\ma O_t\right\rangle}{3} = -\frac{\left\langle \tr \ma A_t\transpose\ma A_t\right\rangle}{6},
+ \end{align*}
+where we also used $n_in_i=1$, and in the last step that $\langle\tr\ma A\transpose \ma A\rangle/2=\langle\tr\ma S\ma S\rangle=-\langle\tr\ma O\ma O\rangle$ in a homogenous flow (see App.~\secref{applagrangian}). In the same fashion we evaluate all averages in \Eqnref{ndotsquared} and find
 \begin{align*}
-	\langle \dot n^2\rangle &= 
-	\ku^2 \left(-\frac{1}{3}\langle\tr\ma O\ma O\rangle +  \frac{\Lambda^2}{3}\langle\tr\ma S \ma S\rangle - \frac{2\Lambda^2}{15}\langle\tr\ma S\ma S \rangle\right) + \mathcal O(\ku^3),  \\
-	&= \frac{\ku^2}{3}\left(-\langle\tr\ma O\ma O\rangle +  \frac{3\Lambda^2}{5}\langle\tr\ma S \ma S\rangle\right) + \mathcal O(\ku^3),  \\
-	\intertext{and using $\langle\tr\ma A\transpose \ma A\rangle/2=\langle\tr\ma S\ma S\rangle=-\langle\tr\ma O\ma O\rangle$ (see end of App.~\secref{applagrangian})}
-	&= \ku^2\frac{\langle\tr\ma A\transpose \ma A\rangle}{30}\left(5 + 3 \Lambda^2\right)+ \mathcal O(\ku^3).  
+	\langle \dot n^2\rangle &=\ku^2 \left(-\frac{1}{3}\langle\tr\ma O_t\ma O_t\rangle +  \frac{\Lambda^2}{3}\langle\tr\ma S_t \ma S_t\rangle - \frac{2\Lambda^2}{15}\langle\tr\ma S_t\ma S_t \rangle\right) + \mathcal O(\ku^3)  \\
+	&= \frac{\ku^2}{3}\left(-\langle\tr\ma O_t\ma O_t\rangle +  \frac{3\Lambda^2}{5}\langle\tr\ma S_t \ma S_t\rangle\right) + \mathcal O(\ku^3)  \\
+	&= \ku^2\frac{\langle\tr\ma A_t\transpose \ma A_t\rangle}{30}\left(5 + 3 \Lambda^2\right)+ \mathcal O(\ku^3).  
 \end{align*}
-But to proceed and reach $\mathcal O(\ku^3)$, we need an expression for $\ve n(t)$.
+The limit of $\ku\to0$ is called the white noise limit. Physically it means that the flow is changing so rapidly that the instantaneous gradient is always uncorrelated with the particle orientation. There is no ``memory'', or correlation with the near past, in the system, hence the name white noise.
+
+Now we proceed to compute the first effects of finite correlation time in the flow. In order to reach $\mathcal O(\ku^3)$, we need an expression for $\ve n(t)$.
 The equation for $\ve n$ has the implicit solution
-\begin{align*}
-\ve n_{t'}&=\ve n_0\!+\!\ku\!\int_0^{t'}\!\!\!\!{\rm d}t\,[\ma O_{t}\ve n_{t}\!%
-+\!\Lambda(\ma S_{t}\ve n_{t}\!-\!(\ve n_{t}\transpose\ma S_{t}\ve n_{t})\ve n_{t})]\,,
-\end{align*}
-where $\ma A_t \equiv \ma A(\ve r(t), t)$ for brevity.
-The perturbation expansion is computed  to any order in $\ku$ by recursively inserting the entire right hand side of \Eqnref{n_expansion} into each occurence of $\ve n_t$.
+\begin{align}
+\ve n_{t}&=\ve n_0\!+\!\ku\!\int_0^{t}\!\!\!\!{\rm d}t'\,[\ma O_{t'}\ve n_{t'}\!%
++\!\Lambda(\ma S_{t'}\ve n_{t'}\!-\!(\ve n_{t'}\transpose\ma S_{t'}\ve n_{t'})\ve n_{t'})]\,,\eqnlab{n_expansion}
+\end{align}
+The perturbation expansion is computed  to any order in $\ku$ by recursively inserting the entire right hand side of \Eqnref{n_expansion} into each occurence of $\ve n_{t'}$.
 Iterating once we find
 \begin{align}
-\ve n_{t'}&=\ve n_0\!+\!\ku\!\int_0^{t'}\!\!\!\!{\rm d}t\,[\ma O_{t}\ve n_{0}\! +\!\Lambda(\ma S_{t}\ve n_{0}\!-\!(\ve n_{0}\transpose\ma S_{t}\ve n_{0})\ve n_{0})]\, + \mathcal O(\ku^2)
-\eqnlab{n_expansion}
+\ve n_{t'}&=\ve n_0\!+\!\ku\!\int_0^{t'}\!\!\!\!{\rm d}t\,[\ma O_{t}\ve n_{0}\! +\!\Lambda(\ma S_{t}\ve n_{0}\!-\!(\ve n_{0}\transpose\ma S_{t}\ve n_{0})\ve n_{0})]\, + \mathcal O(\ku^2)\eqnlab{n_expansion2}
 \end{align}
-
 In principle, we could continue, however, for the present purpose, this first order expansion is enough.
-We insert the expansion \eqnref{n_expansion} into \Eqnref{ndotsquared} and find to third order in $\ku$
+We insert the expansion \eqnref{n_expansion2} into \Eqnref{ndotsquared} and find to third order in $\ku$
 \begin{align*}
-	\langle \dot n^2\rangle &= \ku^2\left\langle-\ve n\transpose \ma O \ma O \ve n + \Lambda^2\left(\ve n\transpose\ma S\ma S\ve n - (\ve n\transpose\ma S\ve n)^2\right)\right\rangle\\
-	&= \ku^2\left\langle-\ve n_0\transpose \ma O \ma O \ve n_0 + \Lambda^2\left(\ve n_0\transpose\ma S\ma S\ve n_0 - (\ve n_0\transpose\ma S\ve n_0)^2\right)\right\rangle \\
-	&\,\,\,+ 2\ku^3 \int_0^{t'}\!\!\!\!{\rm d}t \bigg[
-	 - \left\langle\ve n_0\transpose \ma O \ma O [\ma O_{t}\ve n_{0}\! +\!\Lambda(\ma S_{t}\ve n_{0}\!-\!(\ve n_{0}\transpose\ma S_{t}\ve n_{0})\ve n_{0})] \right\rangle\\
-	&\qquad+\Lambda^2\left\langle\ve n_0\transpose\ma S\ma S[\ma O_{t}\ve n_{0}\! +\!\Lambda(\ma S_{t}\ve n_{0}\!-\!(\ve n_{0}\transpose\ma S_{t}\ve n_{0})\ve n_{0})] \right\rangle\\
-	&\qquad - \Lambda^2\left\langle(\ve n_0\transpose\ma S[\ma O_{t}\ve n_{0}\! +\!\Lambda(\ma S_{t}\ve n_{0}\!-\!(\ve n_{0}\transpose\ma S_{t}\ve n_{0})\ve n_{0})])^2\right\rangle\bigg]
+	\langle \dot n^2\rangle &=\ku^2\frac{\langle\tr\ma A_t\transpose \ma A_t\rangle}{30}\left(5 + 3 \Lambda^2\right) \\
+	&\,\,\,+ \ku^3 \int_0^{t}\!\!\!\!{\rm d}t' \bigg[
+%
+	 - \left\langle\ve n_0\transpose \ma O_t \ma O_t [\ma O_{t'}\ve n_{0}\! +\!\Lambda(\ma S_{t'}\ve n_{0}\!-\!(\ve n_{0}\transpose\ma S_{t'}\ve n_{0})\ve n_{0})] \right\rangle\\
+%
+	 &\qquad- \left\langle [-\ve n_0\transpose \ma O_{t'}\!+\!\Lambda(\ve n_0\transpose \ma S_{t'}\!-\!(\ve n_{0}\transpose\ma S_{t'}\ve n_{0})\ve n_{0}\transpose)]
+ \ma O_t \ma O_t \ve n_0 \right\rangle\\
+%
+&\qquad +\Lambda\left\langle\ve [-\ve n_0\transpose \ma O_{t'}\!+\!\Lambda(\ve n_0\transpose \ma S_{t'}\!-\!(\ve n_{0}\transpose\ma S_{t'}\ve n_{0})\ve n_{0}\transpose)](\ma S_{t}\ma O_{t} - \ma O_{t}\ma S_{t})\ve n_0\right\rangle\\
+&\qquad +\Lambda\left\langle\ve n_{0}\transpose(\ma S_{t}\ma O_{t} - \ma O_{t}\ma S_{t})[\ma O_{t'}\ve n_{0}\! +\!\Lambda(\ma S_{t'}\ve n_{0}\!-\!(\ve n_{0}\transpose\ma S_{t'}\ve n_{0})\ve n_{0})]\right\rangle\\
+%
+	&\qquad+\Lambda^2\left\langle\ve n_0\transpose\ma S_t\ma S_t[\ma O_{t'}\ve n_{0}\! +\!\Lambda(\ma S_{t'}\ve n_{0}\!-\!(\ve n_{0}\transpose\ma S_{t'}\ve n_{0})\ve n_{0})] \right\rangle\\
+%
+	&\qquad+\Lambda^2\left\langle[-\ve n_0\transpose \ma O_{t'}\!+\!\Lambda(\ve n_0\transpose \ma S_{t'}\!-\!(\ve n_{0}\transpose\ma S_{t'}\ve n_{0})\ve n_{0}\transpose)]
+\ma S_t\ma S_t\ve n_0 \right\rangle \\
+&\qquad - 2\Lambda^2 \left\langle\ve n_0\transpose \ma S_t \ve n_0 \ve n_0\transpose \ma S_t [\ma O_{t'}\ve n_{0}\! +\!\Lambda(\ma S_{t'}\ve n_{0}\!-\!(\ve n_{0}\transpose\ma S_{t'}\ve n_{0})\ve n_{0})]\right\rangle \\
+%
+&\qquad - 2\Lambda^2 \left\langle[-\ve n_0\transpose \ma O_{t'}\!+\!\Lambda(\ve n_0\transpose \ma S_{t'}\!-\!(\ve n_{0}\transpose\ma S_{t'}\ve n_{0})\ve n_{0}\transpose)] \ma S_t \ve n_0 \ve n_0\transpose \ma S_t \ve n_0\right\rangle
+%
+\bigg] + \mathcal O(\ku^4)\displaybreak[3] %\\
+%	
+% 	&= \ku^2\frac{\langle\tr\ma A_t\transpose \ma A_t\rangle}{30}\left(5 + 3 \Lambda^2\right)\\
+% 	&\,\,\,+ 2\ku^3 \int_0^{t}\!\!\!\!{\rm d}t' \bigg[
+% 	-\Lambda \left\langle\ve n_0\transpose \ma O_t \ma O_t \ma S_{t'}\ve n_{0}\right\rangle\\
+% 	&\quad\qquad\qquad\qquad+ \Lambda \left\langle\ve n_0\transpose \ma O_t \ma O_t \ve n_0 \ve n_{0}\transpose\ma S_{t'}\ve n_{0}\right\rangle \\
+%  &\quad\qquad\qquad\qquad + \Lambda^3\left\langle\ve n_0\transpose\ma S_t\ma S_t \ma S_{t'}\ve n_{0} \right\rangle \\
+% 	&\quad\qquad\qquad\qquad - \Lambda^3\left\langle\ve n_0\transpose\ma S_t\ma S_t \ve n_0 \ve n_{0}\transpose\ma S_{t'}\ve n_{0} \right\rangle \\
+% 	&\quad\qquad\qquad\qquad - 2\Lambda^3\left\langle\ve n_0\transpose\ma S_t\ve n_0\ve n_0\transpose\ma S_t \ma S_{t'} \ve n_0 \right\rangle \\
+% 	&\quad\qquad\qquad\qquad + 2\Lambda^3\left\langle\ve n_0\transpose\ma S_t\ve n_0\ve n_0\transpose\ma S_t\ve n_0\ve n_0\transpose \ma S_{t'} \ve n_0 \right\rangle 	
+% %
+% 	\bigg] + \mathcal O(\ku^4)
 \end{align*}
-
-
-
-
-
-
-
-
-
-
-
-\begin{align}
-\eqnlab{expansion_general}
-\langle{\dot n^2}\rangle&={\rm Ku}^2 \big(-5\tr\,\langle{\ma O}^2\rangle+ 3\Lambda^2\tr\,\langle{\ma S}^2\rangle\big)/15 \\&
-\quad+\frac{2}{5}\ku^3\Lambda\int_0^\infty\!\!\!\!\rd t
-\big[ \!-\!\tr\,\langle\ma O_0^2\ma S_{-t}\rangle
-\!+\!2\Lambda\tr\,\langle\ma S_0\ma O_0\ma S_{-t}\rangle
-\!+\!\frac{3}{7}\Lambda^2\tr\,\langle\ma S_0^2\ma S_{-t}\rangle
-\big]\,.\nn
-\end{align}
+There are quite a number of terms, but again, we can use the known three point correlation functions\footnote{See App.~\secref{applagrangian} for the complete expressions.} to evaluate the averages. For example, 
+\begin{align*}
+	&\left\langle\ve n_0\transpose\ma S_t\ma S_t \ve n_0 \ve n_{0}\transpose\ma S_{t'}\ve n_{0} \right\rangle
+	= C^{SSS}_{ijjklm}(0, t'-t)n_in_kn_ln_m \\
+	&= \frac{\left\langle\tr \ma S_t\ma S_{t}\ma S_{t'}\right\rangle}{30} (3 \delta_{im} \delta_{kl}+3 \delta_{il} \delta_{km}-2 \delta_{ik} \delta_{lm})\\
+	&= \frac{2\left\langle\tr \ma S_t\ma S_{t}\ma S_{t'}\right\rangle}{15}.
+\end{align*}
+Moreover, the correlation functions where two of the three matrices are evaluated at the same time have an exchange symmetry. More precisely it means, for instance, $C^{OSS}_{ijklmn}(0,\tau)=C^{SOS}_{klijmn}(0,\tau)$. This symmetry reduces the number of terms considerably, for example $\langle \ma S_t \ma O_t \ma O_{t'}\rangle - \langle \ma O_t \ma S_t \ma O_{t'}\rangle =0$. After averaging, the result is
+\begin{align*}
+\langle \dot n^2\rangle &=\ku^2\frac{\langle\tr\ma A_t\transpose \ma A_t\rangle}{30}\left(5 + 3 \Lambda^2\right) \\
+	&\,\,\,+ \frac{2 \Lambda \ku^3}{5} \int_0^{t}\!\!\!\!{\rm d}t' \bigg[\frac{3 \Lambda^2}{7}\left\langle\tr \ma S_t\ma S_{t}\ma S_{t'}\right\rangle - \left\langle\tr \ma O_t\ma O_{t}\ma S_{t'}\right\rangle + 2 \Lambda \left\langle\tr \ma S_t\ma O_{t}\ma S_{t'}\right\rangle\bigg]
+\end{align*}
+Due to the statistical stationarity of the flow, we may translate the integrals to the form given in the manuscript, 
+\begin{align*}
+	\int_0^{t}\!\!\!\!{\rm d}t'\left\langle\tr \ma S_t\ma S_{t}\ma S_{t'}\right\rangle 
+	&= \int_0^{t}\!\!\!\!{\rm d}t'\left\langle\tr \ma S_0\ma S_{0}\ma S_{t'-t}\right\rangle \\
+	&= -\int_t^{0}\!\!\!\!{\rm d}\tau\left\langle\tr \ma S_0\ma S_{0}\ma S_{-\tau}\right\rangle \\
+	&= \int_0^{t}\!\!\!\!{\rm d}\tau\left\langle\tr \ma S_0\ma S_{0}\ma S_{-\tau}\right\rangle
+\end{align*}
+The last step is to take the time $t\to\infty$, as advertised earlier. This concludes the derivation of Eq.~(4) in the manuscript:
+\begin{align*}
+\langle \dot n^2\rangle &=\ku^2\frac{\langle\tr\ma A_t\transpose \ma A_t\rangle}{30}\left(5 + 3 \Lambda^2\right) \\
+	&\,\,\,+ \frac{2 \Lambda\ku^3}{5} \int_0^{\infty}\!\!\!\!{\rm d}\tau \bigg[\frac{3 \Lambda^2}{7}\left\langle\tr \ma S_0\ma S_{0}\ma S_{-\tau}\right\rangle - \left\langle\tr \ma O_0\ma O_{0}\ma S_{-\tau}\right\rangle + 2 \Lambda\left\langle\tr \ma S_0\ma O_{0}\ma S_{-\tau}\right\rangle\bigg]
+\end{align*}
 
 
 \section{Turbulent flow data}
