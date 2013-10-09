@@ -80,7 +80,7 @@ def main():
 	matplotlib.rc('text', usetex=True)
 	matplotlib.rc('ps', usedistiller='xpdf')
 
-	fig1 = plt.figure(1, figsize=(18/2.5, 8/2.5))
+	fig1 = plt.figure(1, figsize=(13/2.5, 6/2.5))
 	ax1 = fig1.add_subplot(1,2,1)
 	ax2 = fig1.add_subplot(1,2,2)
 
@@ -150,6 +150,7 @@ def main():
 	ax2.set_ylabel(r'$\langle n(0)n(t)\rangle$',rotation=90)
 	ax2.set_ylim(1e-3,1)
 	ax2.set_xlim(0,4)
+	ax2.set_xticks([0,1,2,3,4])
 
 	#ax1.legend()
 

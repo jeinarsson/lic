@@ -44,7 +44,7 @@ We separate the gradient into its symmetric and antisymmetric parts,
 	\ma S = \frac{1}{2}(\ma A + \ma A\transpose),\quad
 	\ma A = \ma O + \ma S.
 \end{align*}
-We will from now on use the shorthand $\ma A_t \equiv \ma A(\ve r(t), t)$ for brevity. It turns out that the all the second and third order correlation functions between $\ma S$ and $\ma O$ factorise in a very convenient manner. All of them become products of one time-dependent function, and one part which depends only on the spatial indices, but not time. For example, in three spatial dimensions
+We will from now on use the shorthand $\ma A_t \equiv \ma A(\ve r(t), t)$ for brevity. It turns out that the all the second and third order correlation functions between $\ma S$ and $\ma O$ factorise in a very convenient manner. Appendix~\secref{applagrangian} contains the details of this factorisation and the final expressions. All the correlation functions become products of one time-dependent function, and one part which depends only on the spatial indices, but not time. For example, in three spatial dimensions
 \begin{align}
 	C^{OO}_{ijkl}(t) &= \frac{\left\langle \tr \ma O_0\ma O_t\right\rangle}{6}( \delta_{il}\delta_{jk}-\delta_{ik}\delta_{jl}), \nn\\
 	C^{SS}_{ijkl}(t) &= \frac{\left\langle \tr \ma S_0\ma S_t\right\rangle}{30}(3\delta_{il}\delta_{jk} + 3\delta_{ik}\delta_{jl} - 2\delta_{ij}\delta_{kl}), \nn\\
@@ -52,7 +52,7 @@ We will from now on use the shorthand $\ma A_t \equiv \ma A(\ve r(t), t)$ for br
 \end{align}
 Here the functions $\left\langle \tr \ma O_0\ma O_t\right\rangle$ and $\left\langle \tr \ma S_0\ma S_t\right\rangle$ are functions of time which are flow-specific. They can be determined through a flow model, measurement, or, as in our case, numerical DNS data. See the next Section for details.
 
-Similar, but lengthier, results exist for the eight three-point correlations $C^{SSS}_{ijklmn}(t)$, $C^{SSO}_{ijklmn}(t)$, ..., $C^{OOO}_{ijklmn}(t)$. The detailed derivation and final expressions are given in Appendix~\secref{applagrangian}.
+Similar, but lengthier, results exist for the eight three-point correlations $C^{SSS}_{ijklmn}(t)$, $C^{SSO}_{ijklmn}(t)$, ..., $C^{OOO}_{ijklmn}(t)$ (see Appendix~\secref{applagrangian}.)
 
 Now we are equipped for the derivation. The dimensionless equation of motion for the particle position $\ve r$ and orientation $\ve n$ reads
 \begin{align}
@@ -62,7 +62,6 @@ Now we are equipped for the derivation. The dimensionless equation of motion for
 Here, $\Lambda$ is the particle shape function, $\Lambda=-1$ for disks, and $\Lambda=1$ for rods. The equation for $\ve r$ comes only implicitly into the equation for $\ve n$, through the dependence of $\ma O$ and $\ma S$ upon particle position.
 
 We consider an ensemble of particles, found in the flow at a distant past time $t=0$ with initial condition $\ve n_0$. Then we compute the ensemble average of the squared rotation rate $\langle \dot n^2\rangle$ at a much later time $t$.
-%The time $t$ is sufficiently large that the initial conditions of the particles are forgotten, in the sense that no quantity at time $t$ has any correlation with the conditions at $t=0$.
 In the calculation we will eventually take $t\to\infty$. The average rotation rate squared is
 \begin{align}
 	\langle \dot n^2\rangle &= \ku^2\left\langle\left(\ma O_{t}\ve n_{t}+\Lambda\left(\ma S_{t}\ve n_{t}-(\ve n_{t}\transpose\ma S_{t}\ve n_{t})\ve n_{t}\right)\right)^2\right\rangle\nn \nn\\
@@ -74,7 +73,7 @@ In the calculation we will eventually take $t\to\infty$. The average rotation ra
 We cannot perform the average at this point, because in general the orientation $\ve n_t$ and the gradient matrices $\ma O_t$ and $\ma S_t$ have complicated joint statistics - the particles align preferentially to the gradients. 
 The first approximation to the equation of motion \eqnref{turbeqnofmotion} is $\ve n(t) \approx \ve n_0 + \mathcal O(\ku)$.
 %As explained above, $\ve n_0$ is uncorrelated with the flow at the later time $t$, 
-As explained above, $\ve n_0$ is not a random variable, and we may average using the lagrangian correlation functions \eqnref{turb2point}. For example,
+The initial condition $\ve n_0$ is not a random variable, and we may average using the lagrangian correlation functions \eqnref{turb2point}. For example,
 \begin{align*}
  	\left\langle\ve n_{0}\transpose \ma O_{t} \ma O_{t} \ve n_{0}\right\rangle&=\ve n_{0}\transpose\left\langle \ma O_{t} \ma O_{t} \right\rangle\ve n_{0} \\
  	&= C^{OO}_{ijjk}(0)n_in_k\\
@@ -135,7 +134,9 @@ We insert the expansion \eqnref{n_expansion2} into \Eqnref{ndotsquared} and find
 % %
 % 	\bigg] + \mathcal O(\ku^4)
 \end{align*}
-There are quite a number of terms, but again, we can use the known three point correlation functions\footnote{See App.~\secref{applagrangian} for the complete expressions.} to evaluate the averages. For example, 
+There are quite a number of terms, but again, we can use the known three point correlation functions
+%\footnote{See App.~\secref{applagrangian} for the complete expressions.} 
+ to evaluate the averages. For example, 
 \begin{align*}
 	&\left\langle\ve n_0\transpose\ma S_t\ma S_t \ve n_0 \ve n_{0}\transpose\ma S_{t'}\ve n_{0} \right\rangle
 	= C^{SSS}_{ijjklm}(0, t'-t)n_in_kn_ln_m \\
@@ -155,10 +156,10 @@ Due to the statistical stationarity of the flow, we may translate the integrals 
 	&= \int_0^{t}\!\!\!\!{\rm d}\tau\left\langle\tr \ma S_0\ma S_{0}\ma S_{-\tau}\right\rangle
 \end{align*}
 The last step is to take the time $t\to\infty$, as advertised earlier. This concludes the derivation of Eq.~(4) in the manuscript:
-\begin{align*}
-\langle \dot n^2\rangle &=\ku^2\frac{\langle\tr\ma A_t\transpose \ma A_t\rangle}{30}\left(5 + 3 \Lambda^2\right) \\
-	&\,\,\,+ \frac{2 \Lambda\ku^3}{5} \int_0^{\infty}\!\!\!\!{\rm d}\tau \bigg[\frac{3 \Lambda^2}{7}\left\langle\tr \ma S_0\ma S_{0}\ma S_{-\tau}\right\rangle - \left\langle\tr \ma O_0\ma O_{0}\ma S_{-\tau}\right\rangle + 2 \Lambda\left\langle\tr \ma S_0\ma O_{0}\ma S_{-\tau}\right\rangle\bigg]
-\end{align*}
+\begin{align}
+\langle \dot n^2\rangle &=\ku^2\frac{\langle\tr\ma A_t\transpose \ma A_t\rangle}{30}\left(5 + 3 \Lambda^2\right) \nn \\
+	&\,\,\,+ \frac{2 \Lambda\ku^3}{5} \int_0^{\infty}\!\!\!\!{\rm d}\tau \bigg[\frac{3 \Lambda^2}{7}\left\langle\tr \ma S_0\ma S_{0}\ma S_{-\tau}\right\rangle - \left\langle\tr \ma O_0\ma O_{0}\ma S_{-\tau}\right\rangle + 2 \Lambda\left\langle\tr \ma S_0\ma O_{0}\ma S_{-\tau}\right\rangle\bigg]\eqnlab{eq4final}
+\end{align}
 
 
 \section{Turbulent flow data}
@@ -172,14 +173,58 @@ We initialise a particle at a random position $\ve r$, with a random orientation
 	\dot {\ve r} &= \ve u(\ve r(t), t), \\
 	\dot {\ve n} &= \ma O \ve n + \Lambda\left(\ma S \ve n - \ve n \ve n\transpose \ma S \ve n\right).
 \end{align*}
-The procedure is repeated for the entire duration of the data set. We can then compute the required correlation functions, and other observables such as particle alignment with vorticity $\langle|\ve \Omega \cdot \ve n|\rangle$. 
+The procedure is repeated for the entire duration of the data set. From the time series $\ma A(\ve r(t), t)$ we compute the required correlation functions, and other observables such as particle alignment with vorticity $\langle|\ve \Omega \cdot \ve n|\rangle$.
 
 
--- $C^{OOO}$ etc, factorisation
+In \Figref{alignment} I show the probability distributions of particle alignment with the eigenvectors of the strain matrix $\ma S$, and the vorticity vector $\ve \Omega$. The straining direction $\ve e_1$ corresponds to the largest eigenvalue. the We see that rods ($\lambda=100$ in this case) align preferentially to the vorticity, as previously observed \cite{pumir2011}. But we also see that disks ($\lambda=1/100$) have an even stronger preference to anti-align with the vorticity. The same pattern of opposite preference holds for the three eigenvectors of $\ma S$. Disks prefer the compressing direction $\ve e_3$, while rods prefer the weakly stretching $\ve e_2$. None of the particle shapes correlate strongly to the strongest straining direction $\ve e_1$.
 
--- time dependence
+In \Figref{ndotsqr_pdf} I show the distribution of measured rotation rates for disks, rods and spheres. 
+The sphere always rotates with the vorticity rate. We see that the disk experiences many more events of high rotation rates, which must be due to the effects of strain. The rod, on the other hand, not only rotates less than the disk, but it rotates much less than the sphere. It means that the rod's rotation is actually inhibited by the strain.
 
--- Integrals
+\begin{figure}
+\makebox[\textwidth]{\centering%
+\includegraphics{figs/alignment.pdf}%
+}
+\caption{\figlab{alignment} Probability distributions of particle direction alignment in turbulent flow. The lower right panel shows alignment with the vorticity direction $\hat{\ve \Omega}$. The three other show alignment with the eigenvectors $\ve e_i$ of the strain matrix $\ma S$, where $\ve e_1$ corresponds to the largest eigenvalue. Red line shows distribution for a rod-shaped particle, blue line shows distribution for a disk.}%
+\end{figure}
+
+\begin{figure}
+	\begin{center}
+	  \makebox[\textwidth]{%
+\includegraphics{figs/ndotsqr_pdf.pdf}%
+}
+\end{center}
+\caption{\figlab{ndotsqr_pdf} Probability of observed rotation rates of a rod (red line), disk (blue line) and sphere (orange line) in turbulent flow. The peak to the far right indicates the integral over all values $\dot n^2\tau^2_{K}>3$.}%
+\end{figure}
+
+\begin{figure}
+	\begin{center}
+	  \makebox[\textwidth]{%
+\includegraphics{figs/deltas.pdf}%
+}
+\end{center}
+\caption{\figlab{deltas} deltas }%
+\end{figure}
+
+\begin{figure}
+	\begin{center}
+	  \makebox[\textwidth]{%
+\includegraphics{figs/oosintegral.pdf}%
+}
+\end{center}
+\caption{\figlab{oosintegral} oosintegral }%
+\end{figure}
+
+From the data set we also compute the three integrals in \Eqnref{eq4final} in order to quantify the relative strengths of the contributions. First, we have to confirm that the correlation functions factorise according to \Eqnref{turb2point}. We compute every element of, for example, $C^{SSS}_{ijklmn}$ and compare it to the theoretical formula, in this case \Eqnref{lagrangianSSS} in Appendix~\secref{lagrangian}. The result is shown in \Figref{deltas}, and the other combinations show similar agreement with theory. We conclude that the JHU dataset indeed contains incompressible and isotropic turbulence. Second, knowing that the correlation functions factorise, we may compute the time dependence of the trace and perform the integral. In \Figref{oosintegral} I show the result for $\langle \ma O_0 \ma O_0 \ma S_t\rangle$ as an example.
+
+
+
+
+
+
+
+
+
 
 
 \end{document}

@@ -207,7 +207,7 @@ Curiously, non-spherical particles in simple shear flow offers very rich dynamic
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=7cm]{figs/fig_coordinates.png}}
 \end{center}
-\caption{\label{fig:coordinates} }%
+\caption{\figlab{coordinates} }%
 \end{figure}
 \begin{figure}
 \begin{center}
@@ -340,7 +340,7 @@ Second, there may be inertial effects. Fluid inertia was neglected when we used 
 
 Finally, the third mechanism is Brownian noise. The idea is that thermal fluctuations kicks the particle out of one Jeffery orbit and into another. After some time, the initial condition is forgotten and the state of the particle is described by an orientational probability distribution. The problem of computing the orientational distribution has a long history, and in the next Section I briefly review some of the methods and results.
 
-\section{Orientational distributions}\label{sec:orientationaldistributions}
+\section{Orientational distributions}\seclab{orientationaldistributions}
 
 In this Section we consider the orientational dynamics of an axisymmetric particle, represented by the vector $\ve n$. In this case the orientational distribution is a function $P(\ve n, t)$ which describes the probability of observing the particle with orientation\footnote{Strictly, $P(\ve n, t)\rd S$ is the probability to find $\ve n$ on the surface element $\rd S$ at time $t$.} $\ve n$ at time $t$. Instead of asking for the orientational trajectory $\ve n(t)$ of a particle given the initial condition $\ve n(0)$, we now ask what the orientational distribution $P(\ve n, t)$ is, given the initial condition $P(\ve n, 0)$.
 
@@ -352,7 +352,25 @@ The governing equation for the orientational distribution of an axisymmetric par
 \end{align}
 The first term on the right hand side is referred to as the drift, and the second as the diffusion. The drift is due to the deterministic fluid flow, and $\ve J(\ve n, t)$ represents the right hand side of the Jeffery equation \eqnref{jeffery}. The diffusion term is due to the random kicks, and $\mathcal D$ is the rotational diffusion constant. Since $\ve n$ is a unit vector, the Fokker-Planck equation is defined on the unit sphere. Therefore the derivative with respect to $\ve n$ is defined as $\partial/\partial_{\ve n} = (\ma I-\ve n\ve n\transpose)\nabla$, with $\nabla$ the usual gradient in $\mathbb R^3$. In Appendix~\secref{fpesphere} I explain this in more detail, and present a full derivation of \Eqnref{fpejeff}. 
 
-In the following we will consider the case when a particle is suspended in a simple shear flow, and at the same time subject to Brownian noise. As mentioned in the previous Section, the solutions to Jeffery's equation in a simple shear flow are degenerate. The orientational distribution of $\ve n$ under the influence of, for example, thermal noise has been extensively studied, as a means of explaining how particles in shear ``forget'' their initial conditions.
+For the purposes of this thesis, and more specifically in understanding Paper B, we consider the case when a particle is suspended in a simple shear flow, and at the same time subject to Brownian noise. As mentioned in the previous Section, the solutions to Jeffery's equation in a simple shear flow are degenerate. The orientational distribution of $\ve n$ under the influence of, for example, thermal noise has been extensively studied, as a means of explaining how particles in shear ``forget'' their initial conditions. A thorough review is given in \cite{brenner1974}, and what follows is a brief summary.
+
+The dynamics is governed by a single dimensionless parameter, the P\'eclet number $\pe = s/\mathcal D$. Here $\mathcal D$ is the diffusion constant in \Eqnref{fpejeff}, and $s$ is the shear strength, or the strength of the drift term in \Eqnref{fpejeff}. A small value of $\pe$ means that the noise is strong, and vice versa. 
+
+\begin{figure}
+\begin{center}
+  \makebox[\textwidth]{\includegraphics{figs/sintheta1.pdf}}
+\end{center}
+\caption{\figlab{sintheta1} Stationary average $\langle \sin ^2\theta \rangle$ for an axisymmetric particle in a shear flow subject to random noise, shown as function of the P\'eclet number $\pe = s/\mathcal D$ for different values of the particle aspect ratio $\lambda$. Larger $\pe$ corresponds to less noise. Solid lines are numerical solutions. Dotted lines show asymptotes in regimes of weak, intermediate and strong noise, compiled in \cite{brenner1974}.}%
+\end{figure}
+
+For small $\pe$, when the noise dominates, the orientational distribution is uniform - all orientations are equally likely. When the noise is decreased, the orientational distribution begins to reflect the Jeffery orbits. As $\pe$ becomes larger and the shear grows increasingly important, the probability of seeing a particle aligned with the flow direction increases. 
+But surprisingly, when $\pe$ becomes large enough, the stationary orientational distribution converges and becomes \emph{independent of} $\pe$. In other words, when the noise is small enough, the particles follow the Jeffery orbits, but every now and then jump to a different orbit.
+
+The stationary orientational distribution depends on the value of $\pe$ and the particle aspect ratio $\lambda$. In order to quantify the above discussion, I show numerical solutions\footnote{The details of how I solve \Eqnref{fpejeff} numerically can be found in Appendix~\ref{app:fpe_sphere}.} for the stationary average $\langle \sin^2\theta \rangle$ in \Figref{sintheta1}. The angle $\theta$ is the polar angle of $\ve n$, such that $n_z = \cos\theta$. It is also the angle to the vorticity direction, see \Figref{coordinates}. 
+
+For small $\pe$ we see that $\langle \sin^2\theta \rangle = 1/3$. But for large $\pe$, the average reaches a plateau, depending on particle aspect ratio $\lambda$. The asymptotic solutions of \Eqnref{fpejeff} described in \cite{brenner1974} are shown as dotted lines. In particular, Hinch \& Leal \cite{hinch1972} solved the mathematically involved problem of weak noise. They obtained an expression for the height of the plateau valid for thin particles, $\lambda\gg1$. The numerical solution confirms their prediction.
+
+In Paper B we compute the same orientational average, $\langle \sin^2\theta \rangle$, when the particle has a small but finite mass, as characterised by the Stokes number.
 
 
 

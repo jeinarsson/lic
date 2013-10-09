@@ -139,7 +139,7 @@ font.size           : 11.0
                               # matplotlib mailing list
 #text.latex.unicode : False # use "ucs" and "inputenc" LaTeX packages for handling
                             # unicode strings.
-text.latex.preamble : \usepackage[adobe-utopia]{mathdesign}
+text.latex.preamble : \usepackage[adobe-utopia]{mathdesign},\usepackage[T1]{fontenc}
                             # IMPROPER USE OF THIS FEATURE WILL LEAD TO LATEX FAILURES
                             # AND IS THEREFORE UNSUPPORTED. PLEASE DO NOT ASK FOR HELP
                             # IF THIS FEATURE DOES NOT DO WHAT YOU EXPECT IT TO.

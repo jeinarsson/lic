@@ -48,7 +48,7 @@ def main():
 	matplotlib.rc('text', usetex=True)
 	matplotlib.rc('ps', usedistiller='xpdf')
 
-	fig1 = plt.figure(1, figsize=(18/2.5, 8/2.5))
+	fig1 = plt.figure(1, figsize=(13/2.5, 5/2.5))
 	ax1 = fig1.add_subplot(1,2,1)
 	ax2 = fig1.add_subplot(1,2,2)
 
@@ -99,12 +99,12 @@ def main():
 		ax2.semilogy(times,approx2_renorm,'r:', label='2nd renormalized')
 
 	ax1.set_xlabel(r'$t/\tau$')
-	ax1.set_ylabel('C(t)',rotation=0)
+	ax1.set_ylabel(r'$\langle n(0)n(t)\rangle$',rotation=90)
 	ax1.set_ylim(0,1)
 	ax1.set_xlim(0,2.5)
 
 	ax2.set_xlabel(r'$t/\tau$')
-	ax2.set_ylabel('C(t)',rotation=0)
+	ax2.set_ylabel(r'$\langle n(0)n(t)\rangle$',rotation=90)
 	ax2.set_ylim(1e-3,1)
 	ax2.set_xlim(0,5)
 
