@@ -42,7 +42,7 @@ def plot_mean_and_deviation_markers(ax, times, ydata, min_value = 1e-10,label=''
 	deviations = np.std(ydata, axis=1)
 
 	#ax.plot(times , meanvalues, marker='o', color='white')
-	ax.errorbar(times, meanvalues, yerr=deviations, ls='none',marker='o',label=label)
+	ax.errorbar(times, meanvalues, yerr=deviations, ls='none',marker='o', label=label)
 	
 
 def offset_axes_color_cycle(axes, n):

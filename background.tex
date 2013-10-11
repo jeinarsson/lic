@@ -128,10 +128,10 @@ The incompressibility condition $\nabla\cdot\ve u=0$ transfers directly to the c
 	\ma A = \ma O + \ma S.
 \end{align*}
 The symmetric part $\ma S$ is called the rate-of-strain tensor, and it contains the local rate of deformation of the flow. The anti-symmetric part $\ma O$ is called the vorticity tensor, because it contains the local rate of rotation of the flow. The vorticity vector $\ve \omega_f$ of a flow $\ve u$ is defined by $\ve \omega_f = \nabla \cross \ve u$. The vorticity tensor $\ma O$ is related to the vorticity vector $\ve \omega_f$, because for any given vector $\ve x$
-\begin{align*}
-	\ma O \ve x &= \frac{1}{2}\ve \omega_f \cross \ve x \equiv \ve \Omega \cross \ve x.
-\end{align*}
-The vector $\ve \Omega$, defined as half the vorticity is a common quantitiy in our calculations, and therefore is given its own symbol. 
+\begin{align}
+	\ma O \ve x &= \frac{1}{2}\ve \omega_f \cross \ve x \equiv \ve \Omega \cross \ve x.\eqnlab{vorticityOdef}
+\end{align}
+The vector $\ve \Omega$, defined as half the vorticity is a common quantitiy in our calculations, and therefore is given its own symbol. The elements of $\ma O$ are related to $\ve \Omega$ by $O_{ij} = -\lc_{ijp}\Omega_p$.
 
 The stress tensor $\ma \tau$ is a symmetric second order tensor defined at each point in space. Its elements $\tau_{ij}$ are defined as the $i$:th component of the force on a surface with (outward pointing) normal in the $j$:th direction. That is, if a surface has outward normal $\ve n$, the force $\ve f$ per unit area is
 \begin{align*}
@@ -254,7 +254,7 @@ But $\alpha(t)$ is an arbitrary function which we may choose. In particular we c
 \end{align*}
 By inserting this choice of $\alpha(t)$ into \Eqnref{jefferyderivation1}, we again arrive at \Eqnref{jefferyq}.
 
-We will now consider the solutions of Jeffery's equation in time-independent flows. This case includes for example the simple shear flow, and indeed any linear flow. It is also a useful model when the flow changes only slowly in time, compared to the time it takes for the gradients to affect the particle orientation. First, I will describe the possible solutions of \Eqnref{Jeffery} in linear flows. This picture is vital in understanding our argument in Paper C (see also Sec.~\ref{sec:tumbling} in this thesis). Second, I will discuss the solutions of Jeffery's equation in a simple shear flow. The solutions are called the Jeffery orbits, and they play an important role in both Papers A and B.
+We will now consider the solutions of Jeffery's equation in time-independent flows. This case includes for example the simple shear flow, and indeed any linear flow. It is also a useful model when the flow changes only slowly in time, compared to the time it takes for the gradients to affect the particle orientation. First, I will describe the possible solutions of \Eqnref{jeffery} in linear flows. This picture is vital in understanding our argument in Paper C (see also \Secref{tumbling} in this thesis). Second, I will discuss the solutions of Jeffery's equation in a simple shear flow. The solutions are called the Jeffery orbits, and they play an important role in both Papers A and B.
 
 When $\ma O$ and $\ma S$ are time-independent the linear companion equation \eqnref{jefferyq} is solved by the matrix exponential:
 \begin{align*}
@@ -336,7 +336,7 @@ The solutions to Jeffery's equation in a simple shear flow are degenerate: the o
 
 First, the particle may not be axisymmetric. In this case the dynamics is more complicated, but still depends on initial condition. Tri-axial particles are discussed further in relation to Paper A in Sec.~\ref{sec:experiment}.
 
-Second, there may be inertial effects. Fluid inertia was neglected when we used the resistance tensor formulation \eqnref{resistanceformulation} for the torque on a particle. Particle inertia was neglected when Newton's equation reduced to Jeffery's equation in the advective limit $\st \to 0$. In Paper B we describe how the effects of a small amount of particle inertia break the degeneracy of the solutions $\ve n(t)$. See the discussion in \ref{sec:inertia} for an outlook on the case of fluid inertia.
+Second, there may be inertial effects. Fluid inertia was neglected when we used the resistance tensor formulation \eqnref{resistanceformulation} for the torque on a particle. Particle inertia was neglected when Newton's equation reduced to Jeffery's equation in the advective limit $\st \to 0$. In Paper B we describe how the effects of a small amount of particle inertia break the degeneracy of the solutions $\ve n(t)$. See the discussion in \Secref{inertia} for an outlook on the case of fluid inertia.
 
 Finally, the third mechanism is Brownian noise. The idea is that thermal fluctuations kicks the particle out of one Jeffery orbit and into another. After some time, the initial condition is forgotten and the state of the particle is described by an orientational probability distribution. The problem of computing the orientational distribution has a long history, and in the next Section I briefly review some of the methods and results.
 

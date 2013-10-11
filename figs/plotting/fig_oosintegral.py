@@ -37,7 +37,7 @@ def main():
 	num_groups = dataset.shape[1]	
 
 	theory_deltas = OOS_theory_deltas()
-	fig1, axes = plt.subplots(2,1, sharex=True,figsize=(11/2.5, 9/2.5))
+	fig1, axes = plt.subplots(2,1, sharex=True,figsize=(11/2.5, 10/2.5))
 
 	
 	corr_function = np.zeros( (2*max_lag+1,))
@@ -138,16 +138,19 @@ def main():
 	plt.axhline(axes=axes[1], y=value, ls='dotted', color='#c0c0c0')
 	plt.axvline(axes=axes[1], x=0, ls='dotted', color='#c0c0c0')
 	axes[1].plot(integration_times, integration)
-	axes[1].text(5, value, '{:.1f}'.format(value))
+	axes[1].text(5, value, '{:.3f}'.format(value))
 	#axes[1].set_yscale('log')
 
-	axes[0].set_ylabel(r'$\langle \mathrm{Tr} \mathbb{O}_0\mathbb{O}_0\mathbb{S}_t\rangle$')
-	axes[1].set_ylabel('')
+	axes[0].set_ylabel(r'$\langle \mathrm{Tr} \mathbb{O}_0\mathbb{O}_0\mathbb{S}_t\rangle\tau^3_{K}$')
+	axes[1].set_ylabel(r"$\int_{-\infty}^t\!\!\!\mathrm{d} t' \langle \mathrm{Tr} \mathbb{O}_0\mathbb{O}_0\mathbb{S}_{t'}\rangle\tau^3_{K} $")
 	axes[0].set_xlim(-30,30)
 	#axes[0].set_ylim(-30,12)
-	axes[0].set_title('Correlation function')
-	axes[1].set_title('Cumulative integral')
+	axes[0].set_title(r'\normalsize Correlation function')
+	axes[1].set_title(r'\normalsize Cumulative integral')
 	axes[1].set_xlabel('$t/\\tau_{K}$')
+
+	axes[0].set_yticks(np.arange(-.02, .07,.02))
+	axes[1].set_yticks(np.arange(0., 0.4,.1))
 
 	fig1.tight_layout()
 

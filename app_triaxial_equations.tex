@@ -2,73 +2,130 @@
 
 \begin{document}
 
-\chapter{Equations of motion for tri-axial particle in linear flow}
+\chapter{Tri-axial particle in linear flow}\seclab{triaxial_equation}
 
-Start from the overdamped Jeffery equations (torque balance). Starting from Eq.~(3.4) in JE's master's thesis we have the equation of motion for the rotation matrix $R$,
-\begin{align*}
-	\diff{R}{t} &= RQ.
-\end{align*}
-with the angular velocities given by the flow gradient $A=\nabla \ve{u}$.
-\begin{align*}
-Q_{ij} &= \frac{\ve{e}_i\transpose(a_j^2\ma{R}\transpose \ma{A}\ma{R}  - a_i^2 \ma{R}\transpose \ma{A}\transpose \ma{R})\ve{e}_j}{a_i^2 + a_j^2}
-\end{align*}
-The rotation matrix transforms the lab frame of coordinates $(\ve{e}_1, \ve{e}_2, \ve{e}_3)$ into the particle frame $(\ve{n}_1, \ve{n}_2, \ve{n}_3)$. The angular velocities can be expressed in the particle coordinate system as
-\begin{align*}
-	Q_{ij} &= \frac{1}{a_i^2 + a_j^2}\left[\ve{n}_i\transpose\left(a_j^2 A - a_i^2 A\transpose\right)\ve{n}_j\right].
-\end{align*}
-For future convenience one can define the matrices
-\begin{align*}
-	B^{(ij)} &= \frac{1}{a_i^2 + a_j^2}\left(a_j^2 A - a_i^2 A\transpose\right).
-\end{align*}
-The scalars $a_i$ are the particle axes lengths of axis $i$. We shall now choose the two axes $\ve{n}_1$ and $\ve{n}_2$ and derive the equation of motion for them.
+In this Appendix I derive the torque-free equation of motion for an tri-axial ellipsoidal particle in a general linear flow. It is the generalisation of the Jeffery equation to tri-axial particles. 
 
-Let's first compute the time derivative of $\ve{n}_1$
+We represent the orientation of the particle with a rotation matrix $\ma R(t)$, which transforms the world-fixed cartesian coordinate frame $(\ve e_1, \ve e_2, \ve e_3)$ to the particle-fixed coordinate frame $(\ve n_1, \ve n_2, \ve n_3)$. The ellipsoid is defined by the lengths of its three half-axes, we denote them $a_1$, $a_2$ and $a_3$. Each $a_i$ is the length along the corresponding particle axis $\ve n_i$.
+
+The end result of this calculation is an equation of motion for $\ve n_1$ and $\ve n_2$. The two orthogonal vectors describe fully the orientation of the rigid body.
+
+The kinematic equation of motion for a rotating vector is 
+\begin{align}
+	\dot{\ve n}_i &= \ve \omega \cross \ve n_i,\eqnlab{tri01}
+\end{align}
+where $\ve \omega$ is the angular velocity of the particle.
+Jeffery \cite{jeffery1922} computed the components of the angular velocity vector in the particle frame of reference. Updated to the present notation, his Eq.~(37) reads
 \begin{align*}
-	\dot{\ve{n}}_1 &= \dot{R}\ve{e}_1 \\
-	&= RQ \ve{e}_1 \\
-	&= -Q_{12}R \ve{e}_2 - Q_{13}R \ve{e}_3 \\
-	&= -(\ve{n}_1\transpose B^{(12)} \ve{n}_2)\ve{n}_2 -(\ve{n}_1\transpose B^{(13)} \ve{n}_3)\ve{n}_3.\\
-	\intertext{using $(B^{(ij)})\transpose = -B^{(ji)}$}
-	&= B^{(31)}\ve{n}_1 - \ve{n}_1 (\ve{n}_1\transpose B^{(31)}\ve{n}_1) + \ve{n}_2(\ve{n}_2\transpose (B^{(21)}-B^{(31)})\ve{n}_1).
+	(\ve n_1 \cdot \ve \omega) &= \ve n_1\cdot \ve \Omega + \frac{a_2^2-a_3^2}{a_2^2+a_3^2}\left(\ve n_2\transpose \ma {S}\ve n_3\right),\\
+	(\ve n_2 \cdot \ve \omega) &= \ve n_2\cdot \ve \Omega + \frac{a_3^2-a_1^2}{a_3^2+a_1^2}\left(\ve n_3\transpose \ma {S}\ve n_1\right),\\
+	(\ve n_3 \cdot \ve \omega) &= \ve n_3\cdot \ve \Omega + \frac{a_1^2-a_2^2}{a_1^2+a_2^2}\left(\ve n_1\transpose \ma {S}\ve n_2\right).
 \end{align*}
-In a similar manner
+Here $\ve \Omega$ is such that $\ve \Omega \cross x = \ma O\ve x$, where $\ma S$ and $\ma O$ are the symmetric and antisymmetric parts of the flow gradient:
 \begin{align*}
-	\dot{\ve{n}}_2 &= B^{(32)}\ve{n}_2 - \ve{n}_2 (\ve{n}_2\transpose B^{(32)}\ve{n}_2) + \ve{n}_1(\ve{n}_1\transpose (B^{(12)}-B^{(32)})\ve{n}_2).
+	&\ma O = \frac{1}{2}(\ma A - \ma A\transpose),\quad
+	\ma S = \frac{1}{2}(\ma A + \ma A\transpose),\quad
+	\ma A = \nabla \ve u = \ma O + \ma S.
 \end{align*}
-The coupling terms can be expressed using only the strain of the flow, defined as
+We can put Jeffery's expression into a single vector expression
 \begin{align*}
-	S &= \frac{1}{2}(A+A\transpose).
+	\ve \omega &= \ve \Omega
+	 + \frac{a_2^2-a_3^2}{a_2^2+a_3^2}\left(\ve n_2\transpose \ma S\ve n_3\right)\ve n_1
+	 + \frac{a_3^2-a_1^2}{a_3^2+a_1^2}\left(\ve n_3\transpose \ma S\ve n_1\right)\ve n_2
+	  + \frac{a_1^2-a_2^2}{a_1^2+a_2^2}\left(\ve n_1\transpose \ma S\ve n_2\right)\ve n_3.
 \end{align*}
-In particular we find
+
+
+In order to ease the notation we introduce the two aspect ratios $\lambda = a_3/a_1$ and $\kappa=a_2/a_3$:
 \begin{align*}
-	B^{(21)} - B^{(31)} &= \frac{ 2a_1^2 (a_3^2 - a_2^2) }{(a_1^2+a_2^2)(a_1^2+a_3^2)}S,\\
-	B^{(12)} - B^{(32)} &= \frac{ 2a_2^2 (a_3^2 - a_1^2) }{(a_2^2+a_1^2)(a_2^2+a_3^2)}S.
+	\ve \omega &= \ve \Omega
+	 + K\left(\ve n_2\transpose \ma S\ve n_3\right)\ve n_1
+	 - \Lambda\left(\ve n_3\transpose \ma S\ve n_1\right)\ve n_2
+	  + \frac{K- \Lambda}{K \Lambda - 1}\left(\ve n_1\transpose \ma S\ve n_2\right)\ve n_3,
 \end{align*}
-For notational convenience we introduce the following symbols:
+where
 \begin{align*}
-	\ve{n} &= \ve{n}_1\\
-	\ve{p} &= \ve{n}_2\\
-	B &= B^{(31)} \\
-	C &= B^{(32)} \\
-	\lambda &= \frac{a_1}{a_3} \\
-	\mu &= \frac{a_2}{a_3}
+	K=\frac{\kappa^2-1}{\kappa^2+1}, \qquad \Lambda=\frac{\lambda^2-1}{\lambda^2+1}.
 \end{align*}
-The equations of motion are
+Now, take the equations of motion for $\ve n_1$ and $\ve n_2$,
 \begin{align*}
-	\diff{\ve{n}}{t} &= B \ve{n} - (\ve{n}\transpose B \ve{n})\ve{n} + \frac{ 2\lambda^2 (1 - \mu^2) }{(\lambda^2+\mu^2)(\lambda^2+1)}(\ve{n}\transpose S \ve{p})\ve{p} \\
-	\diff{\ve{p}}{t} &= C \ve{p} - (\ve{p}\transpose C \ve{p})\ve{p} + \frac{ 2\mu^2 (1 - \lambda^2) }{(\mu^2+\lambda^2)(\mu^2+1)}(\ve{n}\transpose S \ve{p})\ve{n} \\
-	\intertext{where}
-	B &= \frac{1}{1+\lambda^2}(\lambda^2 A - A\transpose) \\
-	C &= \frac{1}{1+\mu^2}(\mu^2 A - A\transpose) \\
-	S &= \frac{1}{2}(A + A\transpose)
+	\dot{\ve n}_1 &= \ve \omega \cross \ve n_1 \\
+	&= \ve \Omega \cross \ve n_1 
+	+ \Lambda\left(\ve n_3\transpose \ma S\ve n_1\right)\ve n_3
+    + \frac{K- \Lambda}{K \Lambda - 1}\left(\ve n_1\transpose \ma S\ve n_2\right)\ve n_2
+	,\\
+	\dot{\ve n}_2 &= \ve \omega \cross \ve n_2 \\
+	&= \ve \Omega \cross \ve n_2
+	 + K\left(\ve n_2\transpose \ma S\ve n_3\right)\ve n_3
+	  - \frac{K- \Lambda}{K \Lambda - 1}\left(\ve n_1\transpose \ma S\ve n_2\right)\ve n_1.
 \end{align*}
-Or in terms of the symmetric and anti-symmetric parts of the fluid gradient
+The final step is to eliminate $\ve n_3$ from the equations. This elimination is accomplished by noting that
 \begin{align*}
-	\diff{\ve{n}}{t} &= \ma O \ve{n} + \frac{\lambda^2-1}{\lambda^2+1} \left(\ma S \ve n- \ve{n}\transpose \ma S \ve{n})\ve{n}\right) + \frac{ 2\lambda^2 (1 - \mu^2) }{(\lambda^2+\mu^2)(\lambda^2+1)}(\ve{n}\transpose \ma S \ve{p})\ve{p} \\
-	\diff{\ve{p}}{t} &= \ma O \ve{p} + \frac{\mu^2-1}{\mu^2+1}\left(\ma S \ve p - \ve{p}\transpose \ma S \ve{p})\ve{p}\right) + \frac{ 2\mu^2 (1 - \lambda^2) }{(\mu^2+\lambda^2)(\mu^2+1)}(\ve{n}\transpose \ma S \ve{p})\ve{n} \\
-	\intertext{where}
-	B &= \frac{1}{1+\lambda^2}(\lambda^2 A - A\transpose) \\
-	C &= \frac{1}{1+\mu^2}(\mu^2 A - A\transpose) \\
-	S &= \frac{1}{2}(A + A\transpose)
+	\ma S \ve x &= (\ve n_1 \transpose \ma S \ve x) \ve n_1 + (\ve n_2 \transpose \ma S \ve x) \ve n_2 + (\ve n_3 \transpose \ma S \ve x) \ve n_3,
+	\intertext{implying}
+	(\ve n_3 \transpose \ma S \ve x) \ve n_3 &= \ma S \ve x - (\ve n_1 \transpose \ma S \ve x) \ve n_1 - (\ve n_2 \transpose \ma S \ve x) \ve n_2.
 \end{align*}
+Take the equation for $\dot{\ve n}_1$,
+\begin{align*}
+	\dot{\ve n}_1
+    &= 	\ve \Omega \cross \ve n_1 
+	+ \Lambda\left(\ve n_3\transpose \ma S\ve n_1\right)\ve n_3
+    + \frac{K- \Lambda}{K \Lambda - 1}\left(\ve n_1\transpose \ma S\ve n_2\right)\ve n_2 \\
+	&= \ve \Omega \cross \ve n_1 
+	+ \Lambda\left(
+	\ma S \ve n_1 - (\ve n_1 \transpose \ma S \ve n_1) \ve n_1 - (\ve n_2 \transpose \ma S \ve n_1) \ve n_2
+	\right)
+    + \frac{K- \Lambda}{K \Lambda - 1}\left(\ve n_1\transpose \ma S\ve n_2\right)\ve n_2 \\
+	&= \ve \Omega \cross \ve n_1 
+	+ \Lambda\left(
+	\ma S \ve n_1 - (\ve n_1 \transpose \ma S \ve n_1) \ve n_1
+	\right)
+    + \frac{K- \Lambda - \Lambda(K \Lambda - 1)}{K \Lambda - 1}\left(\ve n_1\transpose \ma S\ve n_2\right)\ve n_2 \\
+	&= \ve \Omega \cross \ve n_1 
+	+ \Lambda\left(
+	\ma S \ve n_1 - (\ve n_1 \transpose \ma S \ve n_1) \ve n_1
+	\right)
+    + \frac{K(1- \Lambda^2)}{K \Lambda - 1}\left(\ve n_1\transpose \ma S\ve n_2\right)\ve n_2. 
+\end{align*}
+In the same fashion, we find for $\dot{\ve n}_2$,
+\begin{align*}
+	\dot{\ve n}_2
+	&= \ve \Omega \cross \ve n_2
+	 + K\left(\ve n_2\transpose \ma S\ve n_3\right)\ve n_3
+	  - \frac{K- \Lambda}{K \Lambda - 1}\left(\ve n_1\transpose \ma S\ve n_2\right)\ve n_1 \\
+	&= \ve \Omega \cross \ve n_2
+	 + K\left(
+\ma S \ve n_2 - (\ve n_1 \transpose \ma S \ve n_2) \ve n_1 - (\ve n_2 \transpose \ma S \ve n_2) \ve n_2
+	 \right)
+	  - \frac{K- \Lambda}{K \Lambda - 1}\left(\ve n_1\transpose \ma S\ve n_2\right)\ve n_1 \\
+	&= \ve \Omega \cross \ve n_2
+	 + K\left(
+\ma S \ve n_2  - (\ve n_2 \transpose \ma S \ve n_2) \ve n_2
+	 \right)
+	  - \frac{K- \Lambda + K(K \Lambda - 1)}{K \Lambda - 1}\left(\ve n_1\transpose \ma S\ve n_2\right)\ve n_1\\
+	&= \ve \Omega \cross \ve n_2
+	 + K\left(
+\ma S \ve n_2  - (\ve n_2 \transpose \ma S \ve n_2) \ve n_2
+	 \right)
+	  + \frac{\Lambda(1-K^2)}{K \Lambda - 1}\left(\ve n_1\transpose \ma S\ve n_2\right)\ve n_1.
+\end{align*}
+In most places in this thesis, I write the cross product with $\ve \Omega$ as the matrix product with $\ma O$ instead. We also rename $\ve n = \ve n_1$ and $\ve p = \ve n_2$:
+\begin{align*}
+	\dot{\ve n}	&= \ma O \ve n 
+	+ \Lambda\left(
+	\ma S \ve n - (\ve n \transpose \ma S \ve n) \ve n
+	\right)
+    + \frac{K(1- \Lambda^2)}{K \Lambda - 1}\left(\ve n\transpose \ma S\ve p\right)\ve p, \\
+\dot{\ve p}	&=    \ma O \ve p
+	 + K\left(
+\ma S \ve p  - (\ve p \transpose \ma S \ve p) \ve p
+	 \right)
+	  + \frac{\Lambda(1-K^2)}{K \Lambda - 1}\left(\ve n\transpose \ma S\ve p\right)\ve n
+\end{align*}
+In terms of the aspect ratios $\lambda$ and $\kappa$ the equations read
+\begin{align*}
+	\dot{\ve n} &= \ma O \ve{n} + \frac{\lambda^2-1}{\lambda^2+1} \left(\ma S \ve n- \ve{n}\transpose \ma S \ve{n})\ve{n}\right) + \frac{ 2\lambda^2 (1 - \kappa^2) }{(\lambda^2+\kappa^2)(\lambda^2+1)}(\ve{n}\transpose \ma S \ve{p})\ve{p}, \nn\\
+	\dot{\ve p} &= \ma O \ve{p} + \frac{\kappa^2-1}{\kappa^2+1}\left(\ma S \ve p - \ve{p}\transpose \ma S \ve{p})\ve{p}\right) + \frac{ 2\kappa^2 (1 - \lambda^2) }{(\kappa^2+\lambda^2)(\kappa^2+1)}(\ve{n}\transpose \ma S \ve{p})\ve{n}.
+\end{align*}
+This equation is identical to \Eqnref{triaxial_equation}. It is further discussed in \Secref{expresults}.
 \end{document}

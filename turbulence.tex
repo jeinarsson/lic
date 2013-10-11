@@ -2,18 +2,21 @@
 
 \begin{document}
 
-\chapter{Tumbling in turbulent flows}
+\chapter{Tumbling in turbulent flows}\seclab{tumbling}
 
 Together with Kristian Gustavsson we investigate the orientational dynamics of small particles in random and turbulent flows. Kristian has extensive experience in studying the translational dynamics of spherical particles in random flows. In the previous Sections, describing Papers A \& B, we considered only steady and uniform fluid flows. In this project we combine our knowledge of random and turbulent flows with that of the dynamics of non-spherical particles. The collaboration has thus far resulted in Paper C (under review for publication in Physical Review Letters).
 
 \section{Overview}
 
-The dynamics of turbulent flow is fundamentally complicated. It is non-linear and chaotic, and reliable numerical solutions are computationally very expensive. One of the motivations for studying random flows is that, with properly chosen statistics, they may be a model system for understanding the dynamics of particles in turbulence. 
-This idea works well for quantities which are not crucially dependent on the specifics of turbulence. For example, one of Kristian's results concerns the relative collision velocities of particles \cite{gustavsson2013relvel}. Through a random flow model he worked out properties universal to colliding particles in any flow. In other cases, however, it turns out that the particle dynamics depends on details in the turbulent flow which are not present in the random flow.
+The dynamics of turbulent flow is fundamentally complicated. It is non-linear and chaotic, and reliable numerical solutions are computationally very expensive. One of the motivations for studying random flows is that, with properly chosen statistics, they may be a model system for understanding the dynamics of particles in turbulence.
+
+This idea works well for quantities which are not crucially dependent on the specifics of turbulence. For example, one of Kristian's results concerns the relative collision velocities of particles \cite{gustavsson2013relvel}. Through a random flow model he worked out properties universal to colliding particles in any flow. In other cases, however, it turns out that the particle dynamics depends on details in the turbulent flow which are not present in the random flow. 
+
+A random flow with a single length scale is characterised by the Kubo number $\ku = u_0 \tau/\eta$, where $u_0$ is a typical flow speed, $\tau$ a typical correlation time, and $\eta$ a typical correlation length. A small Kubo number corresponds to a rapidly fluctuating flow, with the limit $\ku\to0$ representing the white-noise limit. Large Kubo numbers correspond to steady flows.
 
 When Parsa et. al. published numerical (DNS) and experimental results on the rotation rates of non-spherical particles in turbulence \cite{parsa2012}, they highlighted a case where the random flow predicts a qualitatively different result from the observation in turbulence. They showed that disk-shaped particles rotate, on average, about twice as fast as rod-shaped particles in turbulence. The naive prediction from a random-flow model is that disks and rods rotate alike. The questions we try to answer in Paper C are, which mechanisms are responsible for the differences in particle rotation rates? How do the statistics of the flow relate to the statistics of the particles? And what is the difference between random flows and turbulence?
 
-It is a well-known fact that the distribution of velocity gradients in turbulent flow is strongly skewed\cite{pumirskewed}. We argue in Paper C that there is a relation between the skewed distribution of velocity gradients and the differing tumbling rates of disks and rods. The broken symmetry means that some flow configurations are more likely than others. We use Jeffery's equation of motion for axisymmetric particles to argue how this asymmetry propagates to the particle rotation. 
+It is a well-known fact that the distribution of velocity gradients in turbulent flow is strongly skewed\cite{pumirskewed,luthi2009}. We argue in Paper C that there is a relation between the skewed distribution of velocity gradients and the differing tumbling rates of disks and rods. The broken symmetry means that some flow configurations are more likely than others. We use Jeffery's equation of motion for axisymmetric particles to argue how this asymmetry propagates to the particle rotation. 
 
 As I explained in \Secref{jefferyequation} about \emph{steady flows}, the orientational dynamics of a particle switches from rotation to alignment when one replaces a rod with a disk, or vice versa. Therefore, if rods and disks are to tumble alike on average, we must require that particles experience equal amounts of ``rotating'' gradients and ``aligning'' gradients - otherwise the result will be different if we switch the particle.
 In other words, the distribution of flow gradients $\ma A$ must be symmetric over $\tr \ma A^3=0$ (see\footnote{Recall, $\ma B=\ma O + \Lambda\ma S$, but $\ma B \to \ma A$ ($-\ma A\transpose$) as the particle shape $\Lambda\to 1$ ($-1$).} \Figref{bmap} in \Secref{jefferyequation}.) This symmetry does not exist in turbulence.
@@ -22,7 +25,7 @@ However, this argument does not close the case, because it is only true for \emp
 
 It turns out that the first contribution to the rotation rate which is different for rods and disks comes from the third-order correlation functions of the flow velocity gradients. Specifically, the correlation function $\langle \ma O(0) \ma O(0) \ma S(-t)\rangle$ makes a strong contribution. Here, as throughout this thesis, $\ma O$ and $\ma S$ are the antisymmetric and symmetric parts of the Lagrangian\footnote{Along a particle trajectory; as experienced by the particle.} flow gradient matrix. The interpretation is that flow regions where there is first stretching flow ($\ma S$) and then high vorticity ($\ma O^2$) makes disks rotate, but rods align.
 
-The manuscript is necessarily brief on some technical details, and in the following I will elaborate on two of them. First, I will show how to arrive at Eq.~(4) starting from Eq.~(3) in the manuscript. Second, I will give some detail on how we collected and verified Lagrangian statistics in a turbulent flow. 
+The manuscript is necessarily brief on some technical details, and in the following I will elaborate on two of them. First, I will show how to arrive at Eq.~(4) starting from Eq.~(3) in the manuscript. Second, I will give some detail on how we collected and verified Lagrangian statistics in a turbulent flow, along with some more data we did not find space for in the paper.
 
 \section{Derivation of the result Eq.~(4)}
 
@@ -81,11 +84,11 @@ The initial condition $\ve n_0$ is not a random variable, and we may average usi
  	&=\frac{\left\langle \tr \ma O_t\ma O_t\right\rangle}{3} = -\frac{\left\langle \tr \ma A_t\transpose\ma A_t\right\rangle}{6},
  \end{align*}
 where we also used $n_in_i=1$, and in the last step that $\langle\tr\ma A\transpose \ma A\rangle/2=\langle\tr\ma S\ma S\rangle=-\langle\tr\ma O\ma O\rangle$ in a homogenous flow (see App.~\secref{applagrangian}). In the same fashion we evaluate all averages in \Eqnref{ndotsquared} and find
-\begin{align*}
-	\langle \dot n^2\rangle &=\ku^2 \left(-\frac{1}{3}\langle\tr\ma O_t\ma O_t\rangle +  \frac{\Lambda^2}{3}\langle\tr\ma S_t \ma S_t\rangle - \frac{2\Lambda^2}{15}\langle\tr\ma S_t\ma S_t \rangle\right) + \mathcal O(\ku^3)  \\
-	&= \frac{\ku^2}{3}\left(-\langle\tr\ma O_t\ma O_t\rangle +  \frac{3\Lambda^2}{5}\langle\tr\ma S_t \ma S_t\rangle\right) + \mathcal O(\ku^3)  \\
-	&= \ku^2\frac{\langle\tr\ma A_t\transpose \ma A_t\rangle}{30}\left(5 + 3 \Lambda^2\right)+ \mathcal O(\ku^3).  
-\end{align*}
+\begin{align}
+	\langle \dot n^2\rangle &=\ku^2 \left(-\frac{1}{3}\langle\tr\ma O_t\ma O_t\rangle +  \frac{\Lambda^2}{3}\langle\tr\ma S_t \ma S_t\rangle - \frac{2\Lambda^2}{15}\langle\tr\ma S_t\ma S_t \rangle\right) + \mathcal O(\ku^3)  \nn\\
+	&= \frac{\ku^2}{3}\left(-\langle\tr\ma O_t\ma O_t\rangle +  \frac{3\Lambda^2}{5}\langle\tr\ma S_t \ma S_t\rangle\right) + \mathcal O(\ku^3)  \nn\\
+	&= \ku^2\frac{\langle\tr\ma A_t\transpose \ma A_t\rangle}{30}\left(5 + 3 \Lambda^2\right)+ \mathcal O(\ku^3).  \eqnlab{ku2}
+\end{align}
 The limit of $\ku\to0$ is called the white noise limit. Physically it means that the flow is changing so rapidly that the instantaneous gradient is always uncorrelated with the particle orientation. There is no ``memory'', or correlation with the near past, in the system, hence the name white noise.
 
 Now we proceed to compute the first effects of finite correlation time in the flow. In order to reach $\mathcal O(\ku^3)$, we need an expression for $\ve n(t)$.
@@ -203,7 +206,7 @@ The sphere always rotates with the vorticity rate. We see that the disk experien
 \includegraphics{figs/deltas.pdf}%
 }
 \end{center}
-\caption{\figlab{deltas} deltas }%
+\caption{\figlab{deltas} Spatial dependence of correlation function $C^{SSS}_{ijklmn}$. Comparison between measured correlation (top) and theoretical expression \Eqnref{lagrangianSSS} (bottom). Bars are normalised by the first element. Error bars indicate one standard deviation.}%
 \end{figure}
 
 \begin{figure}
@@ -212,12 +215,40 @@ The sphere always rotates with the vorticity rate. We see that the disk experien
 \includegraphics{figs/oosintegral.pdf}%
 }
 \end{center}
-\caption{\figlab{oosintegral} oosintegral }%
+\caption{\figlab{oosintegral} Top panel: Time dependence of correlation function $C^{OOS}_{ijklmn}(0,t)$. Bottom panel: Cumulative integral of correlation function. The integral in the expansion for rotation rates \Eqnref{eq4final} correspond to the value at $t=0$, in this case $0.358$.}%
 \end{figure}
 
-From the data set we also compute the three integrals in \Eqnref{eq4final} in order to quantify the relative strengths of the contributions. First, we have to confirm that the correlation functions factorise according to \Eqnref{turb2point}. We compute every element of, for example, $C^{SSS}_{ijklmn}$ and compare it to the theoretical formula, in this case \Eqnref{lagrangianSSS} in Appendix~\secref{lagrangian}. The result is shown in \Figref{deltas}, and the other combinations show similar agreement with theory. We conclude that the JHU dataset indeed contains incompressible and isotropic turbulence. Second, knowing that the correlation functions factorise, we may compute the time dependence of the trace and perform the integral. In \Figref{oosintegral} I show the result for $\langle \ma O_0 \ma O_0 \ma S_t\rangle$ as an example.
+\begin{figure}
+	\begin{center}
+	  \makebox[\textwidth]{%
+\includegraphics{figs/sssintegral.pdf}%
+}
+\end{center}
+\caption{\figlab{sssintegral} Top panel: Time dependence of correlation function $C^{SSS}_{ijklmn}(0,t)$. Bottom panel: Cumulative integral of correlation function. The integral in the expansion for rotation rates \Eqnref{eq4final} correspond to the value at $t=0$, in this case $-0.304$.}%
+\end{figure}
+
+\begin{figure}
+	\begin{center}
+	  \makebox[\textwidth]{%
+\includegraphics{figs/sosintegral.pdf}%
+}
+\end{center}
+\caption{\figlab{sosintegral} Top panel: Time dependence of correlation function $C^{SOS}_{ijklmn}(0,t)$. Bottom panel: Cumulative integral of correlation function. The integral in the expansion for rotation rates \Eqnref{eq4final} correspond to the value at $t=0$, in this case $0.022$.}%
+\end{figure}
+
+From the data set we also compute the three integrals in \Eqnref{eq4final} in order to quantify the relative strengths of the contributions. First, we have to confirm that the correlation functions factorise according to \Eqnref{turb2point}. We compute every element of, for example, $C^{SSS}_{ijklmn}$ and compare it to the theoretical formula, in this case \Eqnref{lagrangianSSS} in Appendix~\secref{applagrangian}. The result is shown in \Figref{deltas}, and the other combinations show similar agreement with theory. We conclude that the JHU dataset indeed contains incompressible and isotropic turbulence. Second, knowing that the correlation functions factorise, we may compute the time dependence of the trace and perform the integral. In Figs.~\figref{oosintegral}-\figref{sosintegral} I show the result for the integrals relevant to the expansion \Eqnref{eq4final}.
+
+Finally, we may use the numerical turbulence correlation functions in the expansion \eqnref{eq4final}, and compare to the numerical results of tumbling in turbulent flows. Two comments are in order. First, in turbulent flows $\ku=\mathcal O(1)$, while \Eqnref{eq4final} is valid for small $\ku$. Therefore we do not expect quantitative predictions. However, we expect the functional form of the result to be correct. That is, in this case, the dependence upon the particle shape $\lambda$. Second, in deriving \Eqnref{eq4final} we used dimensionless variables where $\ma A = u_0/\eta \ma A'$. But here we have instead expressed the correlation functions de-dimensionalised by the Kolmogorov time $\tau_{K}$, or $\ma A = 1/\tau_{K} \ma A''$. In order to proceed, we identify the time $\tau$ in the Kubo number with the Kolmogorov time $\tau_{K}$, so that $\ku \ma A'= \ma A''$. There are therefore no free parameters in \Eqnref{eq4final} when using the numerical turbulence data. The result is shown in \Figref{ndotsqr_mean}. 
 
 
+\begin{figure}
+	\begin{center}
+	  \makebox[\textwidth]{%
+\includegraphics{figs/ndotsqr_mean.pdf}%
+}
+\end{center}
+\caption{\figlab{ndotsqr_mean}Average rotation rate of an axisymmetric particle as function of particle aspect ratio $\lambda$. Markers show numerical results from the JHU turbulence data set. Solid lines show the small-$\ku$ expansions \Eqnref{ku2} (second order, orange line) and \Eqnref{eq4final} (third order, red line), using the correlation functions shown in Figs.~\figref{oosintegral}-\figref{sosintegral}.}%
+\end{figure}
 
 
 

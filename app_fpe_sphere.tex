@@ -11,13 +11,13 @@ We start from the Fokker-Planck equation governing the evolution of the probabil
 	\int_{S_2} \!\!\!\!\!P(\ve n, t)\rd \ve n &= 1.
 \end{align}
 The differential operator $\partial_{\ve n}$ is the gradient on the sphere, defined by taking the usual gradient $\nabla$ in $R^3$ projected onto the unit sphere, $\partial_{\ve n} \equiv (\maid - \venn)\nabla$.
-We approximate the solution of \Eqnref{fpeapp} by an expansion in spherical harmonics \cite{Sch55}, the eigenfunctions of the quantum mechanical angular momentum operators, which form a complete basis on $S_2$. We use bra-ket notation,
+We approximate the solution of \Eqnref{fpeapp} by an expansion in spherical harmonics \cite{scheraga1955}, the eigenfunctions of the quantum mechanical angular momentum operators, which form a complete basis on $S_2$. We use bra-ket notation,
 \begin{align}
 	P(\ve n, t) &= \langle \ve n| P(t)\rangle =  \sum_{l=0}^{\infty}\sum_{m=-l}^l c_l^m(t) \langle \ve n\Ylm{l}{m}\eqnlab{basisexpansion}
 \intertext{where}
 	 \langle\ve n|l,m\rangle &= Y_l^m(\ve n) = (-1)^m\sqrt{\frac{2l+1}{4\pi}\frac{(l-m)!}{(l+m)!}}P_l^m(\cos\theta)e^{im\varphi}.
 \end{align}
-We use the standard spherical harmonics defined in for example Arfken (p. 571) \cite{Arf70}. The functions $P_l^m$ are the associated Legendre polynomials. We call the time-dependent coefficients for each basis function $c_l^m(t)$, and the fact that $P$ is real-valued puts a constraint on the coefficients that 
+We use the standard spherical harmonics defined in for example Arfken (p. 571) \cite{arfken1970}. The functions $P_l^m$ are the associated Legendre polynomials. We call the time-dependent coefficients for each basis function $c_l^m(t)$, and the fact that $P$ is real-valued puts a constraint on the coefficients that 
 \begin{align}
 	c_l^{-m} = (-1)^m\overline{c_l^m},\eqnlab{clmreal}
 \end{align}
@@ -32,7 +32,7 @@ Inserting the expansion yields
 	\dot c_p^q(t)  &= \sum_{l=0}^{\infty}\sum_{m=-l}^l c_l^m(t) \langle p,q| \hat J\Ylm{l}{m} \eqnlab{clmeq1},\\
 	c_0^0 &= \frac{1}{\sqrt{4\pi}}\eqnlab{clmeq1norm}.
 \end{align}
-In order to solve \Eqnref{clmeq1} it remains to compute the matrix elements of the operator $\hat J$. This is achieved by expressing $\hat J$ as a combination of the angular momentum operators. How the angular momentum operators act on the spherical harmonics is well known, see for example Arfken \cite{Arf70}.
+In order to solve \Eqnref{clmeq1} it remains to compute the matrix elements of the operator $\hat J$. This is achieved by expressing $\hat J$ as a combination of the angular momentum operators. How the angular momentum operators act on the spherical harmonics is well known, see for example Arfken \cite{arfken1970}.
 
 The angular momentum operator $\hat{\ve L}$ is given by
 \begin{align*}
@@ -54,7 +54,7 @@ Next, the drift term we consider is a polynomial in $\hat{n}_1, \hat{n}_2$ and $
 \begin{align*}
 	\hat{n}_1^\alpha \hat{n}_2^\beta \hat{n}_3^\gamma &= \sum_{l=0}^{k}\sum_{m=-l}^l a_l^m(\alpha,\beta,\gamma)\hat{Y}_l^m.
 \end{align*}
-The action of $\hat{Y}_p^q$ is computed with the Clebsch-Gordan coefficients (see for example Sakurai p.216 \cite{Sak94})
+The action of $\hat{Y}_p^q$ is computed with the Clebsch-Gordan coefficients (see for example Sakurai p.216 \cite{sakurai1994})
 \begin{align*}
 	\hat{Y}_p^q \Ylm{l}{m} &= \sum_{\Delta l=-p}^{p}K(p,q,l,m,l+\Delta l, m+q)\Ylm{l+\Delta l}{m+q},\\
 \end{align*}
