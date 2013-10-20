@@ -12,8 +12,8 @@ A_{ij}(\ve r(t), t) &= \frac{\partial}{\partial r_j}u_i(\ve r(t), t).
 \end{align*}
 The correlation functions between matrix elements are denoted
 \begin{align*}
-	C^{AA}_{ijkl}(t) &\equiv \left\langle A_{ij}(\ve r(0),0)A_{kl}(\ve r(t), t)\right\rangle,\\
-	C^{AAA}_{ijklmn}(t_1,t_2) &\equiv \left\langle A_{ij}(0)A_{kl}(t_1)A_{mn}(t_2)\right\rangle,
+	C^{AA}_{ijkl}(t_1) &\equiv \left\langle A_{ij}\left(\ve r(0),0\right)A_{kl}\left(\ve r(t_1), t_1\right)\right\rangle,\\
+	C^{AAA}_{ijklmn}(t_1,t_2) &\equiv \left\langle A_{ij}\left(\ve r(0),0\right)A_{kl}\left(\ve r(t_1),t_1\right)A_{mn}\left(\ve r(t_2),t_2\right)\right\rangle,
 \end{align*}
 and so on. Later we will instead use the shorthand $\ma A_t \equiv \ma A(\ve r(t), t)$ for gradients evaluated along particle trajectories.
 
@@ -50,7 +50,7 @@ We relate the time correlation functions $\alpha_k(t)$ to the respective matrice
 	\left\langle \tr \ma O_0\ma O_t\right\rangle &= C^{OO}_{ijji}(t) = \frac{\alpha_3(t)-\alpha_2(t)}{2}d(d-1), \nn\\
 	\left\langle \tr \ma S_0\ma S_t\right\rangle &= C^{SS}_{ijji}(t) = \frac{\alpha_2(t)+\alpha_3(t)}{2}(d^2+d-2).\eqnlab{turbtraces2}
 \end{align}
-Finally, for an isotropic, incompressible flow the two-point gradient statistics are on the form
+For an isotropic, incompressible flow the two-point gradient statistics are on the form
 \begin{align}
 	C^{OO}_{ijkl}(t) &= \frac{\left\langle \tr \ma O_0\ma O_t\right\rangle}{d(d-1)}( \delta_{il}\delta_{jk}-\delta_{ik}\delta_{jl}), \nn\\
 	C^{SS}_{ijkl}(t) &= \frac{\left\langle \tr \ma S_0\ma S_t\right\rangle}{d(d-1)(d+2)}(d\delta_{il}\delta_{jk} + d\delta_{ik}\delta_{jl} - 2\delta_{ij}\delta_{kl}), \nn\\
@@ -238,8 +238,7 @@ C^{OOO}_{ijklmn}(t_1,t_2) &=
 \delta_{ik} \delta_{jn} \delta_{lm}+
 \delta_{im} \delta_{jk} \delta_{ln}-
 \delta_{ik} \delta_{jm} \delta_{ln}
-\right).\displaybreak[2]\eqnlab{lagrangianOOO}\\
-%
+\right).\displaybreak[2]\eqnlab{lagrangianOOO}
 \end{align}
 \section{Homogeneity}
 When the correlation is evaluated at the particle, that is $t=0$, we may also exploit the homogeneity of the flow. In a homogenous and incompressible flow $\left\langle \tr \ma A^2\right\rangle = \left\langle \tr \ma A^3\right\rangle=0 $, which implies

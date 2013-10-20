@@ -16,7 +16,7 @@ A random flow with a single length scale is characterised by the Kubo number $\k
 
 When Parsa et. al. published numerical (DNS) and experimental results on the rotation rates of non-spherical particles in turbulence \cite{parsa2012}, they highlighted a case where the random flow predicts a qualitatively different result from the observation in turbulence. They showed that disk-shaped particles rotate, on average, about twice as fast as rod-shaped particles in turbulence. The naive prediction from a random-flow model is that disks and rods rotate alike. The questions we try to answer in Paper C are, which mechanisms are responsible for the differences in particle rotation rates? How do the statistics of the flow relate to the statistics of the particles? And what is the difference between random flows and turbulence?
 
-It is a well-known fact that the distribution of velocity gradients in turbulent flow is strongly skewed\cite{pumirskewed,luthi2009}. We argue in Paper C that there is a relation between the skewed distribution of velocity gradients and the differing tumbling rates of disks and rods. The broken symmetry means that some flow configurations are more likely than others. We use Jeffery's equation of motion for axisymmetric particles to argue how this asymmetry propagates to the particle rotation. 
+It is a well-known fact that the distribution of velocity gradients in turbulent flow is strongly skewed\cite{chertkov1999,luthi2009}. We argue in Paper C that there is a relation between the skewed distribution of velocity gradients and the differing tumbling rates of disks and rods. The broken symmetry means that some flow configurations are more likely than others. We use Jeffery's equation of motion for axisymmetric particles to argue how this asymmetry propagates to the particle rotation. 
 
 As I explained in \Secref{jefferyequation} about \emph{steady flows}, the orientational dynamics of a particle switches from rotation to alignment when one replaces a rod with a disk, or vice versa. Therefore, if rods and disks are to tumble alike on average, we must require that particles experience equal amounts of ``rotating'' gradients and ``aligning'' gradients - otherwise the result will be different if we switch the particle.
 In other words, the distribution of flow gradients $\ma A$ must be symmetric over $\tr \ma A^3=0$ (see\footnote{Recall, $\ma B=\ma O + \Lambda\ma S$, but $\ma B \to \ma A$ ($-\ma A\transpose$) as the particle shape $\Lambda\to 1$ ($-1$).} \Figref{bmap} in \Secref{jefferyequation}.) This symmetry does not exist in turbulence.
@@ -37,17 +37,18 @@ A_{ij}(\ve r(t), t) &= \frac{\partial}{\partial r_j}u_i(\ve r(t), t).
 \end{align*}
 The correlation functions between elements of a matrix $\ma A$ are denoted
 \begin{align*}
-	C^{AA}_{ijkl}(t) &\equiv \left\langle A_{ij}(\ve r(t_0),t_0)A_{kl}(\ve r(t_0+t), t_0+t)\right\rangle,\\
-	C^{AAA}_{ijklmn}(t_1,t_2) &\equiv \left\langle A_{ij}(0)A_{kl}(t_1)A_{mn}(t_2)\right\rangle,
+	C^{AA}_{ijkl}(t_1) &\equiv \left\langle A_{ij}\left(\ve r(0),0\right)A_{kl}\left(\ve r(t_1), t_1\right)\right\rangle,\\
+	C^{AAA}_{ijklmn}(t_1,t_2) &\equiv \left\langle A_{ij}\left(\ve r(0),0\right)A_{kl}\left(\ve r(t_1),t_1\right)A_{mn}\left(\ve r(t_2),t_2\right)\right\rangle,
 \end{align*}
-and so on. Note that we assume that the flow is statistically stationary, in the sense that the correlation between two matrix elements only depends on the time difference $t$, not on the particular value of $t_0$.
+and so on. We will from now on use the shorthand $\ma A_t \equiv \ma A(\ve r(t), t)$ for brevity.
+Note that we assume that the flow is statistically stationary, in the sense that the correlation between two matrix elements only depends on the time difference $t_1$, not on the particular value of $t$ (here chosen to be $0$).
 We separate the gradient into its symmetric and antisymmetric parts,
 \begin{align*}
 	&\ma O = \frac{1}{2}(\ma A - \ma A\transpose),\quad
 	\ma S = \frac{1}{2}(\ma A + \ma A\transpose),\quad
 	\ma A = \ma O + \ma S.
 \end{align*}
-We will from now on use the shorthand $\ma A_t \equiv \ma A(\ve r(t), t)$ for brevity. It turns out that the all the second and third order correlation functions between $\ma S$ and $\ma O$ factorise in a very convenient manner. Appendix~\secref{applagrangian} contains the details of this factorisation and the final expressions. All the correlation functions become products of one time-dependent function, and one part which depends only on the spatial indices, but not time. For example, in three spatial dimensions
+ It turns out that the all the second and third order correlation functions between $\ma S$ and $\ma O$ factorise in a very convenient manner. Appendix~\secref{applagrangian} contains the details of this factorisation and the final expressions. All the correlation functions become products of one time-dependent function, and one part which depends only on the spatial indices, but not time. For example, in three spatial dimensions
 \begin{align}
 	C^{OO}_{ijkl}(t) &= \frac{\left\langle \tr \ma O_0\ma O_t\right\rangle}{6}( \delta_{il}\delta_{jk}-\delta_{ik}\delta_{jl}), \nn\\
 	C^{SS}_{ijkl}(t) &= \frac{\left\langle \tr \ma S_0\ma S_t\right\rangle}{30}(3\delta_{il}\delta_{jk} + 3\delta_{ik}\delta_{jl} - 2\delta_{ij}\delta_{kl}), \nn\\
@@ -76,7 +77,7 @@ In the calculation we will eventually take $t\to\infty$. The average rotation ra
 We cannot perform the average at this point, because in general the orientation $\ve n_t$ and the gradient matrices $\ma O_t$ and $\ma S_t$ have complicated joint statistics - the particles align preferentially to the gradients. 
 The first approximation to the equation of motion \eqnref{turbeqnofmotion} is $\ve n(t) \approx \ve n_0 + \mathcal O(\ku)$.
 %As explained above, $\ve n_0$ is uncorrelated with the flow at the later time $t$, 
-The initial condition $\ve n_0$ is not a random variable, and we may average using the lagrangian correlation functions \eqnref{turb2point}. For example,
+The initial condition $\ve n_0$ is not a random variable, and we may average using the Lagrangian correlation functions \eqnref{turb2point}. For example,
 \begin{align*}
  	\left\langle\ve n_{0}\transpose \ma O_{t} \ma O_{t} \ve n_{0}\right\rangle&=\ve n_{0}\transpose\left\langle \ma O_{t} \ma O_{t} \right\rangle\ve n_{0} \\
  	&= C^{OO}_{ijjk}(0)n_in_k\\
@@ -100,7 +101,7 @@ The equation for $\ve n$ has the implicit solution
 The perturbation expansion is computed  to any order in $\ku$ by recursively inserting the entire right hand side of \Eqnref{n_expansion} into each occurence of $\ve n_{t'}$.
 Iterating once we find
 \begin{align}
-\ve n_{t'}&=\ve n_0\!+\!\ku\!\int_0^{t'}\!\!\!\!{\rm d}t\,[\ma O_{t}\ve n_{0}\! +\!\Lambda(\ma S_{t}\ve n_{0}\!-\!(\ve n_{0}\transpose\ma S_{t}\ve n_{0})\ve n_{0})]\, + \mathcal O(\ku^2)\eqnlab{n_expansion2}
+\ve n_{t}&=\ve n_0\!+\!\ku\!\int_0^{t}\!\!\!\!{\rm d}t'\,[\ma O_{t'}\ve n_{0}\! +\!\Lambda(\ma S_{t'}\ve n_{0}\!-\!(\ve n_{0}\transpose\ma S_{t'}\ve n_{0})\ve n_{0})]\, + \mathcal O(\ku^2)\eqnlab{n_expansion2}
 \end{align}
 In principle, we could continue, however, for the present purpose, this first order expansion is enough.
 We insert the expansion \eqnref{n_expansion2} into \Eqnref{ndotsquared} and find to third order in $\ku$
@@ -146,7 +147,7 @@ There are quite a number of terms, but again, we can use the known three point c
 	&= \frac{\left\langle\tr \ma S_t\ma S_{t}\ma S_{t'}\right\rangle}{30} (3 \delta_{im} \delta_{kl}+3 \delta_{il} \delta_{km}-2 \delta_{ik} \delta_{lm})\\
 	&= \frac{2\left\langle\tr \ma S_t\ma S_{t}\ma S_{t'}\right\rangle}{15}.
 \end{align*}
-Moreover, the correlation functions where two of the three matrices are evaluated at the same time have an exchange symmetry. More precisely it means, for instance, $C^{OSS}_{ijklmn}(0,\tau)=C^{SOS}_{klijmn}(0,\tau)$. This symmetry reduces the number of terms considerably, for example $\langle \ma S_t \ma O_t \ma O_{t'}\rangle - \langle \ma O_t \ma S_t \ma O_{t'}\rangle =0$. After averaging, the result is
+Moreover, the correlation functions where two of the three matrices are evaluated at the same time have an exchange symmetry. More precisely it means, for instance, $C^{OSS}_{ijklmn}(0,\tau)=C^{SOS}_{klijmn}(0,\tau)$. This symmetry reduces the number of terms considerably, for example $\langle \ma S_t \ma O_t \ma O_{t'}\rangle = \langle \ma O_t \ma S_t \ma O_{t'}\rangle$. After averaging, the result is
 \begin{align*}
 \langle \dot n^2\rangle &=\ku^2\frac{\langle\tr\ma A_t\transpose \ma A_t\rangle}{30}\left(5 + 3 \Lambda^2\right) \\
 	&\,\,\,+ \frac{2 \Lambda \ku^3}{5} \int_0^{t}\!\!\!\!{\rm d}t' \bigg[\frac{3 \Lambda^2}{7}\left\langle\tr \ma S_t\ma S_{t}\ma S_{t'}\right\rangle - \left\langle\tr \ma O_t\ma O_{t}\ma S_{t'}\right\rangle + 2 \Lambda \left\langle\tr \ma S_t\ma O_{t}\ma S_{t'}\right\rangle\bigg]
@@ -167,7 +168,7 @@ The last step is to take the time $t\to\infty$, as advertised earlier. This conc
 
 \section{Turbulent flow data}
 
-We do not ourselves have the resources to produce a numerical solution of the Navier-Stokes equations. But researchers at Johns Hopkins University (JHU) have published the data from a large direct numerical simulation\footnote{\url{http://turbulence.pha.jhu.edu/}} \cite{li2008}. The JHU database contains the velocity and pressure fields of homogenous, isotropic and incompressible turbulence. The domain is a periodic box, and the data covers circa 45 Kolmogorov times, corresponding to the turn-around time of the largest eddy. 
+We do not ourselves have the resources to produce a numerical solution of the Navier-Stokes equations. But researchers at Johns Hopkins University (JHU) have published the data from a large direct numerical simulation\footnote{\url{http://turbulence.pha.jhu.edu/}} \cite{li2008}. The JHU database contains the velocity and pressure fields of homogenous, isotropic and incompressible turbulence. The spatial domain is a periodic box, and the data covers circa 45 Kolmogorov times, corresponding to the turn-around time of the largest eddy. 
 
 The JHU database stores the data (\unit[27]{TB}) in a computing cluster, which we can access with a remote programming interface. We may query for the velocity and pressure fields, as well as their derivatives, at any time and position in the dataset. The JHU database provides both spatial and temporal interpolation, so to us the dataset is for practical purposes continuous.
 
@@ -179,7 +180,7 @@ We initialise a particle at a random position $\ve r$, with a random orientation
 The procedure is repeated for the entire duration of the data set. From the time series $\ma A(\ve r(t), t)$ we compute the required correlation functions, and other observables such as particle alignment with vorticity $\langle|\ve \Omega \cdot \ve n|\rangle$.
 
 
-In \Figref{alignment} I show the probability distributions of particle alignment with the eigenvectors of the strain matrix $\ma S$, and the vorticity vector $\ve \Omega$. The straining direction $\ve e_1$ corresponds to the largest eigenvalue. the We see that rods ($\lambda=100$ in this case) align preferentially to the vorticity, as previously observed \cite{pumir2011}. But we also see that disks ($\lambda=1/100$) have an even stronger preference to anti-align with the vorticity. The same pattern of opposite preference holds for the three eigenvectors of $\ma S$. Disks prefer the compressing direction $\ve e_3$, while rods prefer the weakly stretching $\ve e_2$. None of the particle shapes correlate strongly to the strongest straining direction $\ve e_1$.
+In \Figref{alignment} I show the probability distributions of particle alignment with the eigenvectors of the strain matrix $\ma S$, and the vorticity vector $\ve \Omega$. The straining direction $\ve e_1$ corresponds to the largest eigenvalue. We see that rods ($\lambda=100$ in this case) align preferentially to the vorticity, as previously observed \cite{pumir2011}. But we also see that disks ($\lambda=1/100$) have an even stronger preference to anti-align with the vorticity. The same pattern of opposite preference holds for the eigenvectors of $\ma S$. Disks prefer the compressing direction $\ve e_3$, while rods prefer the weakly stretching $\ve e_2$. None of the particle shapes correlate strongly to the strongest straining direction $\ve e_1$.
 
 In \Figref{ndotsqr_pdf} I show the distribution of measured rotation rates for disks, rods and spheres. 
 The sphere always rotates with the vorticity rate. We see that the disk experiences many more events of high rotation rates, which must be due to the effects of strain. The rod, on the other hand, not only rotates less than the disk, but it rotates much less than the sphere. It means that the rod's rotation is actually inhibited by the strain.

@@ -11,7 +11,7 @@
 
 Where do particles go when I put them into a flow? Which way do they face, how fast do they spin? These are all valid questions, but they are unspecific. Of course the answers depend on if the particle is an aircraft or a grain of particulate carbon soot, and if the liquid is air or water. 
 
-In the following pages, I will try to tell a story, with the intention that you form an image of the physics we study. I will start with an elaboration on fluid physics, move through why we consider rigid particles specifically, then say something about the forces acting on the particles. This will naturally lead us to why we must consider ``small'' particles, which is not obvious from the outset.
+In the following pages, I will try to tell a story, with the intention that you form an image of the physics we study. I will start with an elaboration on fluid physics, move through why we consider rigid particles specifically, then say something about the forces acting on the particles. This will naturally lead us to why we must consider ``small'' particles, which is not obvious from the outset. But let's start from the beginning.
 
 \subsection*{Fluids}
 
@@ -19,13 +19,13 @@ Many physical systems around us are fluids. The air we breathe, the water we dri
 
 But so far, the above is a very qualitative, and you may rightly say naive, description of what happens. One could say that a fundamental problem of fluid physics is to figure out where all the different molecules go. From the detailed knowledge of every molecule we may proceed to deduce where the oil drop goes, and how fast, or if it perhaps breaks up, or maybe merges with another drop. However, making something useful out of this molecular picture is very difficult\footnote{
 %\begin{minipage}[l]{\textwidth}
-However, modern computers now allow simulation of surprisingly large numbers of molecules. Here is a video showing the interface between two molten metals using exactly this approach. \url{http://www.youtube.com/watch?v=Wr7WbKODM2Q}
+However, modern computers now allow simulation of surprisingly large numbers of molecules. Here is a video showing the interface between two molten metals using exactly this approach: \url{http://www.youtube.com/watch?v=Wr7WbKODM2Q}
  %\end{minipage}
 % \begin{minipage}[l]{1.5cm}
 % \includegraphics[width=1.5cm]{figs/ninebillion_qr.png}
 % \end{minipage}
 }.
-Just consider that in one litre of water there are about $10^{25}$ molecules (that is a very large number; about the weight of the Earth in kg). In fact, we are not even particularly interested in the specific details of every molecule - we are interested in the macroscopic, observable world that is built up from all these molecules. Now, this thesis is not at all concerned with the detailed motion of molecules, but I still wanted to start with this picture because sometimes it becomes important to remember the origin of the macroscopic motion.
+Just consider that in one litre of water there are about $10^{25}$ molecules (that is a very large number; about the weight of the Earth in kg). In fact, we are not even particularly interested in the specific details of every molecule -- we are interested in the macroscopic, observable world that is built up from all these molecules. Now, this thesis is not at all concerned with the detailed motion of molecules, but I still wanted to start with this picture because sometimes it becomes important to remember the origin of the macroscopic motion.
 
 %\todo{connect forward to chap's about noise, fokker-planckery}.
 
@@ -53,7 +53,7 @@ There are many kinds of forces which can potentially act on a particle. For exam
 
 In order to find out what the force on a particle is, we need to know how the fluid around the particle behaves. And for that, we need to solve the Navier-Stokes equations of fluid dynamics around the particle. What does it mean to ``solve'' the equations? We imagine the fluid in some environment (we call this ``boundary conditions''), for example the air in a cloud. A solution of the equations tells us for example the velocity of the fluid at any given point at any given instant. If we have a solution, we know how to extract the resulting forces and torques on a particle in the fluid.
 
-The problem is that we cannot solve the equations. Not only can we not find solutions as mathematical formulas - in many cases we can not even find numerical solutions using a supercomputer.For example, computing the motion of the air in a cloud is utterly out of reach with the computer resources of today. 
+The problem is that we cannot solve the equations. Not only can we not find solutions as mathematical formulas -- in many cases we can not even find numerical solutions using a supercomputer. For example, computing the motion of the air in a cloud is utterly out of reach with the computer resources of today. 
 I think it is worthwhile to emphasise that some problems are inherently very hard, and cannot be solved by brute force. From time to time I get the question why we struggle with difficult mathematical work, why not just ``run it through the computer?'' A numerical computer solution is like an experiment: it will give you the numbers for a particular case, but not necessarily any understanding of why. We aim to extract all possible physical understanding available from the equations, even if it not possible to solve them in general. It is the understanding of the underlying physics that enables us to simplify the equations until it is practical to solve them. This requires knowledge of which particular details may be neglected, and which details are crucial to keep track of. 
 
 And indeed, the meteorologists now have methods of simulating the flows of air in the atmosphere. The trick is to ignore parts of the equation dealing with very small motions, and spend the resources on describing the large eddies of the flow, it is called ``Large Eddy Simulations''. The game of simplifying without over-simplifying is at the heart of fundamental research.
@@ -62,25 +62,27 @@ At any rate, we wish to figure out what the forces on a rigid body in a fluid fl
 
 \subsection*{Dimensionless numbers}
 
-In principle all physical quantities have some units. For example, the size of a particle has units of ``length'', and the speed of the particle has units of ``length per time'', which we write as \nobreak{length/time}. Whenever we multiply or divide quantities with dimensions, we also multiply or divide their units. For example dividing the length \unit[20]{m} with the time \unit[5]{s} gives the speed \unit[4]{m/s}. Now suppose we divide the speed \unit[4]{m/s} with the speed \unit[2]{m/s}. The result is $2$, without any units - they cancelled in the division. The idea is that in order to determine if a quantity $x_1$ is ``small'' we have to divide it with another quantity $x_2$ of the same units. Then if the resulting dimensionless number is smaller than $1$, we say that $x_1$ is small, and implicitly mean \emph{relative to $x_2$}.  This concept seems simple enough, let's consider a slightly more complicated example.
+In principle all physical quantities have some units. For example, the size of a particle has units of ``length'', and the speed of the particle has units of ``length per time'', which we write as \nobreak{length/time}. Whenever we multiply or divide quantities with dimensions, we also multiply or divide their units. For example dividing the length \unit[20]{m} with the time \unit[5]{s} gives the speed \unit[4]{m/s}. Now suppose we divide the speed \unit[4]{m/s} with the speed \unit[2]{m/s}. The result is $2$, without any units -- they cancelled in the division. The idea is that in order to determine if a quantity $x_1$ is ``small'' we have to divide it with another quantity $x_2$ of the same units. Then if the resulting dimensionless number is smaller than $1$, we say that $x_1$ is small, and implicitly mean \emph{relative to $x_2$}.  This concept seems simple enough. Let's consider a slightly more complicated example.
 
-Imagine a small rubber boat on the sea. There are waves on the sea, rising and falling periodically.  The boat speeds along, also rising and falling as it crosses the waves. Now I propose to find a dimensionless number that tells us if the boat is ``fast''. So it has to be fast relative to something else, and the only thing we know of are the waves. 
+Imagine a rubber boat on the sea. There are waves on the sea, rising and falling periodically.  The boat speeds along, also rising and falling as it crosses the waves. Now I propose to find a dimensionless number to tell us if the boat is ``fast''. So it has to be fast relative to something else, and the only thing we know of are the waves. 
 
-There are two distinct mechanisms at play for the rising and falling of the boat. First, if the boat stays in a fixed position the sea will rise and fall beneath it periodically. Call this period time $\tau$. Second, the boat may cross different waves by travelling over them. Let's call the speed of the boat $v$, and the distance between different waves on the sea is a length $\eta$. In the paragraph above we concluded that we have to divide $v$ with another speed, and check if the dimensionless number is smaller or larger than $1$. With the quantities we know of, that is the wave period time $\tau$, the wave distance $\eta$ and the boat velocity $v$, there is only one dimensionless combination. We can divide the speed $v$ with the speed $\eta/\tau$. The ratio is a number which I will call the \emph{Kubo number}, for reasons I will explain shortly. The Kubo number is
+There are two distinct mechanisms at play for the rising and falling of the boat. First, if the boat stays in a fixed position the sea will rise and fall beneath it periodically. Call this period time $\tau$. Second, the boat may cross different waves by travelling over them. Let's call the speed of the boat $v$, and the distance between different waves on the sea is a length $\eta$. In the paragraph above we concluded that we have to divide $v$ with another speed, and check if the dimensionless number is smaller or larger than $1$. With the quantities we know of, that is the wave period time $\tau$ and the wave distance $\eta$, we can form the speed $\eta/\tau$. We divide the boat speed $v$ with the speed $\eta/\tau$. The ratio is a number which I will call the \emph{Kubo number}, for reasons I will explain shortly. The Kubo number is
 \begin{align*}
 \ku = v\tau/\eta.
 \end{align*}
 I will now give a brief interpretation of what it means when $\ku$ is smaller or larger than $1$. If $\ku > 1$, it means that $v\tau > \eta$. The quantity $v\tau$ is a length, more precisely the length that the boat travels during the period time of a wave. Thus, $\ku > 1$ means that the boat travels more than one wave distance during the period time of a single wave. So when the Kubo number is very large, then the boat travels over many different waves before the wave landscape changes. In this case we may rightly say that the boat is \emph{fast}. On the other hand, if $\ku<1$, the boat does not cover the distance between waves in a single wave period time. Before the boat reaches the next wave, the entire wave landscape has changed underneath it.
 
-I made this example of the Kubo number because it is one of the fundamental quantities in Paper~C, which is about rotation rates of particles in turbulence. There a particle plays the role of the boat, and a turbulent flow plays the role of the waves. As I did here, we there describe the limits of very small $\ku$, and very large $\ku$. In a real turbulent flow $\ku$ is around $1$. That is to say neither of the extremes are true, but in the paper we argue that together they bring some insight into the tumbling of the particles. The usage of dimensionless numbers simplifies our work. Instead of considering the effects of all three separate parameters, we can understand the physics by analysing a single dimensionless number.
+I made this example of the Kubo number because it is one of the fundamental quantities in Paper~C, which is about rotation rates of particles in turbulence. There a particle plays the role of the boat, and a turbulent flow plays the role of the waves. As I did here, we there describe the limits of very small $\ku$, and very large $\ku$. In a real turbulent flow $\ku$ is around $1$. That is to say neither of the extremes are true, but in the paper we argue that together they bring some insight into the tumbling of the particles. The use of dimensionless numbers simplifies our work. Instead of considering the effects of all three separate parameters, we can understand the physics by analysing a single dimensionless number.
 
-The dimensionless numbers tell us which physical quantities are important in relation to each other. In the example above, the actual speed of the boat is not important - the speed only matters in relation to the waves. We know that all situations with the same Kubo number are, in some sense, equivalent. This very fact is also what enables engineers to use scale models in wind tunnels. They know that to test a model of a suspension bridge in a wind tunnel, they can not use full-scale wind speeds, but instead a scaled down version of the wind. The dimensionless numbers reveal what scaling is appropriate to match the model bridge to real conditions.
+The dimensionless numbers tell us which physical quantities are important in relation to each other. In the example above, the actual speed of the boat is not important -- the speed only matters in relation to the waves. We know that all situations with the same Kubo number are, in some sense, equivalent. This very fact is also what enables engineers to use scale models in wind tunnels. They know that to test a model of a suspension bridge in a wind tunnel, they can not use full-scale wind speeds, but instead a scaled down version of the wind. The dimensionless numbers reveal what scaling is appropriate to match the model bridge to real conditions.
 
 \subsection*{Small particles}
 
 We are now equipped to understand what it means for a particle to be \emph{small} in the context of fluid flows. It turns out, in our setting, that there are two dimensionless numbers that determine whether a particle is small. One has to do with how quickly the particle adjusts to the fluid, the other with how quickly the fluid adjusts to the particle.
 
-The first dimensionless number is the Stokes number, $\st$ for short. We can understand it as a comparison of two different time scales. The first is the time it takes for the particle to stop if thrown in an otherwise still fluid. If you throw a stone in air, it takes quite some time for the drag force to stop the stone. But if you try to throw a piece of paper, the drag force overcomes the inertia almost immediately. On the other hand, if you try to throw the stone under water, the time to stop is shorter than in air. We call this time the relaxation time of the particle in the fluid. The relaxation time of the particle is compared to how quickly the fluid velocity changes. In summary, 
+The first dimensionless number is the Stokes number, $\st$ for short. We can understand it as a comparison of two different time scales. The first is the time it takes for the particle to stop if thrown in an otherwise still fluid. If you throw a stone in air, it takes quite some time for the drag force to stop the stone. But if you try to throw a piece of paper, the drag force overcomes the inertia almost immediately. On the other hand, if you try to throw the stone under water, the time to stop is shorter than in air. We call this time the relaxation time of the particle in the fluid. 
+
+The other time is simply how long time it takes for the the fluid velocity to change appreciably. The Stokes number is then defined as
 \begin{align*}
  	\st = \frac{\textrm{Particle relaxation time}}{\textrm{Time for fluid velocity change}}.
  \end{align*} 
@@ -93,21 +95,35 @@ The other dimensionless number measuring particle smallness is the particle Reyn
 A small particle Reynolds number implies that the viscous time is short, and the fluid disturbances we create settle down before the fluid has time to move past the particle. A large particle Reynolds number means that the vortices and disturbances produced by the particle are transported away from the particle, like the wake and vortices you observe in your cup of tea. The second meaning of a \emph{small} particle is that the particle Reynolds number is small, so that there is no wake, and no vortices created by the particle. 
 Recall the story about the Stokes drag in the very beginning of this thesis. When Stokes in 1851 called a particle ``slowly moving'', he meant exactly the condition that the particle is small, in the sense just described here.
 
-\subsection*{Summary}
+There is one more dimensionless number we encounter in this thesis. It is the P\'eclet number. I started this story with a molecular picture of the fluid, and said that the drag force on a particle is the combined result of many molecular collisions. But molecules move in a random fashion, and the number of collisions is not exactly the same all the time. Some times there will be more collisions, and other times there will be fewer collisions. The drag force we have considered thus far is the result of the \emph{average} number of collisions. But if the \emph{variation} around the average number of collisions is large, the randomness of the molecular collisions will create a degree of randomness also in the force on the particle. The P\'eclet number measures whether the random fluctations are ``large'' in this sense:
+\begin{align*}
+ 	\pe = \frac{\textrm{Strength of average (hydrodynamic) force}}{\textrm{Strength of random force}}.
+\end{align*}
+If $\pe$ is large, we may disregard the randomness and consider the hydrodynamic force we discussed above. But if $\pe$ is small, we must expect a degree of randomness in the particle dynamics.
 
-Hopefully we have established enough common ground to put the appended research papers in context. The presentation in Part~II may, or may not, be too technical for the casual reader. But even if, I hope I may encourage an ever so brief look.
+\subsection*{Conclusion}
+
+Hopefully we have established enough common language to put the appended research papers in context.
+
+Paper A describes an experiment where we observe the rotation of rod-shaped particles. We try to keep $\rep=0$ and $\st=0$ (``small'' particle), and $\pe$ very large (``low randomness''). The aim is to understand the hydrodynamic force on non-spherical particles.
+
+Paper B is a theoretical study of how the particle rotation changes when we allow for a small value of $\st$ (weak particle inertia), but still enforce $\rep=0$ (no fluid inertia). It turns out that there is a big difference between rod-shaped particles and disk-shaped particles, which is not present when $\st=0$. As a second part, we also introduce random variations, as measured by the P\'eclet number. When there is enough noise (small $\pe$), the difference between rods and disks disappear.
+
+Paper C concerns the speed of rotation of particles in turbulence. Also here we consider small particles: $\rep=0$ (no fluid inertia) and $\st=0$ (no particle inertia). It turns out that disk-shaped particles rotate, on average, faster than rod-shaped particles. In the manuscript we make a connection between the particle rotation statistics and the statistics of the turbulent flow. 
+
+The presentation in Part~II may, or may not, be too technical for the casual reader. But even if, I hope I may encourage an ever so brief look.
 
 At the very least, we have a working interpretation of the technical title ``Orientational dynamics of small non-spherical, rigid particles suspended in fluid flows.'' The interpretation is that we aim to understand the rotational motion of a non-spherical rigid body immersed in a fluid bath of molecules. We know the forces and torques driving the rotation through the macroscopic description of fluid dynamics. But in order to have a fair chance at progress, we consider the case of very small particles, as characterised by the Stokes and particle Reynolds dimensionless numbers.
 
 
 \chapter{Prerequisite concepts}
 
-In this section I will introduce the basic concepts needed to understand the appended research papers. 
+In this section I will introduce some basic concepts needed to understand the appended research papers. 
 
 \section{Forces on particles in fluids}\label{sec:forces}
 
 We are studying the dynamics of small particles suspended in flows. Specifically, we consider particles small enough to not create disturbances in the fluid flow. In such cases, one can consider the fluid flow as a prescribed input, and calculate the response of the particles. Obviously, the particle will disturb the flow -- in fact, it is the reaction force of this disturbance which acts on the particle.
-What I mean is that the particle does not induce long-lived disturbances in the fluid now, which survive to affect the particle at a later time. In order to understand this requirement, and how the particle forces are calculated, we will start at the Navier-Stokes equation.
+What I mean is that the particle does not induce long-lived disturbances in the fluid, which survive to affect the particle at a later time. In order to understand this requirement, and how the particle forces are calculated, we will start at the Navier-Stokes equation.
 
 The governing equation for an incompressible, Newtonian fluid is the Navier-Stokes equation
 \begin{align}
@@ -131,15 +147,15 @@ The symmetric part $\ma S$ is called the rate-of-strain tensor, and it contains 
 \begin{align}
 	\ma O \ve x &= \frac{1}{2}\ve \omega_f \cross \ve x \equiv \ve \Omega \cross \ve x.\eqnlab{vorticityOdef}
 \end{align}
-The vector $\ve \Omega$, defined as half the vorticity is a common quantitiy in our calculations, and therefore is given its own symbol. The elements of $\ma O$ are related to $\ve \Omega$ by $O_{ij} = -\lc_{ijp}\Omega_p$.
+The vector $\ve \Omega$, defined as half the vorticity, is a common quantitiy in our calculations, and therefore is given its own symbol. The elements of $\ma O$ are related to $\ve \Omega$ by $O_{ij} = -\lc_{ijp}\Omega_p$.
 
-The stress tensor $\ma \tau$ is a symmetric second order tensor defined at each point in space. Its elements $\tau_{ij}$ are defined as the $i$:th component of the force on a surface with (outward pointing) normal in the $j$:th direction. That is, if a surface has outward normal $\ve n$, the force $\ve f$ per unit area is
+The stress tensor $\ma T$ is a symmetric second order tensor defined at each point in space. Its elements $T_{ij}$ are defined as the $i$:th component of the force on a surface with (outward pointing) normal in the $j$:th direction. That is, if a surface has outward normal $\ve n$, the force $\ve f$ per unit area is
 \begin{align*}
-	\ve f &= \ma \tau \ve n.
+	\ve f &= \ma T \ve n.
 \end{align*}
-Due to this interpretation, the diagonal elements of $\ma\tau$ are called normal stresses, and the off-diagonal elements shear stresses. For an incompressible and Newtonian fluid the stress tensor is
+Due to this interpretation, the diagonal elements of $\ma T$ are called normal stresses, and the off-diagonal elements shear stresses. For an incompressible and Newtonian fluid the stress tensor is
 \begin{align*}
-	\ma \tau &= -p \ma I + 2\mu \ma S,
+	\ma T &= -p \ma I + 2\mu \ma S,
 \end{align*}
 where $\ma I$ denotes the identity tensor. This relation is not a result, as much as part of the definition of Newtonian fluids. The relation is in fact used in the derivation of the Navier-Stokes equation \eqnref{navierstokes}. 
 
@@ -174,11 +190,14 @@ When the force and torque on a particle is known, its trajectory is determined b
 
 \section{Simple shear flow}\label{sec:shearflow}
 
-The simple shear flow is a linear flow which flows in one flow direction, and varies magnitude in only one direction, it is shown to the right in Fig.~\ref{fig:shear_decomposition}. The equation describing the shear flow is very simple,
+The simple shear flow is a uni-directional linear flow which varies magnitude in only one direction. It is shown to the right in Fig.~\ref{fig:shear_decomposition}. The equation describing the shear flow is very simple,
 \begin{align*}
 	\ve u(y) &= s y \hat{\ve x}.
 \end{align*}
-Here $s$ is a scalar called the shear strength, and $y$ is the coordinate along the $\hat{\ve y}$-axis. The flow gradient is constant and given by
+Here $s$ is a scalar called the shear strength, and $y$ is the coordinate along the $\hat{\ve y}$-axis. 
+Fig.~\ref{fig:coordinates} shows the coordinate system we use for shear flows in this thesis and the appended papers. The three principal directions are the flow direction $\hat{\ve x}$, the shear direction $\hat{\ve y}$ and the vorticity direction $\hat{\ve z}$. The vorticity direction $\hat{\ve z}$ is also the direction of $\ve \Omega$ introduced in Sec.~\ref{sec:forces}.
+
+The flow gradient of the simple shear flow is constant and given by
 \begin{align*}
 	\ma A = \begin{bmatrix}
 		0 & s & 0 \\
@@ -186,7 +205,7 @@ Here $s$ is a scalar called the shear strength, and $y$ is the coordinate along 
 		0 & 0 & 0 
 	\end{bmatrix}.
 \end{align*}
-Despite its simplicity the shear flow is important, mainly for two reasons. First, it is one of the fundamental flows in rheology, the study of fluids. It is the flow inside a Couette device, used for example to measure viscosity. Second, as far as particle dynamics go, the simple shear flow is relevant for \emph{any} flow with parallel streamlines. Consider for example the flow of a suspension through a pipe. The pipe is large compared to the suspended particles, and the flow profile is most likely a complicated function of position $y$ in the pipe cross section\footnote{In principle the function should also depend on the position in the $z$-direction. In that case the result is also a simple shear flow, although rotated.}:
+Despite its simplicity the shear flow is important for two reasons. First, it is one of the fundamental flows in rheology, the study of fluids. It is the flow inside a Couette device, used for example to measure viscosity. Second, as far as particle dynamics go, the simple shear flow is relevant for \emph{any} flow with parallel streamlines. Consider for example the flow of a suspension through a pipe. The pipe is large compared to the suspended particles, and the flow profile is most likely a complicated function of position $y$ in the pipe cross section\footnote{In principle the function should also depend on the position in the $z$-direction. In that case the result is also a simple shear flow, although rotated.}:
 \begin{align*}
 	\ve u(y) &= f(y)\hat{\ve x},
 \end{align*}
@@ -198,26 +217,41 @@ Despite its simplicity the shear flow is important, mainly for two reasons. Firs
 		0 & 0 & 0 
 	\end{bmatrix}.
 \end{align*}
-Thus, if the flow profile $f$ varies slowly over the particle size, the particle experiences a simple shear flow of strength $f'(y)$. This is exactly the case in the experiment presented in Paper A, and Sec.~\ref{sec:experiment} of this thesis.
-
-Fig.~\ref{fig:coordinates} shows the coordinate system we use for shear flows in this thesis and the appended papers. The three principal directions are the flow direction $\hat{\ve x}$, the shear direction $\hat{\ve y}$ and the vorticity direction $\hat{\ve z}$. The vorticity direction $\hat{\ve z}$ is also the direction of $\ve \Omega$ introduced in Sec.~\ref{sec:forces}.
+Thus, if the flow profile $f$ varies slowly over the particle size, the particle experiences a simple shear flow of strength $f'(y)$. This is exactly the case in the experiment presented in Paper A (see \Secref{experiment}).
 
 Curiously, non-spherical particles in simple shear flow offers very rich dynamics. There is no stationary state, but the particle tumbles end-to-end for all time. If the particle is axisymmetric, the tumbling is periodic. The technical details and explanations of this are discussed in Sec.~\ref{sec:jefferyequation}, but we can understand the underlying reason from the composition of the shear flow. Fig.~\ref{fig:shear_decomposition} illustrates schematically how the shear is a superposition of two flows. One is a pure rotation, corresponding to the antisymmetric part $\ma O$ of the flow gradient. The other is a pure strain, the symmetric part $\ma S$ of the flow gradient. Now imagine a rod-shaped particle in these flows. The pure rotation, the vorticity, will rotate the rod with a constant angular velocity, regardless of its orientation. The strain, on the other hand, has a preferred direction to which it will attract the long axis of the rod. Sometimes the vorticity and strain will cooperate to turn the rod onto the strain eigendirection, and sometimes the vorticity will struggle to rotate the rod out of the attracting direction. The result is that the rod will always rotate, but sometimes faster and sometimes slower. When the difference between the fast and the slow rotations is large, we perceive this as tumbling.
 \begin{figure}
 \begin{center}
-  \makebox[\textwidth]{\includegraphics[width=7cm]{figs/fig_coordinates.png}}
+%  \makebox[\textwidth]{\includegraphics[width=7cm]{figs/fig_coordinates.png}}
+\begin{lpic}{figs/fig_coordinates(7cm,)}
+   \lbl[tl]{40,9;$\hat{\ve x}$}
+   \lbl[tl]{140,45;$\hat{\ve y}$}
+   \lbl[tl]{80,115;$\hat{\ve z}$}
+   \lbl[bl]{120,80;$\ve n$}
+   \lbl[bl]{85,75;$\theta$}
+   \lbl[tl]{75,45;$\varphi$}
+\end{lpic}
 \end{center}
-\caption{\figlab{coordinates} }%
+\caption{\figlab{coordinates}Coordinate system of simple shear flow in this thesis. The same system is used in Papers A \& B. The directions are the flow direction $\hat{\ve x}$, the shear direction $\hat{\ve y}$, and the vorticity direction $\hat{\ve z}$. The angles $(\theta, \varphi)$ are the spherical coordinates of the particle direction vector $\ve n$. }%
 \end{figure}
 \begin{figure}
 \begin{center}
-  \makebox[\textwidth]{\includegraphics[width=1.2\textwidth]{figs/shear_decomposition}}
+  %\makebox[\textwidth]{\includegraphics[width=1.2\textwidth]{figs/shear_decomposition}}
+\begin{lpic}{figs/shear_decomposition(10cm,)}
+   \lbl[b]{25,0;\vphantom{Hq}Rotation}
+   \lbl[b]{85,0;\vphantom{Hq}stretching}
+   \lbl[b]{152,0;\vphantom{Hq}shear}
+   \lbl[c]{55,30;$+$}
+   \lbl[c]{120,30;$=$}
+   \lbl[b]{55,0;\vphantom{Hq}$+$}
+   \lbl[b]{120,0;\vphantom{Hq}$=$}
+\end{lpic}  
 \end{center}
-\caption{\label{fig:shear_decomposition} Decomposition of the simple shear flow.}%
+\caption{\label{fig:shear_decomposition} Decomposition of the simple shear flow into rotation and strain.}%
 \end{figure}
 
 
-\section{The Jeffery equation and its solutions}\label{sec:jefferyequation}
+\section{The Jeffery equation and its solutions}\seclab{jefferyequation}
 
 In this section we consider axisymmetric particles: particles which are rotationally symmetric around an axis of symmetry. For such particles the orientational configuration may be represented by a unit vector $\ve n$, attached to the axis of symmetry. As alluded to in Sec.~\ref{sec:forces}, Jeffery presents two major results in his seminal paper from 1922 \cite{jeffery1922}. First, he calculates the hydrodynamic torque on a ellipsoid, not necessarily axisymmetric, in any linear flow. Second, he derives the equation of motion of an inertia-free, axisymmetric ellipsoid (a spheroid). This equation of motion is often referred to as the Jeffery equation. In our notation the Jeffery equation is
 \begin{align}
@@ -229,9 +263,9 @@ Here $\ma O$ and $\ma S$ are the anti-symmetric and symmetric parts of the fluid
 \end{align*}
 For most conceivable particle shapes, $-1 < \Lambda < 1$. Negative $\Lambda$ correspond to flat, disk-shaped particles, while positive $\Lambda$ correspond to elongated, rod-like particles. It was shown by Bretherton \cite{bretherton1962} that, given the correct shape factor $\Lambda$, Jeffery's equation is valid not only for spheroids, but for any axisymmetric particle. He also showed that there are extreme cases where $|\Lambda|>1$. In this thesis we consider particles with $|\Lambda|<1$, like the spheroid.
 
- The equation of motion for an inertia-free particle is given by force and torque balance on the particle. Then the center-of-mass velocity equals the fluid velocity at the center-of-mass position, a condition called \emph{advection}. Jeffery's equation is the rotational analogue of center-of-mass advection. In Paper B, we demonstrate how to derive Jeffery's equation. We start from the hydrodynamic torque and Newton's equation of motion, and take the limit $\st\to 0$. In the following, we will instead consider the possible solutions of the Jeffery equation \eqnref{jeffery}.
+ The equation of motion for an inertia-free particle is given by force and torque balance on the particle. Then the center-of-mass velocity equals the fluid velocity at the center-of-mass position, a condition called \emph{advection}. Jeffery's equation is the rotational analogue of center-of-mass advection. In Paper B, we demonstrate how to derive Jeffery's equation. We start from the hydrodynamic torque and Newton's equation of motion, and take the limit $\st\to 0$. See also Appendix~\secref{triaxial_equation} and the discussion in \Secref{experiment} for the generalisation to non-axisymmetric particles. In the following, we will instead consider the possible solutions of the Jeffery equation \eqnref{jeffery}.
 
-Jeffery's equation is a non-linear vector equation, and as such it is seemingly hard to solve. However, the non-linearity is only apparent, it is due to the geometric constraint that $\ve n$ is a unit vector. The underlying dynamics is in fact linear. I will now explain two ways to understand this fact.
+Jeffery's equation is a non-linear vector equation, and as such it is seemingly hard to solve. However, the non-linearity is only apparent: it is due to the geometric constraint that $\ve n$ is a unit vector. The underlying dynamics is in fact linear. I will now explain two ways to understand this fact.
 
 The vorticity $\ma O$ rotates $\ve n$, and the strain $\ma S$ aligns and stretches $\ve n$ towards its strongest eigendirection. The non-linear term $\ve n \ve n\transpose \ma S \ve n$ is simply the stretching component of the strain, which is subtracted in order to prevent elongation of $\ve n$. Bretherton (Sec.~6 in Ref.~\cite{bretherton1962}) realised that we may instead model the orientation of the particle with any vector $\ve q$ which obeys the same linear terms, but without compensating for any elongation:
 \begin{align}
@@ -273,7 +307,7 @@ This solution implies that the long-time dynamics of $\ve q$, and therefore $\ve
 \begin{center}
   \makebox[\textwidth]{\includegraphics{figs/bmap}}
 \end{center}
-\caption{\label{fig:bmap} }%
+\caption{\label{fig:bmap}  Map of the three possible types of particle motion, as determined by the eigensystem of $\ma B=\ma O + \Lambda \ma S$.}%
 \end{figure}
 The characteristic equation for the eigenvalues $b$ of a $3\times3$-matrix $\ma B$ is
 \begin{align*}
@@ -320,7 +354,12 @@ The remainder of this section concerns the case of simple shear flow. This case 
         \end{subfigure}
         \begin{subfigure}[b]{0.62\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{figs/projection_orbit4.png}
+                %\includegraphics[width=\textwidth]{figs/projection_orbit4.png}
+				\begin{lpic}{figs/projection_orbit4(7cm,)}
+				   \lbl[tl]{60,55;$\hat{\ve x}$}
+				   \lbl[tl]{150,55;$\hat{\ve y}$}
+				   \lbl[tl]{105,130;$\hat{\ve z}$}
+				\end{lpic}
                 \caption{}
                 \label{fig:projection_orbit4}
         \end{subfigure}        
@@ -363,12 +402,12 @@ The dynamics is governed by a single dimensionless parameter, the P\'eclet numbe
 \caption{\figlab{sintheta1} Stationary average $\langle \sin ^2\theta \rangle$ for an axisymmetric particle in a shear flow subject to random noise, shown as function of the P\'eclet number $\pe = s/\mathcal D$ for different values of the particle aspect ratio $\lambda$. Larger $\pe$ corresponds to less noise. Solid lines are numerical solutions. Dotted lines show asymptotes in regimes of weak, intermediate and strong noise, compiled in \cite{brenner1974}.}%
 \end{figure}
 
-For small $\pe$, when the noise dominates, the orientational distribution is uniform - all orientations are equally likely. When the noise is decreased, the orientational distribution begins to reflect the Jeffery orbits. As $\pe$ becomes larger and the shear grows increasingly important, the probability of seeing a particle aligned with the flow direction increases. 
+For small $\pe$, when the noise dominates, the orientational distribution is uniform -- all orientations are equally likely. When the noise is decreased, the orientational distribution begins to reflect the Jeffery orbits. As $\pe$ becomes larger and the shear grows increasingly important, the probability of seeing a particle aligned with the flow direction increases. 
 But surprisingly, when $\pe$ becomes large enough, the stationary orientational distribution converges and becomes \emph{independent of} $\pe$. In other words, when the noise is small enough, the particles follow the Jeffery orbits, but every now and then jump to a different orbit.
 
-The stationary orientational distribution depends on the value of $\pe$ and the particle aspect ratio $\lambda$. In order to quantify the above discussion, I show numerical solutions\footnote{The details of how I solve \Eqnref{fpejeff} numerically can be found in Appendix~\ref{app:fpe_sphere}.} for the stationary average $\langle \sin^2\theta \rangle$ in \Figref{sintheta1}. The angle $\theta$ is the polar angle of $\ve n$, such that $n_z = \cos\theta$. It is also the angle to the vorticity direction, see \Figref{coordinates}. 
+The stationary orientational distribution generally depends on the value of $\pe$ and the particle aspect ratio $\lambda$. In order to quantify the above discussion, I show numerical solutions\footnote{The details of how I solve \Eqnref{fpejeff} numerically can be found in Appendix~\ref{app:fpe_sphere}.} for the stationary average $\langle \sin^2\theta \rangle$ in \Figref{sintheta1}. The angle $\theta$ is the polar angle of $\ve n$, such that $n_z = \cos\theta$. It is also the angle to the vorticity direction, see \Figref{coordinates}. 
 
-For small $\pe$ we see that $\langle \sin^2\theta \rangle = 1/3$. But for large $\pe$, the average reaches a plateau, depending on particle aspect ratio $\lambda$. The asymptotic solutions of \Eqnref{fpejeff} described in \cite{brenner1974} are shown as dotted lines. In particular, Hinch \& Leal \cite{hinch1972} solved the mathematically involved problem of weak noise. They obtained an expression for the height of the plateau valid for thin particles, $\lambda\gg1$. The numerical solution confirms their prediction.
+For small $\pe$ we see that $\langle \sin^2\theta \rangle = 1/3$, the expected value for a uniformly random distribution. But for large $\pe$, the average reaches a plateau, depending on particle aspect ratio $\lambda$. The asymptotic solutions of \Eqnref{fpejeff} described in \cite{brenner1974} are shown as dotted lines. In particular, Hinch \& Leal \cite{hinch1972} solved the mathematically involved problem of weak noise. They obtained an expression for the height of the plateau valid for thin particles, $\lambda\gg1$. The numerical solution confirms their prediction.
 
 In Paper B we compute the same orientational average, $\langle \sin^2\theta \rangle$, when the particle has a small but finite mass, as characterised by the Stokes number.
 

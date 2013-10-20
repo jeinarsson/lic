@@ -4,6 +4,12 @@
 
 \chapter{Numerical orientational distributions}\label{app:fpe_sphere}
 
+In this Appendix I explain how to compute numerical approximations of the solutions to the Fokker-Planck equation on the sphere. The method works for arbitrary polynomial drift and diffusion terms, however it was developed specifically for the drift term described in Paper B.
+
+The method of spectral decomposition is not new. As early as 1955, Scheraga \cite{scheraga1955} computed the orientational distribution of an axisymmatric particle in a simple shear flow up to $\pe=60$ with this method. The matrix elements needed for that calculation were computed in 1938 by Peterlin \cite{peterlin1938}. Here I explain the method and give a procedure to compute the matrix elements of any polynomial operator on the sphere. In particular we employ this method on the Fokker-Planck equation in Paper B.
+
+
+\section{Spectral decomposition of equation}
 We start from the Fokker-Planck equation governing the evolution of the probability density $P(\ve n, t)$ of finding a particle with orientation vector $\ve n$ at time $t$:
 \begin{align}
 	\partial_t P(\ve n, t) &= -\partial_{\ve n}\left[\dot{\ve n}P\right] + \pe^{-1}\partial^2_{\ve n}P \equiv \hat J P \eqnlab{fpeapp} \\
@@ -32,6 +38,7 @@ Inserting the expansion yields
 	\dot c_p^q(t)  &= \sum_{l=0}^{\infty}\sum_{m=-l}^l c_l^m(t) \langle p,q| \hat J\Ylm{l}{m} \eqnlab{clmeq1},\\
 	c_0^0 &= \frac{1}{\sqrt{4\pi}}\eqnlab{clmeq1norm}.
 \end{align}
+\section{Computation of matrix elements}
 In order to solve \Eqnref{clmeq1} it remains to compute the matrix elements of the operator $\hat J$. This is achieved by expressing $\hat J$ as a combination of the angular momentum operators. How the angular momentum operators act on the spherical harmonics is well known, see for example Arfken \cite{arfken1970}.
 
 The angular momentum operator $\hat{\ve L}$ is given by
@@ -64,7 +71,7 @@ where
 	&\quad \times \langle l_1 l_2; 0 0|l_1l_2;l0\rangle
 	\langle l_1 l_2; m_1 m_2|l_1l_2;lm\rangle
 \end{align*}
-The Clebsch-Gordan coefficients are in the notation of Sakurai denoted $\langle l_1 l_2; m_1 m_2|l_1l_2;lm\rangle$ (see e.g Eq. (3.7.44)), and they are available in Mathematica by the function {ClebschGordan[{l1,m1},{l2,m2},{l,m}]}. Finally, we order the operators, so that as many terms as possible cancel before we actually begin evaluating the operators.
+The Clebsch-Gordan coefficients are in the notation of Sakurai denoted $\langle l_1 l_2; m_1 m_2|l_1l_2;lm\rangle$, and they are available in Mathematica by the function \texttt{ClebschGordan[{l1,m1},{l2,m2},{l,m}]}. Finally, we order the operators, so that as many terms as possible cancel before we actually begin evaluating the operators.
 In particular we want to reorder $\hat{n}_i$ against $\hat{L}_i$, and we make use of the commutator
 \begin{align*}
 	[\hat{n}_p, \hat{L}_q] &= i\varepsilon_{pqj}\hat{n}_j,
@@ -132,7 +139,7 @@ The fact that the operator $\hat J$ is real implies that the matrix elements mus
 \end{align*}
 We can understand the reason for this because the system of differential equations in \Eqnref{clmeq1} needs to preserve the condition that $P$ is real, as stated in \Eqnref{clmreal}. It implies we have only to compute half of the matrix elements.
 
-Upon including the correction \Eqnref{nequation} due to weak particle inertia, the expression for the operator $\hat{J}$ becomes too lengthy to include here. However, we have implemented the identities and rules described in this appendix in a publicly available Mathematica notebook \cite{githubrepo}. Given an operator $\hat J$ expressed in terms of $\hat{\ve n}$ and $\hat{\ve L}$, it converts the expression into sums of angular momentum operators as exemplified above. We also provide an additional Mathematica notebook that, given the matrix elements, assembles a sparse matrix $\ma J$, up to a desired order $l_{\textrm{max}}$. This matrix can then be used to solve the truncated version of \Eqnref{clmeq1} numerically:
+Upon including the correction due to weak particle inertia (see Eq.(8) in Paper B), the expression for the operator $\hat{J}$ becomes too lengthy to include here. However, we have implemented the identities and rules described in this appendix in a publicly available Mathematica notebook \cite{githubrepo}. Given an operator $\hat J$ expressed in terms of $\hat{\ve n}$ and $\hat{\ve L}$, it converts the expression into sums of angular momentum operators as exemplified above. We also provide an additional Mathematica notebook that, given the matrix elements, assembles a sparse matrix $\ma J$, up to a desired order $l_{\textrm{max}}$. This matrix can then be used to solve the truncated version of \Eqnref{clmeq1} numerically:
 \begin{align*}
 	\dot {\ve c} &= \ma J \ve c,
 \end{align*}
