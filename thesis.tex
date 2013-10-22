@@ -34,9 +34,9 @@
 %\usepackage{csquotes} % Needed for biblatex
 %\usepackage[firstinits=true, style=alphabetic, backend=biber]{biblatex} % Modern bibliography facilities (you may change style to numeric). change to old bibtex if you insist on using that.
  
-\usepackage[square, numbers, sort]{natbib}
+\usepackage[square, numbers,sort]{natbib}
 \usepackage{bibentry}
-\bibliographystyle{elsart-num}
+\bibliographystyle{jfm}
 
 
 \usepackage{mathtools} % All your math related needs
@@ -150,9 +150,36 @@
 % fancyhdr
 
 \usepackage{fancyhdr}
-\setlength{\headheight}{15pt}
+\usepackage{flipbook}
+
+
+
+\fancypagestyle{fb}
+{%
+\fancyhf{}%
+\renewcommand{\headrulewidth}{0pt}
+\rfoot[]{%
+  \setlength\unitlength{1cm}%
+  \begin{picture}(0,0)%
+    \put(0.4,-2){%
+      \fbImageF{./figs/plotting/flipbook/output/symm/}{png}{scale=0.75}%
+    }%
+  \end{picture}%
+}
+\lfoot[%
+  \setlength\unitlength{1cm}
+  \begin{picture}(0,0)
+    \put(-3.3,-2){
+      \fbImageF{./figs/plotting/flipbook/output/triax/}{png}{scale=0.75}
+    }
+  \end{picture}
+]{}
+}
+
 
 \pagestyle{fancy}
+\setlength{\headheight}{15pt}
+
 \renewcommand{\partmark}[1]{ \markboth{#1}{} }
 \renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
 \renewcommand{\sectionmark}[1]{ \markright{#1}{} }
@@ -161,6 +188,24 @@
 \fancyhead[LE,RO]{\textsc {\thepage}}
 \fancyhead[RE]{\textsc{ \nouppercase{\leftmark}} }
 \fancyhead[LO]{\textsc{ \nouppercase{\rightmark}} }
+
+\rfoot[]{%
+  \setlength\unitlength{1cm}
+  \begin{picture}(0,0)
+    \put(0.4,-2){
+      \fbImageF{./figs/plotting/flipbook/output/symm/}{png}{scale=0.75}
+    }
+  \end{picture}
+}
+\lfoot[%
+  \setlength\unitlength{1cm}
+  \begin{picture}(0,0)
+    \put(-3.3,-2){
+      \fbImageF{./figs/plotting/flipbook/output/triax/}{png}{scale=0.75}
+    }
+  \end{picture}
+]{}
+
 
 %\fancypagestyle{plain}{ %
 %  \fancyhf{} % remove everything
@@ -250,7 +295,6 @@ I also want to thank the many collaborators we have: Dag Hanstorp, for the micro
 \newpage\makeabstractpage
 \cleardoublepage\maketableofpaperspage
 \newpage\makeacknowledgementspage
-\pagestyle{plain}
 \cleardoublepage\tableofcontents
 \cleardoublepage\pagenumbering{arabic}
 \pagestyle{fancy}
@@ -261,12 +305,12 @@ I also want to thank the many collaborators we have: Dag Hanstorp, for the micro
  \subfile{Introduction}
  \subfile{Background}
 \part{Present work} % Using the starred command avoids numbering.
-\thispagestyle{empty}
+\thispagestyle{fb}
 \subfile{PartIIintroduction}
 \subfile{Experiment}
 \subfile{Inertia}
 \subfile{Turbulence}
-\subfile{Ornstein}
+%\subfile{Ornstein}
 
 
 \nocite{paper3}
@@ -278,27 +322,33 @@ I also want to thank the many collaborators we have: Dag Hanstorp, for the micro
 
 
 \part{Appendices} % Using the starred command avoids numbering.
-\thispagestyle{empty}
+\thispagestyle{fb}
 \appendix
 \subfile{app_triaxial_equations}
 \subfile{app_randomflow_diffusion}
 \subfile{app_fpe_sphere}
 \subfile{app_lagrangian}
 
+
 \part{Research papers}
-\thispagestyle{empty}
+\thispagestyle{fb}
 % You can write this manually \paper{Paper Title}{Full reference} or have bib entries entered automatically
+
+
+
+
 \paper{Aperiodic tumbling of microrods advected in a microchannel flow}{Reference}
-%\includepdf[pages=-,width=\paperwidth]{papers/1.pdf}
+\includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/1.pdf}
 
 \paper{Orientational dynamics of weakly inertial axisymmetric particles in steady viscous flows}{Reference}
-%\includepdf[pages=-,width=\paperwidth]{papers/2.pdf}
+\includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/2.pdf}
 
 \paper{Tumbling of small axisymmetric particles in random and turbulent flows}{Reference}
-%\includepdf[pages=-,width=\paperwidth]{papers/3.pdf}
+\includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/3.pdf}
 
 
 %\part{Other Publications} % If applicable:
-\toptext{Other publications related to thesis}
+%\toptext{Other publications related to thesis}
 %\publication{A study of multiple crack interaction at rolling contact fatigue of rails}{Text}
 \end{document}
+ 
