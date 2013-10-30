@@ -4,28 +4,29 @@
 
 \chapter{Tumbling in turbulent flows}\seclab{tumbling}
 
-Together with Kristian Gustavsson we investigate the orientational dynamics of small particles in random and turbulent flows. Kristian has extensive experience in studying the translational dynamics of spherical particles in random flows. In the previous Sections, describing Papers A \& B, we considered only steady and uniform fluid flows. In this project we combine our knowledge of random and turbulent flows with that of the dynamics of non-spherical particles. The collaboration has thus far resulted in Paper C (under review for publication in Physical Review Letters).
+Together with Kristian Gustavsson we investigate the orientational dynamics of small particles in random and turbulent flows. 
+Kristian is an expert on particle dynamics in random flows. In the previous Sections, describing Papers A \& B, we considered only steady and uniform fluid flows. In this project we combine our knowledge of random and turbulent flows with that of the dynamics of non-spherical particles. The collaboration has thus far resulted in Paper C (under review for publication in Physical Review Letters).
 
 \section{Overview}
 
 The dynamics of turbulent flow is fundamentally complicated. It is non-linear and chaotic, and reliable numerical solutions are computationally very expensive. One of the motivations for studying random flows is that, with properly chosen statistics, they may be a model system for understanding the dynamics of particles in turbulence.
 
-This idea works well for quantities which are not crucially dependent on the specifics of turbulence. For example, one of Kristian's results concerns the relative collision velocities of particles \cite{gustavsson2013relvel}. Through a random flow model he worked out properties universal to colliding particles in any flow. In other cases, however, it turns out that the particle dynamics depends on details in the turbulent flow which are not present in the random flow. 
+This idea works well for quantities which are not crucially dependent on the specifics of turbulence. For example, one of Kristian's results concerns the relative collision velocities of particles \cite{gustavsson2011}. Through a random flow model he worked out properties universal to colliding particles in any flow. In other cases, however, it turns out that the particle dynamics depends on details of the turbulent flow which are not present in the random flow. 
 
-A random flow with a single length scale is characterised by the Kubo number $\ku = u_0 \tau/\eta$, where $u_0$ is a typical flow speed, $\tau$ a typical correlation time, and $\eta$ a typical correlation length. A small Kubo number corresponds to a rapidly fluctuating flow, with the limit $\ku\to0$ representing the white-noise limit. Large Kubo numbers correspond to steady flows.
+A random flow with a single length scale is characterised by the Kubo number $\ku = u_0 \tau/\eta$, where $u_0$ is a typical flow speed, $\tau$ a typical correlation time, and $\eta$ a typical correlation length. For a basic explanation of the Kubo number, see \Secref{context}~(p.~\pageref{sec:context}). A small Kubo number corresponds to a rapidly fluctuating flow, with the limit $\ku\to0$ representing the white-noise limit. Large Kubo numbers correspond to steady flows.
 
-When Parsa et. al. published numerical (DNS) and experimental results on the rotation rates of non-spherical particles in turbulence \cite{parsa2012}, they highlighted a case where the random flow predicts a qualitatively different result from the observation in turbulence. They showed that disk-shaped particles rotate, on average, about twice as fast as rod-shaped particles in turbulence. The naive prediction from a random-flow model is that disks and rods rotate alike. The questions we try to answer in Paper C are, which mechanisms are responsible for the differences in particle rotation rates? How do the statistics of the flow relate to the statistics of the particles? And what is the difference between random flows and turbulence?
+When Parsa et. al. published numerical (DNS) and experimental results on the rotation rates of non-spherical particles in turbulence \cite{parsa2012}, they highlighted a case where the random flow predicts a qualitatively different result from the observation in turbulence. They showed that disk-shaped particles rotate, on average, about twice as fast as rod-shaped particles in turbulence. The naive prediction from a random-flow model is that disks and rods rotate alike. The questions we try to answer in Paper C are, which mechanisms are responsible for the differences in particle rotation rates? How do the statistics of the flow relate to the statistics of the particles? 
 
-It is a well-known fact that the distribution of velocity gradients in turbulent flow is strongly skewed\cite{chertkov1999,luthi2009}. We argue in Paper C that there is a relation between the skewed distribution of velocity gradients and the differing tumbling rates of disks and rods. The broken symmetry means that some flow configurations are more likely than others. We use Jeffery's equation of motion for axisymmetric particles to argue how this asymmetry propagates to the particle rotation. 
+It is a well-known fact that the distribution of velocity gradients in turbulent flow is strongly skewed \cite{chertkov1999,luthi2009}. We argue in Paper C that there is a relation between the skewed distribution of velocity gradients and the differing tumbling rates of disks and rods. The broken symmetry means that some flow configurations are more likely than others. We use Jeffery's equation of motion for axisymmetric particles to argue how this asymmetry propagates to the particle rotation. 
 
 As I explained in \Secref{jefferyequation} about \emph{steady flows}, the orientational dynamics of a particle switches from rotation to alignment when one replaces a rod with a disk, or vice versa. Therefore, if rods and disks are to tumble alike on average, we must require that particles experience equal amounts of ``rotating'' gradients and ``aligning'' gradients - otherwise the result will be different if we switch the particle.
-In other words, the distribution of flow gradients $\ma A$ must be symmetric over $\tr \ma A^3=0$ (see\footnote{Recall, $\ma B=\ma O + \Lambda\ma S$, but $\ma B \to \ma A$ ($-\ma A\transpose$) as the particle shape $\Lambda\to 1$ ($-1$).} \Figref{bmap} in \Secref{jefferyequation}.) This symmetry does not exist in turbulence.
+In other words, the distribution of flow gradients $\ma A$ must be symmetric in $\tr \ma A \to -\tr \ma A\transpose$, specifically over the line $\tr \ma A^3=0$ (see\footnote{Recall, $\ma B=\ma O + \Lambda\ma S$, but $\ma B \to \ma A$ ($-\ma A\transpose$) as the particle shape $\Lambda\to 1$ ($-1$).} \Figref{bmap} in \Secref{jefferyequation}.) This symmetry does not exist in turbulence.
 
 However, this argument does not close the case, because it is only true for \emph{steady} flow ($\ku\to\infty$), and turbulence is absolutely not steady. The more technical part of the paper is a calculation valid at the other extreme: $\ku \ll 1$, or very unsteady flows, more so than turbulence. As shown in the paper, the calculation reinforces the picture outlined above.
 
 It turns out that the first contribution to the rotation rate which is different for rods and disks comes from the third-order correlation functions of the flow velocity gradients. Specifically, the correlation function $\langle \ma O(0) \ma O(0) \ma S(-t)\rangle$ makes a strong contribution. Here, as throughout this thesis, $\ma O$ and $\ma S$ are the antisymmetric and symmetric parts of the Lagrangian\footnote{Along a particle trajectory; as experienced by the particle.} flow gradient matrix. The interpretation is that flow regions where there is first stretching flow ($\ma S$) and then high vorticity ($\ma O^2$) makes disks rotate, but rods align.
 
-The manuscript is necessarily brief on some technical details, and in the following I will elaborate on two of them. First, I will show how to arrive at Eq.~(4) starting from Eq.~(3) in the manuscript. Second, I will give some detail on how we collected and verified Lagrangian statistics in a turbulent flow, along with some more data we did not find space for in the paper.
+The manuscript is necessarily brief on some technical details, and in the following I elaborate on two of them. First, I show how to arrive at Eq.~(4) starting from Eq.~(3) in the manuscript. Second, I give some detail on how we collected and verified Lagrangian statistics in a turbulent flow, along with some more data we did not find space for in the paper.
 
 \section{Derivation of the result Eq.~(4)}
 
@@ -40,7 +41,7 @@ The correlation functions between elements of a matrix $\ma A$ are denoted
 	C^{AA}_{ijkl}(t_1) &\equiv \left\langle A_{ij}\left(\ve r(0),0\right)A_{kl}\left(\ve r(t_1), t_1\right)\right\rangle,\\
 	C^{AAA}_{ijklmn}(t_1,t_2) &\equiv \left\langle A_{ij}\left(\ve r(0),0\right)A_{kl}\left(\ve r(t_1),t_1\right)A_{mn}\left(\ve r(t_2),t_2\right)\right\rangle,
 \end{align*}
-and so on. We will from now on use the shorthand $\ma A_t \equiv \ma A(\ve r(t), t)$ for brevity.
+and so on. From now on we use the shorthand $\ma A_t \equiv \ma A(\ve r(t), t)$.
 Note that we assume that the flow is statistically stationary, in the sense that the correlation between two matrix elements only depends on the time difference $t_1$, not on the particular value of $t$ (here chosen to be $0$).
 We separate the gradient into its symmetric and antisymmetric parts,
 \begin{align*}
@@ -82,15 +83,15 @@ The initial condition $\ve n_0$ is not a random variable, and we may average usi
  	\left\langle\ve n_{0}\transpose \ma O_{t} \ma O_{t} \ve n_{0}\right\rangle&=\ve n_{0}\transpose\left\langle \ma O_{t} \ma O_{t} \right\rangle\ve n_{0} \\
  	&= C^{OO}_{ijjk}(0)n_in_k\\
  	&= \frac{\left\langle \tr \ma O_t\ma O_t\right\rangle}{6}( \delta_{ik}\delta_{jj}-\delta_{ij}\delta_{jk})n_in_k\\
- 	&=\frac{\left\langle \tr \ma O_t\ma O_t\right\rangle}{3} = -\frac{\left\langle \tr \ma A_t\transpose\ma A_t\right\rangle}{6},
+ 	&=\frac{\left\langle \tr \ma O_t\ma O_t\right\rangle}{3} = -\frac{\left\langle \tr \ma A_t\transpose\ma A_t\right\rangle}{6}.
  \end{align*}
-where we also used $n_in_i=1$, and in the last step that $\langle\tr\ma A\transpose \ma A\rangle/2=\langle\tr\ma S\ma S\rangle=-\langle\tr\ma O\ma O\rangle$ in a homogenous flow (see App.~\secref{applagrangian}). In the same fashion we evaluate all averages in \Eqnref{ndotsquared} and find
+Here I denote the components of $\ve n_0$ by $n_i$, and employ the implicit summation convention on repeated indices. We also use $n_in_i=1$, and in the last step that $\langle\tr\ma A\transpose \ma A\rangle/2=\langle\tr\ma S\ma S\rangle=-\langle\tr\ma O\ma O\rangle$ in a homogenous flow (see App.~\secref{applagrangian}). In the same fashion we evaluate all averages in \Eqnref{ndotsquared} and find
 \begin{align}
 	\langle \dot n^2\rangle &=\ku^2 \left(-\frac{1}{3}\langle\tr\ma O_t\ma O_t\rangle +  \frac{\Lambda^2}{3}\langle\tr\ma S_t \ma S_t\rangle - \frac{2\Lambda^2}{15}\langle\tr\ma S_t\ma S_t \rangle\right) + \mathcal O(\ku^3)  \nn\\
 	&= \frac{\ku^2}{3}\left(-\langle\tr\ma O_t\ma O_t\rangle +  \frac{3\Lambda^2}{5}\langle\tr\ma S_t \ma S_t\rangle\right) + \mathcal O(\ku^3)  \nn\\
 	&= \ku^2\frac{\langle\tr\ma A_t\transpose \ma A_t\rangle}{30}\left(5 + 3 \Lambda^2\right)+ \mathcal O(\ku^3).  \eqnlab{ku2}
 \end{align}
-The limit of $\ku\to0$ is called the white noise limit. Physically it means that the flow is changing so rapidly that the instantaneous gradient is always uncorrelated with the particle orientation. There is no ``memory'', or correlation with the near past, in the system, hence the name white noise.
+An equivalent expression was derived in \cite{shin2005}. The limit of $\ku\to0$ is called the white noise limit. Physically it means that the flow is changing so rapidly that the instantaneous gradient is always uncorrelated with the particle orientation. There is no ``memory'', or correlation with the near past, in the system, hence the name white noise.
 
 Now we proceed to compute the first effects of finite correlation time in the flow. In order to reach $\mathcal O(\ku^3)$, we need an expression for $\ve n(t)$.
 The equation for $\ve n$ has the implicit solution
@@ -125,7 +126,8 @@ We insert the expansion \eqnref{n_expansion2} into \Eqnref{ndotsquared} and find
 %
 &\qquad - 2\Lambda^2 \left\langle[-\ve n_0\transpose \ma O_{t'}\!+\!\Lambda(\ve n_0\transpose \ma S_{t'}\!-\!(\ve n_{0}\transpose\ma S_{t'}\ve n_{0})\ve n_{0}\transpose)] \ma S_t \ve n_0 \ve n_0\transpose \ma S_t \ve n_0\right\rangle
 %
-\bigg] + \mathcal O(\ku^4)\displaybreak[3] %\\
+\bigg] \\
+&\qquad+ \mathcal O(\ku^4)\displaybreak[3] %\\
 %	
 % 	&= \ku^2\frac{\langle\tr\ma A_t\transpose \ma A_t\rangle}{30}\left(5 + 3 \Lambda^2\right)\\
 % 	&\,\,\,+ 2\ku^3 \int_0^{t}\!\!\!\!{\rm d}t' \bigg[
@@ -150,7 +152,7 @@ There are quite a number of terms, but again, we can use the known three point c
 Moreover, the correlation functions where two of the three matrices are evaluated at the same time have an exchange symmetry. More precisely it means, for instance, $C^{OSS}_{ijklmn}(0,\tau)=C^{SOS}_{klijmn}(0,\tau)$. This symmetry reduces the number of terms considerably, for example $\langle \ma S_t \ma O_t \ma O_{t'}\rangle = \langle \ma O_t \ma S_t \ma O_{t'}\rangle$. After averaging, the result is
 \begin{align*}
 \langle \dot n^2\rangle &=\ku^2\frac{\langle\tr\ma A_t\transpose \ma A_t\rangle}{30}\left(5 + 3 \Lambda^2\right) \\
-	&\,\,\,+ \frac{2 \Lambda \ku^3}{5} \int_0^{t}\!\!\!\!{\rm d}t' \bigg[\frac{3 \Lambda^2}{7}\left\langle\tr \ma S_t\ma S_{t}\ma S_{t'}\right\rangle - \left\langle\tr \ma O_t\ma O_{t}\ma S_{t'}\right\rangle + 2 \Lambda \left\langle\tr \ma S_t\ma O_{t}\ma S_{t'}\right\rangle\bigg]
+	&\,+ \frac{2 \Lambda \ku^3}{5} \int_0^{t}\!\!\!\!{\rm d}t' \bigg[\frac{3 \Lambda^2}{7}\left\langle\tr \ma S_t\ma S_{t}\ma S_{t'}\right\rangle - \left\langle\tr \ma O_t\ma O_{t}\ma S_{t'}\right\rangle + 2 \Lambda \left\langle\tr \ma S_t\ma O_{t}\ma S_{t'}\right\rangle\bigg]
 \end{align*}
 Due to the statistical stationarity of the flow, we may translate the integrals to the form given in the manuscript, 
 \begin{align*}
@@ -162,13 +164,13 @@ Due to the statistical stationarity of the flow, we may translate the integrals 
 The last step is to take the time $t\to\infty$, as advertised earlier. This concludes the derivation of Eq.~(4) in the manuscript:
 \begin{align}
 \langle \dot n^2\rangle &=\ku^2\frac{\langle\tr\ma A_t\transpose \ma A_t\rangle}{30}\left(5 + 3 \Lambda^2\right) \nn \\
-	&\,\,\,+ \frac{2 \Lambda\ku^3}{5} \int_0^{\infty}\!\!\!\!{\rm d}\tau \bigg[\frac{3 \Lambda^2}{7}\left\langle\tr \ma S_0\ma S_{0}\ma S_{-\tau}\right\rangle - \left\langle\tr \ma O_0\ma O_{0}\ma S_{-\tau}\right\rangle + 2 \Lambda\left\langle\tr \ma S_0\ma O_{0}\ma S_{-\tau}\right\rangle\bigg]\eqnlab{eq4final}
+	&+ \frac{2 \Lambda\ku^3}{5} \int_0^{\infty}\!\!\!\!\!\!{\rm d}\tau \bigg[\frac{3 \Lambda^2}{7}\left\langle\tr \ma S_0\ma S_{0}\ma S_{-\tau}\right\rangle - \left\langle\tr \ma O_0\ma O_{0}\ma S_{-\tau}\right\rangle + 2 \Lambda\left\langle\tr \ma S_0\ma O_{0}\ma S_{-\tau}\right\rangle\bigg]\eqnlab{eq4final}
 \end{align}
 
 
 \section{Turbulent flow data}
 
-We do not ourselves have the resources to produce a numerical solution of the Navier-Stokes equations. But researchers at Johns Hopkins University (JHU) have published the data from a large direct numerical simulation\footnote{\url{http://turbulence.pha.jhu.edu/}} \cite{li2008}. The JHU database contains the velocity and pressure fields of homogenous, isotropic and incompressible turbulence. The spatial domain is a periodic box, and the data covers circa 45 Kolmogorov times, corresponding to the turn-around time of the largest eddy. 
+We do not ourselves have the resources to produce a numerical solution of the Navier-Stokes equations. But researchers at Johns Hopkins University (JHU) have published the data from a large direct numerical simulation\footnote{\url{http://turbulence.pha.jhu.edu/}} \cite{li2008}. The JHU database contains the velocity and pressure fields of homogenous, isotropic and incompressible turbulence. The spatial domain is a periodic box, and the data covers circa 45 Kolmogorov times. The dataset corresponds to one turn-around of the largest eddy in the periodic box. 
 
 The JHU database stores the data (\unit[27]{TB}) in a computing cluster, which we can access with a remote programming interface. We may query for the velocity and pressure fields, as well as their derivatives, at any time and position in the dataset. The JHU database provides both spatial and temporal interpolation, so to us the dataset is for practical purposes continuous.
 

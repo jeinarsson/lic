@@ -62,7 +62,7 @@ Upon inserting $A$ and $B$ into \Eqnref{partialn2start} we obtain
 \end{align}
 This is the result to which we will compare the result of our subsequent derivations.
 \subsection{Relation to Laplace operator in spherical coordinates}
-I now show that $\partial^2_{\ve n}$ corresponds to the angular portion of the Laplace operator, as written in spherical coordinates $(r, \theta, \varphi)$:
+I now show that $\partial^2_{\ve n}$ corresponds to the angular part of the Laplace operator, as written in spherical coordinates $(r, \theta, \varphi)$:
 \begin{align*}
 	\nabla^2  &= \frac{1}{r^2}\partial_rr^2\partial_r  + \frac{1}{r^2 \sin \theta}\partial_\theta \sin\theta\partial_\theta  + \frac{1}{r^2\sin^2\theta}\partial^2_\varphi.  \\
 	\intertext{Expand derivatives in $r$ and put $r=1$ to obtain}
@@ -173,7 +173,7 @@ Similarly we obtain the second moments of the displacements $\delta \ve n$ up to
 	&= 2\mathcal D \int_0^{\delta t}\!\!\!\!\!\rd t_1 \int_0^{\delta t}\!\!\!\!\!\rd t_2 \delta(t_1-t_2)(\ma I|\ve n|^2-\ve n\ve n\transpose) + \mathcal O(\delta t^2)\nn\\
 	&= 2\mathcal D \delta t (\ma I|\ve n|^2-\ve n\ve n\transpose) + \mathcal O(\delta t^2).\eqnlab{a2vec}
 \end{align}
-At this point we must refrain from using the fact that, eventually, $|\ve n|=1$. The equation of motion \eqnref{eqnofmotion1} only implies that $|\ve n|$ is conserved, not at which value. As a direct consequence the mean square displacements \eqnref{a2vec} ensure that the random jumps also conserve $|\ve n|$. If we were to change this fact by letting $|\ve n|=1$, while clearly the term $-\ve n\ve n\transpose$ is proportional to  $|\ve n|^2$, the random jumps will no longer conserve $|\ve n|$. The resulting Fokker-Planck equation will contain terms describing this erronous flux normal to the unit sphere\footnote{In fact, using $|\ve n|=1$ at this point leads to the Fokker-Planck equation $\partial_t P = \nabla\cdot(\ma I-\ve n\ve n\transpose)\nabla P$.}. Now, however, we conclude the derivation of the correct Fokker-Planck equation.
+At this point we must refrain from using the fact that, eventually, $|\ve n|=1$. The equation of motion \eqnref{eqnofmotion1} only implies that $|\ve n|$ is conserved, not at which value. As a direct consequence the mean square displacements \eqnref{a2vec} ensure that the random jumps also conserve $|\ve n|$. If we were to change this fact by letting $|\ve n|=1$, while clearly the term $-\ve n\ve n\transpose$ is proportional to  $|\ve n|^2$, the random jumps will no longer conserve $|\ve n|$. The resulting Fokker-Planck equation would contain terms describing this erronous flux normal to the unit sphere\footnote{In fact, using $|\ve n|=1$ at this point leads to the Fokker-Planck equation $\partial_t P = \nabla\cdot(\ma I-\ve n\ve n\transpose)\nabla P$.}. Now, however, we conclude the derivation of the correct Fokker-Planck equation.
 
 By the definitions in Eqns. \eqnref{a1def} and \eqnref{a2def}, the coefficients $a^{(1)}$ and $a^{(2)}$ are
 \begin{align}

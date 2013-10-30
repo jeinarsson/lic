@@ -140,19 +140,32 @@ We will often, especially when discussing the orientational dynamics of particle
 \begin{align*}
 	A_{ij} &= \frac{\partial u_i}{\partial x_j}.
 \end{align*}
-The incompressibility condition $\nabla\cdot\ve u=0$ transfers directly to the condition $\tr \ma A=0$. The gradient $\ma A$ is usually split into its symmetric and anti-symmetric parts such that
+The incompressibility condition $\nabla\cdot\ve u=0$ transfers directly to the condition $\tr \ma A=0$.
+
+Throughout this thesis I employ the implicity summation convention for repeated indices. The implied summation is over the number of spatial degrees of freedom, for example
+\begin{align*}
+	A_{ii} = \sum_{i=1}^d A_{ii} = \tr \ma A.
+\end{align*}
+
+The gradient $\ma A$ is often split into its symmetric and anti-symmetric parts such that
 \begin{align*}
 	&\ma O = \frac{1}{2}(\ma A - \ma A\transpose),\quad
 	\ma S = \frac{1}{2}(\ma A + \ma A\transpose),\quad
 	\ma A = \ma O + \ma S.
 \end{align*}
-The symmetric part $\ma S$ is called the rate-of-strain tensor, and it contains the local rate of deformation of the flow. The anti-symmetric part $\ma O$ is called the vorticity tensor, because it contains the local rate of rotation of the flow. The vorticity vector $\ve \omega_f$ of a flow $\ve u$ is defined by $\ve \omega_f = \nabla \cross \ve u$. The vorticity tensor $\ma O$ is related to the vorticity vector $\ve \omega_f$, because for any given vector $\ve x$
+The symmetric part $\ma S$ is called the rate-of-strain tensor, and it contains the local rate of deformation of the flow. The anti-symmetric part $\ma O$ is related to the vorticity vector. The vorticity vector $\ve \omega_f$ of a flow $\ve u$ is defined by $\ve \omega_f = \nabla \cross \ve u$. The matrix $\ma O$ is related to the vorticity vector $\ve \omega_f$, because for any given vector $\ve x$
 \begin{align}
 	\ma O \ve x &= \frac{1}{2}\ve \omega_f \cross \ve x \equiv \ve \Omega \cross \ve x.\eqnlab{vorticityOdef}
 \end{align}
-The vector $\ve \Omega$, defined as half the vorticity, is a common quantitiy in our calculations, and therefore is given its own symbol. The elements of $\ma O$ are related to $\ve \Omega$ by $O_{ij} = -\lc_{ijp}\Omega_p$.
+The vector $\ve \Omega$, defined as half the vorticity, is a common quantitiy in our calculations, and therefore is given its own symbol. The elements of $\ma O$ are related to $\ve \Omega$ by $O_{ij} = -\lc_{ijp}\Omega_p$. In this thesis $\lc$ denotes the anti-symmetric third order tensor
+\begin{align*}
+\lc_{ijk} = \begin{cases}
++1 & \textrm{if } (i,j,k) \textrm{ is a cyclic permutation of} (1,2,3), \\
+-1 & \textrm{if } (i,j,k) \textrm{ is a cyclic permutation of } (3,2,1), \\
+\;\;\,0 & \textrm{if two indices are equal.}
+\end{cases}\end{align*}
 
-The stress tensor $\ma T$ is a symmetric second order tensor defined at each point in space. Its elements $T_{ij}$ are defined as the $i$:th component of the force on a surface with (outward pointing) normal in the $j$:th direction. That is, if a surface has outward normal $\ve n$, the force $\ve f$ per unit area is
+The stress tensor $\ma T$ of a fluid is a symmetric second order tensor defined at each point in space. Its elements $T_{ij}$ are defined as the $i$:th component of the force on a surface with (outward pointing) normal in the $j$:th direction. That is, if a surface has outward normal $\ve n$, the force $\ve f$ per unit area is
 \begin{align*}
 	\ve f &= \ma T \ve n.
 \end{align*}
@@ -399,7 +412,7 @@ By far the most common approach is to consider a diffusion equation for the unit
 
 The governing equation for the orientational distribution of an axisymmetric particle in the diffusion approximation is the Fokker-Planck equation
 \begin{align}
-	\frac{\partial}{\partial t}P(\ve n, t) &= \frac{\partial}{\partial \ve n}\left[\ve J (\ve n, t)P(\ve n, t)\right] + \mathcal D \frac{\partial^2}{\partial \ve n^2}P(\ve n, t).\eqnlab{fpejeff}
+	\frac{\partial}{\partial t}P(\ve n, t) &= -\frac{\partial}{\partial \ve n}\left[\ve J (\ve n, t)P(\ve n, t)\right] + \mathcal D \frac{\partial^2}{\partial \ve n^2}P(\ve n, t).\eqnlab{fpejeff}
 \end{align}
 The first term on the right hand side is referred to as the drift, and the second as the diffusion. The drift is due to the deterministic fluid flow, and $\ve J(\ve n, t)$ represents the right hand side of the Jeffery equation \eqnref{jeffery}. The diffusion term is due to the random kicks, and $\mathcal D$ is the rotational diffusion constant. Since $\ve n$ is a unit vector, the Fokker-Planck equation is defined on the unit sphere. Therefore the derivative with respect to $\ve n$ is defined as $\partial/\partial_{\ve n} = (\ma I-\ve n\ve n\transpose)\nabla$, with $\nabla$ the usual gradient in $\mathbb R^3$. In Appendix~\secref{fpesphere} I explain this in more detail, and present a full derivation of \Eqnref{fpejeff}. 
 
