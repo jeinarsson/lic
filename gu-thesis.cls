@@ -631,7 +631,9 @@
   \@postcode\ \cityname\\
   \countryname\\
   \telephonename: \@telephone\\[5mm]
-  Cover: ....\\[5mm]
+  Cover: ....\\
+  Flipbook even pages: ....\\
+  Flipbook odd pages: ....\\[5mm]
  Printed by \@printers \\
  \cityname, \countryname\ \@copyrightyear
   }

@@ -224,7 +224,7 @@
 \department{Department of Physics}
 %\division{Division of Solid Mechanics}
 \reportno{2013:01}
-\ISBN{123-21332-13423-123} % Only for doctorate
+\ISBN{978-91-637-4473-0} % Only for doctorate
 \copyrightyear{2013}
 
 \opponent{
@@ -249,6 +249,8 @@ Country
 \acknowledgements{Most importantly, I want to thank my supervisor Bernhard Mehlig for taking me on as a student. I cannot imagine a better scientific climate to work in: everything is up for discussion, no stone unturned.
 
 I also want to thank the many collaborators we have: Dag Hanstorp, for the microfluidic experiments; Jean-R\'egis Angilella for the many discussions and calculations, some of which resulted in paper B; Kristian Gustavsson for teaching me all I know about random flows and Kubo-numbers.
+
+Last but not least, I thank the people who read this thesis and gave me helpful comments and suggestions: Kajsa, Rasmus, Tora, Bernhard, Erik, Kristian, Marina.
 }
 %\paperwork{Text}
 \thesiscontents{This thesis consists of an extended summary and three appended papers:}
@@ -303,17 +305,24 @@ I also want to thank the many collaborators we have: Dag Hanstorp, for the micro
 \part{Introduction} % Using the starred command avoids numbering.
  \thispagestyle{empty}
  \subfile{Introduction}
+ \clearpage
  \subfile{Background}
+\clearpage
+ \subfile{prerequisites}
 \part{Present work} % Using the starred command avoids numbering.
 \thispagestyle{fb}
 \subfile{PartIIintroduction}
 \subfile{Experiment}
+\clearpage
 \subfile{Inertia}
+\clearpage
 \subfile{Turbulence}
 %\subfile{Ornstein}
 
 
-\nocite{paper3}
+\nocite{einarsson2013}
+\nocite{einarsson2013b}
+\nocite{gustavsson2013}
 
 \clearpage
 
@@ -325,8 +334,11 @@ I also want to thank the many collaborators we have: Dag Hanstorp, for the micro
 \thispagestyle{fb}
 \appendix
 \subfile{app_triaxial_equations}
+\clearpage
 \subfile{app_randomflow_diffusion}
+\clearpage
 \subfile{app_fpe_sphere}
+\clearpage
 \subfile{app_lagrangian}
 
 
@@ -337,18 +349,35 @@ I also want to thank the many collaborators we have: Dag Hanstorp, for the micro
 
 
 
-\paper{Aperiodic tumbling of microrods advected in a microchannel flow}{Reference}
+\paper{Periodic and aperiodic tumbling of microrods advected in a microchannel flow}{%
+{\sc Einarsson, J., Johansson, A., Mahato, S.~K., Mishra, Y.~N., Angilella,
+  J.~R., Hanstorp, D. \& Mehlig, B.} 2013 Periodic and aperiodic tumbling of
+  microrods advected in a microchannel flow. {\em Acta Mechanica\/} {\bf
+  224}~(10), 2281--2289.%
+  }
 %\includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/1.pdf}
 
-\paper{Orientational dynamics of weakly inertial axisymmetric particles in steady viscous flows}{Reference}
+\paper{Orientational dynamics of weakly inertial axisymmetric particles in steady viscous flows}{%
+{\sc Einarsson, J., Angilella, J.~R. \& Mehlig, B.} 2013{\natexlab{{\em b\/}}}
+  Orientational dynamics of weakly inertial axisymmetric particles in steady
+  viscous flows. Submitted to Physica D July 10, 2013, available as {arXiv} e-print 1307.2821.%
+}
 %\includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/2.pdf}
 
-\paper{Tumbling of small axisymmetric particles in random and turbulent flows}{Reference}
+\paper{Tumbling of small axisymmetric particles in random and turbulent flows}{%
+{\sc Gustavsson, K., Einarsson, J. \& Mehlig, B.} 2013 Tumbling of small
+  axisymmetric particles in random and turbulent flows. In review Physical Review Letters, available as {arXiv} e-print
+  1305.1822.%
+}
 %\includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/3.pdf}
 
 
 %\part{Other Publications} % If applicable:
 %\toptext{Other publications related to thesis}
-%\publication{A study of multiple crack interaction at rolling contact fatigue of rails}{Text}
+%\publication{A microfluidic device for studies of the orientational dynamics of microrods}{%
+%{\sc Mishra, Y.~N., Einarsson, J., John, O.~A., Andersson, P., Mehlig, B. \&
+%  Hanstorp, D.} 2012 A microfluidic device for studies of the orientational
+%  dynamics of microrods. , vol. 8251, pp. 825109--825109--11.%
+%}
 \end{document}
  
