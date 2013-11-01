@@ -69,7 +69,7 @@ More specifically,
 \begin{align*}
 	\rep = \frac{u_0 a}{\nu},
 \end{align*}
-where $u_0$ is a typical flow rate relative to the particle surface, $a$ is the size of the particle and $\nu$ is the kinematic viscosity of the fluid. In the extreme case when $\rep=0$, the Navier-Stokes equation \eqnref{navierstokes} reduces to the linear steady Stokes equation \cite{kim1991,kundu2004}
+where $u_0$ is a typical flow speed relative to the particle surface, $a$ is the size of the particle and $\nu$ is the kinematic viscosity of the fluid. In the extreme case when $\rep=0$, the Navier-Stokes equation \eqnref{navierstokes} reduces to the linear steady Stokes equation \cite{kim1991,kundu2004}
 \begin{align*}
 	\mu \nabla^2 \ve u = \nabla p.
 \end{align*}
@@ -92,7 +92,7 @@ When the force and torque on a particle are known, its trajectory is determined 
 
 \section{Simple shear flow}\label{sec:shearflow}
 
-The simple shear flow is a uni-directional linear flow which varies magnitude in only one transversal direction. It is shown to the right in Fig.~\ref{fig:shear_decomposition}. The equation describing the shear flow is simply,
+The simple shear flow is a uni-directional linear flow which varies magnitude in only one transversal direction. It is shown in Fig.~\ref{fig:shear_decomposition}. The equation describing the shear flow is simply,
 \begin{align*}
 	\ve u(y) &= s y \hat{\ve x}.
 \end{align*}
@@ -107,7 +107,7 @@ The flow gradient of the simple shear flow is constant and given by
 		0 & 0 & 0 
 	\end{bmatrix}.
 \end{align*}
-The shear flow is important for two reasons. First, it is one of the fundamental flows in rheology, the study of fluids. It is the flow inside a Couette device, used for example to measure viscosity. Second, as far as particle dynamics go, the simple shear flow is relevant for \emph{any} flow with parallel streamlines. Consider for example the flow of a suspension through a pipe. The pipe is large compared to the suspended particles, and the flow profile is most likely a complicated function of position $y$ in the pipe cross section\footnote{In principle the function should also depend on the position in the $z$-direction. In that case the result is also a simple shear flow, although rotated.}:
+The shear flow is important for two reasons. First, it is one of the fundamental flows in rheology, the study of fluids. It is the flow inside a Couette device, used for example to measure viscosity. Second, as far as particle dynamics go, the simple shear flow is relevant for \emph{any} flow with parallel streamlines. Consider for example the flow of a suspension through a pipe. The pipe is assumed to be large compared to the suspended particles, and the flow profile is most likely a complicated function of position $y$ in the pipe cross section\footnote{In principle the function should also depend on the position in the $z$-direction. In that case the result is also a simple shear flow, although rotated.}:
 \begin{align*}
 	\ve u(y) &= f(y)\hat{\ve x},
 \end{align*}
@@ -121,7 +121,7 @@ The shear flow is important for two reasons. First, it is one of the fundamental
 \end{align*}
 Thus, if the flow profile $f$ varies slowly over the particle size, the particle experiences a simple shear flow of strength $f'(y)$. This is exactly the case in the experiment described in Paper A (see \Secref{experiment}).
 
-Curiously, the dynamics of non-spherical particles in simple shear flow offers a rich variety of behaviours. There is no stationary state, but a particle tumbles end-to-end for all time. If the particle is axisymmetric, the tumbling is periodic. The technical details and explanations of this are discussed in Sec.~\ref{sec:jefferyequation}, but we can understand the underlying reason from the composition of the shear flow. Fig.~\ref{fig:shear_decomposition} illustrates schematically how the shear is a superposition of two flows. One is a pure rotation, corresponding to the antisymmetric part $\ma O$ of the flow gradient. The other is a pure strain, the symmetric part $\ma S$ of the flow gradient. Now imagine a rod-shaped particle in these flows. The pure rotation, the vorticity, will rotate the rod with a constant angular velocity, regardless of its orientation. The strain, on the other hand, has a preferred direction to which it will attract the long axis of the rod. Sometimes the vorticity and strain will cooperate to turn the rod onto the strain eigendirection, and sometimes the vorticity will struggle to rotate the rod out of the attracting direction. The result is that the rod will always rotate, but sometimes faster and sometimes slower. When the difference between the fast and the slow rotations is large, we perceive this as tumbling.
+Curiously, the dynamics of non-spherical particles in simple shear flow offers a rich variety of behaviours. There is no stationary state, but a particle tumbles end-to-end indefinitely. If the particle is axisymmetric, the tumbling is periodic. The technical details and explanations of this are discussed in Sec.~\ref{sec:jefferyequation}, but we can understand the underlying reason from the composition of the shear flow. Fig.~\ref{fig:shear_decomposition} illustrates schematically how the shear is a superposition of two flows. One is a pure rotation, corresponding to the antisymmetric part $\ma O$ of the flow gradient. The other is a pure strain, the symmetric part $\ma S$ of the flow gradient. Now imagine a rod-shaped particle in these flows. The pure rotation, the vorticity, will rotate the rod with a constant angular velocity, regardless of the rod's orientation. The strain, on the other hand, has a preferred direction to which it will attract the long axis of the rod. Sometimes the vorticity and strain will cooperate to turn the rod onto the strain eigendirection, and sometimes the vorticity will struggle to rotate the rod out of the attracting direction. The result is that the rod will always rotate, but sometimes faster and sometimes slower. When the difference between the fast and the slow rotations is large, we perceive this as intermittent tumbling.
 \begin{figure}
 \begin{center}
 %  \makebox[\textwidth]{\includegraphics[width=7cm]{figs/fig_coordinates.png}}
