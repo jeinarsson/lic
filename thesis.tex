@@ -161,16 +161,16 @@
 \rfoot[]{%
   \setlength\unitlength{1cm}%
   \begin{picture}(0,0)%
-    \put(0.4,-2){%
-      \fbImageF{./figs/plotting/flipbook/output/symm/}{png}{scale=0.75}%
+    \put(0.75,-2){%
+      \fbImageF{./figs/plotting/flipbook/output/symm/}{png}{width=20mm}%
     }%
   \end{picture}%
 }
 \lfoot[%
   \setlength\unitlength{1cm}
   \begin{picture}(0,0)
-    \put(-3.3,-2){
-      \fbImageF{./figs/plotting/flipbook/output/triax/}{png}{scale=0.75}
+    \put(-3.2,-2){
+      \fbImageF{./figs/plotting/flipbook/output/triax/}{png}{width=20mm}
     }
   \end{picture}
 ]{}
@@ -192,16 +192,16 @@
 \rfoot[]{%
   \setlength\unitlength{1cm}
   \begin{picture}(0,0)
-    \put(0.4,-2){
-      \fbImageF{./figs/plotting/flipbook/output/symm/}{png}{scale=0.75}
+    \put(0.75,-2){
+      \fbImageF{./figs/plotting/flipbook/output/symm/}{png}{width=20mm}
     }
   \end{picture}
 }
 \lfoot[%
   \setlength\unitlength{1cm}
   \begin{picture}(0,0)
-    \put(-3.3,-2){
-      \fbImageF{./figs/plotting/flipbook/output/triax/}{png}{scale=0.75}
+    \put(-3.2,-2){
+      \fbImageF{./figs/plotting/flipbook/output/triax/}{png}{width=20mm}
     }
   \end{picture}
 ]{}
@@ -240,7 +240,19 @@ Country
 %\covercaption{Some explanation}
 
 \firstabstract{
+Particles suspended in fluid flows are common in nature. Important examples are drops of water or particulate matter in the atmosphere, and planktonic microorganisms in the ocean.
+If a particle is non-spherical, a fluid velocity gradient induces a hydrodynamic torque. The torque leads to rotational motion of the particle.
+This thesis describes our work on the orientational dynamics of non-spherical particles suspended in fluid flows.
 
+We consider the viscous Stokes regime, where the particle Reynolds number $\rep\ll1$ ($\rep = u_0 a/\nu$, where $u_0$ is a typical flow speed, $a$ is the particle size and $\nu$ is the kinematic viscosity of the fluid).
+
+First, we describe a microfluidic experiment where we observe periodic and aperiodic tumbling of rod-shaped particles. We argue that the aperiodic tumbling is commensurate with the quasi-periodic and chaotic tumbling predicted by Jeffery's theory.
+
+Second, we calculate a modification to Jeffery's theory for axisymmetric particles, that takes into account the first effects of particle inertia. It is described how the orientational distribution of an ensemble of particles is affected by the competition between particle inertia and Brownian noise.
+
+Third, by averaging along particle trajectories in turbulence, we explain 
+
+Finally, this thesis contains a non-technical introduction to the study of particle dynamics in fluid flows.
 }
 %\secondabstract{swedish}{Text}
 \keywords{}
@@ -250,7 +262,7 @@ Country
 
 I also want to thank the many collaborators we have: Dag Hanstorp, for the microfluidic experiments; Jean-R\'egis Angilella for the many discussions and calculations, some of which resulted in paper B; Kristian Gustavsson for teaching me all I know about random flows and Kubo-numbers.
 
-Last but not least, I thank the people who read this thesis and gave me helpful comments and suggestions: Kajsa, Rasmus, Tora, Bernhard, Erik, Kristian, Marina.
+Finally, a big thank you to my friends and collegues who contributed to this thesis by reading and giving comments: Kajsa, Tora, Rasmus, Bernhard, Kristian, Erik and Marina. I hope you saved enough energy to have a look at the final result.
 }
 %\paperwork{Text}
 \thesiscontents{This thesis consists of an extended summary and three appended papers:}
@@ -295,89 +307,82 @@ Last but not least, I thank the people who read this thesis and gave me helpful 
 \maketitlepage
 \newpage\makeprintinfopage
 \newpage\makeabstractpage
-\cleardoublepage\maketableofpaperspage
-\newpage\makeacknowledgementspage
-\cleardoublepage\tableofcontents
-\cleardoublepage\pagenumbering{arabic}
-\pagestyle{fancy}
+% \cleardoublepage\maketableofpaperspage
+% \newpage\makeacknowledgementspage
+% \cleardoublepage\tableofcontents
+% \cleardoublepage\pagenumbering{arabic}
+% \pagestyle{fancy}
 
 
-\part{Introduction} % Using the starred command avoids numbering.
- \thispagestyle{empty}
- \subfile{Introduction}
- \clearpage
- \subfile{Background}
-\clearpage
- \subfile{prerequisites}
-\part{Present work} % Using the starred command avoids numbering.
-\thispagestyle{fb}
-\subfile{PartIIintroduction}
-\subfile{Experiment}
-\clearpage
-\subfile{Inertia}
-\clearpage
-\subfile{Turbulence}
-%\subfile{Ornstein}
+% \part{Introduction} % Using the starred command avoids numbering.
+%  \thispagestyle{empty}
+%  \subfile{Introduction}
+%  \clearpage
+%  \subfile{Background}
+% \clearpage
+%  \subfile{prerequisites}
+% \part{Present work} % Using the starred command avoids numbering.
+% \thispagestyle{fb}
+% \subfile{PartIIintroduction}
+% \subfile{Experiment}
+% \clearpage
+% \subfile{Inertia}
+% \clearpage
+% \subfile{Turbulence}
+% \subfile{Outlook}
 
 
-\nocite{einarsson2013}
-\nocite{einarsson2013b}
-\nocite{gustavsson2013}
+% \nocite{einarsson2013}
+% \nocite{einarsson2013b}
+% \nocite{gustavsson2013}
 
-\clearpage
+% \clearpage
 
-\nobibliography*
-\bibliography{references} % Legacy command
-
-
-\part{Appendices} % Using the starred command avoids numbering.
-\thispagestyle{fb}
-\appendix
-\subfile{app_triaxial_equations}
-\clearpage
-\subfile{app_randomflow_diffusion}
-\clearpage
-\subfile{app_fpe_sphere}
-\clearpage
-\subfile{app_lagrangian}
+% \nobibliography*
+% \bibliography{references} % Legacy command
 
 
-\part{Research papers}
-\thispagestyle{fb}
-% You can write this manually \paper{Paper Title}{Full reference} or have bib entries entered automatically
+% \part{Appendices} % Using the starred command avoids numbering.
+% \thispagestyle{fb}
+% \appendix
+% \subfile{app_triaxial_equations}
+% \clearpage
+% \subfile{app_randomflow_diffusion}
+% \clearpage
+% \subfile{app_fpe_sphere}
+% \clearpage
+% \subfile{app_lagrangian}
+
+
+% \part{Research papers}
+% \thispagestyle{fb}
+% % You can write this manually \paper{Paper Title}{Full reference} or have bib entries entered automatically
 
 
 
 
-\paper{Periodic and aperiodic tumbling of microrods advected in a microchannel flow}{%
-{\sc Einarsson, J., Johansson, A., Mahato, S.~K., Mishra, Y.~N., Angilella,
-  J.~R., Hanstorp, D. \& Mehlig, B.} 2013 Periodic and aperiodic tumbling of
-  microrods advected in a microchannel flow. {\em Acta Mechanica\/} {\bf
-  224}~(10), 2281--2289.%
-  }
-%\includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/1.pdf}
+% \paper{Periodic and aperiodic tumbling of microrods\\advected in a microchannel flow}{%
+% {\sc Einarsson, J., Johansson, A., Mahato, S.~K., Mishra, Y.~N., Angilella,
+%   J.~R., Hanstorp, D. \& Mehlig, B.} 2013 Periodic and aperiodic tumbling of
+%   microrods advected in a microchannel flow. {\em Acta Mechanica\/} {\bf
+%   224}~(10), 2281--2289.%
+%   }
+% \includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/1.pdf}
 
-\paper{Orientational dynamics of weakly inertial axisymmetric particles in steady viscous flows}{%
-{\sc Einarsson, J., Angilella, J.~R. \& Mehlig, B.} 2013{\natexlab{{\em b\/}}}
-  Orientational dynamics of weakly inertial axisymmetric particles in steady
-  viscous flows. Submitted to Physica D July 10, 2013, available as {arXiv} e-print 1307.2821.%
-}
-%\includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/2.pdf}
+% \paper{Orientational dynamics of weakly inertial\\axisymmetric particles in steady viscous flows}{%
+% {\sc Einarsson, J., Angilella, J.~R. \& Mehlig, B.} 2013{\natexlab{{\em b\/}}}
+%   Orientational dynamics of weakly inertial axisymmetric particles in steady
+%   viscous flows. \emph{In review}, available as {arXiv} e-print \textbf{1307.2821.}%
+% }
+% \includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/2.pdf}
 
-\paper{Tumbling of small axisymmetric particles in random and turbulent flows}{%
-{\sc Gustavsson, K., Einarsson, J. \& Mehlig, B.} 2013 Tumbling of small
-  axisymmetric particles in random and turbulent flows. In review Physical Review Letters, available as {arXiv} e-print
-  1305.1822.%
-}
-%\includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/3.pdf}
+% \paper{Tumbling of small axisymmetric particles in\\random and turbulent flows}{%
+% {\sc Gustavsson, K., Einarsson, J. \& Mehlig, B.} 2013 Tumbling of small
+%   axisymmetric particles in random and turbulent flows. \emph{In review}, available as {arXiv} e-print
+%   \textbf{1305.1822}.%
+% }
+% \includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/3.pdf}
 
 
-%\part{Other Publications} % If applicable:
-%\toptext{Other publications related to thesis}
-%\publication{A microfluidic device for studies of the orientational dynamics of microrods}{%
-%{\sc Mishra, Y.~N., Einarsson, J., John, O.~A., Andersson, P., Mehlig, B. \&
-%  Hanstorp, D.} 2012 A microfluidic device for studies of the orientational
-%  dynamics of microrods. , vol. 8251, pp. 825109--825109--11.%
-%}
 \end{document}
  

@@ -625,15 +625,22 @@
   \noindent \emph{\@title}\\
   \@author\\
   ISBN \@ISBN\\[5mm]
-   \copyright\ \@author, \@copyrightyear \\[5mm]
+ %
   \@department\\
   \universityname\\
   \@postcode\ \cityname\\
   \countryname\\
   \telephonename: \@telephone\\[5mm]
-  Cover: ....\\
-  Flipbook even pages: ....\\
-  Flipbook odd pages: ....\\[5mm]
+ %
+   \emph{Parts I--III, pages nn--nn}, including all figures, are licensed under a \\
+   Creative Commons Attribution 3.0 Unported License.\\
+   \includegraphics[width=3cm]{figures/by.pdf}\\[3mm]
+   In {Part IV},\\
+   \emph{Paper A} is \copyright~2013 Springer, and is reprinted with permission. \\
+   \emph{Papers B \& C} are \copyright~2013 their respective authors.\\[5mm]
+  Front cover: Illustration of spheroidal particle tumbling in a shear flow.\\
+  Flipbooks: Ellipsoidal particles rotating in a simple shear flow. \\
+  \emph{Odd pages:} Symmetric particle with major aspect ratio $\lambda=7$ and minor aspect ratio $\kappa=1$. \emph{Even pages:} Slightly asymmetric particle with $\lambda=7$ and $\kappa=1.2$. Both particles started with identical initial conditions. See Sections~\secref{jefferyequation} and \secref{experiment} for further explanation. \\[5mm]
  Printed by \@printers \\
  \cityname, \countryname\ \@copyrightyear
   }

@@ -1,6 +1,6 @@
 function fig_coordinate
 
-    num_frames = 10;
+    num_frames = 80;
     steps_per_frame = 7;
     trail = steps_per_frame * 30;
     start_frame = trail + 340;
@@ -8,10 +8,10 @@ function fig_coordinate
     name = 'triax';
     %name = 'symm';
     
-    trajectory = load(sprintf('anton/%s.mat',name),'n_x','n_y','n_z');
+    trajectory = load(sprintf('anton/%s.mat',name),'n_x','n_y','n_z','phi','theta','psi');
     
     
-    fig = figure('position',[100,100,100,100]);
+    fig = figure('position',[100,100,300,300]);
 
     
     ax = subaxis(1,1,1,'Holdaxis',1,'Margin',.02);
@@ -25,7 +25,8 @@ function fig_coordinate
 
 
     r = [0,0,0];
-    n =[1,1,0];
+    %n =[1,1,0];
+    n = [0, 1.5, 0];
     [x,y,z,c] = get_ellipsoid_meshdata(r,n,lambda);
     
     
@@ -81,7 +82,8 @@ function fig_coordinate
         
         k = k + steps_per_frame;
 
-        n = [trajectory.n_x(k); trajectory.n_y(k); trajectory.n_z(k)];
+        %n = [trajectory.n_x(k); trajectory.n_y(k); trajectory.n_z(k)];
+        n = [trajectory.phi(k), trajectory.theta(k),trajectory.psi(k)];
         [x,y,z] = get_ellipsoid_meshdata(r,n,lambda);
         set(particle_mesh, 'xdata',x,'ydata',y,'zdata',z);
 
@@ -111,9 +113,12 @@ end
 
 function [x,y,z,c] = get_ellipsoid_meshdata(r, n, lambda)
 
+        % n = [phi theta psi]
+
         particle_size = 1;
         
-        R = vrrotvec2mat(vrrotvec([0,0,1],n));
+        %R = vrrotvec2mat(vrrotvec([0,0,1],n));
+        R = rotation_matrix(n(1), n(2), n(3));
         rx = particle_size;
         ry = particle_size;
         rz = particle_size;
@@ -145,4 +150,28 @@ function [x,y,z,c] = get_ellipsoid_meshdata(r, n, lambda)
 
 
         
+end
+
+
+function R = rotation_matrix(phi, theta, psi)
+	Rtheta = eye(3,3);
+	Rphi = eye(3,3);
+	Rpsi = eye(3,3);
+
+    Rtheta(2,2) = cos(theta);
+    Rtheta(2,3) = -sin(theta);
+    Rtheta(3,2) = sin(theta);
+    Rtheta(3,3) = cos(theta);
+
+    Rphi(1,1) = cos(phi);
+    Rphi(1,2) = -sin(phi);
+    Rphi(2,1) = sin(phi);
+    Rphi(2,2) = cos(phi);
+
+    Rpsi(1,1) = cos(psi);
+    Rpsi(1,2) = -sin(psi);
+    Rpsi(2,1) = sin(psi);
+    Rpsi(2,2) = cos(psi);
+
+    R = Rphi*Rtheta*Rpsi;
 end

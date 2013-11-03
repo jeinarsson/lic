@@ -5,7 +5,7 @@
 \chapter{Tumbling in turbulent flows}\seclab{tumbling}
 
 Together with Kristian Gustavsson we investigate the orientational dynamics of small particles in random and turbulent flows. 
-Kristian is an expert on particle dynamics in random flows. In the previous Sections, describing Papers A \& B, we considered only steady and uniform fluid flows. In this project we combine our knowledge of random and turbulent flows with that of the dynamics of non-spherical particles. The collaboration has thus far resulted in Paper C (under review for publication in Physical Review Letters).
+Kristian is an expert on particle dynamics in random flows. In the previous Sections, describing Papers A \& B, we considered only steady and uniform fluid flows. In this project we combine our knowledge of random and turbulent flows with that of the dynamics of non-spherical particles. The collaboration has thus far resulted in Paper C (in review).
 
 \section{Overview}
 
@@ -19,8 +19,8 @@ When Parsa et. al. published numerical (DNS) and experimental results on the rot
 
 It is a well-known fact that the distribution of velocity gradients in turbulent flow is strongly skewed \cite{chertkov1999,luthi2009}. We argue in Paper C that there is a relation between the skewed distribution of velocity gradients and the differing tumbling rates of disks and rods. The broken symmetry means that some flow configurations are more likely than others. We use Jeffery's equation of motion for axisymmetric particles to argue how this asymmetry propagates to the particle rotation. 
 
-As I explained in \Secref{jefferyequation} about \emph{steady flows}, the orientational dynamics of a particle switches from rotation to alignment when one replaces a rod with a disk, or vice versa. Therefore, if rods and disks are to tumble alike on average, we must require that particles experience equal amounts of ``rotating'' gradients and ``aligning'' gradients - otherwise the result will be different if we switch the particle.
-In other words, the distribution of flow gradients $\ma A$ must be symmetric in $\tr \ma A \to -\tr \ma A\transpose$, specifically over the line $\tr \ma A^3=0$ (see\footnote{Recall, $\ma B=\ma O + \Lambda\ma S$, but $\ma B \to \ma A$ ($-\ma A\transpose$) as the particle shape $\Lambda\to 1$ ($-1$).} \Figref{bmap} in \Secref{jefferyequation}.) This symmetry does not exist in turbulence.
+As I explained in \Secref{jefferyequation} about \emph{steady flows}, the orientational dynamics of a particle switches from rotation to alignment when one replaces a rod with a disk, or vice versa. Therefore, if rods and disks are to tumble alike on average, we must require that particles experience equal amounts of ``rotating'' gradients and ``aligning'' gradients -- otherwise the result will be different if we switch the particle type.
+In other words, the distribution of flow gradients $\ma A$ must be symmetric in $\tr \ma A \to -\tr \ma A\transpose$, in particular over the line $\tr \ma A^3=0$ (see\footnote{Recall, $\ma B=\ma O + \Lambda\ma S$, but $\ma B \to \ma A$ ($-\ma A\transpose$) as the particle shape $\Lambda\to 1$ ($-1$).} \Figref{bmap} in \Secref{jefferyequation}.) This symmetry does not exist in turbulence.
 
 However, this argument does not close the case, because it is only true for \emph{steady} flow ($\ku\to\infty$), and turbulence is absolutely not steady. The more technical part of the paper is a calculation valid at the other extreme: $\ku \ll 1$, or very unsteady flows, more so than turbulence. As shown in the paper, the calculation reinforces the picture outlined above.
 
@@ -49,13 +49,13 @@ We separate the gradient into its symmetric and antisymmetric parts,
 	\ma S = \frac{1}{2}(\ma A + \ma A\transpose),\quad
 	\ma A = \ma O + \ma S.
 \end{align*}
- It turns out that the all the second and third order correlation functions between $\ma S$ and $\ma O$ factorise in a very convenient manner. Appendix~\secref{applagrangian} contains the details of this factorisation and the final expressions. All the correlation functions become products of one time-dependent function, and one part which depends only on the spatial indices, but not time. For example, in three spatial dimensions
+ It turns out that all the second and third order correlation functions between $\ma S$ and $\ma O$ factorise in a very convenient manner. Appendix~\secref{applagrangian} contains the details of this factorisation and the final expressions. All the correlation functions become products of one time-dependent function, and one part which depends only on the spatial indices, but not time. For example, in three spatial dimensions
 \begin{align}
 	C^{OO}_{ijkl}(t) &= \frac{\left\langle \tr \ma O_0\ma O_t\right\rangle}{6}( \delta_{il}\delta_{jk}-\delta_{ik}\delta_{jl}), \nn\\
 	C^{SS}_{ijkl}(t) &= \frac{\left\langle \tr \ma S_0\ma S_t\right\rangle}{30}(3\delta_{il}\delta_{jk} + 3\delta_{ik}\delta_{jl} - 2\delta_{ij}\delta_{kl}), \nn\\
 	C^{SO}_{ijkl}(t) &= 0. \eqnlab{turb2point}
 \end{align}
-Here the functions $\left\langle \tr \ma O_0\ma O_t\right\rangle$ and $\left\langle \tr \ma S_0\ma S_t\right\rangle$ are functions of time which are flow-specific. They can be determined through a flow model, measurement, or, as in our case, numerical DNS data. See the next Section for details.
+Here $\left\langle \tr \ma O_0\ma O_t\right\rangle$ and $\left\langle \tr \ma S_0\ma S_t\right\rangle$ are flow-specific functions of time. They can be determined through a flow model, measurement, or, as in our case, numerical DNS data. See the \Secref{turbulentdata} for details.
 
 Similar, but lengthier, results exist for the eight three-point correlations $C^{SSS}_{ijklmn}(t)$, $C^{SSO}_{ijklmn}(t)$, ..., $C^{OOO}_{ijklmn}(t)$ (see Appendix~\secref{applagrangian}.)
 
@@ -77,8 +77,7 @@ In the calculation we will eventually take $t\to\infty$. The average rotation ra
 \end{align}
 We cannot perform the average at this point, because in general the orientation $\ve n_t$ and the gradient matrices $\ma O_t$ and $\ma S_t$ have complicated joint statistics - the particles align preferentially to the gradients. 
 The first approximation to the equation of motion \eqnref{turbeqnofmotion} is $\ve n(t) \approx \ve n_0 + \mathcal O(\ku)$.
-%As explained above, $\ve n_0$ is uncorrelated with the flow at the later time $t$, 
-The initial condition $\ve n_0$ is not a random variable, and we may average using the Lagrangian correlation functions \eqnref{turb2point}. For example,
+We proceed to average using the Lagrangian correlation functions \eqnref{turb2point}. For example,
 \begin{align*}
  	\left\langle\ve n_{0}\transpose \ma O_{t} \ma O_{t} \ve n_{0}\right\rangle&=\ve n_{0}\transpose\left\langle \ma O_{t} \ma O_{t} \right\rangle\ve n_{0} \\
  	&= C^{OO}_{ijjk}(0)n_in_k\\
@@ -91,7 +90,7 @@ Here I denote the components of $\ve n_0$ by $n_i$, and employ the implicit summ
 	&= \frac{\ku^2}{3}\left(-\langle\tr\ma O_t\ma O_t\rangle +  \frac{3\Lambda^2}{5}\langle\tr\ma S_t \ma S_t\rangle\right) + \mathcal O(\ku^3)  \nn\\
 	&= \ku^2\frac{\langle\tr\ma A_t\transpose \ma A_t\rangle}{30}\left(5 + 3 \Lambda^2\right)+ \mathcal O(\ku^3).  \eqnlab{ku2}
 \end{align}
-An equivalent expression was derived in \cite{shin2005}. The limit of $\ku\to0$ is called the white noise limit. Physically it means that the flow is changing so rapidly that the instantaneous gradient is always uncorrelated with the particle orientation. There is no ``memory'', or correlation with the near past, in the system, hence the name white noise.
+An equivalent expression was derived in \cite{shin2005}. The limit of $\ku\to0$ is called the white noise limit. Physically it means that the flow is changing so rapidly that the instantaneous gradient is always uncorrelated with the particle orientation. There is no ``memory'', or correlation with the near past, in the system. Hence the name white noise.
 
 Now we proceed to compute the first effects of finite correlation time in the flow. In order to reach $\mathcal O(\ku^3)$, we need an expression for $\ve n(t)$.
 The equation for $\ve n$ has the implicit solution
@@ -168,7 +167,7 @@ The last step is to take the time $t\to\infty$, as advertised earlier. This conc
 \end{align}
 
 
-\section{Turbulent flow data}
+\section{Turbulent flow data}\seclab{turbulentdata}
 
 We do not ourselves have the resources to produce a numerical solution of the Navier-Stokes equations. But researchers at Johns Hopkins University (JHU) have published the data from a large direct numerical simulation\footnote{\url{http://turbulence.pha.jhu.edu/}} \cite{li2008}. The JHU database contains the velocity and pressure fields of homogenous, isotropic and incompressible turbulence. The spatial domain is a periodic box, and the data covers circa 45 Kolmogorov times. The dataset corresponds to one turn-around of the largest eddy in the periodic box. 
 
