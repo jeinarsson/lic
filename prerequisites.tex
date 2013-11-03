@@ -44,7 +44,7 @@ The symmetric part $\ma S$ is called the rate-of-strain tensor, and it contains 
 The vector $\ve \Omega$, defined as half the vorticity, is a common quantitiy in our calculations, and therefore is given its own symbol. Expressed in index notation the elements of $\ma O$ are related to $\ve \Omega$ by $O_{ij} = -\lc_{ijp}\Omega_p$. Here and in this thesis $\lc$ denotes the anti-symmetric third order tensor
 \begin{align*}
 \lc_{ijk} = \begin{cases}
-+1 & \textrm{if } (i,j,k) \textrm{ is a cyclic permutation of} (1,2,3), \\
++1 & \textrm{if } (i,j,k) \textrm{ is a cyclic permutation of } (1,2,3), \\
 -1 & \textrm{if } (i,j,k) \textrm{ is a cyclic permutation of } (3,2,1), \\
 \;\;\,0 & \textrm{if two indices are equal.}
 \end{cases}\end{align*}
@@ -82,7 +82,7 @@ The fundamental result is that the force and torque on a particle suspended in a
 \end{align}
 The resistance tensors $\te A$, $\te B$, $\te C$ and $\te H$ depend only upon particle shape, and can be computed once and for all. The tensor $\te H$ is third order, and the double dot product $\te H \dd \ma S$ is a contraction over two indices. In index notation it reads $(\te H \dd \ma S)_i = H_{ijk}S_{jk}$. 
 
-The resistance tensors in the case of a sphere of radius $a$ are  $\te A = 6\pi\mu a \ma I$, $\te B=\te H = 0$ and $\te C = 8\pi\mu a^3 \ma I$. In fact, for any particle which is mirror-symmetric in all three cartesian planes it holds that $\te B = 0$. In such cases there is neither coupling between rotation and force, nor between translation and torque. 
+The resistance tensors in the case of a sphere of radius $a$ are  $\te A = 6\pi\mu a \ma I$, $\te B=\te H = 0$ and $\te C = 8\pi\mu a^3 \ma I$. In fact, for any particle which is mirror-symmetric in all three cartesian planes it holds that $\te B = 0$. In such cases there is neither coupling between rotation and force, nor between translation and torque. An example of the contrary is a cork-screw-shaped particle. For such particles one can exploit the coupling between rotation and translation to sort left-handed screws from right-handed screws \cite{eichhorn2010,aristov2013}. Sorting particles by handedness, or \emph{chirality}, is important in for example pharmacological chemistry. However, this thesis concerns particles with shapes such that the orientational dynamics decouple from the translational motion.
 
 For non-spherical particles there is a hidden complication in \Eqnref{resistanceformulation}: the flow is usually known in a fixed frame of reference, but the resistance tensors are known in the frame of reference of the particle. Expressing the resistance tensors in the fixed frame of reference entails a rotation dependent on the particle orientation. Thus, the torque is in general a non-linear function of particle orientation.
 

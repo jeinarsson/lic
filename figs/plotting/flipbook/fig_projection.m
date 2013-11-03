@@ -1,8 +1,9 @@
 function fig_coordinate
 
     num_frames = 80;
-    steps_per_frame = 7;
+    steps_per_frame = 6;
     trail = steps_per_frame * 30;
+    %start_frame = trail + 340;
     start_frame = trail + 340;
     
     name = 'triax';
