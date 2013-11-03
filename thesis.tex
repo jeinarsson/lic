@@ -244,7 +244,7 @@ Particles suspended in fluid flows are common in nature. Important examples are 
 Due to fluid velocity gradients, non-spherical particles are subject to a hydrodynamic torque. The torque leads to rotational motion of the particle.
 This thesis describes our work on the orientational dynamics of non-spherical particles suspended in fluid flows.
 
-We consider the viscous Stokes regime, where the particle Reynolds number $\rep\ll1$ ($\rep = u_0 a/\nu$, where $u_0$ is a typical flow speed, $a$ is the particle size and $\nu$ is the kinematic viscosity of the fluid). In this \emph{advective regime}, the hydrodynamic torques are given by Jeffery's theory [\textsc{Jeffery, G. B.} \emph{Proc. R. Soc. Lond. A} \textbf{102}, 161–179 (1922)].
+We consider the viscous Stokes regime, where the particle Reynolds number $\rep\ll1$ ($\rep = u_0 a/\nu$, where $u_0$ is a typical flow speed, $a$ is the particle size and $\nu$ is the kinematic viscosity of the fluid). In this \emph{advective limit}, the hydrodynamic torques are given by Jeffery's theory [\textsc{Jeffery, G. B.} \emph{Proc. R. Soc. Lond. A} \textbf{102}, 161–179 (1922)].
 
 First, we describe a microfluidic experiment where we observe periodic and aperiodic tumbling of rod-shaped particles. We argue that the aperiodic tumbling is commensurate with the quasi-periodic and chaotic tumbling predicted by the inertia-free limit of Jeffery's theory.
 
@@ -332,9 +332,6 @@ Finally, a big thank you to my friends and collegues who contributed to this the
 \subfile{Outlook}
 
 
-\nocite{einarsson2013}
-\nocite{einarsson2013b}
-\nocite{gustavsson2013}
 
 \clearpage
 
@@ -353,9 +350,12 @@ Finally, a big thank you to my friends and collegues who contributed to this the
 \clearpage
 \subfile{app_lagrangian}
 
+\nocite{einarsson2013}
+\nocite{einarsson2013b}
+\nocite{gustavsson2013}
 
-\part{Research papers}
-\thispagestyle{fb}
+\part{Research papers}\label{endpage}
+\pagestyle{fb}
 % You can write this manually \paper{Paper Title}{Full reference} or have bib entries entered automatically
 
 
@@ -383,6 +383,7 @@ Finally, a big thank you to my friends and collegues who contributed to this the
 }
 \includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/3.pdf}
 
-
+\pagestyle{fb}
+\cleardoublepage
 \end{document}
  

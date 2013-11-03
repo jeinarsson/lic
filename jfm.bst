@@ -397,7 +397,7 @@ FUNCTION {format.names}
    numnames 'namesleft :=
      { namesleft #0 > }
      { s nameptr
-       "{vv~}{ll}{, jj}{, ff}" format.name$ 't :=
+       "{vv~}{ll}{, jj}{, f}" format.name$ 't :=
        nameptr #1 >
          {
            namesleft #1 >
@@ -425,7 +425,7 @@ FUNCTION {format.names.ed}
    numnames 'namesleft :=
      { namesleft #0 > }
      { s nameptr
-       "{ff~}{vv~}{ll}{, jj}"
+       "{f~}{vv~}{ll}{, jj}"
        format.name$ 't :=
        nameptr #1 >
          {
@@ -1265,7 +1265,7 @@ FUNCTION {format.lab.names}
      { pop$ " " * "et~al." emphasize * }
      { #2 <
          'skip$
-         { s #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
+         { s #2 "{f }{vv }{ll}{ jj}" format.name$ "others" =
              { " " * "et~al." emphasize * }
              { " \& " * s #2 "{vv~}{ll}" format.name$ * }
            if$

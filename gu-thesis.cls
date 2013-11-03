@@ -433,6 +433,7 @@
  \if@draft
   \newpage
  \else
+ \thispagestyle{fb}
   \cleardoublepage
  \fi
  % Links are always nice;
@@ -632,7 +633,7 @@
   \countryname\\
   \telephonename: \@telephone\\[5mm]
  %
-   \emph{Parts I--III, pages nn--nn}, including all figures, are licensed under a \\
+   \emph{Parts I--III, pages 1--\pageref{endpage}}, including all figures, are licensed under a \\
    Creative Commons Attribution 3.0 Unported License.\\
    \includegraphics[width=3cm]{figures/by.pdf}\\[3mm]
    In {Part IV},\\
