@@ -412,10 +412,15 @@
 % Customizable command for how the entry is rendered.
 % {Type}{Number}{Full citation}
 \newcommand{\topentry}[3]{%
-  \noindent\parbox[c]{\topcolumn}{\large \hyperlink{#1:#2}{\textbf{#1\ #2}}\hfil}%
-  \hspace{\toppadding}%
-  \parbox{\textwidth-\topcolumn-\toppadding}{#3}\par\vskip 1em%
+  \noindent\parbox[c]{\topcolumn}{\large \hyperlink{#1:#2}{\textbf{#1\ #2}}\hfil}\\
+  {#3}\\[10mm]
 }
+
+%\newcommand{\topentry}[3]{%
+%  \noindent\parbox[c]{\topcolumn}{\large \hyperlink{#1:#2}{\textbf{#1\ #2}}\hfil}%
+%  \hspace{\toppadding}%
+%  \parbox{\textwidth-\topcolumn-\toppadding}{#3}\par\vskip 1em%
+%}
 
 % Adds text to be written in the list of papers/publications
 \newcommand{\toptext}[1]{%
@@ -425,7 +430,7 @@
 }
 
 % Main command, works similarly as \section.
-\newcommand{\paper}[2]{
+\newcommand{\paper}[3]{
  \stepcounter{paper}
  \addtocontents{top}{%
   \protect\topentry{\papername}{\papernumber{paper}}{#2}
@@ -441,13 +446,14 @@
  %\phantomsection
  %\addcontentsline{toc}{chapter}{Paper \papernumber{paper}}
  %\belowpdfbookmark{Paper \papernumber{paper}}{paper:\papernumber{paper}}
- \thispagestyle{fb}
- \vspace*{0em}
- \begin{flushright}
-  {\huge{Paper \papernumber{paper}}}
- \end{flushright}
- \vspace*{5em}
- {\noindent\Large{#1}\par}
+\thispagestyle{fb}
+\vspace*{0em}
+\begin{flushright}
+{\huge{Paper \papernumber{paper}}}
+\\[30mm]
+{\Large{#1}}\\[30mm]
+{arXiv e-print available at \url{#3}}
+\end{flushright}
 %  \vspace*{2em}
 %  \begin{center}
 %  \begin{minipage}{0.8\textwidth}
@@ -627,6 +633,9 @@
   \@author\\
   ISBN \@ISBN\\[5mm]
  %
+ This thesis is electronically published, available at \\
+ \url{http://hdl.handle.net/2077/34320}\\[5mm]
+ %
   \@department\\
   \universityname\\
   \@postcode\ \cityname\\
@@ -713,6 +722,7 @@
  \phantomsection
  \presectiontitle{\listofpublicationsname}
  \noindent \@thesiscontents
+ ~\\[10mm]
  \tableofpapers
  \@ifundefined{@paperwork}{}{
    \noindent \@paperwork

@@ -4,10 +4,12 @@ function fig_coordinate
     steps_per_frame = 6;
     trail = steps_per_frame * 30;
     %start_frame = trail + 340;
-    start_frame = trail + 340;
+    start_frame = trail + 340 + 600;
+    
+    zeropad = 0;
     
     name = 'triax';
-    %name = 'symm';
+    name = 'symm';
     
     trajectory = load(sprintf('anton/%s.mat',name),'n_x','n_y','n_z','phi','theta','psi');
     
@@ -97,7 +99,11 @@ function fig_coordinate
         
         aafig = myaa();
         
-        movefile('myaa_temp_screendump.png', sprintf('output/%s/%d.png',name,frame_idx-1));
+        if zeropad
+            movefile('myaa_temp_screendump.png', sprintf('output/%s/zeropadded_%02d.png',name,frame_idx-1));
+        else
+            movefile('myaa_temp_screendump.png', sprintf('output/%s/%d.png',name,frame_idx-1));
+        end
         
         close(aafig);
          %pause(0.05)
@@ -130,13 +136,18 @@ function [x,y,z,c] = get_ellipsoid_meshdata(r, n, lambda)
             rz = rz*lambda;
         end
         
+        %colors= [
+        %170,39,61;
+        %229,142,26;
+        %]/255;
         colors= [
-        170,39,61;
-        229,142,26;
-        ]/255;
+        .5,.5,.5;
+        .2,.2,.2;
+        ];
         
         [x,y,z] = ellipsoid(0,0,0,rx, ry, rz,100);
-        c = double(x > 0);
+        %c = double( ((x > 0) & (y > 0)) | ((x < 0) & (y < 0)) );
+        c = double( x>0 );
         cs = zeros([size(z) 3]);
         for k = 1:3
             cs(:,:,k) = colors(1,k)*c + (1-c)*colors(2,k);

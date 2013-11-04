@@ -41,7 +41,7 @@ The symmetric part $\ma S$ is called the rate-of-strain tensor, and it contains 
 \begin{align}
 	\ma O \ve x &= \frac{1}{2}\ve \omega_f \cross \ve x \equiv \ve \Omega \cross \ve x.\eqnlab{vorticityOdef}
 \end{align}
-The vector $\ve \Omega$, defined as half the vorticity, is a common quantitiy in our calculations, and therefore is given its own symbol. Expressed in index notation the elements of $\ma O$ are related to $\ve \Omega$ by $O_{ij} = -\lc_{ijp}\Omega_p$. Here and in this thesis $\lc$ denotes the anti-symmetric third order tensor
+The vector $\ve \Omega$, defined as half the vorticity, is a common quantitiy in our calculations, and therefore is given its own symbol. Expressed in index notation the elements of $\ma O$ are related to $\ve \Omega$ by $O_{ij} = -\lc_{ijp}\Omega_p$. Here and in this thesis $\lc$ denotes the anti-symmetric third-order tensor
 \begin{align*}
 \lc_{ijk} = \begin{cases}
 +1 & \textrm{if } (i,j,k) \textrm{ is a cyclic permutation of } (1,2,3), \\
@@ -80,7 +80,7 @@ The fundamental result is that the force and torque on a particle suspended in a
 	\ve F &= \te A (\ve u - \ve v) + \te B (\ve \Omega - \ve \omega), \nn \\
 	\ve T &= \te B\transpose (\ve u - \ve v) + \te C (\ve \Omega - \ve \omega) + \te H \dd \ma S. \eqnlab{resistanceformulation}
 \end{align}
-The resistance tensors $\te A$, $\te B$, $\te C$ and $\te H$ depend only upon particle shape, and can be computed once and for all. The tensor $\te H$ is third order, and the double dot product $\te H \dd \ma S$ is a contraction over two indices. In index notation it reads $(\te H \dd \ma S)_i = H_{ijk}S_{jk}$. 
+The resistance tensors $\te A$, $\te B$, $\te C$ and $\te H$ depend only upon particle shape, and can be computed once and for all. The tensor $\te H$ of is third order, and the double dot product $\te H \dd \ma S$ is a contraction over two indices. In index notation it reads $(\te H \dd \ma S)_i = H_{ijk}S_{jk}$. 
 
 The resistance tensors in the case of a sphere of radius $a$ are  $\te A = 6\pi\mu a \ma I$, $\te B=\te H = 0$ and $\te C = 8\pi\mu a^3 \ma I$. In fact, for any particle which is mirror-symmetric in all three cartesian planes it holds that $\te B = 0$. In such cases there is neither coupling between rotation and force, nor between translation and torque. An example of the contrary is a cork-screw-shaped particle. For such particles one can exploit the coupling between rotation and translation to sort left-handed screws from right-handed screws \cite{eichhorn2010,aristov2013}. Sorting particles by handedness, or \emph{chirality}, is important in for example pharmacological chemistry. However, this thesis concerns particles with shapes such that the orientational dynamics decouple from the translational motion.
 
@@ -284,7 +284,7 @@ When the trajectories $\ve q(t)$ are projected onto the unit sphere, the result 
 
 The solutions to Jeffery's equation in a simple shear flow are degenerate: the orientational trajectory depends on the initial condition indefinitely. In many realistic situations this long-time memory hardly seems plausible. The degeneracy is a result of the assumptions made in the course deriving the Jeffery orbits. Each assumption corresponds to a physical mechanism, and in order to understand how the degenaracy may be broken these mechanisms must be investigated. The three assumptions we believe most important to investigate are the following.
 
-First, the particle may not be axisymmetric. In this case the dynamics is more complicated, but still depends on the initial conditions indefinitely. Tri-axial particles are discussed further in relation to Paper A in Sec.~\ref{sec:experiment}.
+First, the particle may not be axisymmetric. In this case the dynamics is more complicated, but still depends on the initial conditions indefinitely. Triaxial particles are discussed further in relation to Paper A in Sec.~\ref{sec:experiment}.
 
 Second, there may be inertial effects. Fluid inertia was neglected when we used the resistance tensor formulation \eqnref{resistanceformulation} for the torque on a particle. Particle inertia was neglected when Newton's equation reduced to Jeffery's equation in the advective limit $\st \to 0$. In Paper B we describe how the effects of a small amount of particle inertia break the degeneracy of the solutions $\ve n(t)$. See the discussion in \Secref{inertia} for an outlook on the case of fluid inertia.
 

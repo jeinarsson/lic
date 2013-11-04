@@ -128,13 +128,16 @@
 \newcommand{\proofheader}[1]{\emph{#1}}
 \usepackage{wrapfig}
 \usepackage{units}
+\usepackage{url}
 \usepackage{upgreek}
 \usepackage{lpic}
 % END JONAS
 
+\urlstyle{same}
 
-
-
+\newcommand{\paperAaddress}{http://dx.doi.org/10.1007/s00707-013-0924-0}
+\newcommand{\paperBaddress}{http://arxiv.org/abs/1307.2821}
+\newcommand{\paperCaddress}{http://arxiv.org/abs/1305.1822}
 % FONT
 
 % 1
@@ -242,13 +245,11 @@ Country
 \firstabstract{
 Particles suspended in fluid flows are common in nature. Important examples are drops of water or particulate matter in the atmosphere, and planktonic microorganisms in the ocean.
 Due to fluid velocity gradients, non-spherical particles are subject to a hydrodynamic torque. The torque leads to rotational motion of the particle.
-This thesis describes our work on the orientational dynamics of non-spherical particles suspended in fluid flows.
-
-We consider the viscous Stokes regime, where the particle Reynolds number $\rep\ll1$ ($\rep = u_0 a/\nu$, where $u_0$ is a typical flow speed, $a$ is the particle size and $\nu$ is the kinematic viscosity of the fluid). In this \emph{advective limit}, the hydrodynamic torques are given by Jeffery's theory [\textsc{Jeffery, G. B.} \emph{Proc. R. Soc. Lond. A} \textbf{102}, 161–179 (1922)].
+This thesis describes our work on the orientational dynamics of non-spherical particles suspended in fluid flows. We consider the viscous Stokes regime, where the particle Reynolds number $\rep\ll1$ ($\rep = u_0 a/\nu$, where $u_0$ is a typical flow speed, $a$ is the particle size and $\nu$ is the kinematic viscosity of the fluid). In this \emph{advective limit}, the hydrodynamic torques are given by Jeffery's theory [\textsc{Jeffery, G. B.} \emph{Proc. R. Soc. Lond. A} \textbf{102},~161–179~(1922)].
 
 First, we describe a microfluidic experiment where we observe periodic and aperiodic tumbling of rod-shaped particles. We argue that the aperiodic tumbling is commensurate with the quasi-periodic and chaotic tumbling predicted by the inertia-free limit of Jeffery's theory.
 
-Second, we calculate a modification to Jeffery's theory for axisymmetric particles, that takes into account the first effects of particle inertia. In a simple shear flow the particle inertia induces a drift towards a limiting orbit. We describe how the stationary orientational distribution of an ensemble of particles is affected by the competition between particle inertia and Brownian noise.
+Second, we calculate a modification to Jeffery's theory for axisymmetric particles, that takes into account the first effects of particle inertia. In a simple shear flow the particle inertia induces a drift towards a limiting orbit. We describe how the stationary orientational distribution of an ensemble of particles is determined by the competition between particle inertia and Brownian noise.
 
 Third, by averaging Jeffery's equation along particle trajectories, we make a connection between rotation rates and the third-order Lagrangian correlation functions of the flow. Our result explains recent numerical and experimental observations of different tumbling rates for disks and rods in turbulence.
 
@@ -260,13 +261,13 @@ Finally, this thesis contains a non-technical introduction to the study of parti
 %\preface{Text}
 \acknowledgements{Most importantly, I want to thank my supervisor Bernhard Mehlig for taking me on as a student. I cannot imagine a better scientific climate to work in: everything is up for discussion, no stone unturned.
 
-I also want to thank the many collaborators we have: Dag Hanstorp, for the microfluidic experiments; Jean-R\'egis Angilella for the many discussions and calculations, some of which resulted in paper B; Kristian Gustavsson for teaching me all I know about random flows and Kubo-numbers.
+I also want to thank the many collaborators we have: Dag Hanstorp and his students, for the microfluidic experiments; Jean-R\'egis Angilella for the many discussions and calculations, some of which resulted in paper B; Kristian Gustavsson for teaching me all I know about random flows and Kubo-numbers.
 
-Finally, a big thank you to my friends and collegues who contributed to this thesis by reading and giving comments: Kajsa, Tora, Rasmus, Bernhard, Kristian, Erik and Marina. I hope you saved enough energy to have a look at the final result.
+Finally, a big thank you to my friends and collegues who improved this thesis by their scrutinous reading and helpful comments: Kajsa, Tora, Rasmus, Bernhard, Kristian, Erik and Marina.
 }
 %\paperwork{Text}
-\thesiscontents{This thesis consists of an extended summary and three appended papers:}
-\printers{Ale Tryckteam}
+\thesiscontents{This thesis consists of an extended summary and the following three appended papers:}
+\printers{Kompendiet}
 
 % You can add extra contents such as abbreviations and nomenclature using.
 % Use \presectiontitle to render add titles to new sections.
@@ -329,6 +330,7 @@ Finally, a big thank you to my friends and collegues who contributed to this the
 \subfile{Inertia}
 \clearpage
 \subfile{Turbulence}
+\clearpage
 \subfile{Outlook}
 
 
@@ -354,7 +356,7 @@ Finally, a big thank you to my friends and collegues who contributed to this the
 \nocite{einarsson2013b}
 \nocite{gustavsson2013}
 
-\part{Research papers}\label{endpage}
+\label{endpage}\part{Research papers}
 \pagestyle{fb}
 % You can write this manually \paper{Paper Title}{Full reference} or have bib entries entered automatically
 
@@ -362,28 +364,27 @@ Finally, a big thank you to my friends and collegues who contributed to this the
 
 
 \paper{Periodic and aperiodic tumbling of microrods\\advected in a microchannel flow}{%
-{\sc Einarsson, J., Johansson, A., Mahato, S.~K., Mishra, Y.~N., Angilella,
-  J.~R., Hanstorp, D. \& Mehlig, B.} 2013 Periodic and aperiodic tumbling of
-  microrods advected in a microchannel flow. {\em Acta Mechanica\/} {\bf
-  224}~(10), 2281--2289.%
-  }
+{\sc Einarsson, J., Johansson, A., Mahato, S.~K., Mishra, Y.~N., Angilella, J.~R., Hanstorp, D. \& Mehlig, B.} 2013 Periodic and aperiodic tumbling of microrods advected in a microchannel flow. \href{\paperAaddress}{{\em Acta Mechanica\/} {\bf 224}~(10), 2281--2289.}%
+}{http://arxiv.org/abs/1211.5672}
 \includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/1.pdf}
 
 \paper{Orientational dynamics of weakly inertial\\axisymmetric particles in steady viscous flows}{%
 {\sc Einarsson, J., Angilella, J.~R. \& Mehlig, B.} 2013{\natexlab{{\em b\/}}}
   Orientational dynamics of weakly inertial axisymmetric particles in steady
-  viscous flows. \emph{In review}, available as {arXiv} e-print \textbf{1307.2821.}%
-}
+  viscous flows. \href{\paperBaddress}{\emph{In review}, available as {arXiv} e-print \textbf{1307.2821.}}%
+}{\paperBaddress}
 \includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/2.pdf}
 
 \paper{Tumbling of small axisymmetric particles in\\random and turbulent flows}{%
 {\sc Gustavsson, K., Einarsson, J. \& Mehlig, B.} 2013 Tumbling of small
-  axisymmetric particles in random and turbulent flows. \emph{In review}, available as {arXiv} e-print
-  \textbf{1305.1822}.%
-}
+  axisymmetric particles in random and turbulent flows. \href{\paperCaddress}{\emph{In review}, available as {arXiv} e-print
+  \textbf{1305.1822}}.%
+}{\paperCaddress}
 \includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/3.pdf}
 
 \pagestyle{fb}
 \cleardoublepage
+
+
 \end{document}
  

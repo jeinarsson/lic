@@ -50,7 +50,7 @@ def main():
 	ax.set_xlabel(r'$\dot n^2 \tau^2_{K}$')
 	ax.set_ylabel(r'$P(\dot n^2 \tau^2_{K})$',rotation=90)
 	#ax.set_ylim(0,1)
-	#ax1.set_xlim(0,2)
+	ax.set_xlim(0,2.9)
 
 	fig1.tight_layout()
 

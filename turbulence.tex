@@ -49,7 +49,7 @@ We separate the gradient into its symmetric and antisymmetric parts,
 	\ma S = \frac{1}{2}(\ma A + \ma A\transpose),\quad
 	\ma A = \ma O + \ma S.
 \end{align*}
- It turns out that all the second and third order correlation functions between $\ma S$ and $\ma O$ factorise in a very convenient manner. Appendix~\secref{applagrangian} contains the details of this factorisation and the final expressions. All the correlation functions become products of one time-dependent function, and one part which depends only on the spatial indices, but not time. For example, in three spatial dimensions
+ It turns out that all the second-order and third-order correlation functions between $\ma S$ and $\ma O$ factorise in a very convenient manner. Appendix~\secref{applagrangian} contains the details of this factorisation and the final expressions. All the correlation functions become products of one time-dependent function, and one part which depends only on the spatial indices, but not time. For example, in three spatial dimensions
 \begin{align}
 	C^{OO}_{ijkl}(t) &= \frac{\left\langle \tr \ma O_0\ma O_t\right\rangle}{6}( \delta_{il}\delta_{jk}-\delta_{ik}\delta_{jl}), \nn\\
 	C^{SS}_{ijkl}(t) &= \frac{\left\langle \tr \ma S_0\ma S_t\right\rangle}{30}(3\delta_{il}\delta_{jk} + 3\delta_{ik}\delta_{jl} - 2\delta_{ij}\delta_{kl}), \nn\\
@@ -84,7 +84,9 @@ We proceed to average using the Lagrangian correlation functions \eqnref{turb2po
  	&= \frac{\left\langle \tr \ma O_t\ma O_t\right\rangle}{6}( \delta_{ik}\delta_{jj}-\delta_{ij}\delta_{jk})n_in_k\\
  	&=\frac{\left\langle \tr \ma O_t\ma O_t\right\rangle}{3} = -\frac{\left\langle \tr \ma A_t\transpose\ma A_t\right\rangle}{6}.
  \end{align*}
-Here I denote the components of $\ve n_0$ by $n_i$, and employ the implicit summation convention on repeated indices. We also use $n_in_i=1$, and in the last step that $\langle\tr\ma A\transpose \ma A\rangle/2=\langle\tr\ma S\ma S\rangle=-\langle\tr\ma O\ma O\rangle$ in a homogenous flow (see App.~\secref{applagrangian}). In the same fashion we evaluate all averages in \Eqnref{ndotsquared} and find
+Here I denote the components of $\ve n_0$ by $n_i$, and employ the implicit summation convention on repeated indices. We also use $n_in_i=1$, and in the last step that $\langle\tr\ma A\transpose \ma A\rangle/2=\langle\tr\ma S\ma S\rangle=-\langle\tr\ma O\ma O\rangle$ in a homogenous flow (see App.~\secref{applagrangian}).
+\newpage
+In the same fashion we evaluate all averages in \Eqnref{ndotsquared} and find to second order in $\ku$
 \begin{align}
 	\langle \dot n^2\rangle &=\ku^2 \left(-\frac{1}{3}\langle\tr\ma O_t\ma O_t\rangle +  \frac{\Lambda^2}{3}\langle\tr\ma S_t \ma S_t\rangle - \frac{2\Lambda^2}{15}\langle\tr\ma S_t\ma S_t \rangle\right) + \mathcal O(\ku^3)  \nn\\
 	&= \frac{\ku^2}{3}\left(-\langle\tr\ma O_t\ma O_t\rangle +  \frac{3\Lambda^2}{5}\langle\tr\ma S_t \ma S_t\rangle\right) + \mathcal O(\ku^3)  \nn\\
@@ -186,6 +188,15 @@ In \Figref{alignment} I show the probability distributions of particle alignment
 In \Figref{ndotsqr_pdf} I show the distribution of measured rotation rates for disks, rods and spheres. 
 The sphere always rotates with the vorticity rate. We see that the disk experiences many more events of high rotation rates, which must be due to the effects of strain. The rod, on the other hand, not only rotates less than the disk, but it rotates much less than the sphere. It means that the rod's rotation is actually inhibited by the strain.
 
+From the data set we also compute the three integrals in \Eqnref{eq4final} in order to quantify the relative strengths of the contributions. First, we have to confirm that the correlation functions factorise according to \Eqnref{turb2point}. We compute every element of, for example, $C^{SSS}_{ijklmn}$ and compare it to the theoretical formula, in this case \Eqnref{lagrangianSSS} in Appendix~\secref{applagrangian}. The result is shown in \Figref{deltas}, and the other combinations show similar agreement with theory. We conclude that the JHU dataset indeed contains incompressible and isotropic turbulence. Second, knowing that the correlation functions factorise, we may compute the time dependence of the trace and perform the integral. In Figs.~\figref{oosintegral}-\figref{sosintegral} I show the result for the integrals relevant to the expansion \Eqnref{eq4final}.
+
+Finally, we may use the numerical turbulence correlation functions in the expansion \eqnref{eq4final}, and compare to the numerical results of tumbling in turbulent flows. Two comments are in order. First, in turbulent flows $\ku=\mathcal O(1)$, while \Eqnref{eq4final} is valid for small $\ku$. Therefore we do not expect quantitative predictions. However, we expect the functional form of the result to be correct. That is, in this case, the dependence upon the particle shape $\lambda$. Second, in deriving \Eqnref{eq4final} we used dimensionless variables where $\ma A = u_0/\eta \ma A'$. But here we have instead expressed the correlation functions de-dimensionalised by the Kolmogorov time $\tau_{K}$, or $\ma A = 1/\tau_{K} \ma A''$. In order to proceed, we identify the time $\tau$ in the Kubo number with the Kolmogorov time $\tau_{K}$, so that $\ku \ma A'= \ma A''$. There are therefore no free parameters in \Eqnref{eq4final} when using the numerical turbulence data. The result is shown in \Figref{ndotsqr_mean}. 
+
+
+
+
+
+
 \begin{figure}
 \makebox[\textwidth]{\centering%
 \includegraphics{figs/alignment.pdf}%
@@ -199,7 +210,7 @@ The sphere always rotates with the vorticity rate. We see that the disk experien
 \includegraphics{figs/ndotsqr_pdf.pdf}%
 }
 \end{center}
-\caption{\figlab{ndotsqr_pdf} Probability of observed rotation rates of a rod (red line), disk (blue line) and sphere (orange line) in turbulent flow. The peak to the far right indicates the integral over all values $\dot n^2\tau^2_{K}>3$.}%
+\caption{\figlab{ndotsqr_pdf} Probability of observed rotation rates of a rod (red line), disk (blue line) and sphere (orange line) in turbulent flow. }%
 \end{figure}
 
 \begin{figure}
@@ -237,12 +248,6 @@ The sphere always rotates with the vorticity rate. We see that the disk experien
 \end{center}
 \caption{\figlab{sosintegral} Top panel: Time dependence of correlation function $C^{SOS}_{ijklmn}(0,t)$. Bottom panel: Cumulative integral of correlation function. The integral in the expansion for rotation rates \Eqnref{eq4final} correspond to the value at $t=0$, in this case $0.022$.}%
 \end{figure}
-
-From the data set we also compute the three integrals in \Eqnref{eq4final} in order to quantify the relative strengths of the contributions. First, we have to confirm that the correlation functions factorise according to \Eqnref{turb2point}. We compute every element of, for example, $C^{SSS}_{ijklmn}$ and compare it to the theoretical formula, in this case \Eqnref{lagrangianSSS} in Appendix~\secref{applagrangian}. The result is shown in \Figref{deltas}, and the other combinations show similar agreement with theory. We conclude that the JHU dataset indeed contains incompressible and isotropic turbulence. Second, knowing that the correlation functions factorise, we may compute the time dependence of the trace and perform the integral. In Figs.~\figref{oosintegral}-\figref{sosintegral} I show the result for the integrals relevant to the expansion \Eqnref{eq4final}.
-
-Finally, we may use the numerical turbulence correlation functions in the expansion \eqnref{eq4final}, and compare to the numerical results of tumbling in turbulent flows. Two comments are in order. First, in turbulent flows $\ku=\mathcal O(1)$, while \Eqnref{eq4final} is valid for small $\ku$. Therefore we do not expect quantitative predictions. However, we expect the functional form of the result to be correct. That is, in this case, the dependence upon the particle shape $\lambda$. Second, in deriving \Eqnref{eq4final} we used dimensionless variables where $\ma A = u_0/\eta \ma A'$. But here we have instead expressed the correlation functions de-dimensionalised by the Kolmogorov time $\tau_{K}$, or $\ma A = 1/\tau_{K} \ma A''$. In order to proceed, we identify the time $\tau$ in the Kubo number with the Kolmogorov time $\tau_{K}$, so that $\ku \ma A'= \ma A''$. There are therefore no free parameters in \Eqnref{eq4final} when using the numerical turbulence data. The result is shown in \Figref{ndotsqr_mean}. 
-
-
 \begin{figure}
 	\begin{center}
 	  \makebox[\textwidth]{%
@@ -251,12 +256,6 @@ Finally, we may use the numerical turbulence correlation functions in the expans
 \end{center}
 \caption{\figlab{ndotsqr_mean}Average rotation rate of an axisymmetric particle as function of particle aspect ratio $\lambda$. Markers show numerical results from the JHU turbulence data set. Solid lines show the small-$\ku$ expansions \Eqnref{ku2} (second order, orange line) and \Eqnref{eq4final} (third order, red line), using the correlation functions shown in Figs.~\figref{oosintegral}-\figref{sosintegral}.}%
 \end{figure}
-
-
-
-
-
-
 
 
 
