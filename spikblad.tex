@@ -1,44 +1,14 @@
-% This is an example on how to use the chalmers-thesis document class.
-% Document should be compiled with pdflatex or lualatex
-% If you find something odd, wrong or lacking, you can email me at; Mikael Öhman <mikael.ohman@chalmers.se>
-% This file has been distributed through: http://www.github.com/Micket/chalmers
-
-% These manuals are a *must* read. They are all full of good examples;
-% amsldoc   - http://mirror.ctan.org/macros/latex/required/amslatex/math/amsldoc.pdf
-% mathtools - http://mirror.ctan.org/macros/latex/contrib/mh/mathtools.pdf
-% biblatex  - http://mirror.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
-% booktabs  - http://mirror.ctan.org/macros/latex/contrib/booktabs/booktabs.pdf
-% http://www.ctan.org/tex-archive/help/Catalogue/bytopic.html
-% http://en.wikibooks.org/wiki/LaTeX/
-
 \RequirePackage[l2tabu,orthodox]{nag} % This package helps prevent you from doing things wrong.
-
-% change doctorate to licentiate if necessary
-\documentclass[licentiate,nocover,g5paper,11pt]{gu-thesis}
-% All options are; doctorate, licentiate, masters, bachelors, nocover, draft, g5paper,
-% and everything the standard report class support.
-%\usepackage{ifluatex} % Automatic check for luatex.
-%\ifluatex
-% \usepackage{fontspec}
-%\else
+\documentclass[licentiate,nocover,a4paper,11pt]{gu-thesis}
 \usepackage[utf8]{inputenc} % File encoding, you should try to stick to utf8.
-%\fi
 \usepackage{microtype} % Magically improves typesetting for pdflatex
 \usepackage{subfiles} % Convenient use of subfiles in documents. Using \subfile is optional. See README
 \usepackage{hyperref} % Required for in document links and document metadata.
 \usepackage[swedish, english]{babel}
-
 \newcommand{\todo}[1]{{\color{red}#1}}
-%\usepackage[draft]{graphicx}
-% More or less required packages
-%\usepackage{csquotes} % Needed for biblatex
-%\usepackage[firstinits=true, style=alphabetic, backend=biber]{biblatex} % Modern bibliography facilities (you may change style to numeric). change to old bibtex if you insist on using that.
- 
 \usepackage[square, numbers,sort]{natbib}
 \usepackage{bibentry}
 \bibliographystyle{jfm}
-
-
 \usepackage{mathtools} % All your math related needs
 \usepackage{tikz} % Draw figures, required for cover page
 %\usepackage{subfigure} % Subfloats
@@ -54,6 +24,8 @@
 %\usepackage{pgfplots} % Make plots directly in latex. Also tables. Excellent package.
 %\usepackage{contmech} % Custom package for typesetting in continuum mechanics for applied mechanics.
 %\usepackage{yourcustomcommands} % Put your custom commands in a file 'yourcustomcommands.sty' and load it like this.
+\geometry{reset}
+\geometry{paper=a4paper,twoside=false, showcrop, layoutwidth=150mm,layoutheight=230mm,layouthoffset=25mm,layoutvoffset=25mm, hmargin=20mm, top=20mm,bottom=20mm}
 
 % JONAS
 
@@ -119,7 +91,7 @@
 \newcommand{\Secsref}[1]{Sections.~\ref{sec:#1}}
 \newcommand{\Ssecsref}[1]{Subsecs.~\ref{ssec:#1}}
 
-	
+  
 %\newcommand{\Ylm}[2]{Y_#1^#2(\ve n)}
 \newcommand{\Ylm}[2]{|#1,#2\rangle}
 \newcommand{\cross}{\times}
@@ -164,7 +136,7 @@
 \rfoot[]{%
   \setlength\unitlength{1cm}%
   \begin{picture}(0,0)%
-    \put(0.0,-2){%
+    \put(0.75,-2){%
       \fbImageF{./figs/plotting/flipbook/output/symm/}{png}{width=20mm}%
     }%
   \end{picture}%
@@ -172,7 +144,7 @@
 \lfoot[%
   \setlength\unitlength{1cm}
   \begin{picture}(0,0)
-    \put(-2.5,-2){
+    \put(-3.2,-2){
       \fbImageF{./figs/plotting/flipbook/output/triax/}{png}{width=20mm}
     }
   \end{picture}
@@ -195,7 +167,7 @@
 \rfoot[]{%
   \setlength\unitlength{1cm}
   \begin{picture}(0,0)
-    \put(0.0,-2){
+    \put(0.75,-2){
       \fbImageF{./figs/plotting/flipbook/output/symm/}{png}{width=20mm}
     }
   \end{picture}
@@ -203,7 +175,7 @@
 \lfoot[%
   \setlength\unitlength{1cm}
   \begin{picture}(0,0)
-    \put(-2.5,-2){
+    \put(-3.2,-2){
       \fbImageF{./figs/plotting/flipbook/output/triax/}{png}{width=20mm}
     }
   \end{picture}
@@ -256,7 +228,7 @@ Third, by averaging Jeffery's equation along particle trajectories, we make a co
 Finally, this thesis contains a non-technical introduction to the study of particle dynamics in fluid flows, aimed at a wider audience.
 }
 %\secondabstract{swedish}{Text}
-\keywords{}
+\keywords{Fluid dynamics, particles, orientational dynamics, non-spherical particles, suspensions, rotational diffusion, tumbling, turbulence}
 
 %\preface{Text}
 \acknowledgements{Most importantly, I want to thank my supervisor Bernhard Mehlig for taking me on as a student. I cannot imagine a better scientific climate to work in: everything is up for discussion, no stone unturned.
@@ -298,93 +270,7 @@ Finally, a big thank you to my friends and collegues who improved this thesis by
 
 
 \begin{document}
-
-%% TITLE
-\setcounter{page}{-99} % for hyperref, odd right sides
-
 \pagestyle{empty}
-%~\newpage
-\pagenumbering{roman}
-\maketitlepage
-\newpage\makeprintinfopage
-\newpage\makeabstractpage
-\cleardoublepage\maketableofpaperspage
-\newpage\makeacknowledgementspage
-\cleardoublepage\tableofcontents
-\cleardoublepage\pagenumbering{arabic}
-\pagestyle{fancy}
-
-
-\part{Introduction} % Using the starred command avoids numbering.
- \thispagestyle{empty}
- \subfile{Introduction}
- \clearpage
- \subfile{Background}
-\clearpage
- \subfile{prerequisites}
-\part{Present work} % Using the starred command avoids numbering.
-\thispagestyle{fb}
-\subfile{PartIIintroduction}
-\subfile{Experiment}
-\clearpage
-\subfile{Inertia}
-\clearpage
-\subfile{Turbulence}
-\clearpage
-\subfile{Outlook}
-
-
-
-\clearpage
-
-\nobibliography*
-\bibliography{references} % Legacy command
-
-
-\part{Appendices} % Using the starred command avoids numbering.
-\thispagestyle{fb}
-\appendix
-\subfile{app_triaxial_equations}
-\clearpage
-\subfile{app_randomflow_diffusion}
-\clearpage
-\subfile{app_fpe_sphere}
-\clearpage
-\subfile{app_lagrangian}
-
-\nocite{einarsson2013}
-\nocite{einarsson2013b}
-\nocite{gustavsson2013}
-
-\label{endpage}\part{Research papers}
-\pagestyle{fb}
-% You can write this manually \paper{Paper Title}{Full reference} or have bib entries entered automatically
-
-
-
-
-\paper{Periodic and aperiodic tumbling of microrods\\advected in a microchannel flow}{%
-{\sc Einarsson, J., Johansson, A., Mahato, S.~K., Mishra, Y.~N., Angilella, J.~R., Hanstorp, D. \& Mehlig, B.} 2013 Periodic and aperiodic tumbling of microrods advected in a microchannel flow. \href{\paperAaddress}{{\em Acta Mechanica\/} {\bf 224}~(10), 2281--2289.}%
-}{http://arxiv.org/abs/1211.5672}
-\includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/1.pdf}
-
-\paper{Orientational dynamics of weakly inertial\\axisymmetric particles in steady viscous flows}{%
-{\sc Einarsson, J., Angilella, J.~R. \& Mehlig, B.} 2013{\natexlab{{\em b\/}}}
-  Orientational dynamics of weakly inertial axisymmetric particles in steady
-  viscous flows. \href{\paperBaddress}{\emph{In review}, available as {arXiv} e-print \textbf{1307.2821.}}%
-}{\paperBaddress}
-\includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/2.pdf}
-
-\paper{Tumbling of small axisymmetric particles in\\random and turbulent flows}{%
-{\sc Gustavsson, K., Einarsson, J. \& Mehlig, B.} 2013 Tumbling of small
-  axisymmetric particles in random and turbulent flows. \href{\paperCaddress}{\emph{In review}, available as {arXiv} e-print
-  \textbf{1305.1822}}.%
-}{\paperCaddress}
-\includepdf[pages=-,width=\paperwidth,pagecommand={\thispagestyle{fb}}]{papers/3.pdf}
-
-\pagestyle{fb}
-\cleardoublepage
-
-
+\makespikblad
 \end{document}
  

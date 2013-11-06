@@ -139,7 +139,7 @@
   \setlength{\paperheight}{239mm}
 \fi
 %\RequirePackage[top=0.1\paperheight, bottom=0.2\paperheight, left=0.15\paperwidth, right=0.15\paperwidth]{geometry}
-\RequirePackage[bindingoffset=10mm, left=24mm, right=24mm,bottom=30mm]{geometry}
+\RequirePackage[twoside,bindingoffset=10mm,inner=24mm, outer=24mm,bottom=30mm]{geometry}
 
 % Makes the chapters act like a big section
 \RequirePackage{titlesec}
@@ -616,6 +616,50 @@
 \cityname, \countryname\ \@copyrightyear\\
   }
  \end{center}
+}
+
+\newcommand{\makespikblad}{
+ \@checkifdefined{thesisin}
+ \@checkifdefined{reportno}
+ \@checkifdefined{title}
+ \@checkifdefined{author}
+ \@checkifdefined{department}
+ \@checkifdefined{copyrightyear}
+ \begin{center}
+  \textsc{\large Licentiate Thesis}
+  \\[25mm]
+  {\Large \@title}
+  \\[10mm]
+  \textsc{\Large\@author}
+  \\[20mm]
+  %\noindent\rule{90mm}{0.4pt}
+  %\\[15mm]
+  \parbox{105mm}{Vetenskaplig avhandling f\"or avl\"aggande av licentiatexamen i fysik vid G\"oteborgs universitet. Avhandlingen f\"orsvaras vid ett seminarium m\aa ndagen den 2 december 2013, kl 13:15 i Euler, Institutionen f\"or matematiska vetenskaper, Chalmers Tv\"argata 3, G\"oteborg. Avhandlingen f\"orsvaras p\aa~engelska.}
+  ~\\[10mm]
+  {\small
+  \begin{tabular}{rl}
+  \emph{Granskare}&Ralf Eichhorn, Nordita\\
+  \emph{Handledare}&Bernhard Mehlig, G\"oteborgs universitet \\
+  \emph{Examinator}&Stellan \"Ostlund, G\"oteborgs universitet \\
+  \end{tabular}
+  }
+  \vfill
+  %\noindent\rule{90mm}{0.4pt}
+  %\\[3mm]
+  \includegraphics[height=18mm]{figures/gulogga.pdf}
+ \end{center}
+ \newpage
+\begin{center}
+ {\large \@title}\\[4mm]
+ \textsc{\@author}\\
+ {\small
+ \@department \\
+ \universityname
+ }\\[4mm]
+\end{center}
+\noindent {\small \@firstabstract}
+\\[10mm]
+{\small \keywordsname :~\emph{\@keywords}}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
